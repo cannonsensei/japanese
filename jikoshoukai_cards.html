@@ -279,7 +279,8 @@ main {
 
 /* Frames */
 .frame-pill {
-  background: var(--navy);
+  background: #FFFFFF;
+  border: 1.5px solid var(--navy);
   border-radius: 10px;
   padding: 10px 16px;
   margin-bottom: 6px;
@@ -290,12 +291,42 @@ main {
   font-size: 19px;
   font-weight: 500;
   line-height: 2.2;
-  color: var(--white);
+  color: var(--navy-deep);
 }
 .frame-text ruby rt {
   font-size: .38em;
   color: var(--pink);
 }
+
+/* Romaji */
+.romaji-line {
+  display: none;
+  font-family: var(--f-en);
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--navy-light);
+  font-style: italic;
+  letter-spacing: .02em;
+  margin-top: 3px;
+  padding-top: 5px;
+  border-top: 1px solid rgba(27,43,78,.1);
+}
+body.show-romaji .romaji-line { display: block; }
+
+/* Romaji on card front */
+.q-romaji {
+  display: none;
+  font-family: var(--f-en);
+  font-size: 14px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--navy-light);
+  letter-spacing: .02em;
+  text-align: center;
+  padding: 0 40px;
+  margin-top: -10px;
+}
+body.show-romaji .q-romaji { display: block; }
 
 /* Examples */
 .example-block {
@@ -476,6 +507,12 @@ main {
   opacity: .6;
   letter-spacing: .02em;
 }
+.btn-divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(27,43,78,.15);
+  margin: 0 2px;
+}
 </style>
 </head>
 <body>
@@ -507,6 +544,7 @@ main {
           </button>
         </div>
         <div class="question-html" id="questionHtml"></div>
+        <div class="q-romaji" id="questionRomaji"></div>
         <button class="reveal-btn" onclick="event.stopPropagation(); flipCard()">
           Reveal answer &nbsp;<span style="opacity:.65;font-weight:400">こたえをみる</span> &#8594;
         </button>
@@ -542,6 +580,11 @@ main {
       <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
       Original order &nbsp;<span class="btn-jp">もとにもどす</span>
     </button>
+    <div class="btn-divider"></div>
+    <button class="order-btn" id="romajiBtn" onclick="toggleRomaji()">
+      <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
+      Romaji &nbsp;<span class="btn-jp">ローマ字</span>
+    </button>
   </div>
 </main>
 
@@ -555,15 +598,17 @@ const slides = [
   {
     questionHTML: `お<ruby>名前<rt>なまえ</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか？`,
     questionText: `お名前は何ですか？`,
+    questionRomaji: `O-namae wa nan desu ka?`,
     englishQ: "What is your name?",
     frames: [
-      { html: `<ruby>私<rt>わたし</rt></ruby>は　＿＿＿　です。` }
+      { html: `<ruby>私<rt>わたし</rt></ruby>は　＿＿＿　です。`, romaji: `Watashi wa ___ desu.` }
     ],
     examples: [
       {
         html: `<ruby>私<rt>わたし</rt></ruby>はカノン・クリスティーナです。`,
         text: `私はカノン・クリスティーナです。`,
-        en:   `I am Kanon Kristina.`
+        en:   `I am Kanon Kristina.`,
+        romaji: `Watashi wa Kanon Kurisutīna desu.`
       }
     ],
     vocab: null
@@ -573,15 +618,17 @@ const slides = [
   {
     questionHTML: `おいくつですか？`,
     questionText: `おいくつですか？`,
+    questionRomaji: `Oikutsu desu ka?`,
     englishQ: "How old are you?",
     frames: [
-      { html: `＿＿＿　さいです。` }
+      { html: `＿＿＿　さいです。`, romaji: `___ sai desu.` }
     ],
     examples: [
       {
         html: `<ruby>十三<rt>じゅうさん</rt></ruby><ruby>才<rt>さい</rt></ruby>です。`,
         text: `十三才です。`,
-        en:   `I am thirteen years old.`
+        en:   `I am thirteen years old.`,
+        romaji: `Juusan-sai desu.`
       }
     ],
     vocab: [
@@ -618,16 +665,18 @@ const slides = [
   {
     questionHTML: `<ruby>国籍<rt>こくせき</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか？`,
     questionText: `国籍は何ですか？`,
+    questionRomaji: `Kokuseki wa nan desu ka?`,
     englishQ: "What is your nationality?",
     frames: [
-      { html: `＿＿＿　じんです。` },
-      { html: `＿＿＿　と　＿＿＿　じんです。` }
+      { html: `＿＿＿　じんです。`, romaji: `___ jin desu.` },
+      { html: `＿＿＿　と　＿＿＿　じんです。`, romaji: `___ to ___ jin desu.` }
     ],
     examples: [
       {
         html: `オーストラリアとハンガリー<ruby>人<rt>じん</rt></ruby>です。`,
         text: `オーストラリアとハンガリー人です。`,
-        en:   `I am Australian and Hungarian.`
+        en:   `I am Australian and Hungarian.`,
+        romaji: `Oosutoraria to Hangarii-jin desu.`
       }
     ],
     vocab: [
@@ -660,21 +709,24 @@ const slides = [
   {
     questionHTML: `どこに<ruby>住<rt>す</rt></ruby>んでいますか？`,
     questionText: `どこに住んでいますか？`,
+    questionRomaji: `Doko ni sunde imasu ka?`,
     englishQ: "Where do you live?",
     frames: [
-      { html: `＿＿＿　に<ruby>住<rt>す</rt></ruby>んでいます。` },
-      { html: `＿＿＿　の　＿＿＿　に<ruby>住<rt>す</rt></ruby>んでいます。` }
+      { html: `＿＿＿　に<ruby>住<rt>す</rt></ruby>んでいます。`, romaji: `___ ni sunde imasu.` },
+      { html: `＿＿＿　の　＿＿＿　に<ruby>住<rt>す</rt></ruby>んでいます。`, romaji: `___ no ___ ni sunde imasu.` }
     ],
     examples: [
       {
         html: `おーすとらりあのぶりすべんに<ruby>住<rt>す</rt></ruby>んでいます。`,
         text: `おーすとらりあのぶりすべんに住んでいます。`,
-        en:   `I live in Brisbane, Australia.`
+        en:   `I live in Brisbane, Australia.`,
+        romaji: `Oosutoraria no Burisuben ni sunde imasu.`
       },
       {
         html: `ぶりすべんのざ・がっぷに<ruby>住<rt>す</rt></ruby>んでいます。`,
         text: `ぶりすべんのざ・がっぷに住んでいます。`,
-        en:   `I live in The Gap, Brisbane.`
+        en:   `I live in The Gap, Brisbane.`,
+        romaji: `Burisuben no Za Gappu ni sunde imasu.`
       }
     ],
     vocab: null
@@ -684,20 +736,23 @@ const slides = [
   {
     questionHTML: `<ruby>家族<rt>かぞく</rt></ruby>はだれですか？`,
     questionText: `家族はだれですか？`,
+    questionRomaji: `Kazoku wa dare desu ka?`,
     englishQ: "Who is in your family?",
     frames: [
-      { html: `<ruby>家族<rt>かぞく</rt></ruby>は　＿＿＿　と　＿＿＿　と<ruby>私<rt>わたし</rt></ruby>です。` }
+      { html: `<ruby>家族<rt>かぞく</rt></ruby>は　＿＿＿　と　＿＿＿　と<ruby>私<rt>わたし</rt></ruby>です。`, romaji: `Kazoku wa ___ to ___ to watashi desu.` }
     ],
     examples: [
       {
         html: `<ruby>家族<rt>かぞく</rt></ruby>はちちとははと<ruby>私<rt>わたし</rt></ruby>です。`,
         text: `家族はちちとははと私です。`,
-        en:   `My family is my father, mother, and me.`
+        en:   `My family is my father, mother, and me.`,
+        romaji: `Kazoku wa chichi to haha to watashi desu.`
       },
       {
         html: `<ruby>家族<rt>かぞく</rt></ruby>はちちとははとあにが<ruby>二人<rt>ふたり</rt></ruby>と<ruby>私<rt>わたし</rt></ruby>です。`,
         text: `家族はちちとははとあにが二人と私です。`,
-        en:   `My family is my father, mother, two older brothers, and me.`
+        en:   `My family is my father, mother, two older brothers, and me.`,
+        romaji: `Kazoku wa chichi to haha to ani ga futari to watashi desu.`
       }
     ],
     vocab: [
@@ -724,15 +779,17 @@ const slides = [
   {
     questionHTML: `<ruby>家族<rt>かぞく</rt></ruby>は<ruby>何人<rt>なんにん</rt></ruby>ですか？`,
     questionText: `家族は何人ですか？`,
+    questionRomaji: `Kazoku wa nan-nin desu ka?`,
     englishQ: "How many people are in your family?",
     frames: [
-      { html: `<ruby>家族<rt>かぞく</rt></ruby>は　＿＿＿　にんです。` }
+      { html: `<ruby>家族<rt>かぞく</rt></ruby>は　＿＿＿　にんです。`, romaji: `Kazoku wa ___ nin desu.` }
     ],
     examples: [
       {
         html: `<ruby>家族<rt>かぞく</rt></ruby>は<ruby>三人<rt>さんにん</rt></ruby>です。`,
         text: `家族は三人です。`,
-        en:   `There are three people in my family.`
+        en:   `There are three people in my family.`,
+        romaji: `Kazoku wa san-nin desu.`
       }
     ],
     vocab: [
@@ -758,15 +815,17 @@ const slides = [
   {
     questionHTML: `<ruby>電話番号<rt>でんわばんごう</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか？`,
     questionText: `電話番号は何ですか？`,
+    questionRomaji: `Denwa-bangou wa nan desu ka?`,
     englishQ: "What is your phone number?",
     frames: [
-      { html: `<ruby>電話番号<rt>でんわばんごう</rt></ruby>は　＿＿＿　の　＿＿＿　です。` }
+      { html: `<ruby>電話番号<rt>でんわばんごう</rt></ruby>は　＿＿＿　の　＿＿＿　です。`, romaji: `Denwa-bangou wa ___ no ___ desu.` }
     ],
     examples: [
       {
         html: `<ruby>電話番号<rt>でんわばんごう</rt></ruby>は0 4 3 0 の 3 4 2 1 2 3です。`,
         text: `電話番号は0430の342123です。`,
-        en:   `My phone number is 0430 342123.`
+        en:   `My phone number is 0430 342123.`,
+        romaji: `Denwa-bangou wa zero yon san zero no san yon ni ichi ni san desu.`
       }
     ],
     vocab: [
@@ -793,16 +852,18 @@ const slides = [
   {
     questionHTML: `<ruby>何<rt>なに</rt></ruby>が<ruby>好<rt>す</rt></ruby>きですか？`,
     questionText: `何が好きですか？`,
+    questionRomaji: `Nani ga suki desu ka?`,
     englishQ: "What do you like?",
     frames: [
-      { html: `＿＿＿　が<ruby>好<rt>す</rt></ruby>きです。` },
-      { html: `＿＿＿　と　＿＿＿　が<ruby>好<rt>す</rt></ruby>きです。` }
+      { html: `＿＿＿　が<ruby>好<rt>す</rt></ruby>きです。`, romaji: `___ ga suki desu.` },
+      { html: `＿＿＿　と　＿＿＿　が<ruby>好<rt>す</rt></ruby>きです。`, romaji: `___ to ___ ga suki desu.` }
     ],
     examples: [
       {
         html: `ぷりんといぬが<ruby>好<rt>す</rt></ruby>きです。`,
         text: `ぷりんといぬが好きです。`,
-        en:   `I like pudding and dogs.`
+        en:   `I like pudding and dogs.`,
+        romaji: `Purin to inu ga suki desu.`
       }
     ],
     vocab: [
@@ -953,6 +1014,7 @@ function renderSlide(index) {
   // front
   qTag.textContent       = `Q ${index + 1} / ${deck.length}`;
   questionHtml.innerHTML = s.questionHTML;
+  document.getElementById('questionRomaji').textContent = s.questionRomaji || '';
 
   // back header
   backEnQ.textContent = s.englishQ;
@@ -969,7 +1031,10 @@ function renderSlide(index) {
   html += `<div class="back-sec">
     <div class="sec-label">Sentence frames &nbsp;·&nbsp; ぶんけい</div>`;
   for (const f of s.frames) {
-    html += `<div class="frame-pill"><div class="frame-text">${f.html}</div></div>`;
+    html += `<div class="frame-pill">
+      <div class="frame-text">${f.html}</div>
+      ${f.romaji ? `<div class="romaji-line">${f.romaji}</div>` : ''}
+    </div>`;
   }
   html += `</div>`;
 
@@ -983,6 +1048,7 @@ function renderSlide(index) {
     const safeText = escText(ex.text);
     html += `<div class="example-block">
       <div class="ex-jp">${ex.html}</div>
+      ${ex.romaji ? `<div class="romaji-line">${ex.romaji}</div>` : ''}
       <div class="ex-en">${ex.en}</div>
       <div class="ex-tts-row">
         <button class="tts-btn" data-text="${safeText}" onclick="speakBtn(this)">
@@ -1005,6 +1071,12 @@ function renderSlide(index) {
 
   backScroll.innerHTML = html;
   backScroll.scrollTop = 0;
+}
+
+function toggleRomaji() {
+  const btn = document.getElementById('romajiBtn');
+  const on  = document.body.classList.toggle('show-romaji');
+  btn.classList.toggle('is-active', on);
 }
 
 function changeSlide(dir) {
