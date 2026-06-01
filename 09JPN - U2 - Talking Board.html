@@ -198,6 +198,11 @@ main{max-width:100%;padding:32px 5px 60px;}
         <div class="board-cell"><div class="cell-hd">Instructions · しじ</div>
 <div class="phrase-card" data-card="ins1"><div class="sub-row"><span class="sub-label">行き先</span><select class="sub-select" data-sel="ins1" onchange="updateCard(this,'ins1')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" data-card="ins2"><div class="sub-row"><span class="sub-label">乗換駅</span><select class="sub-select" data-sel="ins2a" onchange="updateIns2Train(this)"></select><span class="sub-label">方面</span><select class="sub-select" data-sel="ins2b" onchange="updateIns2Train(this)"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" data-card="ins3"><div class="sub-row"><span class="sub-label">何番目</span><select class="sub-select" data-sel="ins3" onchange="updateCard(this,'ins3')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
         </div>
+        <div class="board-cell"><div class="cell-hd">Responses · こたえ 🚉</div>
+<div class="phrase-card" data-card="resp-platform"><div class="sub-row"><span class="sub-label">番線</span><select class="sub-select" data-sel="resp-platform-sel" onchange="updateRespCardIndep('platform',this)"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" data-card="resp-time"><div class="sub-row" style="gap:6px"><span class="sub-label">時刻</span><select class="sub-select" data-sel="resp-time-ampm" onchange="updateRespCardIndep('time',this)" style="min-width:60px"><option value="">――</option><option value="am">午前</option><option value="pm">午後</option></select><select class="sub-select" data-sel="resp-time-sel" onchange="updateRespCardIndep('time',this)"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" data-card="resp-duration"><div class="sub-row"><span class="sub-label">所要時間</span><select class="sub-select" data-sel="resp-duration-sel" onchange="updateRespCardIndep('duration',this)"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+        </div>
       </div>
       <div class="board-col">
         <div class="board-cell"><div class="cell-hd">Counters · カウンター</div>
@@ -544,6 +549,13 @@ function initTrain(){
   fillSel(gS(v,"time"),d.TIMES,t=>t.k,8);
   fillSel(gS(v,"duration"),d.DURATIONS,d=>d.k,2);
   updateCtrTrain("platform",gS(v,"platform"));updateCtrTrain("time",gS(v,"time"));updateCtrTrain("duration",gS(v,"duration"));
+  /* response card independent selects */
+  fillSel(gS(v,"resp-platform-sel"),d.PLATFORMS,p=>p.k);
+  fillSel(gS(v,"resp-time-sel"),d.TIMES,t=>t.k,8);
+  fillSel(gS(v,"resp-duration-sel"),d.DURATIONS,du=>du.k,2);
+  updateRespCardIndep("platform",gS(v,"resp-platform-sel"));
+  updateRespCardIndep("time",gS(v,"resp-time-sel"));
+  updateRespCardIndep("duration",gS(v,"resp-duration-sel"));
   const c=v.querySelector("[data-wordlist='train-stations']");
   d.STATIONS.forEach(s=>{const div=document.createElement("div");div.className="word-item";div.onclick=()=>speak(s.k);div.innerHTML=`<span class="word-jp">${s.k}</span><span class="word-kana">${s.r}</span><span class="word-en">${s.e}</span>${s.type?'<span style="font-size:0.55rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:var(--pink-light);color:var(--pink);border:1px solid rgba(196,0,122,0.2);border-radius:3px;padding:2px 5px">'+s.type+'</span>':''}<span class="word-spk">🔊</span>`;c.appendChild(div);});
 }
@@ -604,6 +616,32 @@ function updateCtrTrain(type,selEl){
   view.querySelector("[data-ctr='"+type+"-kana']").textContent=kana;
   view.querySelector("[data-ctr='"+type+"-en']").textContent=en;
   cardStates.train[type]={jp,kana,en};
+  /* update matching response card */
+  updateRespCard(view,type,jp,kana,en);
+}
+function updateRespCard(view,type,jp,kana,en){/* no-op: response cards are now independent */}
+function updateRespCardIndep(type,selEl){
+  const view=selEl.closest("[data-topic]");
+  const d=D.train;
+  let jp,kana,en;
+  if(type==="platform"){
+    const p=d.PLATFORMS[parseInt(view.querySelector("[data-sel='resp-platform-sel']").value)||0];
+    jp="その電車は"+p.k+"です。";kana="そのでんしゃは"+p.r+"です。";en="That train is on "+p.e+".";
+  } else if(type==="time"){
+    const tIdx=parseInt(view.querySelector("[data-sel='resp-time-sel']").value)||0;
+    const ampm=view.querySelector("[data-sel='resp-time-ampm']").value;
+    const ti=d.TIMES[tIdx];
+    let tv,tk,te;
+    if(ampm==="am"){tv="午前"+ti.k;tk="ごぜん"+ti.r;te=ti.e+" AM";}
+    else if(ampm==="pm"){tv="午後"+ti.k;tk="ごご"+ti.r;te=ti.e+" PM";}
+    else{tv=ti.k;tk=ti.r;te=ti.e;}
+    jp="電車は"+tv+"に出発します。";kana="でんしゃは"+tk+"にしゅっぱつします。";en="The train departs at "+te+".";
+  } else if(type==="duration"){
+    const du=d.DURATIONS[parseInt(view.querySelector("[data-sel='resp-duration-sel']").value)||0];
+    jp=du.k+"かかります。";kana=du.r+"かかります。";en="It takes "+du.e+".";
+  }
+  const cardMap={platform:"resp-platform",time:"resp-time",duration:"resp-duration"};
+  setCard(view,cardMap[type],{jp,kana,en});
 }
 function speakCtr(type,view){const s=cardStates.train[type];if(s)speak(s.jp);}
 
