@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Around Japan — Year 9 Japanese</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-dark:#001233;--navy:#002855;--navy-mid:#1a407a;
+  --pink:#C4007A;--pink-light:#fdf0f8;
+  --navy-tint:#eef3fa;--border:#002855;--border-light:#c8d4e8;
+  --white:#ffffff;--text:#002855;--text-sec:#4d6a99;--text-en:#445566;
+  --font-ui:"Montserrat",sans-serif;--font-jp:"Noto Sans JP",sans-serif;
+  --radius:6px;--shadow:0 2px 10px rgba(0,40,85,0.10);--trans:0.15s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-ui);background:#fff;color:var(--text);min-height:100vh;}
+.view{display:none;} .view.active{display:block;}
+.site-header{background:var(--navy-dark);border-bottom:3px solid var(--pink);}
+.header-inner{max-width:100%;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.header-school{font-size:0.6rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:5px;}
+.header-title{color:white;font-size:1.45rem;font-weight:800;letter-spacing:-0.01em;line-height:1.1;}
+.header-title .jp{font-family:var(--font-jp);font-weight:700;}
+.header-subtitle{font-size:0.72rem;color:rgba(255,255,255,0.6);font-weight:400;margin-top:6px;}
+.header-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0;}
+.header-badge{background:var(--pink);color:white;font-size:0.62rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:6px 14px;border-radius:20px;white-space:nowrap;}
+.btn-back{font-family:var(--font-ui);font-size:0.62rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.7);background:transparent;border:1.5px solid rgba(255,255,255,0.3);border-radius:4px;padding:5px 11px;cursor:pointer;transition:all var(--trans);}
+.btn-back:hover{background:rgba(255,255,255,0.1);}
+/* landing */
+.landing-main{max-width:100%;padding:48px 32px 72px;}
+.intro{margin-bottom:44px;}
+.intro-label{font-size:0.58rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-sec);display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+.intro-label::before{content:"";display:block;width:4px;height:14px;background:var(--pink);border-radius:2px;}
+.intro-heading{font-size:1.5rem;font-weight:800;color:var(--navy);letter-spacing:-0.02em;margin-bottom:10px;}
+.intro-heading .jp{font-family:var(--font-jp);font-weight:700;}
+.intro-body{font-size:0.82rem;color:var(--text-sec);line-height:1.7;max-width:640px;}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px;}
+.topic-card{background:var(--white);border:2px solid var(--navy);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:box-shadow var(--trans),transform var(--trans);}
+.topic-card:hover{box-shadow:0 6px 28px rgba(0,40,85,0.18);transform:translateY(-2px);}
+.card-head{background:var(--navy-dark);padding:22px 22px 18px;position:relative;}
+.card-icon{font-size:2.1rem;display:block;margin-bottom:10px;line-height:1;}
+.card-jp{font-family:var(--font-jp);font-size:1.3rem;font-weight:700;color:white;display:block;line-height:1.3;}
+.card-kana{font-family:var(--font-jp);font-size:0.7rem;color:rgba(255,255,255,0.6);display:block;margin-top:3px;}
+.card-en{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:8px;display:block;}
+.card-num{position:absolute;top:16px;right:18px;font-size:2rem;font-weight:800;color:rgba(255,255,255,0.08);line-height:1;}
+.card-body{padding:18px 22px;flex:1;border-bottom:1.5px solid var(--border-light);}
+.card-desc{font-size:0.75rem;color:var(--text-sec);line-height:1.65;}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+.card-tag{font-size:0.58rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy-mid);background:var(--navy-tint);border:1px solid var(--border-light);border-radius:3px;padding:3px 8px;font-family:var(--font-jp);}
+.card-foot{padding:14px 22px;display:flex;gap:10px;}
+.btn-card{flex:1;font-family:var(--font-ui);font-size:0.65rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:10px 12px;border-radius:5px;cursor:pointer;text-align:center;transition:all var(--trans);border:2px solid transparent;}
+.btn-vocab{background:var(--navy-tint);color:var(--navy);border-color:var(--border-light);}
+.btn-vocab:hover{background:var(--navy);color:white;border-color:var(--navy);}
+.btn-board{background:var(--pink);color:white;border-color:var(--pink);}
+.btn-board:hover{background:#a0005f;border-color:#a0005f;}
+.footer-note{margin-top:48px;padding-top:24px;border-top:1.5px solid var(--border-light);font-size:0.68rem;color:var(--text-sec);line-height:1.6;}
+/* board */
+main{max-width:100%;padding:32px 5px 60px;}
+.section-hd{display:flex;align-items:baseline;gap:14px;margin-bottom:14px;flex-wrap:wrap;}
+.section-title{font-size:0.6rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+.section-title::before{content:"";display:block;width:4px;height:14px;background:var(--pink);border-radius:2px;flex-shrink:0;}
+.section-desc{font-size:0.72rem;color:var(--text-sec);font-weight:400;}
+.board-grid{display:grid;grid-template-columns:285px 1fr 320px;border:2px solid var(--navy);border-radius:8px;overflow:hidden;background:var(--white);margin-bottom:36px;box-shadow:var(--shadow);}
+.board-col{border-right:1.5px solid var(--navy);display:flex;flex-direction:column;}
+.board-col:last-child{border-right:none;}
+.board-cell{border-bottom:1.5px solid var(--navy);padding:14px;}
+.board-cell:last-child{border-bottom:none;flex:1;}
+.cell-hd{font-size:0.58rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:var(--navy);background:var(--navy-tint);padding:6px 10px;margin:-14px -14px 12px;border-bottom:1px solid var(--border-light);}
+.phrase-card{border:1.5px solid var(--border-light);border-radius:var(--radius);padding:10px 12px;margin-bottom:8px;cursor:pointer;transition:border-color var(--trans),box-shadow var(--trans);background:var(--white);}
+.phrase-card:last-child{margin-bottom:0;}
+.phrase-card:hover{border-color:var(--pink);box-shadow:0 2px 8px rgba(196,0,122,0.13);}
+.phrase-card.speaking{border-color:var(--pink);background:var(--pink-light);}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+.card-text{flex:1;min-width:0;}
+.phrase-jp{font-family:var(--font-jp);font-size:1rem;font-weight:500;color:var(--navy);line-height:1.55;}
+.phrase-kana{font-family:var(--font-jp);font-size:0.7rem;color:var(--text-sec);line-height:1.5;margin-top:2px;}
+.phrase-en{font-size:0.68rem;color:var(--text-en);font-style:italic;margin-top:4px;line-height:1.4;}
+.card-btns{display:flex;flex-direction:column;gap:4px;align-items:flex-end;flex-shrink:0;}
+.btn-speak{background:none;border:1.5px solid var(--border-light);border-radius:4px;cursor:pointer;color:var(--text-sec);font-size:0.85rem;padding:3px 6px;line-height:1;transition:all var(--trans);}
+.btn-speak:hover,.phrase-card:hover .btn-speak{border-color:var(--pink);color:var(--pink);background:var(--pink-light);}
+.btn-add{background:none;border:1.5px solid var(--border-light);border-radius:4px;cursor:pointer;color:var(--text-sec);font-family:var(--font-ui);font-size:0.62rem;font-weight:700;padding:3px 7px;letter-spacing:0.05em;transition:all var(--trans);white-space:nowrap;}
+.btn-add:hover{border-color:var(--navy);background:var(--navy);color:white;}
+.sub-row{background:var(--navy-tint);border-radius:4px;padding:7px 9px;margin-bottom:9px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.sub-label{font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-sec);white-space:nowrap;}
+.sub-select{font-family:var(--font-jp);font-size:0.8rem;border:1.5px solid var(--border-light);border-radius:4px;padding:3px 7px;color:var(--navy);background:white;cursor:pointer;font-weight:500;}
+.sub-select:focus{outline:none;border-color:var(--pink);}
+.word-item{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--navy-tint);cursor:pointer;}
+.word-item:last-child{border-bottom:none;}
+.word-item:hover .word-jp{color:var(--pink);}
+.word-jp{font-family:var(--font-jp);font-size:0.95rem;font-weight:500;color:var(--navy);min-width:80px;transition:color var(--trans);}
+.word-kana{font-family:var(--font-jp);font-size:0.65rem;color:var(--text-sec);flex:1;}
+.word-en{font-size:0.65rem;color:var(--text-en);font-style:italic;text-align:right;}
+.word-spk{font-size:0.75rem;color:var(--border-light);}
+.word-item:hover .word-spk{color:var(--pink);}
+.ctr-block{border:1.5px solid var(--border-light);border-radius:var(--radius);padding:10px 12px;margin-bottom:8px;}
+.script-card{background:var(--white);border:2px solid var(--navy);border-radius:8px;overflow:hidden;margin-bottom:36px;box-shadow:var(--shadow);}
+.script-card-hd{background:var(--navy);color:white;padding:15px 20px;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.script-card-title{font-size:0.7rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;}
+.script-card-hint{font-size:0.68rem;color:rgba(255,255,255,0.6);font-weight:400;margin-top:3px;}
+.script-toolbar{display:flex;gap:8px;align-items:center;flex-shrink:0;}
+.btn-tbar{border:1.5px solid rgba(255,255,255,0.35);background:transparent;color:rgba(255,255,255,0.85);font-family:var(--font-ui);font-size:0.62rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:4px;cursor:pointer;transition:all var(--trans);}
+.btn-tbar:hover{background:rgba(255,255,255,0.15);}
+.btn-tbar.play{background:var(--pink);border-color:var(--pink);color:white;}
+.btn-tbar.play:hover{background:#a0005f;}
+.script-body{padding:20px;min-height:180px;}
+.script-empty{display:flex;align-items:center;justify-content:center;min-height:140px;}
+.script-empty-msg{text-align:center;color:var(--border-light);}
+.script-empty-icon{font-size:2rem;display:block;margin-bottom:8px;}
+.script-empty-text{font-size:0.72rem;font-style:italic;}
+.script-list{display:none;}
+.script-list.has-items{display:block;}
+.script-item{border-left:3px solid var(--pink);padding:10px 56px 10px 14px;margin-bottom:10px;background:var(--navy-tint);border-radius:0 6px 6px 0;position:relative;cursor:pointer;transition:background var(--trans);}
+.script-item:hover{background:#e0e9f5;}
+.script-item:last-child{margin-bottom:0;}
+.script-item.playing{background:var(--pink-light);}
+.script-line-num{font-size:0.56rem;font-weight:800;color:var(--pink);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;}
+.script-jp{font-family:var(--font-jp);font-size:1.05rem;font-weight:500;color:var(--navy);line-height:1.5;}
+.script-kana{font-family:var(--font-jp);font-size:0.7rem;color:var(--text-sec);margin-top:2px;}
+.script-en{font-size:0.68rem;color:var(--text-en);font-style:italic;margin-top:4px;}
+.script-item-del{position:absolute;right:8px;top:8px;background:none;border:none;cursor:pointer;font-size:0.8rem;color:var(--border-light);padding:2px 4px;border-radius:3px;transition:color var(--trans);}
+.script-item-del:hover{color:var(--pink);}
+.script-item-spk{position:absolute;right:28px;top:8px;background:none;border:none;cursor:pointer;font-size:0.8rem;color:var(--border-light);padding:2px 4px;}
+.script-item-spk:hover{color:var(--pink);}
+.vocab-section{background:var(--white);border:2px solid var(--navy);border-radius:8px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:20px;}
+.vocab-toggle{width:100%;background:var(--navy);color:white;border:none;padding:16px 20px;text-align:left;font-family:var(--font-ui);font-size:0.7rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.vocab-toggle:hover{background:var(--navy-mid);}
+.vocab-arrow{font-size:0.9rem;transition:transform 0.25s ease;}
+.vocab-toggle.open .vocab-arrow{transform:rotate(180deg);}
+.vocab-content{display:none;padding:24px;}
+.vocab-content.open{display:block;}
+.vocab-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px;}
+.vocab-cat{border:1.5px solid var(--border-light);border-radius:var(--radius);overflow:hidden;}
+.vocab-cat-hd{font-size:0.58rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;background:var(--navy-tint);color:var(--navy);padding:7px 12px;border-bottom:1px solid var(--border-light);}
+.vocab-row{display:flex;align-items:center;gap:8px;padding:6px 12px;cursor:pointer;transition:background var(--trans);border-bottom:1px solid #f0f4fa;}
+.vocab-row:last-child{border-bottom:none;}
+.vocab-row:hover{background:var(--navy-tint);}
+.vocab-jp{font-family:var(--font-jp);font-size:0.95rem;font-weight:500;color:var(--navy);min-width:70px;}
+.vocab-kana{font-family:var(--font-jp);font-size:0.65rem;color:var(--text-sec);flex:1;}
+.vocab-en{font-size:0.65rem;color:var(--text-en);font-style:italic;text-align:right;}
+.vocab-spk{font-size:0.75rem;color:var(--border-light);flex-shrink:0;}
+.vocab-row:hover .vocab-spk{color:var(--pink);}
+#view-souvenir .board-grid{grid-template-columns:285px 1fr 1fr;}
+.tts-bar{position:fixed;bottom:20px;right:20px;background:var(--navy);color:white;padding:9px 16px;border-radius:22px;font-size:0.7rem;font-weight:600;display:none;align-items:center;gap:9px;box-shadow:0 4px 16px rgba(0,40,85,0.3);z-index:200;max-width:280px;}
+.tts-bar.on{display:flex;}
+.tts-dot{width:8px;height:8px;background:var(--pink);border-radius:50%;animation:blink 0.7s infinite alternate;flex-shrink:0;}
+@keyframes blink{from{opacity:1;}to{opacity:0.3;}}
+.tts-txt{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--font-jp);}
+.tts-stop{background:none;border:none;color:rgba(255,255,255,0.7);cursor:pointer;font-size:0.8rem;padding:2px;}
+</style>
+</head>
+<body>
+<!-- ══ LANDING ══ -->
+<div id="view-landing" class="view active">
+  <header class="site-header"><div class="header-inner">
+    <div><div class="header-school">St Aidan's Anglican Girls' School &nbsp;·&nbsp; Japanese</div>
+    <h1 class="header-title"><span class="jp">にほんでの旅</span> — Getting Around Japan</h1>
+    <div class="header-subtitle">Interactive talking boards, vocabulary lists, and script builders for real-life Japan situations</div></div>
+    <div class="header-badge">Year 9 Japanese</div>
+  </div></header>
+  <div class="landing-main">
+    <div class="intro">
+      <div class="intro-label">Select a topic</div>
+      <h2 class="intro-heading">Choose your situation &nbsp;<span class="jp">· じょうきょうをえらんでください</span></h2>
+      <p class="intro-body">Each talking board gives you key phrases with full kanji, kana, and English. Use the dropdowns to substitute places and numbers, build a conversation script, and listen to every phrase with text-to-speech.</p>
+    </div>
+    <div class="topic-grid">
+      <div class="topic-card"><div class="card-head"><span class="card-num">01</span><span class="card-icon">🗺️</span><span class="card-jp">道を聞きます</span><span class="card-kana">みちをききます</span><span class="card-en">Asking &amp; Giving Directions</span></div><div class="card-body"><p class="card-desc">Ask where places are, find out how far away they are, and understand instructions for turning right, turning left, and going straight ahead.</p><div class="card-tags"><span class="card-tag">みぎ・ひだり Right &amp; Left</span><span class="card-tag">まっすぐ Straight</span><span class="card-tag">ちかく Nearby</span></div></div><div class="card-foot"><button class="btn-card btn-vocab" onclick="showView('directions',true)">📖 Vocabulary</button><button class="btn-card btn-board" onclick="showView('directions')">🗣 Talking Board</button></div></div>
+      <div class="topic-card"><div class="card-head"><span class="card-num">02</span><span class="card-icon">🚃</span><span class="card-jp">電車に乗ります</span><span class="card-kana">でんしゃにのります</span><span class="card-en">Riding a Train</span></div><div class="card-body"><p class="card-desc">Ask which platform your train departs from, find out how long the journey takes, and get instructions for changing lines on Tokyo's rail network.</p><div class="card-tags"><span class="card-tag">ばんせん Platforms</span><span class="card-tag">のりかえ Transfers</span><span class="card-tag">やまのてせん Yamanote</span></div></div><div class="card-foot"><button class="btn-card btn-vocab" onclick="showView('train',true)">📖 Vocabulary</button><button class="btn-card btn-board" onclick="showView('train')">🗣 Talking Board</button></div></div>
+      <div class="topic-card"><div class="card-head"><span class="card-num">03</span><span class="card-icon">🚌</span><span class="card-jp">バスに乗ります</span><span class="card-kana">バスにのります</span><span class="card-en">Riding a Bus</span></div><div class="card-body"><p class="card-desc">Confirm your bus route, ask where to get off for your destination, check the fare, and know what to say when you need to press the stop button.</p><div class="card-tags"><span class="card-tag">りょうきん Fare</span><span class="card-tag">つぎ Next Stop</span><span class="card-tag">おります Get Off</span></div></div><div class="card-foot"><button class="btn-card btn-vocab" onclick="showView('bus',true)">📖 Vocabulary</button><button class="btn-card btn-board" onclick="showView('bus')">🗣 Talking Board</button></div></div>
+      <div class="topic-card"><div class="card-head"><span class="card-num">04</span><span class="card-icon">🚕</span><span class="card-jp">タクシーに乗ります</span><span class="card-kana">タクシーにのります</span><span class="card-en">Riding a Taxi</span></div><div class="card-body"><p class="card-desc">Tell the driver your destination, ask for an estimated fare and travel time, request a receipt, make conversation en route, and understand the taxi light signs.</p><div class="card-tags"><span class="card-tag">めあて Destination</span><span class="card-tag">りょうきん Fare</span><span class="card-tag">タクシーのランプ Taxi Signs</span><span class="card-tag">かいわ Conversation</span></div></div><div class="card-foot"><button class="btn-card btn-vocab" onclick="showView('taxi',true)">📖 Vocabulary</button><button class="btn-card btn-board" onclick="showView('taxi')">🗣 Talking Board</button></div></div>
+      <div class="topic-card"><div class="card-head"><span class="card-num">05</span><span class="card-icon">🛍️</span><span class="card-jp">おみやげを買います</span><span class="card-kana">おみやげをかいます</span><span class="card-en">Buying a Souvenir</span></div><div class="card-body"><p class="card-desc">Ask prices, request specific items and quantities, pay for your purchases, and use shopping courtesy phrases in Japanese gift shops and department stores.</p><div class="card-tags"><span class="card-tag">ねだん Price</span><span class="card-tag">かずことば Counters</span><span class="card-tag">おかいもの Shopping</span></div></div><div class="card-foot"><button class="btn-card btn-vocab" onclick="showView('souvenir',true)">📖 Vocabulary</button><button class="btn-card btn-board" onclick="showView('souvenir')">🗣 Talking Board</button></div></div>
+    </div>
+    <div class="footer-note"><strong>How to use:</strong> The <em>Talking Board</em> opens the interactive phrase builder — hear phrases aloud, substitute words via dropdowns, and build a script. The <em>Vocabulary</em> button jumps straight to the word list.</div>
+  </div>
+</div>
+<!-- ══ TRAIN ══ -->
+<div id="view-train" class="view" data-topic="train">
+  <header class="site-header"><div class="header-inner"><div><div class="header-school">St Aidan's Anglican Girls' School &nbsp;·&nbsp; Japanese</div><h1 class="header-title"><span class="jp">電車に乗ります</span> — Riding a Train</h1><div class="header-subtitle">Click any phrase card to hear it &nbsp;·&nbsp; Use dropdowns to change substitutable words &nbsp;·&nbsp; Press ＋ Script to build your conversation</div></div><div class="header-right"><button class="btn-back" onclick="goHome()">← All Topics</button><div class="header-badge">Year 9 Japanese</div></div></div></header>
+  <main>
+    <div class="section-hd"><h2 class="section-title">Talking Board</h2><span class="section-desc">Click any card to hear it · Select options to change substitutable words</span></div>
+    <div class="board-grid">
+      <div class="board-col">
+        <div class="board-cell"><div class="cell-hd">Greetings · あいさつ</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">こんにちは。</div><div class="phrase-kana">こんにちは。</div><div class="phrase-en">Hello. / Good afternoon.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">おはようございます。</div><div class="phrase-kana">おはようございます。</div><div class="phrase-en">Good morning.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Interjections · かんどうし</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">あのう、すみません。</div><div class="phrase-kana">あのう、すみません。</div><div class="phrase-en">Um, excuse me...</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">ありがとうございました。</div><div class="phrase-kana">ありがとうございました。</div><div class="phrase-en">Thank you very much.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">ああ、そうですか。</div><div class="phrase-kana">ああ、そうですか。</div><div class="phrase-en">Oh, is that right?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">わかりました。</div><div class="phrase-kana">わかりました。</div><div class="phrase-en">I understand. / Got it.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Places · ばしょ</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">駅</div><div class="phrase-kana">えき</div><div class="phrase-en">Train station</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">ホーム</div><div class="phrase-kana">ホーム</div><div class="phrase-en">Platform area</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button></div></div></div><div class="phrase-card" data-card="placeyuki"><div class="sub-row"><span class="sub-label">行き先</span><select class="sub-select" data-sel="placeyuki" onchange="updateCard(this,'placeyuki')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+        </div>
+      </div>
+      <div class="board-col">
+        <div class="board-cell"><div class="cell-hd">Questions · しつもん</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">この電車は何番線ですか？</div><div class="phrase-kana">このでんしゃはなんばんせんですか？</div><div class="phrase-en">What platform is this train?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" data-card="q2"><div class="sub-row"><span class="sub-label">行き先</span><select class="sub-select" data-sel="q2" onchange="updateCard(this,'q2')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" data-card="q3"><div class="sub-row"><span class="sub-label">行き先</span><select class="sub-select" data-sel="q3" onchange="updateCard(this,'q3')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">電車は何時に出発しますか？</div><div class="phrase-kana">でんしゃはなんじにしゅっぱつしますか？</div><div class="phrase-en">What time does the train depart?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" data-card="q5"><div class="sub-row"><span class="sub-label">行き先</span><select class="sub-select" data-sel="q5" onchange="updateCard(this,'q5')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Instructions · しじ</div>
+<div class="phrase-card" data-card="ins1"><div class="sub-row"><span class="sub-label">行き先</span><select class="sub-select" data-sel="ins1" onchange="updateCard(this,'ins1')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" data-card="ins2"><div class="sub-row"><span class="sub-label">乗換駅</span><select class="sub-select" data-sel="ins2a" onchange="updateIns2Train(this)"></select><span class="sub-label">方面</span><select class="sub-select" data-sel="ins2b" onchange="updateIns2Train(this)"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" data-card="ins3"><div class="sub-row"><span class="sub-label">何番目</span><select class="sub-select" data-sel="ins3" onchange="updateCard(this,'ins3')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+        </div>
+      </div>
+      <div class="board-col">
+        <div class="board-cell"><div class="cell-hd">Counters · カウンター</div>
+          <div class="ctr-block"><div class="sub-row"><span class="sub-label">番線</span><select class="sub-select" data-sel="platform" onchange="updateCtrTrain('platform',this)"></select></div><div class="phrase-jp" data-ctr="platform-jp"></div><div class="phrase-kana" data-ctr="platform-kana"></div><div class="phrase-en" data-ctr="platform-en"></div><div style="margin-top:8px;text-align:right"><button class="btn-speak" onclick="speakCtr('platform',this.closest('[data-topic]'))">🔊</button></div></div>
+          <div class="ctr-block"><div class="sub-row" style="gap:6px"><span class="sub-label">時刻</span><select class="sub-select" data-sel="ampm" onchange="updateCtrTrain('time',this)" style="min-width:60px"><option value="">――</option><option value="am">午前</option><option value="pm">午後</option></select><select class="sub-select" data-sel="time" onchange="updateCtrTrain('time',this)"></select></div><div class="phrase-jp" data-ctr="time-jp"></div><div class="phrase-kana" data-ctr="time-kana"></div><div class="phrase-en" data-ctr="time-en"></div><div style="margin-top:8px;text-align:right"><button class="btn-speak" onclick="speakCtr('time',this.closest('[data-topic]'))">🔊</button></div></div>
+          <div class="ctr-block"><div class="sub-row"><span class="sub-label">所要時間</span><select class="sub-select" data-sel="duration" onchange="updateCtrTrain('duration',this)"></select></div><div class="phrase-jp" data-ctr="duration-jp"></div><div class="phrase-kana" data-ctr="duration-kana"></div><div class="phrase-en" data-ctr="duration-en"></div><div style="margin-top:8px;text-align:right"><button class="btn-speak" onclick="speakCtr('duration',this.closest('[data-topic]'))">🔊</button></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Lines &amp; Stations · せんとえき</div><div data-wordlist="train-stations"></div></div>
+      </div>
+    </div>
+    <div class="section-hd"><h2 class="section-title">Your Conversation Script</h2><span class="section-desc">Press ＋ Script on any card to add it here</span></div>
+    <div class="script-card"><div class="script-card-hd"><div><div class="script-card-title">スクリプト — Script</div><div class="script-card-hint">Click any line to hear it · Press ✕ to remove</div></div><div class="script-toolbar"><button class="btn-tbar" onclick="clearScript('train')">Clear</button><button class="btn-tbar" onclick="copyScript('train')">Copy Text</button><button class="btn-tbar play" onclick="playScript('train')">▶ Play Script</button></div></div><div class="script-body"><div class="script-empty"><div class="script-empty-msg"><span class="script-empty-icon">📋</span><span class="script-empty-text">Your script is empty.<br>Press <strong>＋ Script</strong> on any phrase card above.</span></div></div><div class="script-list"></div></div></div>
+    <div class="vocab-section"><button class="vocab-toggle" onclick="toggleVocab(this)"><span>📖 &nbsp; Vocabulary List · ことばのリスト</span><span class="vocab-arrow">▼</span></button><div class="vocab-content"><div class="vocab-cats"></div></div></div>
+  </main>
+</div>
+<!-- ══ DIRECTIONS ══ -->
+<div id="view-directions" class="view" data-topic="directions">
+  <header class="site-header"><div class="header-inner"><div><div class="header-school">St Aidan's Anglican Girls' School &nbsp;·&nbsp; Japanese</div><h1 class="header-title"><span class="jp">道を聞きます</span> — Asking &amp; Giving Directions</h1><div class="header-subtitle">Click any phrase card to hear it &nbsp;·&nbsp; Use dropdowns to substitute places &nbsp;·&nbsp; Press ＋ to build your script</div></div><div class="header-right"><button class="btn-back" onclick="goHome()">← All Topics</button><div class="header-badge">Year 9 Japanese</div></div></div></header>
+  <main>
+    <div class="section-hd"><h2 class="section-title">Talking Board</h2><span class="section-desc">Click any card to hear it · Select options to change substitutable words</span></div>
+    <div class="board-grid">
+      <div class="board-col">
+        <div class="board-cell"><div class="cell-hd">Greetings &amp; Courtesy · あいさつ</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">あのう、すみません。</div><div class="phrase-kana">あのう、すみません。</div><div class="phrase-en">Um, excuse me...</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">ありがとうございました。</div><div class="phrase-kana">ありがとうございました。</div><div class="phrase-en">Thank you very much.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">ああ、そうですか。</div><div class="phrase-kana">ああ、そうですか。</div><div class="phrase-en">Oh, is that right?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">わかりました。</div><div class="phrase-kana">わかりました。</div><div class="phrase-en">I understand.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">もう一度お願いします。</div><div class="phrase-kana">もういちどおねがいします。</div><div class="phrase-en">Once more, please.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Places · ばしょ</div><div data-wordlist="dir-places"></div></div>
+      </div>
+      <div class="board-col">
+        <div class="board-cell"><div class="cell-hd">Questions · しつもん</div>
+<div class="phrase-card" data-card="dq1"><div class="sub-row"><span class="sub-label">場所</span><select class="sub-select" data-sel="dq1" onchange="updateCard(this,'dq1')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" data-card="dq2"><div class="sub-row"><span class="sub-label">場所</span><select class="sub-select" data-sel="dq2" onchange="updateCard(this,'dq2')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" data-card="dq3"><div class="sub-row"><span class="sub-label">場所</span><select class="sub-select" data-sel="dq3" onchange="updateCard(this,'dq3')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Instructions · しじ</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">まっすぐ行ってください。</div><div class="phrase-kana">まっすぐいってください。</div><div class="phrase-en">Please go straight ahead.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">右に曲がってください。</div><div class="phrase-kana">みぎにまがってください。</div><div class="phrase-en">Please turn right.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">左に曲がってください。</div><div class="phrase-kana">ひだりにまがってください。</div><div class="phrase-en">Please turn left.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" data-card="dins1"><div class="sub-row" style="gap:8px"><span class="sub-label">場所</span><select class="sub-select" data-sel="dins1p" onchange="updateDirIns1(this)"></select><select class="sub-select" data-sel="dins1d" onchange="updateDirIns1(this)"><option value="みぎ">右（みぎ）</option><option value="ひだり">左（ひだり）</option></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" data-card="dins2"><div class="sub-row" style="gap:6px"><span class="sub-label">場所</span><select class="sub-select" data-sel="dins2a" onchange="updateDirIns2(this)"></select><span class="sub-label">ランドマーク</span><select class="sub-select" data-sel="dins2b" onchange="updateDirIns2(this)"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">あそこです。</div><div class="phrase-kana">あそこです。</div><div class="phrase-en">It's over there.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+      </div>
+      <div class="board-col">
+        <div class="board-cell"><div class="cell-hd">Distance &amp; Duration · きょり</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">近いです。</div><div class="phrase-kana">ちかいです。</div><div class="phrase-en">It is close / nearby.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">遠いです。</div><div class="phrase-kana">とおいです。</div><div class="phrase-en">It is far.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Direction Words · ほうこうことば</div><div data-wordlist="dir-words"></div></div>
+      </div>
+    </div>
+    <div class="section-hd"><h2 class="section-title">Your Conversation Script</h2><span class="section-desc">Press ＋ Script on any card to add it here</span></div>
+    <div class="script-card"><div class="script-card-hd"><div><div class="script-card-title">スクリプト — Script</div><div class="script-card-hint">Click any line to hear it · Press ✕ to remove</div></div><div class="script-toolbar"><button class="btn-tbar" onclick="clearScript('directions')">Clear</button><button class="btn-tbar" onclick="copyScript('directions')">Copy Text</button><button class="btn-tbar play" onclick="playScript('directions')">▶ Play Script</button></div></div><div class="script-body"><div class="script-empty"><div class="script-empty-msg"><span class="script-empty-icon">📋</span><span class="script-empty-text">Your script is empty.<br>Press <strong>＋ Script</strong> on any phrase card above.</span></div></div><div class="script-list"></div></div></div>
+    <div class="vocab-section"><button class="vocab-toggle" onclick="toggleVocab(this)"><span>📖 &nbsp; Vocabulary List · ことばのリスト</span><span class="vocab-arrow">▼</span></button><div class="vocab-content"><div class="vocab-cats"></div></div></div>
+  </main>
+</div>
+<!-- ══ BUS ══ -->
+<div id="view-bus" class="view" data-topic="bus">
+  <header class="site-header"><div class="header-inner"><div><div class="header-school">St Aidan's Anglican Girls' School &nbsp;·&nbsp; Japanese</div><h1 class="header-title"><span class="jp">バスに乗ります</span> — Riding a Bus</h1><div class="header-subtitle">Click any phrase card to hear it &nbsp;·&nbsp; Use dropdowns to substitute places and fares &nbsp;·&nbsp; Press ＋ to build your script</div></div><div class="header-right"><button class="btn-back" onclick="goHome()">← All Topics</button><div class="header-badge">Year 9 Japanese</div></div></div></header>
+  <main>
+    <div class="section-hd"><h2 class="section-title">Talking Board</h2><span class="section-desc">Click any card to hear it · Select options to change substitutable words</span></div>
+    <div class="board-grid">
+      <div class="board-col">
+        <div class="board-cell"><div class="cell-hd">Greetings &amp; Courtesy · あいさつ</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">あのう、すみません。</div><div class="phrase-kana">あのう、すみません。</div><div class="phrase-en">Um, excuse me...</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">ありがとうございます。</div><div class="phrase-kana">ありがとうございます。</div><div class="phrase-en">Thank you.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">わかりました。</div><div class="phrase-kana">わかりました。</div><div class="phrase-en">I understand.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Bus Vocabulary · バスのことば</div><div data-wordlist="bus-words"></div></div>
+      </div>
+      <div class="board-col">
+        <div class="board-cell"><div class="cell-hd">Questions · しつもん</div>
+<div class="phrase-card" data-card="bq1"><div class="sub-row"><span class="sub-label">行き先</span><select class="sub-select" data-sel="bq1" onchange="updateCard(this,'bq1')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" data-card="bq2"><div class="sub-row"><span class="sub-label">行き先</span><select class="sub-select" data-sel="bq2" onchange="updateCard(this,'bq2')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">料金はいくらですか？</div><div class="phrase-kana">りょうきんはいくらですか？</div><div class="phrase-en">How much is the fare?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" data-card="bq3"><div class="sub-row"><span class="sub-label">場所</span><select class="sub-select" data-sel="bq3" onchange="updateCard(this,'bq3')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Instructions · しじ</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">このバスに乗ってください。</div><div class="phrase-kana">このバスにのってください。</div><div class="phrase-en">Please board this bus.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" data-card="bins1"><div class="sub-row"><span class="sub-label">バス停</span><select class="sub-select" data-sel="bins1" onchange="updateCard(this,'bins1')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">ボタンを押してください。</div><div class="phrase-kana">ボタンをおしてください。</div><div class="phrase-en">Please press the button.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">ここで降ります。</div><div class="phrase-kana">ここでおります。</div><div class="phrase-en">I am getting off here.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+      </div>
+      <div class="board-col">
+        <div class="board-cell"><div class="cell-hd">Responses · こたえ</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">はい、行きます。</div><div class="phrase-kana">はい、いきます。</div><div class="phrase-en">Yes, it goes there.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">いいえ、行きません。</div><div class="phrase-kana">いいえ、いきません。</div><div class="phrase-en">No, it does not go there.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" data-card="bfare"><div class="sub-row"><span class="sub-label">金額</span><select class="sub-select" data-sel="bfare" onchange="updateCard(this,'bfare')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div><div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">次は終点です。</div><div class="phrase-kana">つぎはしゅうてんです。</div><div class="phrase-en">The next stop is the last.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Stop Numbers · なんばんめ</div><div data-wordlist="bus-ordinals"></div></div>
+      </div>
+    </div>
+    <div class="section-hd"><h2 class="section-title">Your Conversation Script</h2><span class="section-desc">Press ＋ Script on any card to add it here</span></div>
+    <div class="script-card"><div class="script-card-hd"><div><div class="script-card-title">スクリプト — Script</div><div class="script-card-hint">Click any line to hear it · Press ✕ to remove</div></div><div class="script-toolbar"><button class="btn-tbar" onclick="clearScript('bus')">Clear</button><button class="btn-tbar" onclick="copyScript('bus')">Copy Text</button><button class="btn-tbar play" onclick="playScript('bus')">▶ Play Script</button></div></div><div class="script-body"><div class="script-empty"><div class="script-empty-msg"><span class="script-empty-icon">📋</span><span class="script-empty-text">Your script is empty.<br>Press <strong>＋ Script</strong> on any phrase card above.</span></div></div><div class="script-list"></div></div></div>
+    <div class="vocab-section"><button class="vocab-toggle" onclick="toggleVocab(this)"><span>📖 &nbsp; Vocabulary List · ことばのリスト</span><span class="vocab-arrow">▼</span></button><div class="vocab-content"><div class="vocab-cats"></div></div></div>
+  </main>
+</div>
+<!-- ══ TAXI ══ -->
+<div id="view-taxi" class="view" data-topic="taxi">
+  <header class="site-header"><div class="header-inner"><div><div class="header-school">St Aidan's Anglican Girls' School &nbsp;·&nbsp; Japanese</div><h1 class="header-title"><span class="jp">タクシーに乗ります</span> — Riding a Taxi</h1><div class="header-subtitle">Click any phrase card to hear it &nbsp;·&nbsp; Use dropdowns to substitute places and amounts &nbsp;·&nbsp; Press ＋ to build your script</div></div><div class="header-right"><button class="btn-back" onclick="goHome()">← All Topics</button><div class="header-badge">Year 9 Japanese</div></div></div></header>
+  <main>
+    <div class="section-hd"><h2 class="section-title">Talking Board</h2><span class="section-desc">Click any card to hear it · Select options to change substitutable words</span></div>
+    <div class="board-grid">
+      <div class="board-col">
+        <div class="board-cell"><div class="cell-hd">Greetings · あいさつ</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">こんにちは。</div><div class="phrase-kana">こんにちは。</div><div class="phrase-en">Hello. / Good afternoon.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">おはようございます。</div><div class="phrase-kana">おはようございます。</div><div class="phrase-en">Good morning.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">お願いします。</div><div class="phrase-kana">おねがいします。</div><div class="phrase-en">Please. / Thank you (request).</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Interjections · かんどうし</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">はい。</div><div class="phrase-kana">はい。</div><div class="phrase-en">Yes.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">いいえ。</div><div class="phrase-kana">いいえ。</div><div class="phrase-en">No.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">ああ！</div><div class="phrase-kana">ああ！</div><div class="phrase-en">Oh!</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Taxi Sign Vocabulary · タクシーのランプ</div><div data-wordlist="taxi-signs"></div></div>
+        <div class="board-cell"><div class="cell-hd">Taxi Vocabulary · タクシーのことば</div><div data-wordlist="taxi-words"></div></div>
+      </div>
+      <div class="board-col">
+        <div class="board-cell"><div class="cell-hd">Requests · リクエスト</div>
+<div class="phrase-card" data-card="tr1"><div class="sub-row"><span class="sub-label">行き先</span><select class="sub-select" data-sel="tr1" onchange="updateCard(this,'tr1')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">ここで止めてください。</div><div class="phrase-kana">ここでとめてください。</div><div class="phrase-en">Please stop here.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">ゆっくり走ってください。</div><div class="phrase-kana">ゆっくりはしってください。</div><div class="phrase-en">Please drive slowly.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">レシートをください。</div><div class="phrase-kana">レシートをください。</div><div class="phrase-en">Please give me a receipt.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Mid-Drive Conversation · ドライブ中の会話</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">日本は、はじめてですか？</div><div class="phrase-kana">にほんは、はじめてですか？</div><div class="phrase-en">Is this your first time in Japan?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">はい、そうです。</div><div class="phrase-kana">はい、そうです。</div><div class="phrase-en">Yes, it is (my first time).</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" data-card="tvisit"><div class="sub-row"><span class="sub-label">回数</span><select class="sub-select" data-sel="tvisit" onchange="updateCard(this,'tvisit')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" data-card="tplace_opinion"><div class="sub-row"><span class="sub-label">ばしょ</span><select class="sub-select" data-sel="tplace_opinion" onchange="updateCard(this,'tplace_opinion')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" data-card="topinion"><div class="sub-row"><span class="sub-label">けいようし</span><select class="sub-select" data-sel="topinion" onchange="updateCard(this,'topinion')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Questions · しつもん</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">料金はいくらですか？</div><div class="phrase-kana">りょうきんはいくらですか？</div><div class="phrase-en">How much is the fare?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" data-card="tq2"><div class="sub-row"><span class="sub-label">行き先</span><select class="sub-select" data-sel="tq2" onchange="updateCard(this,'tq2')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">カードで払えますか？</div><div class="phrase-kana">カードではらえますか？</div><div class="phrase-en">Can I pay by card?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">りょうしゅうしょは　いりますか？</div><div class="phrase-kana">りょうしゅうしょは　いりますか？</div><div class="phrase-en">Do you need a receipt?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+      </div>
+      <div class="board-col">
+        <div class="board-cell"><div class="cell-hd">Fare Amounts · りょうきん</div>
+<div class="phrase-card" data-card="tfare"><div class="sub-row"><span class="sub-label">金額</span><select class="sub-select" data-sel="tfare" onchange="updateCard(this,'tfare')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">おつりです。</div><div class="phrase-kana">おつりです。</div><div class="phrase-en">Here is your change.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">現金のみです。</div><div class="phrase-kana">げんきんのみです。</div><div class="phrase-en">Cash only.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Dropping Off &amp; Paying · おりるとき</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">このあたりで　だいじょうぶですか？</div><div class="phrase-kana">このあたりで　だいじょうぶですか？</div><div class="phrase-en">Is it okay around here (for me to drop you off)?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">クレジットカードは　つかえますか？</div><div class="phrase-kana">クレジットカードは　つかえますか？</div><div class="phrase-en">Can I pay by credit card?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">げんきんで　おねがいします。</div><div class="phrase-kana">げんきんで　おねがいします。</div><div class="phrase-en">I'll pay by cash.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">いくらですか？</div><div class="phrase-kana">いくらですか？</div><div class="phrase-en">How much is it?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Goodbyes · さようなら</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">ありがとうございました。</div><div class="phrase-kana">ありがとうございました。</div><div class="phrase-en">Thank you very much.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Tokyo Destinations · もくてきち</div><div data-wordlist="taxi-places"></div></div>
+      </div>
+    </div>
+    <div class="section-hd"><h2 class="section-title">Your Conversation Script</h2><span class="section-desc">Press ＋ Script on any card to add it here</span></div>
+    <div class="script-card"><div class="script-card-hd"><div><div class="script-card-title">スクリプト — Script</div><div class="script-card-hint">Click any line to hear it · Press ✕ to remove</div></div><div class="script-toolbar"><button class="btn-tbar" onclick="clearScript('taxi')">Clear</button><button class="btn-tbar" onclick="copyScript('taxi')">Copy Text</button><button class="btn-tbar play" onclick="playScript('taxi')">▶ Play Script</button></div></div><div class="script-body"><div class="script-empty"><div class="script-empty-msg"><span class="script-empty-icon">📋</span><span class="script-empty-text">Your script is empty.<br>Press <strong>＋ Script</strong> on any phrase card above.</span></div></div><div class="script-list"></div></div></div>
+    <div class="vocab-section"><button class="vocab-toggle" onclick="toggleVocab(this)"><span>📖 &nbsp; Vocabulary List · ことばのリスト</span><span class="vocab-arrow">▼</span></button><div class="vocab-content"><div class="vocab-cats"></div></div></div>
+  </main>
+</div>
+<!-- ══ SOUVENIR ══ -->
+<div id="view-souvenir" class="view" data-topic="souvenir">
+  <header class="site-header"><div class="header-inner"><div><div class="header-school">St Aidan's Anglican Girls' School &nbsp;·&nbsp; Japanese</div><h1 class="header-title"><span class="jp">おみやげを買う</span> — Buying a Souvenir</h1><div class="header-subtitle">Click any phrase card to hear it &nbsp;·&nbsp; Use dropdowns to substitute items, quantities and prices &nbsp;·&nbsp; Press ＋ to build your script</div></div><div class="header-right"><button class="btn-back" onclick="goHome()">← All Topics</button><div class="header-badge">Year 9 Japanese</div></div></div></header>
+  <main>
+    <div class="section-hd"><h2 class="section-title">Talking Board</h2><span class="section-desc">Click any card to hear it · Select options to change substitutable words</span></div>
+    <div class="board-grid">
+      <div class="board-col">
+        <div class="board-cell"><div class="cell-hd">Greetings &amp; Courtesy · あいさつ</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">いらっしゃいませ。</div><div class="phrase-kana">いらっしゃいませ。</div><div class="phrase-en">Welcome! (shop greeting)</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">すみません。</div><div class="phrase-kana">すみません。</div><div class="phrase-en">Excuse me.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">ありがとうございました。</div><div class="phrase-kana">ありがとうございました。</div><div class="phrase-en">Thank you very much.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">また来てください。</div><div class="phrase-kana">またきてください。</div><div class="phrase-en">Please come again.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Expressions · かんどうし</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">はい、かしこまりました。</div><div class="phrase-kana">はい、かしこまりました。</div><div class="phrase-en">Yes, certainly. / Understood.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">しょうしょうおまちください。</div><div class="phrase-kana">しょうしょうおまちください。</div><div class="phrase-en">Please wait a moment.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">あのう、すみません。。。</div><div class="phrase-kana">あのう、すみません。。。</div><div class="phrase-en">Um, excuse me…</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">〇〇おねがいします。</div><div class="phrase-kana">〇〇おねがいします。</div><div class="phrase-en">〇〇, please.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Nouns · めいし</div><div data-wordlist="sou-items"></div></div>
+      </div>
+      <div class="board-col">
+        <div class="board-cell" style="flex:1"><div class="cell-hd">Shop Assistant · てんいんさん 🏪</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">何かをおさがしですか？</div><div class="phrase-kana">なにかをおさがしですか？</div><div class="phrase-en">Are you looking for something?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">あまいものかしょっぱいもの、どちらのほうがいいですか？</div><div class="phrase-kana">あまいものかしょっぱいもの、どちらのほうがいいですか？</div><div class="phrase-en">Sweet or savoury — which would be better?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">これをおすすめします。</div><div class="phrase-kana">これをおすすめします。</div><div class="phrase-en">I recommend this.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">これがにんきです。</div><div class="phrase-kana">これがにんきです。</div><div class="phrase-en">This (one) is popular.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Prices · ねだん 🏪</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">合計は、いくらですか？</div><div class="phrase-kana">ごうけいは、いくらですか？</div><div class="phrase-en">How much is the total?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" data-card="spieces"><div class="sub-row"><span class="sub-label">何個</span><select class="sub-select" data-sel="spieces" onchange="updateCard(this,'spieces')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+        </div>
+      </div>
+      <div class="board-col">
+        <div class="board-cell" style="flex:1"><div class="cell-hd">Customer · おきゃくさん 🙋</div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">いいえ、だいじょうぶです。みているだけです。</div><div class="phrase-kana">いいえ、だいじょうぶです。みているだけです。</div><div class="phrase-en">No, I'm fine. I'm just looking.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" data-card="sslook"><div class="sub-row"><span class="sub-label">もの</span><select class="sub-select" data-sel="sslook" onchange="updateCard(this,'sslook')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" data-card="sq2"><div class="sub-row"><span class="sub-label">もの</span><select class="sub-select" data-sel="sq2" onchange="updateCard(this,'sq2')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">このちいきのおみやげはありますか？</div><div class="phrase-kana">このちいきのおみやげはありますか？</div><div class="phrase-en">Do you have souvenirs from this area?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">おすすめのおみやげはありますか？</div><div class="phrase-kana">おすすめのおみやげはありますか？</div><div class="phrase-en">Do you have a recommended souvenir?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+        <div class="board-cell"><div class="cell-hd">Customer Responses · おきゃくさんのこたえ 🙋</div>
+<div class="phrase-card" data-card="ssdecide"><div class="sub-row"><span class="sub-label">もの</span><select class="sub-select" data-sel="ssdecide" onchange="updateCard(this,'ssdecide')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" data-card="sr1"><div class="sub-row" style="gap:6px"><span class="sub-label">もの</span><select class="sub-select" data-sel="sr1i" onchange="updateSouR1(this)" style="min-width:80px"></select><span class="sub-label">数</span><select class="sub-select" data-sel="sr1n" onchange="updateSouR1(this)"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" data-card="sthis"><div class="sub-row"><span class="sub-label">もの</span><select class="sub-select" data-sel="sthis" onchange="updateCard(this,'sthis')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" data-card="sthis2"><div class="sub-row"><span class="sub-label">もの</span><select class="sub-select" data-sel="sthis2" onchange="updateCard(this,'sthis2')"></select></div><div class="card-top"><div class="card-text"><div class="phrase-jp"></div><div class="phrase-kana"></div><div class="phrase-en"></div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakDynamic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addDynamicToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">袋に入れてください。</div><div class="phrase-kana">ふくろにいれてください。</div><div class="phrase-en">Please put it in a bag.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">プレゼント用に包んでください。</div><div class="phrase-kana">プレゼントようにつつんでください。</div><div class="phrase-en">Please wrap it as a gift.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">カードで払えますか？</div><div class="phrase-kana">カードではらえますか？</div><div class="phrase-en">Can I pay by card?</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+<div class="phrase-card" onclick="speakStatic(this)"><div class="card-top"><div class="card-text"><div class="phrase-jp">現金で払います。</div><div class="phrase-kana">げんきんではらいます。</div><div class="phrase-en">I will pay in cash.</div></div><div class="card-btns"><button class="btn-speak" onclick="event.stopPropagation();speakStatic(this)">🔊</button><button class="btn-add" onclick="event.stopPropagation();addStaticToScript(this)">＋ Script</button></div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="section-hd"><h2 class="section-title">Your Conversation Script</h2><span class="section-desc">Press ＋ Script on any card to add it here</span></div>
+    <div class="script-card"><div class="script-card-hd"><div><div class="script-card-title">スクリプト — Script</div><div class="script-card-hint">Click any line to hear it · Press ✕ to remove</div></div><div class="script-toolbar"><button class="btn-tbar" onclick="clearScript('souvenir')">Clear</button><button class="btn-tbar" onclick="copyScript('souvenir')">Copy Text</button><button class="btn-tbar play" onclick="playScript('souvenir')">▶ Play Script</button></div></div><div class="script-body"><div class="script-empty"><div class="script-empty-msg"><span class="script-empty-icon">📋</span><span class="script-empty-text">Your script is empty.<br>Press <strong>＋ Script</strong> on any phrase card above.</span></div></div><div class="script-list"></div></div></div>
+    <div class="vocab-section"><button class="vocab-toggle" onclick="toggleVocab(this)"><span>📖 &nbsp; Vocabulary List · ことばのリスト</span><span class="vocab-arrow">▼</span></button><div class="vocab-content"><div class="vocab-cats"></div></div></div>
+  </main>
+</div>
+
+<!-- TTS BAR -->
+<div id="ttsBar" class="tts-bar">
+  <div class="tts-dot"></div>
+  <span id="ttsTxt" class="tts-txt">Speaking...</span>
+  <button class="tts-stop" onclick="stopSpeech()">✕</button>
+</div>
+<script>
+/* ═══ DATA ═══ */
+const D={
+  train:{
+    PLACES:[{k:"東京",r:"とうきょう",e:"Tokyo"},{k:"渋谷",r:"しぶや",e:"Shibuya"},{k:"原宿",r:"はらじゅく",e:"Harajuku"},{k:"秋葉原",r:"あきはばら",e:"Akihabara"},{k:"新宿",r:"しんじゅく",e:"Shinjuku"},{k:"池袋",r:"いけぶくろ",e:"Ikebukuro"},{k:"上野",r:"うえの",e:"Ueno"},{k:"品川",r:"しながわ",e:"Shinagawa"},{k:"銀座",r:"ぎんざ",e:"Ginza"},{k:"浅草",r:"あさくさ",e:"Asakusa"}],
+    PLATFORMS:[{k:"１番線",r:"いちばんせん",e:"Platform 1"},{k:"２番線",r:"にばんせん",e:"Platform 2"},{k:"３番線",r:"さんばんせん",e:"Platform 3"},{k:"４番線",r:"よんばんせん",e:"Platform 4"},{k:"５番線",r:"ごばんせん",e:"Platform 5"},{k:"６番線",r:"ろくばんせん",e:"Platform 6"},{k:"７番線",r:"ななばんせん",e:"Platform 7"},{k:"８番線",r:"はちばんせん",e:"Platform 8"},{k:"９番線",r:"きゅうばんせん",e:"Platform 9"},{k:"１０番線",r:"じゅうばんせん",e:"Platform 10"}],
+    TIMES:[{k:"１時",r:"いちじ",e:"1 o'clock"},{k:"２時",r:"にじ",e:"2 o'clock"},{k:"３時",r:"さんじ",e:"3 o'clock"},{k:"４時",r:"よじ",e:"4 o'clock"},{k:"５時",r:"ごじ",e:"5 o'clock"},{k:"６時",r:"ろくじ",e:"6 o'clock"},{k:"７時",r:"しちじ",e:"7 o'clock"},{k:"８時",r:"はちじ",e:"8 o'clock"},{k:"９時",r:"くじ",e:"9 o'clock"},{k:"１０時",r:"じゅうじ",e:"10 o'clock"},{k:"１１時",r:"じゅういちじ",e:"11 o'clock"},{k:"１２時",r:"じゅうにじ",e:"12 o'clock"},{k:"１時半",r:"いちじはん",e:"half past 1"},{k:"２時半",r:"にじはん",e:"half past 2"},{k:"６時半",r:"ろくじはん",e:"half past 6"},{k:"９時半",r:"くじはん",e:"half past 9"}],
+    DURATIONS:[{k:"３０分",r:"さんじゅっぷん",e:"30 minutes"},{k:"４５分",r:"よんじゅうごふん",e:"45 minutes"},{k:"１時間",r:"いちじかん",e:"1 hour"},{k:"１時間半",r:"いちじかんはん",e:"1.5 hours"},{k:"２時間",r:"にじかん",e:"2 hours"},{k:"３時間",r:"さんじかん",e:"3 hours"}],
+    ORDINALS:[{k:"一番目",r:"いちばんめ",e:"1st"},{k:"二番目",r:"にばんめ",e:"2nd"},{k:"三番目",r:"さんばんめ",e:"3rd"},{k:"四番目",r:"よんばんめ",e:"4th"},{k:"五番目",r:"ごばんめ",e:"5th"},{k:"六番目",r:"ろくばんめ",e:"6th"},{k:"七番目",r:"ななばんめ",e:"7th"},{k:"八番目",r:"はちばんめ",e:"8th"},{k:"九番目",r:"きゅうばんめ",e:"9th"},{k:"十番目",r:"じゅうばんめ",e:"10th"}],
+    STATIONS:[{k:"山手線",r:"やまのてせん",e:"Yamanote Line",type:"line"},{k:"東京駅",r:"とうきょうえき",e:"Tokyo Station"},{k:"渋谷駅",r:"しぶやえき",e:"Shibuya Station"},{k:"原宿駅",r:"はらじゅくえき",e:"Harajuku Station"},{k:"秋葉原駅",r:"あきはばらえき",e:"Akihabara Station"},{k:"新宿駅",r:"しんじゅくえき",e:"Shinjuku Station"},{k:"池袋駅",r:"いけぶくろえき",e:"Ikebukuro Station"},{k:"上野駅",r:"うえのえき",e:"Ueno Station"},{k:"品川駅",r:"しながわえき",e:"Shinagawa Station"}],
+    VOCAB_CATS:[
+      {title:"Greetings & Courtesy · あいさつ",items:[{jp:"こんにちは",kana:"こんにちは",en:"Hello / Good afternoon"},{jp:"おはようございます",kana:"おはようございます",en:"Good morning"},{jp:"ありがとうございました",kana:"ありがとうございました",en:"Thank you very much"},{jp:"すみません",kana:"すみません",en:"Excuse me"},{jp:"あのう",kana:"あのう",en:"Um... / Well..."},{jp:"そうですか",kana:"そうですか",en:"Is that right?"}]},
+      {title:"Transport Vocabulary · こうつう",items:[{jp:"電車",kana:"でんしゃ",en:"Train"},{jp:"駅",kana:"えき",en:"Train station"},{jp:"ホーム",kana:"ホーム",en:"Platform area"},{jp:"番線",kana:"ばんせん",en:"Platform number"},{jp:"乗ります",kana:"のります",en:"To board"},{jp:"乗り換えます",kana:"のりかえます",en:"To transfer"},{jp:"出発します",kana:"しゅっぱつします",en:"To depart"},{jp:"行き",kana:"ゆき",en:"Bound for"}]},
+      {title:"Tokyo Stations · とうきょうのえき",items:[{jp:"山手線",kana:"やまのてせん",en:"Yamanote Line"},{jp:"東京駅",kana:"とうきょうえき",en:"Tokyo Station"},{jp:"渋谷駅",kana:"しぶやえき",en:"Shibuya"},{jp:"新宿駅",kana:"しんじゅくえき",en:"Shinjuku"},{jp:"池袋駅",kana:"いけぶくろえき",en:"Ikebukuro"},{jp:"上野駅",kana:"うえのえき",en:"Ueno"},{jp:"秋葉原駅",kana:"あきはばらえき",en:"Akihabara"}]},
+      {title:"Time · じかん",items:[{jp:"時",kana:"じ",en:"O'clock"},{jp:"時半",kana:"じはん",en:"Half past"},{jp:"分",kana:"ふん／ぷん",en:"Minutes"},{jp:"午前",kana:"ごぜん",en:"AM"},{jp:"午後",kana:"ごご",en:"PM"},{jp:"時間",kana:"じかん",en:"Hour(s) duration"}]}
+    ]
+  },
+  directions:{
+    PLACES:[{k:"郵便局",r:"ゆうびんきょく",e:"post office"},{k:"病院",r:"びょういん",e:"hospital"},{k:"交差点",r:"こうさてん",e:"intersection"},{k:"信号",r:"しんごう",e:"traffic light"}],
+    MINUTES:[{jp:"１分",kana:"いっぷん",en:"1 minute"},{jp:"２分",kana:"にふん",en:"2 minutes"},{jp:"３分",kana:"さんぷん",en:"3 minutes"},{jp:"５分",kana:"ごふん",en:"5 minutes"},{jp:"１０分",kana:"じゅっぷん",en:"10 minutes"},{jp:"１５分",kana:"じゅうごふん",en:"15 minutes"},{jp:"２０分",kana:"にじゅっぷん",en:"20 minutes"},{jp:"３０分",kana:"さんじゅっぷん",en:"30 minutes"}],
+    DIR_WORDS:[{k:"右",r:"みぎ",e:"right"},{k:"左",r:"ひだり",e:"left"},{k:"まっすぐ",r:"まっすぐ",e:"straight ahead"},{k:"前",r:"まえ",e:"in front"},{k:"後ろ",r:"うしろ",e:"behind"},{k:"近く",r:"ちかく",e:"nearby"},{k:"向こう",r:"むこう",e:"over there"},{k:"角",r:"かど",e:"corner"},{k:"橋",r:"はし",e:"bridge"}],
+    VOCAB_CATS:[
+      {title:"Direction Words · ほうこう",items:[{jp:"右",kana:"みぎ",en:"right"},{jp:"左",kana:"ひだり",en:"left"},{jp:"まっすぐ",kana:"まっすぐ",en:"straight ahead"},{jp:"前",kana:"まえ",en:"in front"},{jp:"後ろ",kana:"うしろ",en:"behind"},{jp:"近く",kana:"ちかく",en:"nearby"},{jp:"向こう",kana:"むこう",en:"over there"},{jp:"角",kana:"かど",en:"corner"}]},
+      {title:"Places · ばしょ",items:[{jp:"郵便局",kana:"ゆうびんきょく",en:"post office"},{jp:"病院",kana:"びょういん",en:"hospital"},{jp:"交差点",kana:"こうさてん",en:"intersection"}]},
+      {title:"Useful Verbs · どうし",items:[{jp:"行きます",kana:"いきます",en:"to go"},{jp:"来ます",kana:"きます",en:"to come"},{jp:"曲がります",kana:"まがります",en:"to turn"},{jp:"渡ります",kana:"わたります",en:"to cross"},{jp:"わかります",kana:"わかります",en:"to understand"},{jp:"あります",kana:"あります",en:"to be (place)"}]},
+      {title:"Question Words · しつもん",items:[{jp:"どこ",kana:"どこ",en:"where"},{jp:"どうやって",kana:"どうやって",en:"how"},{jp:"どのぐらい",kana:"どのぐらい",en:"how far"}]}
+    ]
+  },
+  bus:{
+    PLACES:[{k:"東京駅",r:"とうきょうえき",e:"Tokyo Station"},{k:"渋谷",r:"しぶや",e:"Shibuya"},{k:"新宿",r:"しんじゅく",e:"Shinjuku"},{k:"池袋",r:"いけぶくろ",e:"Ikebukuro"},{k:"上野",r:"うえの",e:"Ueno"},{k:"浅草",r:"あさくさ",e:"Asakusa"},{k:"銀座",r:"ぎんざ",e:"Ginza"},{k:"お台場",r:"おだいば",e:"Odaiba"},{k:"六本木",r:"ろっぽんぎ",e:"Roppongi"}],
+    FARES:[{k:"２１０円",r:"にひゃくじゅうえん",e:"¥210"},{k:"２３０円",r:"にひゃくさんじゅうえん",e:"¥230"},{k:"２６０円",r:"にひゃくろくじゅうえん",e:"¥260"},{k:"３００円",r:"さんびゃくえん",e:"¥300"},{k:"４００円",r:"よんひゃくえん",e:"¥400"},{k:"５００円",r:"ごひゃくえん",e:"¥500"}],
+    ORDINALS:[{k:"一つ目",r:"ひとつめ",e:"1st stop"},{k:"二つ目",r:"ふたつめ",e:"2nd stop"},{k:"三つ目",r:"みっつめ",e:"3rd stop"},{k:"四つ目",r:"よっつめ",e:"4th stop"},{k:"五つ目",r:"いつつめ",e:"5th stop"}],
+    BUS_WORDS:[{k:"バス",r:"バス",e:"bus"},{k:"バス停",r:"バスてい",e:"bus stop"},{k:"料金",r:"りょうきん",e:"fare"},{k:"乗ります",r:"のります",e:"to board"},{k:"降ります",r:"おります",e:"to get off"},{k:"次",r:"つぎ",e:"next"},{k:"終点",r:"しゅうてん",e:"last stop"},{k:"ボタン",r:"ボタン",e:"button"}],
+    VOCAB_CATS:[
+      {title:"Bus Vocabulary · バスのことば",items:[{jp:"バス",kana:"バス",en:"bus"},{jp:"バス停",kana:"バスてい",en:"bus stop"},{jp:"料金",kana:"りょうきん",en:"fare"},{jp:"乗ります",kana:"のります",en:"to board"},{jp:"降ります",kana:"おります",en:"to get off"},{jp:"次",kana:"つぎ",en:"next"},{jp:"終点",kana:"しゅうてん",en:"last stop"},{jp:"ボタン",kana:"ボタン",en:"button"}]},
+      {title:"Tokyo Destinations · もくてきち",items:[{jp:"東京駅",kana:"とうきょうえき",en:"Tokyo Station"},{jp:"渋谷",kana:"しぶや",en:"Shibuya"},{jp:"新宿",kana:"しんじゅく",en:"Shinjuku"},{jp:"浅草",kana:"あさくさ",en:"Asakusa"},{jp:"銀座",kana:"ぎんざ",en:"Ginza"},{jp:"お台場",kana:"おだいば",en:"Odaiba"},{jp:"六本木",kana:"ろっぽんぎ",en:"Roppongi"}]},
+      {title:"Fare Amounts · りょうきん",items:[{jp:"２１０円",kana:"にひゃくじゅうえん",en:"¥210"},{jp:"２６０円",kana:"にひゃくろくじゅうえん",en:"¥260"},{jp:"３００円",kana:"さんびゃくえん",en:"¥300"},{jp:"５００円",kana:"ごひゃくえん",en:"¥500"}]},
+      {title:"Stop Ordinals · なんばんめ",items:[{jp:"一つ目",kana:"ひとつめ",en:"1st stop"},{jp:"二つ目",kana:"ふたつめ",en:"2nd stop"},{jp:"三つ目",kana:"みっつめ",en:"3rd stop"},{jp:"四つ目",kana:"よっつめ",en:"4th stop"},{jp:"五つ目",kana:"いつつめ",en:"5th stop"}]}
+    ]
+  },
+  taxi:{
+    PLACES:[{k:"東京駅",r:"とうきょうえき",e:"Tokyo Station"},{k:"渋谷",r:"しぶや",e:"Shibuya"},{k:"新宿",r:"しんじゅく",e:"Shinjuku"},{k:"池袋",r:"いけぶくろ",e:"Ikebukuro"},{k:"成田空港",r:"なりたくうこう",e:"Narita Airport"},{k:"羽田空港",r:"はねだくうこう",e:"Haneda Airport"},{k:"六本木",r:"ろっぽんぎ",e:"Roppongi"},{k:"銀座",r:"ぎんざ",e:"Ginza"},{k:"お台場",r:"おだいば",e:"Odaiba"}],
+    FARES:[{k:"５００円",r:"ごひゃくえん",e:"¥500"},{k:"１，０００円",r:"せんえん",e:"¥1,000"},{k:"１，５００円",r:"せんごひゃくえん",e:"¥1,500"},{k:"２，０００円",r:"にせんえん",e:"¥2,000"},{k:"３，０００円",r:"さんぜんえん",e:"¥3,000"},{k:"５，０００円",r:"ごせんえん",e:"¥5,000"},{k:"１万円",r:"いちまんえん",e:"¥10,000"}],
+    ORDINALS:[{k:"２",r:"に",e:"2nd"},{k:"３",r:"さん",e:"3rd"},{k:"４",r:"よん",e:"4th"},{k:"５",r:"ご",e:"5th"},{k:"６",r:"ろく",e:"6th"},{k:"７",r:"なな",e:"7th"},{k:"８",r:"はち",e:"8th"},{k:"９",r:"きゅう",e:"9th"},{k:"１０",r:"じゅう",e:"10th"}],
+    TAXI_WORDS:[{k:"タクシー",r:"タクシー",e:"taxi"},{k:"運転手",r:"うんてんしゅ",e:"driver"},{k:"料金",r:"りょうきん",e:"fare"},{k:"メーター",r:"メーター",e:"meter"},{k:"おつり",r:"おつり",e:"change"},{k:"レシート",r:"レシート",e:"receipt"},{k:"現金",r:"げんきん",e:"cash"},{k:"クレジットカード",r:"クレジットカード",e:"credit card"},{k:"止めます",r:"とめます",e:"to stop"},{k:"走ります",r:"はしります",e:"to drive"}],
+    ADJECTIVES:[{k:"たのしい",r:"たのしい",e:"fun / enjoyable"},{k:"すばらしい",r:"すばらしい",e:"wonderful"},{k:"きれい",r:"きれい",e:"beautiful / clean"},{k:"にぎやか",r:"にぎやか",e:"lively / bustling"},{k:"しずか",r:"しずか",e:"quiet / calm"},{k:"おもしろい",r:"おもしろい",e:"interesting"},{k:"おいしい",r:"おいしい",e:"delicious"},{k:"あたらしい",r:"あたらしい",e:"new / modern"},{k:"ふるい",r:"ふるい",e:"old / traditional"},{k:"ひろい",r:"ひろい",e:"spacious / wide"}],
+    TAXI_SIGNS:[{k:"空車",r:"くうしゃ",e:"Vacant"},{k:"賃走",r:"ちんそう",e:"Occupied"},{k:"迎車／予約",r:"げいしゃ／よやく",e:"Reserved"},{k:"支払",r:"しはらい",e:"Paying"},{k:"回送",r:"かいそう",e:"Out of service"}],
+    VOCAB_CATS:[
+      {title:"Taxi Vocabulary · タクシーのことば",items:[{jp:"タクシー",kana:"タクシー",en:"taxi"},{jp:"運転手",kana:"うんてんしゅ",en:"driver"},{jp:"料金",kana:"りょうきん",en:"fare"},{jp:"メーター",kana:"メーター",en:"meter"},{jp:"おつり",kana:"おつり",en:"change"},{jp:"レシート",kana:"レシート",en:"receipt"},{jp:"現金",kana:"げんきん",en:"cash"},{jp:"クレジットカード",kana:"クレジットカード",en:"credit card"}]},
+      {title:"Taxi Light Signs · タクシーのランプ",items:[{jp:"空車",kana:"くうしゃ",en:"Vacant"},{jp:"賃走",kana:"ちんそう",en:"Occupied"},{jp:"迎車／予約",kana:"げいしゃ／よやく",en:"Reserved"},{jp:"支払",kana:"しはらい",en:"Paying"},{jp:"回送",kana:"かいそう",en:"Out of service"}]},
+      {title:"Interjections · かんどうし",items:[{jp:"はい",kana:"はい",en:"Yes"},{jp:"いいえ",kana:"いいえ",en:"No"},{jp:"ああ！",kana:"ああ！",en:"Oh!"},{jp:"そうですか",kana:"そうですか",en:"Is that right?"},{jp:"なるほど",kana:"なるほど",en:"I see / Indeed"}]},
+      {title:"Tokyo Destinations · もくてきち",items:[{jp:"東京駅",kana:"とうきょうえき",en:"Tokyo Station"},{jp:"渋谷",kana:"しぶや",en:"Shibuya"},{jp:"新宿",kana:"しんじゅく",en:"Shinjuku"},{jp:"成田空港",kana:"なりたくうこう",en:"Narita Airport"},{jp:"羽田空港",kana:"はねだくうこう",en:"Haneda Airport"},{jp:"六本木",kana:"ろっぽんぎ",en:"Roppongi"},{jp:"銀座",kana:"ぎんざ",en:"Ginza"}]},
+      {title:"Fare Amounts · りょうきん",items:[{jp:"５００円",kana:"ごひゃくえん",en:"¥500"},{jp:"１，０００円",kana:"せんえん",en:"¥1,000"},{jp:"２，０００円",kana:"にせんえん",en:"¥2,000"},{jp:"３，０００円",kana:"さんぜんえん",en:"¥3,000"},{jp:"５，０００円",kana:"ごせんえん",en:"¥5,000"},{jp:"１万円",kana:"いちまんえん",en:"¥10,000"}]},
+      {title:"Opinion Adjectives · けいようし",items:[{jp:"たのしい",kana:"たのしい",en:"fun / enjoyable"},{jp:"すばらしい",kana:"すばらしい",en:"wonderful"},{jp:"きれい",kana:"きれい",en:"beautiful / clean"},{jp:"にぎやか",kana:"にぎやか",en:"lively / bustling"},{jp:"しずか",kana:"しずか",en:"quiet / calm"},{jp:"おもしろい",kana:"おもしろい",en:"interesting"},{jp:"あたらしい",kana:"あたらしい",en:"new / modern"},{jp:"ふるい",kana:"ふるい",en:"old / traditional"}]}
+    ]
+  },
+  souvenir:{
+    ITEMS:[{k:"クッキー",r:"クッキー",e:"cookies"},{k:"ケーキ",r:"ケーキ",e:"cake"},{k:"わがし",r:"わがし",e:"Japanese sweets"},{k:"せんべい",r:"せんべい",e:"rice crackers"},{k:"まんじゅう",r:"まんじゅう",e:"steamed sweet buns"},{k:"もち",r:"もち",e:"mochi / rice cake"},{k:"ようかん",r:"ようかん",e:"sweet bean jelly"},{k:"チョコレート",r:"チョコレート",e:"chocolate"},{k:"ぷりん",r:"ぷりん",e:"pudding"},{k:"キャラメル",r:"キャラメル",e:"caramel sweets"}],
+    PRICES:[{k:"３００円",r:"さんびゃくえん",e:"¥300"},{k:"５００円",r:"ごひゃくえん",e:"¥500"},{k:"８００円",r:"はっぴゃくえん",e:"¥800"},{k:"１，０００円",r:"せんえん",e:"¥1,000"},{k:"１，５００円",r:"せんごひゃくえん",e:"¥1,500"},{k:"２，０００円",r:"にせんえん",e:"¥2,000"},{k:"３，０００円",r:"さんぜんえん",e:"¥3,000"},{k:"５，０００円",r:"ごせんえん",e:"¥5,000"}],
+    COUNTERS:[{k:"一つ",r:"ひとつ",e:"one (general)"},{k:"二つ",r:"ふたつ",e:"two (general)"},{k:"三つ",r:"みっつ",e:"three (general)"},{k:"四つ",r:"よっつ",e:"four (general)"},{k:"五つ",r:"いつつ",e:"five (general)"},{k:"一枚",r:"いちまい",e:"one (flat things)"},{k:"二枚",r:"にまい",e:"two (flat things)"},{k:"一本",r:"いっぽん",e:"one (long things)"},{k:"二本",r:"にほん",e:"two (long things)"},{k:"一個",r:"いっこ",e:"one (small objects)"},{k:"二個",r:"にこ",e:"two (small objects)"}],
+    PIECES:[{k:"１個",r:"いっこ",e:"1 piece"},{k:"２個",r:"にこ",e:"2 pieces"},{k:"３個",r:"さんこ",e:"3 pieces"},{k:"４個",r:"よんこ",e:"4 pieces"},{k:"５個",r:"ごこ",e:"5 pieces"},{k:"１０個",r:"じゅっこ",e:"10 pieces"},{k:"２０個",r:"にじゅっこ",e:"20 pieces"}],
+    FOOD_VOCAB:[{k:"おみやげ",r:"おみやげ",e:"souvenir"},{k:"プレゼント",r:"プレゼント",e:"present"},{k:"クッキー",r:"クッキー",e:"cookies"},{k:"ケーキ",r:"ケーキ",e:"cake"},{k:"わがし",r:"わがし",e:"Japanese sweets"},{k:"せんべい",r:"せんべい",e:"rice crackers"},{k:"いちご",r:"いちご",e:"strawberry"},{k:"あんこ",r:"あんこ",e:"red bean"},{k:"チョコレート",r:"チョコレート",e:"chocolate"},{k:"ぷりん",r:"ぷりん",e:"pudding"}],
+    VOCAB_CATS:[
+      {title:"Nouns · めいし",items:[{jp:"おみやげ",kana:"おみやげ",en:"souvenir"},{jp:"プレゼント",kana:"プレゼント",en:"present"},{jp:"クッキー",kana:"クッキー",en:"cookies"},{jp:"ケーキ",kana:"ケーキ",en:"cake"},{jp:"わがし",kana:"わがし",en:"Japanese sweets"},{jp:"せんべい",kana:"せんべい",en:"rice crackers"},{jp:"いちご",kana:"いちご",en:"strawberry"},{jp:"あんこ",kana:"あんこ",en:"red bean"},{jp:"チョコレート",kana:"チョコレート",en:"chocolate"},{jp:"ぷりん",kana:"ぷりん",en:"pudding"}]},
+      {title:"Flavours & Ingredients · フレーバー",items:[{jp:"いちご",kana:"いちご",en:"strawberry"},{jp:"あんこ",kana:"あんこ",en:"red bean paste"},{jp:"まっちゃ",kana:"まっちゃ",en:"matcha"},{jp:"チョコレート",kana:"チョコレート",en:"chocolate"},{jp:"きなこ",kana:"きなこ",en:"roasted soybean flour"},{jp:"バニラ",kana:"バニラ",en:"vanilla"},{jp:"キャラメル",kana:"キャラメル",en:"caramel"}]},
+      {title:"Prices · ねだん",items:[{jp:"３００円",kana:"さんびゃくえん",en:"¥300"},{jp:"５００円",kana:"ごひゃくえん",en:"¥500"},{jp:"１，０００円",kana:"せんえん",en:"¥1,000"},{jp:"２，０００円",kana:"にせんえん",en:"¥2,000"},{jp:"３，０００円",kana:"さんぜんえん",en:"¥3,000"},{jp:"５，０００円",kana:"ごせんえん",en:"¥5,000"}]},
+      {title:"Quantity Counters · かずことば",items:[{jp:"一つ",kana:"ひとつ",en:"one (general)"},{jp:"二つ",kana:"ふたつ",en:"two (general)"},{jp:"三つ",kana:"みっつ",en:"three (general)"},{jp:"一枚",kana:"いちまい",en:"one (flat)"},{jp:"一本",kana:"いっぽん",en:"one (long)"},{jp:"一個",kana:"いっこ",en:"one (small)"}]},
+      {title:"Shopping Verbs · どうし",items:[{jp:"買います",kana:"かいます",en:"to buy"},{jp:"払います",kana:"はらいます",en:"to pay"},{jp:"包みます",kana:"つつみます",en:"to wrap"},{jp:"入れます",kana:"いれます",en:"to put in"},{jp:"さがします",kana:"さがします",en:"to look for"},{jp:"えらびます",kana:"えらびます",en:"to choose"}]}
+    ]
+  }
+};
+/* ═══ STATE ═══ */
+const cardStates={train:{},directions:{},bus:{},taxi:{},souvenir:{}};
+const scriptData={train:[],directions:[],bus:[],taxi:[],souvenir:[]};
+let scriptIdCtr=0,currentTopic=null,activeCard=null;
+const topicInited={};
+
+/* ═══ NAVIGATION ═══ */
+function showView(topic,openVocab){
+  document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+  document.getElementById("view-"+topic).classList.add("active");
+  window.scrollTo(0,0);
+  if(topic!=="landing"){
+    currentTopic=topic;
+    if(!topicInited[topic]){initTopic(topic);topicInited[topic]=true;}
+    if(openVocab){
+      requestAnimationFrame(()=>{
+        const view=gV(topic);
+        const tog=view.querySelector(".vocab-toggle");
+        const con=view.querySelector(".vocab-content");
+        if(tog&&!tog.classList.contains("open")){tog.classList.add("open");con.classList.add("open");}
+        view.querySelector(".vocab-section").scrollIntoView({behavior:"smooth"});
+      });
+    }
+  }
+}
+function goHome(){showView("landing");}
+
+/* ═══ HELPERS ═══ */
+function gV(t){return document.getElementById("view-"+t);}
+function gS(view,s){return view.querySelector('[data-sel="'+s+'"]');}
+function gC(view,c){return view.querySelector('[data-card="'+c+'"]');}
+function fillSel(sel,items,labelFn,defIdx){
+  items.forEach((item,i)=>{const o=document.createElement("option");o.value=i;o.textContent=labelFn(item,i);sel.appendChild(o);});
+  if(defIdx)sel.selectedIndex=defIdx;
+}
+function setCard(view,cardId,r){
+  const card=gC(view,cardId);if(!card)return;
+  card.querySelector(".phrase-jp").textContent=r.jp;
+  card.querySelector(".phrase-kana").textContent=r.kana;
+  card.querySelector(".phrase-en").textContent=r.en;
+  cardStates[view.dataset.topic][cardId]=r;
+}
+
+/* ═══ INIT DISPATCH ═══ */
+function initTopic(topic){
+  switch(topic){
+    case"train":initTrain();break;
+    case"directions":initDirections();break;
+    case"bus":initBus();break;
+    case"taxi":initTaxi();break;
+    case"souvenir":initSouvenir();break;
+  }
+  buildVocabList(topic);
+  renderScript(topic);
+}
+
+/* ─── TRAIN ─── */
+function initTrain(){
+  const v=gV("train"),d=D.train;
+  const pl=p=>p.k+"（"+p.r+"）";
+  ["placeyuki","q2","q3","q5","ins1"].forEach(id=>{fillSel(gS(v,id),d.PLACES,pl);updateCard(gS(v,id),id);});
+  fillSel(gS(v,"ins2a"),d.PLACES,pl);fillSel(gS(v,"ins2b"),d.PLACES,pl,1);updateIns2Train(gS(v,"ins2a"));
+  fillSel(gS(v,"ins3"),d.ORDINALS,o=>o.k+"（"+o.r+"）");updateCard(gS(v,"ins3"),"ins3");
+  fillSel(gS(v,"platform"),d.PLATFORMS,p=>p.k);
+  fillSel(gS(v,"time"),d.TIMES,t=>t.k,8);
+  fillSel(gS(v,"duration"),d.DURATIONS,d=>d.k,2);
+  updateCtrTrain("platform",gS(v,"platform"));updateCtrTrain("time",gS(v,"time"));updateCtrTrain("duration",gS(v,"duration"));
+  const c=v.querySelector("[data-wordlist='train-stations']");
+  d.STATIONS.forEach(s=>{const div=document.createElement("div");div.className="word-item";div.onclick=()=>speak(s.k);div.innerHTML=`<span class="word-jp">${s.k}</span><span class="word-kana">${s.r}</span><span class="word-en">${s.e}</span>${s.type?'<span style="font-size:0.55rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:var(--pink-light);color:var(--pink);border:1px solid rgba(196,0,122,0.2);border-radius:3px;padding:2px 5px">'+s.type+'</span>':''}<span class="word-spk">🔊</span>`;c.appendChild(div);});
+}
+
+/* ─── updateCard (unified dispatcher) ─── */
+function updateCard(selEl,cardId){
+  const view=selEl.closest("[data-topic]");
+  const topic=view.dataset.topic;
+  const idx=parseInt(selEl.value)||0;
+  const d=D[topic];
+  let r;
+  if(cardId==="placeyuki"){const p=d.PLACES[idx];r={jp:p.k+"行き",kana:p.r+"ゆき",en:"Headed to "+p.e};}
+  else if(cardId==="q2"){const p=d.PLACES[idx];r={jp:p.k+"までの電車は何番線ですか？",kana:p.r+"までのでんしゃはなんばんせんですか？",en:"What platform is the train to "+p.e+"?"};}
+  else if(cardId==="q3"){const p=d.PLACES[idx];r={jp:p.k+"に行きたいんですが、どうやって行けばいいですか？",kana:p.r+"にいきたいんですが、どうやっていけばいいですか？",en:"I want to go to "+p.e+", but how do I get there?"};}
+  else if(cardId==="q5"){const p=d.PLACES[idx];r={jp:p.k+"までどのぐらいかかりますか？",kana:p.r+"までどのぐらいかかりますか？",en:"How long to "+p.e+"?"};}
+  else if(cardId==="ins1"){const p=d.PLACES[idx];r={jp:p.k+"行きの電車に乗ってください。",kana:p.r+"ゆきのでんしゃにのってください。",en:"Please board the train to "+p.e+"."};}
+  else if(cardId==="ins3"){const o=d.ORDINALS[idx];r={jp:o.k+"の駅で降りてください。",kana:o.r+"のえきでおりてください。",en:"Please get off at the "+o.e+" stop."};}
+  else if(cardId==="dq1"){const p=d.PLACES[idx];r={jp:p.k+"はどこですか？",kana:p.r+"はどこですか？",en:"Where is the "+p.e+"?"};}
+  else if(cardId==="dq2"){const p=d.PLACES[idx];r={jp:p.k+"は遠いですか？",kana:p.r+"はとおいですか？",en:"Is the "+p.e+" far?"};}
+  else if(cardId==="dq3"){const p=d.PLACES[idx];r={jp:p.k+"にはどうやって行けばいいですか？",kana:p.r+"にはどうやっていけばいいですか？",en:"How do I get to the "+p.e+"?"};}
+  else if(cardId==="ddur"){const m=d.MINUTES[idx];r={jp:"歩いて"+m.jp+"です。",kana:"あるいて"+m.kana+"です。",en:"It's a "+m.en+" walk."};}
+  else if(cardId==="bq1"){const p=d.PLACES[idx];r={jp:"このバスは"+p.k+"に行きますか？",kana:"このバスは"+p.r+"にいきますか？",en:"Does this bus go to "+p.e+"?"};}
+  else if(cardId==="bq2"){const p=d.PLACES[idx];r={jp:p.k+"にはどこで降りますか？",kana:p.r+"にはどこでおりますか？",en:"Where do I get off for "+p.e+"?"};}
+  else if(cardId==="bq3"){const p=d.PLACES[idx];r={jp:p.k+"に止まりますか？",kana:p.r+"にとまりますか？",en:"Will it stop at "+p.e+"?"};}
+  else if(cardId==="bins1"){const p=d.PLACES[idx];r={jp:p.k+"で降りてください。",kana:p.r+"でおりてください。",en:"Please get off at "+p.e+"."};}
+  else if(cardId==="bfare"){const f=d.FARES[idx];r={jp:f.k+"です。",kana:f.r+"です。",en:"It's "+f.e+"."};}
+  else if(cardId==="tr1"){const p=d.PLACES[idx];r={jp:p.k+"までお願いします。",kana:p.r+"までおねがいします。",en:"To "+p.e+", please."};}
+  else if(cardId==="tq2"){const p=d.PLACES[idx];r={jp:p.k+"まで　どのぐらいかかりますか？",kana:p.r+"まで　どのぐらいかかりますか？",en:"How long to "+p.e+"?"};}
+  else if(cardId==="tfare"){const f=d.FARES[idx];r={jp:f.k+"になります。",kana:f.r+"になります。",en:"That will be "+f.e+"."};}
+  else if(cardId==="tvisit"){const n=d.ORDINALS?d.ORDINALS[idx]:null;if(n)r={jp:"いいえ、"+n.k+"かいめです。",kana:"いいえ、"+n.r+"かいめです。",en:"No, it is my "+n.e+" time (in Japan)."};else r={jp:"はい、そうです。",kana:"はい、そうです。",en:"Yes, it is (my first time)."};}
+  else if(cardId==="topinion"){const a=d.ADJECTIVES?d.ADJECTIVES[idx]:null;if(a){const isNa=["きれい","にぎやか","しずか"].includes(a.k);r={jp:a.k+(isNa?"だ":"")+"と思います。",kana:a.r+(isNa?"だ":"")+"とおもいます。",en:"I think it is "+a.e+"."};};}
+  else if(cardId==="tplace_opinion"){const p=d.PLACES[idx];r={jp:p.k+"はどう思いますか？",kana:p.r+"はどうおもいますか？",en:"What do you think of "+p.e+"?"};}
+  else if(cardId==="sq1"){const i=d.ITEMS[idx];r={jp:i.k+"はいくらですか？",kana:i.r+"はいくらですか？",en:"How much is the "+i.e+"?"};}
+  else if(cardId==="sq2"){const i=d.ITEMS[idx];r={jp:i.k+"はありますか？",kana:i.r+"はありますか？",en:"Do you have "+i.e+"?"};}
+  else if(cardId==="sslook"){const i=d.ITEMS[idx];r={jp:i.k+"をさがしています。",kana:i.r+"をさがしています。",en:"I'm looking for "+i.e+"."};}
+  else if(cardId==="ssdecide"){const i=d.ITEMS[idx];r={jp:"じゃ、"+i.k+"にします。",kana:"じゃ、"+i.r+"にします。",en:"Well, I'll have the "+i.e+"."};}
+  else if(cardId==="sthis"){const i=d.ITEMS[idx];r={jp:i.k+"をください。",kana:i.r+"をください。",en:"I'll take the "+i.e+", please."};}
+  else if(cardId==="sthis2"){const i=d.ITEMS[idx];r={jp:i.k+"は何ですか？",kana:i.r+"はなんですか？",en:"What is the "+i.e+"?"};}
+  else if(cardId==="spieces"){const p=d.PIECES[idx];r={jp:p.k+"入りです。",kana:p.r+"はいりです。",en:"Contains "+p.e+"."};}
+  else if(cardId==="sprice"){const p=d.PRICES[idx];r={jp:p.k+"です。",kana:p.r+"です。",en:"It's "+p.e+"."};}
+  if(r)setCard(view,cardId,r);
+}
+
+function updateIns2Train(selEl){
+  const view=selEl.closest("[data-topic]");
+  const pA=D.train.PLACES[parseInt(view.querySelector("[data-sel='ins2a']").value)||0];
+  const pB=D.train.PLACES[parseInt(view.querySelector("[data-sel='ins2b']").value)||1];
+  setCard(view,"ins2",{jp:pA.k+"で"+pB.k+"行きに乗り換えてください。",kana:pA.r+"で"+pB.r+"ゆきにのりかえてください。",en:"Change to the "+pB.e+" train at "+pA.e+"."});
+}
+
+function updateCtrTrain(type,selEl){
+  const view=selEl?selEl.closest("[data-topic]"):gV("train");
+  let jp,kana,en;
+  if(type==="platform"){const p=D.train.PLATFORMS[parseInt(view.querySelector("[data-sel='platform']").value)||0];jp=p.k;kana=p.r;en=p.e;}
+  else if(type==="time"){const tIdx=parseInt(view.querySelector("[data-sel='time']").value)||0;const ampm=view.querySelector("[data-sel='ampm']").value;const ti=D.train.TIMES[tIdx];if(ampm==="am"){jp="午前"+ti.k;kana="ごぜん"+ti.r;en=ti.e+" AM";}else if(ampm==="pm"){jp="午後"+ti.k;kana="ごご"+ti.r;en=ti.e+" PM";}else{jp=ti.k;kana=ti.r;en=ti.e;}}
+  else if(type==="duration"){const du=D.train.DURATIONS[parseInt(view.querySelector("[data-sel='duration']").value)||0];jp=du.k;kana=du.r;en=du.e;}
+  view.querySelector("[data-ctr='"+type+"-jp']").textContent=jp;
+  view.querySelector("[data-ctr='"+type+"-kana']").textContent=kana;
+  view.querySelector("[data-ctr='"+type+"-en']").textContent=en;
+  cardStates.train[type]={jp,kana,en};
+}
+function speakCtr(type,view){const s=cardStates.train[type];if(s)speak(s.jp);}
+
+/* ─── DIRECTIONS ─── */
+function initDirections(){
+  const v=gV("directions"),d=D.directions;
+  const pl=p=>p.k+"（"+p.r+"）";
+  ["dq1","dq2","dq3","dins1p","dins2a","dins2b"].forEach(id=>{fillSel(gS(v,id),d.PLACES,pl);if(id==="dins2b")gS(v,id).selectedIndex=1;});
+  ["dq1","dq2","dq3"].forEach(id=>updateCard(gS(v,id),id));
+  updateDirIns1(gS(v,"dins1p"));updateDirIns2(gS(v,"dins2a"));
+  buildWL(v,"[data-wordlist='dir-places']",d.PLACES,p=>({jp:p.k,kana:p.r,en:p.e}));
+  buildWL(v,"[data-wordlist='dir-words']",d.DIR_WORDS,w=>({jp:w.k,kana:w.r,en:w.e}));
+}
+function updateDirIns1(selEl){
+  const view=selEl.closest("[data-topic]");
+  const p=D.directions.PLACES[parseInt(view.querySelector("[data-sel='dins1p']").value)||0];
+  const dir=view.querySelector("[data-sel='dins1d']").value;
+  setCard(view,"dins1",{jp:p.k+"は"+dir+"にあります。",kana:p.r+"は"+dir+"にあります。",en:"The "+p.e+" is on the "+(dir==="みぎ"?"right":"left")+"."});
+}
+function updateDirIns2(selEl){
+  const view=selEl.closest("[data-topic]");
+  const pA=D.directions.PLACES[parseInt(view.querySelector("[data-sel='dins2a']").value)||0];
+  const pB=D.directions.PLACES[parseInt(view.querySelector("[data-sel='dins2b']").value)||1];
+  setCard(view,"dins2",{jp:pA.k+"は"+pB.k+"の近くにあります。",kana:pA.r+"は"+pB.r+"のちかくにあります。",en:"The "+pA.e+" is near the "+pB.e+"."});
+}
+
+/* ─── BUS ─── */
+function initBus(){
+  const v=gV("bus"),d=D.bus;
+  const pl=p=>p.k+"（"+p.r+"）";
+  ["bq1","bq2","bq3","bins1"].forEach(id=>{fillSel(gS(v,id),d.PLACES,pl);updateCard(gS(v,id),id);});
+  fillSel(gS(v,"bfare"),d.FARES,f=>f.k);updateCard(gS(v,"bfare"),"bfare");
+  buildWL(v,"[data-wordlist='bus-words']",d.BUS_WORDS,w=>({jp:w.k,kana:w.r,en:w.e}));
+  buildWL(v,"[data-wordlist='bus-ordinals']",d.ORDINALS,o=>({jp:o.k,kana:o.r,en:o.e}));
+}
+
+/* ─── TAXI ─── */
+function initTaxi(){
+  const v=gV("taxi"),d=D.taxi;
+  const pl=p=>p.k+"（"+p.r+"）";
+  ["tr1","tq2","tplace_opinion"].forEach(id=>{fillSel(gS(v,id),d.PLACES,pl);updateCard(gS(v,id),id);});
+  fillSel(gS(v,"tfare"),d.FARES,f=>f.k);updateCard(gS(v,"tfare"),"tfare");
+  fillSel(gS(v,"tvisit"),d.ORDINALS,o=>o.k+"かいめ");updateCard(gS(v,"tvisit"),"tvisit");
+  fillSel(gS(v,"topinion"),d.ADJECTIVES,a=>a.k+"（"+a.r+"）");updateCard(gS(v,"topinion"),"topinion");
+  buildWL(v,"[data-wordlist='taxi-words']",d.TAXI_WORDS,w=>({jp:w.k,kana:w.r,en:w.e}));
+  buildWL(v,"[data-wordlist='taxi-places']",d.PLACES,p=>({jp:p.k,kana:p.r,en:p.e}));
+  buildWL(v,"[data-wordlist='taxi-signs']",d.TAXI_SIGNS,s=>({jp:s.k,kana:s.r,en:s.e}));
+}
+
+/* ─── SOUVENIR ─── */
+function initSouvenir(){
+  const v=gV("souvenir"),d=D.souvenir;
+  const il=i=>i.k+"（"+i.r+"）";
+  ["sq2","sslook","ssdecide","sr1i","sthis","sthis2"].forEach(id=>{fillSel(gS(v,id),d.ITEMS,il);});
+  ["sq2","sslook","ssdecide","sthis","sthis2"].forEach(id=>updateCard(gS(v,id),id));
+  fillSel(gS(v,"sr1n"),d.COUNTERS,c=>c.k);updateSouR1(gS(v,"sr1i"));
+  fillSel(gS(v,"spieces"),d.PIECES,p=>p.k);updateCard(gS(v,"spieces"),"spieces");
+  buildWL(v,"[data-wordlist='sou-items']",d.FOOD_VOCAB,i=>({jp:i.k,kana:i.r,en:i.e}));
+}
+function updateSouR1(selEl){
+  const view=selEl.closest("[data-topic]");
+  const item=D.souvenir.ITEMS[parseInt(view.querySelector("[data-sel='sr1i']").value)||0];
+  const cnt=D.souvenir.COUNTERS[parseInt(view.querySelector("[data-sel='sr1n']").value)||0];
+  setCard(view,"sr1",{jp:item.k+"を"+cnt.k+"ください。",kana:item.r+"を"+cnt.r+"ください。",en:"Please give me "+cnt.e+" of "+item.e+"."});
+}
+
+/* ─── WORD LIST ─── */
+function buildWL(view,selector,items,mapFn){
+  const c=view.querySelector(selector);if(!c)return;
+  items.forEach(item=>{const m=mapFn(item);const div=document.createElement("div");div.className="word-item";div.onclick=()=>speak(m.jp);div.innerHTML=`<span class="word-jp">${m.jp}</span><span class="word-kana">${m.kana}</span><span class="word-en">${m.en}</span><span class="word-spk">🔊</span>`;c.appendChild(div);});
+}
+
+/* ─── VOCAB ─── */
+function buildVocabList(topic){
+  const view=gV(topic);const container=view.querySelector(".vocab-cats");
+  D[topic].VOCAB_CATS.forEach(cat=>{
+    const div=document.createElement("div");div.className="vocab-cat";
+    div.innerHTML=`<div class="vocab-cat-hd">${cat.title}</div>`;
+    cat.items.forEach(item=>{const row=document.createElement("div");row.className="vocab-row";row.onclick=()=>speak(item.jp);row.innerHTML=`<span class="vocab-jp">${item.jp}</span><span class="vocab-kana">${item.kana}</span><span class="vocab-en">${item.en}</span><span class="vocab-spk">🔊</span>`;div.appendChild(row);});
+    container.appendChild(div);
+  });
+}
+function toggleVocab(btn){
+  btn.classList.toggle("open");
+  btn.closest(".vocab-section").querySelector(".vocab-content").classList.toggle("open");
+}
+
+/* ═══ TTS ═══ */
+function speak(text,cardEl){
+  if(!("speechSynthesis" in window))return;
+  speechSynthesis.cancel();
+  if(activeCard)activeCard.classList.remove("speaking");
+  activeCard=cardEl||null;
+  if(activeCard)activeCard.classList.add("speaking");
+  const utt=new SpeechSynthesisUtterance(text);utt.lang="ja-JP";utt.rate=0.85;
+  document.getElementById("ttsTxt").textContent=text;
+  document.getElementById("ttsBar").classList.add("on");
+  utt.onend=utt.onerror=()=>{document.getElementById("ttsBar").classList.remove("on");if(activeCard){activeCard.classList.remove("speaking");activeCard=null;}};
+  speechSynthesis.speak(utt);
+}
+function stopSpeech(){
+  speechSynthesis.cancel();document.getElementById("ttsBar").classList.remove("on");
+  if(activeCard){activeCard.classList.remove("speaking");activeCard=null;}
+  document.querySelectorAll(".script-item.playing").forEach(el=>el.classList.remove("playing"));
+}
+function speakStatic(el){const card=el.closest?el.closest(".phrase-card"):el;speak(card.querySelector(".phrase-jp").textContent,card);}
+function speakDynamic(el){const card=el.closest(".phrase-card");const topic=el.closest("[data-topic]").dataset.topic;const s=cardStates[topic][card.dataset.card];if(s)speak(s.jp,card);}
+
+/* ═══ SCRIPT ═══ */
+function addToScript(topic,jp,kana,en){
+  scriptData[topic].push({id:++scriptIdCtr,jp,kana,en});renderScript(topic);
+  document.getElementById("ttsTxt").textContent="✓ Added to script";document.getElementById("ttsBar").classList.add("on");
+  setTimeout(()=>{if(document.getElementById("ttsTxt").textContent==="✓ Added to script")document.getElementById("ttsBar").classList.remove("on");},1200);
+}
+function addStaticToScript(el){
+  const card=el.closest(".phrase-card");const topic=el.closest("[data-topic]").dataset.topic;
+  addToScript(topic,card.querySelector(".phrase-jp").textContent,card.querySelector(".phrase-kana").textContent,card.querySelector(".phrase-en").textContent);
+}
+function addDynamicToScript(el){
+  const card=el.closest(".phrase-card");const topic=el.closest("[data-topic]").dataset.topic;
+  const s=cardStates[topic][card.dataset.card];if(s)addToScript(topic,s.jp,s.kana,s.en);
+}
+function removeScriptItem(topic,id){scriptData[topic]=scriptData[topic].filter(i=>i.id!==id);renderScript(topic);}
+function renderScript(topic){
+  const view=gV(topic);if(!view)return;
+  const empty=view.querySelector(".script-empty"),list=view.querySelector(".script-list"),items=scriptData[topic];
+  if(!items.length){empty.style.display="flex";list.classList.remove("has-items");list.innerHTML="";return;}
+  empty.style.display="none";list.classList.add("has-items");list.innerHTML="";
+  items.forEach((item,idx)=>{
+    const div=document.createElement("div");div.className="script-item";div.dataset.sid=item.id;
+    div.innerHTML=`<div class="script-line-num">Line ${idx+1}</div><div class="script-jp">${item.jp}</div><div class="script-kana">${item.kana}</div><div class="script-en">${item.en}</div><button class="script-item-spk" onclick="speak(this.closest('.script-item').querySelector('.script-jp').textContent)">🔊</button><button class="script-item-del" onclick="removeScriptItem('${topic}',${item.id})">✕</button>`;
+    div.addEventListener("click",e=>{if(e.target.tagName!=="BUTTON")speak(item.jp);});
+    list.appendChild(div);
+  });
+}
+function clearScript(topic){if(!scriptData[topic].length||!confirm("Clear your script?"))return;scriptData[topic]=[];speechSynthesis.cancel();renderScript(topic);}
+function copyScript(topic){const items=scriptData[topic];if(!items.length)return;navigator.clipboard.writeText(items.map((item,i)=>`[Line ${i+1}]\n${item.jp}\n${item.kana}\n${item.en}`).join("\n\n"));}
+function playScript(topic){
+  const items=scriptData[topic];if(!items.length)return;speechSynthesis.cancel();
+  const view=gV(topic);let idx=0;
+  function next(){
+    if(idx>=items.length){document.getElementById("ttsBar").classList.remove("on");return;}
+    const item=items[idx];view.querySelectorAll(".script-item.playing").forEach(el=>el.classList.remove("playing"));
+    const el=view.querySelector(`[data-sid="${item.id}"]`);if(el){el.classList.add("playing");el.scrollIntoView({behavior:"smooth",block:"nearest"});}
+    const utt=new SpeechSynthesisUtterance(item.jp);utt.lang="ja-JP";utt.rate=0.85;
+    document.getElementById("ttsTxt").textContent=item.jp;document.getElementById("ttsBar").classList.add("on");
+    utt.onend=()=>{idx++;setTimeout(next,450);};utt.onerror=()=>{idx++;setTimeout(next,200);};
+    speechSynthesis.speak(utt);
+  }
+  next();
+}
+
+/* ═══ BOOT ═══ */
+window.addEventListener("DOMContentLoaded",()=>{initTopic("directions");topicInited["directions"]=true;});
+</script>
+</body>
+</html>
