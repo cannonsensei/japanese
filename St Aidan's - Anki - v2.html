@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>St Aidan's Japanese Study</title>
+<style>
+:root{
+  --navy:#041E42; --navy2:#0e2849; --navy3:#122d55;
+  --pink:#E13B82; --pink-light:#FBEAF0; --pink-dark:#72243E;
+  --white:#ffffff; --grey-bg:#f4f5f7; --grey-border:#e1e4e9; --grey-text:#6b7280;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Montserrat','Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--navy);background:var(--grey-bg);height:100vh;overflow:hidden;}
+.jp{font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',Meiryo,'Segoe UI',sans-serif;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;}
+input,textarea,select{font-family:inherit;font-size:14px;}
+
+/* ---------- APP SHELL ---------- */
+#app{display:flex;flex-direction:column;height:100vh;}
+#topbar{height:56px;background:var(--navy);color:#fff;display:flex;align-items:center;padding:0 20px;flex-shrink:0;gap:16px;}
+#topbar .brand{font-weight:600;font-size:15px;letter-spacing:0.3px;display:flex;align-items:center;gap:8px;}
+#topbar .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--pink);}
+#topbar .pagetitle{font-size:13px;color:#c9d3e0;border-left:1px solid #2a4568;padding-left:16px;}
+#topbar .spacer{flex:1;}
+#topbar input#searchbox{width:220px;height:32px;border-radius:6px;border:none;padding:0 10px;background:#0e2849;color:#fff;}
+#topbar input#searchbox::placeholder{color:#8a9ab3;}
+#topbar button.icon-btn{color:#c9d3e0;width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+#topbar button.icon-btn:hover{background:#0e2849;color:#fff;}
+
+#body-row{flex:1;display:flex;overflow:hidden;}
+#leftnav{width:190px;background:var(--white);border-right:1px solid var(--grey-border);flex-shrink:0;padding:16px 10px;overflow-y:auto;}
+#leftnav .nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;font-size:14px;color:var(--navy);margin-bottom:2px;font-weight:500;text-align:left;width:100%;}
+#leftnav .nav-item:hover{background:var(--grey-bg);}
+#leftnav .nav-item.active{background:var(--pink-light);color:var(--pink-dark);}
+#leftnav .nav-item .ic{font-size:17px;width:20px;text-align:center;}
+#main{flex:1;overflow-y:auto;padding:28px 32px;}
+
+.icon{display:inline-block;width:1em;text-align:center;}
+
+/* ---------- SHARED COMPONENTS ---------- */
+h1.page-h{font-size:22px;font-weight:600;margin-bottom:4px;}
+p.page-sub{font-size:13px;color:var(--grey-text);margin-bottom:20px;}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:500;border:1px solid var(--grey-border);background:var(--white);color:var(--navy);}
+.btn:hover{background:var(--grey-bg);}
+.btn-primary{background:var(--pink);color:#fff;border:none;}
+.btn-primary:hover{background:var(--pink-dark);}
+.btn-navy{background:var(--navy);color:#fff;border:none;}
+.btn-navy:hover{background:var(--navy2);}
+.btn-sm{padding:6px 10px;font-size:12px;}
+.row-flex{display:flex;align-items:center;gap:10px;}
+.card-box{background:var(--white);border:1px solid var(--grey-border);border-radius:12px;padding:16px;}
+.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;}
+.metric-card{background:var(--white);border-radius:10px;padding:14px 16px;border:1px solid var(--grey-border);}
+.metric-label{font-size:12px;color:var(--grey-text);margin-bottom:4px;}
+.metric-value{font-size:24px;font-weight:600;color:var(--navy);}
+.metric-value.pink{color:var(--pink);}
+.study-cta{background:var(--navy);color:#fff;border-radius:12px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
+.study-cta .t{font-weight:600;font-size:16px;margin-bottom:3px;}
+.study-cta .s{font-size:12px;color:#c9d3e0;}
+.section-label{font-size:12px;font-weight:600;color:var(--grey-text);text-transform:uppercase;letter-spacing:0.4px;margin:18px 0 8px;}
+.deck-list{border:1px solid var(--grey-border);border-radius:10px;overflow:hidden;background:#fff;}
+.deck-row{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--grey-border);}
+.deck-row:last-child{border-bottom:none;}
+.deck-row:hover{background:var(--grey-bg);}
+.deck-row.dragover{border-top:2px solid var(--pink);}
+.grip{cursor:grab;color:#b5bcc7;font-size:14px;}
+.pin-btn{color:#b5bcc7;font-size:14px;background:none;}
+.pin-btn.pinned{color:var(--pink);}
+.deck-name{flex:1;font-size:14px;font-weight:500;background:none;border:none;color:var(--navy);cursor:text;padding:2px 4px;border-radius:4px;}
+.deck-name:focus{outline:1px solid var(--pink);background:#fff;}
+.deck-empty{font-size:12px;color:#a3aab5;}
+.badge{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;}
+.badge-due{background:var(--pink-light);color:var(--pink-dark);}
+.badge-clear{background:var(--grey-bg);color:var(--grey-text);}
+.edit-btn,.trash-btn{color:#b5bcc7;font-size:14px;}
+.edit-btn:hover{color:var(--navy);} .trash-btn:hover{color:#c0392b;}
+.quick-row{display:flex;gap:10px;margin-top:20px;}
+.quick-row .btn{flex:1;justify-content:center;}
+.checkbox-select{width:16px;height:16px;}
+
+/* deck browse table */
+.tbl{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--grey-border);border-radius:10px;overflow:hidden;}
+.tbl th{text-align:left;font-size:11px;text-transform:uppercase;color:var(--grey-text);background:var(--grey-bg);padding:9px 12px;font-weight:600;}
+.tbl td{padding:10px 12px;font-size:13px;border-top:1px solid var(--grey-border);vertical-align:top;}
+.tbl tr:hover td{background:#fafbfc;}
+.type-chip{font-size:10px;font-weight:600;padding:2px 7px;border-radius:5px;text-transform:uppercase;}
+.type-vocab{background:#E6F1FB;color:#0C447C;}
+.type-grammar{background:#EAF3DE;color:#27500A;}
+.type-kanji{background:#FAEEDA;color:#633806;}
+
+/* form */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:640px;}
+.form-grid.full{grid-template-columns:1fr;}
+.field{margin-bottom:2px;}
+.field label{display:block;font-size:12px;font-weight:600;color:var(--grey-text);margin-bottom:5px;}
+.field input,.field textarea,.field select{width:100%;padding:9px 10px;border:1px solid var(--grey-border);border-radius:7px;background:#fff;}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--pink);}
+.field-full{grid-column:1/-1;}
+.type-tabs{display:flex;gap:8px;margin-bottom:18px;}
+.type-tab{padding:8px 16px;border-radius:7px;font-size:13px;font-weight:500;border:1px solid var(--grey-border);background:#fff;}
+.type-tab.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+
+/* modal */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(4,30,66,0.45);display:flex;align-items:center;justify-content:center;z-index:50;}
+.modal-box{background:#fff;border-radius:14px;padding:24px;width:420px;max-width:90vw;}
+.modal-box h3{font-size:16px;font-weight:600;margin-bottom:14px;}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px;}
+
+/* study screen */
+.study-wrap{max-width:600px;margin:0 auto;}
+.study-progress{font-size:12px;color:var(--grey-text);margin-bottom:14px;text-align:center;}
+.toggle-row{display:flex;justify-content:center;gap:18px;margin-bottom:20px;}
+.toggle-row label{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--grey-text);cursor:pointer;}
+.study-card{background:#fff;border:1px solid var(--grey-border);border-radius:16px;min-height:260px;padding:36px 30px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;}
+.study-front-word{font-size:34px;font-weight:500;margin-bottom:6px;}
+.furigana-wrap{font-size:14px;color:var(--grey-text);margin-bottom:8px;}
+.tts-btn{color:var(--pink);font-size:16px;margin-left:8px;vertical-align:-2px;}
+.tap-hint{font-size:12px;color:#a3aab5;margin-top:16px;}
+.answer-block{width:100%;text-align:left;margin-top:14px;padding-top:14px;border-top:1px solid var(--grey-border);}
+.answer-row{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;}
+.answer-row .k{color:var(--grey-text);}
+.grade-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:20px;}
+.grade-btn{padding:12px 0;border-radius:9px;font-weight:600;font-size:13px;border:1px solid var(--grey-border);}
+.grade-again{background:#FCEBEB;color:#791F1F;}
+.grade-hard{background:#FAEEDA;color:#633806;}
+.grade-good{background:#EAF3DE;color:#27500A;}
+.grade-easy{background:#E6F1FB;color:#0C447C;}
+.grade-btn:hover{filter:brightness(0.95);}
+.empty-state{text-align:center;padding:60px 20px;color:var(--grey-text);}
+.empty-state .big{font-size:16px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+
+/* import */
+.import-textarea{width:100%;min-height:160px;padding:12px;border:1px solid var(--grey-border);border-radius:8px;font-family:monospace;font-size:12px;}
+.preview-tbl{width:100%;font-size:12px;border-collapse:collapse;margin-top:12px;}
+.preview-tbl th,.preview-tbl td{border:1px solid var(--grey-border);padding:6px 8px;text-align:left;}
+
+/* pitch accent picker */
+.pitch-hint{font-size:11px;color:var(--grey-text);margin-bottom:8px;}
+.pitch-btn-grid{display:flex;flex-wrap:wrap;gap:8px;}
+.pitch-btn{border:1px solid var(--grey-border);border-radius:8px;padding:8px 10px;background:#fff;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:88px;}
+.pitch-btn:hover{border-color:var(--pink);}
+.pitch-btn.selected{border-color:var(--pink);background:var(--pink-light);}
+.pitch-btn .pname{font-size:11px;font-weight:600;color:var(--navy);}
+.pitch-btn .pcode{font-size:10px;color:var(--grey-text);letter-spacing:0.5px;}
+.pitch-diagram-inline{display:inline-block;vertical-align:middle;margin-left:6px;}
+
+/* global study-defaults toggle bar */
+.defaults-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px;}
+.defaults-col{background:var(--white);border:1px solid var(--grey-border);border-radius:12px;padding:14px 16px;}
+.defaults-col .defaults-label{font-size:11px;font-weight:600;color:var(--grey-text);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:10px;display:block;}
+.switch-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--navy);font-weight:500;cursor:pointer;margin-bottom:10px;}
+.switch-item:last-child{margin-bottom:0;}
+.switch{position:relative;display:inline-block;width:32px;height:18px;flex-shrink:0;}
+.switch input{opacity:0;width:0;height:0;}
+.switch .slider{position:absolute;top:0;left:0;right:0;bottom:0;background:#d7dbe3;transition:.15s;border-radius:20px;}
+.switch .slider:before{position:absolute;content:"";height:14px;width:14px;left:2px;bottom:2px;background:#fff;transition:.15s;border-radius:50%;}
+.switch input:checked + .slider{background:var(--pink);}
+.switch input:checked + .slider:before{transform:translateX(14px);}
+.folder-select{font-size:11px;max-width:110px;border:1px solid var(--grey-border);border-radius:6px;padding:4px 6px;background:#fff;color:var(--grey-text);}
+
+/* typed answer mode */
+.typed-answer-box{display:flex;gap:8px;margin-top:16px;width:100%;max-width:340px;}
+.typed-answer-box input{flex:1;padding:9px 12px;border:1px solid var(--grey-border);border-radius:8px;font-size:14px;}
+.typed-answer-box input:focus{outline:none;border-color:var(--pink);}
+.typed-feedback{padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;margin-bottom:12px;}
+.typed-feedback.correct{background:#EAF3DE;color:#27500A;}
+.typed-feedback.incorrect{background:#FCEBEB;color:#791F1F;}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="topbar">
+    <div class="brand"><span class="dot"></span>St Aidan's Japanese Study</div>
+    <div class="pagetitle" id="pagetitle">Home</div>
+    <div class="spacer"></div>
+    <input id="searchbox" placeholder="Search decks..." oninput="handleSearch(this.value)">
+    <button class="icon-btn" title="Settings" onclick="navigate('settings')">&#9881;</button>
+  </div>
+  <div id="body-row">
+    <div id="leftnav"></div>
+    <div id="main"></div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   ST AIDAN'S JAPANESE STUDY — Anki-style spaced repetition
+   Single-file app. Data persisted via window.storage.
+   ========================================================= */
+
+const STORAGE_KEY = 'app-data';
+let state = {
+  decks: [],      // {id,name,pinned,order,createdAt,folderId}
+  folders: [],    // {id,name,createdAt}
+  cards: [],      // see newCard()
+  settings: { furigana:false, romaji:false, tts:true, englishFirst:false, sentenceMode:false, typedAnswer:false },
+  stats: { streak:0, lastStudyDate:null, reviewLog:[] } // reviewLog: [{date:'YYYY-MM-DD'}]
+};
+let view = { name:'home', deckId:null, deckIds:null, editingCardId:null, searchTerm:'', folderId:null };
+let dragState = null;
+
+function uid(){ return 'id' + Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
+function todayStr(){ return new Date().toISOString().slice(0,10); }
+function daysFromNow(n){ const d=new Date(); d.setDate(d.getDate()+n); return d.toISOString(); }
+function isDue(card){ return new Date(card.srs.due) <= new Date(); }
+
+/* ---------- PERSISTENCE ---------- */
+async function loadData(){
+  try{
+    const res = await window.storage.get(STORAGE_KEY);
+    if(res && res.value){
+      const parsed = JSON.parse(res.value);
+      state = Object.assign(state, parsed);
+    }
+  }catch(e){ /* no data yet */ }
+}
+let saveTimer=null;
+function saveData(){
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(async ()=>{
+    try{ await window.storage.set(STORAGE_KEY, JSON.stringify(state)); }
+    catch(e){ console.error('Save failed', e); }
+  }, 250);
+}
+
+/* ---------- SM-2 SCHEDULING ---------- */
+// grade: 0=Again 1=Hard 2=Good 3=Easy
+const GRADE_KEYS = ['again','hard','good','easy'];
+function applySM2(card, grade){
+  const srs = card.srs;
+  if(!card.stats) card.stats = { again:0, hard:0, good:0, easy:0 };
+  card.stats[GRADE_KEYS[grade]] = (card.stats[GRADE_KEYS[grade]]||0) + 1;
+  if(grade === 0){
+    srs.repetitions = 0;
+    srs.interval = 1;
+    srs.ease = Math.max(1.3, srs.ease - 0.2);
+  } else {
+    srs.repetitions += 1;
+    if(srs.repetitions === 1) srs.interval = 1;
+    else if(srs.repetitions === 2) srs.interval = 6;
+    else srs.interval = Math.round(srs.interval * srs.ease);
+
+    if(grade === 1){ srs.interval = Math.max(1, Math.round(srs.interval * 0.8)); srs.ease = Math.max(1.3, srs.ease - 0.15); }
+    if(grade === 3){ srs.interval = Math.round(srs.interval * 1.3); srs.ease = srs.ease + 0.15; }
+  }
+  srs.due = daysFromNow(srs.interval);
+  srs.lastReviewed = new Date().toISOString();
+  recordReview();
+  saveData();
+}
+
+function recordReview(){
+  const t = todayStr();
+  if(!state.stats.reviewLog.includes(t)) state.stats.reviewLog.push(t);
+  // trim log to last 400 days
+  if(state.stats.reviewLog.length > 400) state.stats.reviewLog = state.stats.reviewLog.slice(-400);
+  updateStreak();
+}
+function updateStreak(){
+  const log = new Set(state.stats.reviewLog);
+  let streak = 0;
+  let d = new Date();
+  // if studied today, count today, then walk backwards
+  if(!log.has(todayStr())){
+    // check yesterday continuity without breaking streak display
+  }
+  for(let i=0;i<400;i++){
+    const ds = d.toISOString().slice(0,10);
+    if(log.has(ds)){ streak++; d.setDate(d.getDate()-1); }
+    else break;
+  }
+  state.stats.streak = streak;
+}
+
+function newCardsThisWeek(){
+  const weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate()-7);
+  return state.cards.filter(c => new Date(c.createdAt) >= weekAgo).length;
+}
+
+/* ---------- CARD FACTORY ---------- */
+function newCard(deckId, type){
+  return {
+    id: uid(), deckId, type, createdAt: new Date().toISOString(),
+    word:'', furigana:'', romaji:'', meaning:'', pitchAccent:'', example:'', exampleTranslation:'',
+    pattern:'', explanation:'',
+    character:'', onyomi:'', kunyomi:'',
+    stats: { again:0, hard:0, good:0, easy:0 },
+    srs: { repetitions:0, interval:0, ease:2.5, due: new Date().toISOString(), lastReviewed:null }
+  };
+}
+
+/* ---------- NAVIGATION ---------- */
+function navigate(name, opts={}){
+  view = Object.assign({ name, deckId:null, deckIds:null, editingCardId:null, searchTerm:'', folderId:null }, opts);
+  render();
+}
+function handleSearch(val){
+  view.searchTerm = val.toLowerCase();
+  renderLeftNav();
+}
+
+/* ---------- RENDER: SHELL ---------- */
+function renderLeftNav(){
+  const nav = document.getElementById('leftnav');
+  const items = [
+    {key:'home', label:'Home', icon:'&#8962;'},
+    {key:'alldecks', label:'All decks', icon:'&#9776;'},
+    {key:'import', label:'Import', icon:'&#8613;'},
+    {key:'stats', label:'Stats', icon:'&#128202;'}
+  ];
+  nav.innerHTML = items.map(it => `
+    <button class="nav-item ${view.name===it.key?'active':''}" onclick="navigate('${it.key}')">
+      <span class="ic">${it.icon}</span>${it.label}
+    </button>`).join('');
+}
+
+function pageTitleFor(){
+  switch(view.name){
+    case 'home': return 'Home';
+    case 'alldecks': return 'All decks';
+    case 'import': return 'Bulk import';
+    case 'stats': return 'Stats';
+    case 'settings': return 'Settings';
+    case 'deck': { const d = state.decks.find(x=>x.id===view.deckId); return d ? d.name : 'Deck'; }
+    case 'folder': { const f = state.folders.find(x=>x.id===view.folderId); return f ? f.name : 'Folder'; }
+    case 'study': return 'Study session';
+    case 'addcard': return 'Add card';
+    default: return '';
+  }
+}
+
+async function boot(){
+  await loadData();
+  if(!state.decks.length){
+    state.decks.push({ id:uid(), name:'My first deck', pinned:false, order:0, createdAt:new Date().toISOString() });
+  }
+  render();
+}
+if('speechSynthesis' in window){
+  speechSynthesis.onvoiceschanged = ()=>{};
+}
+boot();
+
+function render(){
+  document.getElementById('pagetitle').textContent = pageTitleFor();
+  renderLeftNav();
+  const main = document.getElementById('main');
+  main.innerHTML = '';
+  if(view.name==='home') renderHome(main);
+  else if(view.name==='alldecks') renderAllDecks(main);
+  else if(view.name==='deck') renderDeckBrowse(main);
+  else if(view.name==='folder') renderFolderView(main);
+  else if(view.name==='study') renderStudy(main);
+  else if(view.name==='addcard') renderAddCard(main);
+  else if(view.name==='import') renderImport(main);
+  else if(view.name==='settings') renderSettings(main);
+  else if(view.name==='stats') renderStats(main);
+}
+
+/* ================= HOME ================= */
+const DAILY_CAP = 15;
+
+// Deterministic PRNG seeded from a string (mulberry32), so "today's 15" for a
+// given deck is stable all day but rolls over to a different 15 tomorrow.
+function seededShuffle(arr, seedStr){
+  let h = 0;
+  for(let i=0;i<seedStr.length;i++){ h = (Math.imul(31,h) + seedStr.charCodeAt(i)) | 0; }
+  let a = h >>> 0;
+  function rand(){
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  }
+  const copy = [...arr];
+  for(let i=copy.length-1;i>0;i--){
+    const j = Math.floor(rand()*(i+1));
+    [copy[i],copy[j]] = [copy[j],copy[i]];
+  }
+  return copy;
+}
+// All cards actually due right now for a deck, uncapped.
+function trueDueCards(deckId){
+  return state.cards.filter(c=>c.deckId===deckId && isDue(c));
+}
+// Today's must-study selection for a deck — up to DAILY_CAP cards, same
+// selection all day, different selection tomorrow. Students can still study
+// beyond this via the "study more" prompt after finishing.
+function dailyDueCards(deckId){
+  const due = trueDueCards(deckId);
+  if(due.length <= DAILY_CAP) return due;
+  return seededShuffle(due, `${todayStr()}-${deckId}`).slice(0, DAILY_CAP);
+}
+function dueCount(deckId){
+  return dailyDueCards(deckId).length;
+}
+function allDueCount(){
+  return state.decks.reduce((sum,d)=> sum + dailyDueCards(d.id).length, 0);
+}
+
+function renderHome(main){
+  const decks = sortedDecks();
+  const pinned = decks.filter(d=>d.pinned);
+  const rest = decks.filter(d=>!d.pinned && !d.folderId);
+  const folders = state.folders;
+  const totalDue = allDueCount();
+  const dueDeckNames = decks.filter(d=>dueCount(d.id)>0).slice(0,3).map(d=>d.name).join(', ') || 'No decks yet';
+
+  main.innerHTML = `
+    <h1 class="page-h">Home</h1>
+    <p class="page-sub">Your study overview and decks.</p>
+    <div class="metric-grid">
+      <div class="metric-card"><div class="metric-label">Due today</div><div class="metric-value pink">${totalDue}</div></div>
+      <div class="metric-card"><div class="metric-label">Streak</div><div class="metric-value">${state.stats.streak} day${state.stats.streak===1?'':'s'}</div></div>
+      <div class="metric-card"><div class="metric-label">New this week</div><div class="metric-value">${newCardsThisWeek()}</div></div>
+    </div>
+    ${totalDue>0 ? `
+    <div class="study-cta">
+      <div><div class="t">${totalDue} card${totalDue===1?'':'s'} ready to study</div><div class="s">From ${dueDeckNames}</div></div>
+      <button class="btn btn-primary" onclick="startStudy(null,true)">Study due cards</button>
+    </div>` : `
+    <div class="study-cta" style="background:var(--grey-bg);color:var(--navy);">
+      <div><div class="t" style="color:var(--navy)">You're all caught up</div><div class="s" style="color:var(--grey-text)">Nothing due right now</div></div>
+      <button class="btn btn-navy" onclick="navigate('alldecks')">Browse decks</button>
+    </div>`}
+
+    <div class="defaults-columns">
+      <div class="defaults-col">
+        <span class="defaults-label">Study modes</span>
+        ${settingSwitchHtml('sentenceMode','Sentence practice')}
+        ${settingSwitchHtml('englishFirst','Active recall')}
+      </div>
+      <div class="defaults-col">
+        <span class="defaults-label">Study settings</span>
+        ${settingSwitchHtml('typedAnswer','Type answers')}
+        ${settingSwitchHtml('furigana','Furigana')}
+        ${settingSwitchHtml('romaji','Romaji')}
+        ${settingSwitchHtml('tts','Text-to-speech')}
+      </div>
+    </div>
+
+    <div class="quick-row" style="margin-top:0;margin-bottom:20px;">
+      <button class="btn" onclick="promptNewDeck()">+ New deck</button>
+      <button class="btn" onclick="promptNewFolder()">+ New folder</button>
+      <button class="btn" onclick="navigate('addcard')">+ New card</button>
+      <button class="btn" onclick="navigate('import')">&#8613; Bulk import</button>
+    </div>
+
+    ${pinned.length ? `<div class="section-label">Pinned</div><div id="pinned-list" class="deck-list">${pinned.map(d=>deckRowHtml(d)).join('')}</div>` : ''}
+    ${folders.length ? `<div class="section-label">Folders</div><div class="deck-list">${folders.map(f=>folderRowHtml(f)).join('')}</div>` : ''}
+    <div class="section-label">All decks</div>
+    <div id="deck-select-bar" class="row-flex" style="margin-bottom:8px;display:none;">
+      <span style="font-size:12px;color:var(--grey-text)" id="selCountLabel"></span>
+      <button class="btn btn-primary btn-sm" onclick="startCombinedFromSelection()">Study combined</button>
+    </div>
+    <div id="all-list" class="deck-list">
+      ${rest.length ? rest.map(d=>deckRowHtml(d)).join('') : `<div style="padding:20px;text-align:center;" class="deck-empty">No ungrouped decks — create one above, or check your folders.</div>`}
+    </div>
+  `;
+  wireDeckRowEvents();
+}
+
+function sortedDecks(){
+  return [...state.decks].sort((a,b)=> (a.order||0) - (b.order||0));
+}
+
+function deckRowHtml(d){
+  const due = dueCount(d.id);
+  const total = state.cards.filter(c=>c.deckId===d.id).length;
+  return `
+  <div class="deck-row" draggable="true" data-deck-id="${d.id}">
+    <span class="grip">&#8942;&#8942;</span>
+    <input type="checkbox" class="checkbox-select deck-select-cb" data-deck-id="${d.id}" onchange="onDeckSelectChange()">
+    <button class="pin-btn ${d.pinned?'pinned':''}" onclick="togglePin('${d.id}')" title="Pin">&#128204;</button>
+    <input class="deck-name" value="${escapeAttr(d.name)}" onchange="renameDeck('${d.id}', this.value)" onclick="event.stopPropagation()">
+    <span style="font-size:11px;color:var(--grey-text);min-width:70px;">${total} card${total===1?'':'s'}</span>
+    ${due>0 ? `<span class="badge badge-due">${due} due</span>` : `<span class="badge badge-clear">Caught up</span>`}
+    <select class="folder-select" title="Move to folder" onclick="event.stopPropagation()" onchange="moveDeckToFolder('${d.id}', this.value)">
+      <option value="" ${!d.folderId?'selected':''}>No folder</option>
+      ${state.folders.map(f=>`<option value="${f.id}" ${d.folderId===f.id?'selected':''}>${escapeAttr(f.name)}</option>`).join('')}
+    </select>
+    <button class="btn btn-sm" onclick="startStudy('${d.id}')">Study</button>
+    <button class="btn btn-sm" onclick="navigate('deck',{deckId:'${d.id}'})">Browse</button>
+    <button class="trash-btn" onclick="confirmDeleteDeck('${d.id}')" title="Delete deck">&#128465;</button>
+  </div>`;
+}
+function folderRowHtml(f){
+  const decksIn = state.decks.filter(d=>d.folderId===f.id);
+  const due = decksIn.reduce((sum,d)=>sum+dueCount(d.id),0);
+  return `
+  <div class="deck-row">
+    <span style="font-size:15px;width:16px;text-align:center;">&#128193;</span>
+    <input class="deck-name" value="${escapeAttr(f.name)}" onchange="renameFolder('${f.id}', this.value)" onclick="event.stopPropagation()">
+    <span style="font-size:11px;color:var(--grey-text);min-width:70px;">${decksIn.length} deck${decksIn.length===1?'':'s'}</span>
+    ${due>0 ? `<span class="badge badge-due">${due} due</span>` : `<span class="badge badge-clear">Caught up</span>`}
+    <button class="btn btn-sm" onclick="navigate('folder',{folderId:'${f.id}'})">Open</button>
+    <button class="trash-btn" onclick="confirmDeleteFolder('${f.id}')" title="Delete folder (decks move back to All decks)">&#128465;</button>
+  </div>`;
+}
+
+function escapeAttr(s){ return (s||'').replace(/"/g,'&quot;'); }
+
+function onDeckSelectChange(){
+  const checked = [...document.querySelectorAll('.deck-select-cb:checked')];
+  const bar = document.getElementById('deck-select-bar');
+  if(checked.length>1){
+    bar.style.display='flex';
+    document.getElementById('selCountLabel').textContent = `${checked.length} decks selected`;
+  } else {
+    bar.style.display='none';
+  }
+}
+function startCombinedFromSelection(){
+  const ids = [...document.querySelectorAll('.deck-select-cb:checked')].map(cb=>cb.dataset.deckId);
+  startStudy(ids, false, true);
+}
+
+/* drag reorder */
+function wireDeckRowEvents(){
+  document.querySelectorAll('.deck-row').forEach(row=>{
+    row.addEventListener('dragstart', e=>{ dragState = row.dataset.deckId; e.dataTransfer.effectAllowed='move'; });
+    row.addEventListener('dragover', e=>{ e.preventDefault(); row.classList.add('dragover'); });
+    row.addEventListener('dragleave', ()=> row.classList.remove('dragover'));
+    row.addEventListener('drop', e=>{
+      e.preventDefault(); row.classList.remove('dragover');
+      const targetId = row.dataset.deckId;
+      if(dragState && dragState!==targetId) reorderDeck(dragState, targetId);
+      dragState = null;
+    });
+  });
+}
+function reorderDeck(sourceId, targetId){
+  const source = state.decks.find(d=>d.id===sourceId);
+  const target = state.decks.find(d=>d.id===targetId);
+  if(!source || !target || source.pinned!==target.pinned) return; // keep pinned/unpinned groups separate
+  const group = sortedDecks().filter(d=>d.pinned===source.pinned);
+  const ids = group.map(d=>d.id).filter(id=>id!==sourceId);
+  const idx = ids.indexOf(targetId);
+  ids.splice(idx, 0, sourceId);
+  ids.forEach((id,i)=> state.decks.find(d=>d.id===id).order = i);
+  saveData(); render();
+}
+
+function togglePin(id){
+  const d = state.decks.find(x=>x.id===id);
+  d.pinned = !d.pinned;
+  saveData(); render();
+}
+function renameDeck(id, name){
+  const d = state.decks.find(x=>x.id===id);
+  if(name.trim()) d.name = name.trim();
+  saveData(); render();
+}
+function promptNewDeck(){
+  const name = prompt('Name for the new deck:');
+  if(name && name.trim()){
+    const maxOrder = Math.max(0, ...state.decks.filter(d=>!d.pinned).map(d=>d.order||0));
+    state.decks.push({ id:uid(), name:name.trim(), pinned:false, order:maxOrder+1, folderId:null, createdAt:new Date().toISOString() });
+    saveData(); render();
+  }
+}
+function promptNewDeckInFolder(folderId){
+  const name = prompt('Name for the new deck:');
+  if(name && name.trim()){
+    const maxOrder = Math.max(0, ...state.decks.filter(d=>!d.pinned).map(d=>d.order||0));
+    state.decks.push({ id:uid(), name:name.trim(), pinned:false, order:maxOrder+1, folderId, createdAt:new Date().toISOString() });
+    saveData(); render();
+  }
+}
+function confirmDeleteDeck(id){
+  const d = state.decks.find(x=>x.id===id);
+  const count = state.cards.filter(c=>c.deckId===id).length;
+  if(confirm(`Delete "${d.name}" and its ${count} card${count===1?'':'s'}? This can't be undone.`)){
+    state.decks = state.decks.filter(x=>x.id!==id);
+    state.cards = state.cards.filter(c=>c.deckId!==id);
+    saveData(); render();
+  }
+}
+
+/* ---------- FOLDERS ---------- */
+function promptNewFolder(){
+  const name = prompt('Name for the new folder:');
+  if(name && name.trim()){
+    state.folders.push({ id:uid(), name:name.trim(), createdAt:new Date().toISOString() });
+    saveData(); render();
+  }
+}
+function renameFolder(id, name){
+  const f = state.folders.find(x=>x.id===id);
+  if(name && name.trim()) f.name = name.trim();
+  saveData(); render();
+}
+function moveDeckToFolder(deckId, folderId){
+  const d = state.decks.find(x=>x.id===deckId);
+  d.folderId = folderId || null;
+  saveData(); render();
+}
+function confirmDeleteFolder(id){
+  const f = state.folders.find(x=>x.id===id);
+  const count = state.decks.filter(d=>d.folderId===id).length;
+  if(confirm(`Delete folder "${f.name}"? Its ${count} deck${count===1?'':'s'} will move back to All decks — nothing gets deleted.`)){
+    state.decks.forEach(d=>{ if(d.folderId===id) d.folderId=null; });
+    state.folders = state.folders.filter(x=>x.id!==id);
+    saveData(); render();
+  }
+}
+function renderFolderView(main){
+  const folder = state.folders.find(f=>f.id===view.folderId);
+  if(!folder){ navigate('home'); return; }
+  const decks = sortedDecks().filter(d=>d.folderId===folder.id);
+  main.innerHTML = `
+    <div class="row-flex" style="justify-content:space-between;margin-bottom:4px;">
+      <h1 class="page-h">&#128193; ${escapeAttr(folder.name)}</h1>
+      <div class="row-flex">
+        <button class="btn" onclick="promptNewDeckInFolder('${folder.id}')">+ New deck here</button>
+        <button class="btn btn-primary" onclick="startStudy([${decks.map(d=>`'${d.id}'`).join(',')}])">Study this folder</button>
+      </div>
+    </div>
+    <p class="page-sub">${decks.length} deck${decks.length===1?'':'s'} in this folder</p>
+    <div class="deck-list">
+      ${decks.length ? decks.map(d=>deckRowHtml(d)).join('') : `<div style="padding:20px;text-align:center;" class="deck-empty">No decks in this folder yet — move one in using the dropdown on a deck, or create one here.</div>`}
+    </div>
+  `;
+  wireDeckRowEvents();
+}
+
+
+/* ================= STUDY SESSION ================= */
+let studySession = { queue:[], index:0, revealed:false, totalStarted:0, typedResult:null, scope:null };
+
+function startStudy(deckIdOrIds, allDue=false, combined=false){
+  const sentenceMode = state.settings.sentenceMode;
+  const hasExample = c => c.example && c.example.trim();
+
+  let scope, pool;
+  if(allDue || !deckIdOrIds){
+    scope = { type:'allDue' };
+    pool = state.decks.flatMap(d=>dailyDueCards(d.id));
+  } else if(Array.isArray(deckIdOrIds)){
+    scope = { type:'decks', ids: deckIdOrIds };
+    pool = deckIdOrIds.flatMap(id=>dailyDueCards(id));
+  } else {
+    scope = { type:'deck', ids:[deckIdOrIds] };
+    pool = dailyDueCards(deckIdOrIds);
+  }
+  if(sentenceMode) pool = pool.filter(hasExample);
+
+  if(pool.length===0){
+    let fallback;
+    if(allDue || !deckIdOrIds) fallback = state.cards.slice();
+    else if(Array.isArray(deckIdOrIds)) fallback = state.cards.filter(c=>deckIdOrIds.includes(c.deckId));
+    else fallback = state.cards.filter(c=>c.deckId===deckIdOrIds);
+    if(sentenceMode) fallback = fallback.filter(hasExample);
+
+    if(fallback.length===0){
+      alert(sentenceMode ? 'No cards with example sentences in this selection.' : 'This selection has no cards yet.');
+      return;
+    }
+    if(!confirm(`No cards are due right now. Study all ${fallback.length} card${fallback.length===1?'':'s'} anyway?`)) return;
+    pool = fallback;
+  }
+  // always shuffle — a fresh random order every time you study
+  pool = [...pool].sort(()=>Math.random()-0.5);
+  studySession = { queue: pool, index:0, revealed:false, totalStarted: pool.length, typedResult:null, scope };
+  navigate('study');
+}
+function remainingBeyondCapCount(){
+  const scope = studySession.scope;
+  if(!scope) return 0;
+  if(scope.type==='allDue') return state.cards.filter(isDue).length;
+  return scope.ids.reduce((sum,id)=> sum + trueDueCards(id).length, 0);
+}
+function continueStudyMore(){
+  const scope = studySession.scope;
+  let pool = scope.type==='allDue' ? state.cards.filter(isDue) : scope.ids.flatMap(id=>trueDueCards(id));
+  if(pool.length===0){ navigate('home'); return; }
+  pool = [...pool].sort(()=>Math.random()-0.5);
+  studySession = { queue: pool, index:0, revealed:false, totalStarted: pool.length, typedResult:null, scope };
+  navigate('study');
+}
+
+
+function renderStudy(main){
+  const q = studySession.queue;
+  if(!q.length || studySession.index >= q.length){
+    const remaining = remainingBeyondCapCount();
+    main.innerHTML = `<div class="empty-state">
+      <div class="big">Session complete</div>Nice work — nothing left in this queue.
+      <div style="margin-top:16px;display:flex;gap:8px;justify-content:center;">
+        ${remaining>0 ? `<button class="btn btn-primary" onclick="continueStudyMore()">Study ${remaining} more due card${remaining===1?'':'s'}</button>` : ''}
+        <button class="btn ${remaining>0?'':'btn-primary'}" onclick="navigate('home')">Back to home</button>
+      </div>
+    </div>`;
+    return;
+  }
+  const card = q[studySession.index];
+  const remaining = q.length - studySession.index;
+  main.innerHTML = `
+    <div class="study-wrap">
+      <div class="study-progress">${remaining} card${remaining===1?'':'s'} remaining in this session</div>
+      <div class="toggle-row">
+        <label><input type="checkbox" id="toggleSentenceMode" ${state.settings.sentenceMode?'checked':''} onchange="updateToggle('sentenceMode',this.checked)"> Sentence translation practice</label>
+        <label><input type="checkbox" id="toggleTypedAnswer" ${state.settings.typedAnswer?'checked':''} onchange="updateToggle('typedAnswer',this.checked)"> Type answers (vocab/kanji)</label>
+        <label><input type="checkbox" id="toggleEnglishFirst" ${state.settings.englishFirst?'checked':''} onchange="updateToggle('englishFirst',this.checked)"> Active recall</label>
+        <label><input type="checkbox" id="toggleFurigana" ${state.settings.furigana?'checked':''} onchange="updateToggle('furigana',this.checked)"> Show furigana</label>
+        <label><input type="checkbox" id="toggleRomaji" ${state.settings.romaji?'checked':''} onchange="updateToggle('romaji',this.checked)"> Show romaji</label>
+        <label><input type="checkbox" id="toggleTts" ${state.settings.tts?'checked':''} onchange="updateToggle('tts',this.checked)"> TTS</label>
+      </div>
+      <div id="studyCardWrap"></div>
+    </div>
+  `;
+  renderStudyCard(card);
+}
+function updateToggle(key, val){ state.settings[key] = val; saveData(); const q=studySession.queue[studySession.index]; renderStudyCard(q); }
+
+function settingSwitchHtml(key, label){
+  const checked = state.settings[key] ? 'checked' : '';
+  return `<label class="switch-item">
+    <span class="switch"><input type="checkbox" ${checked} onchange="toggleGlobalSetting('${key}')"><span class="slider"></span></span>
+    ${label}
+  </label>`;
+}
+function toggleGlobalSetting(key){
+  state.settings[key] = !state.settings[key];
+  saveData();
+  render();
+}
+
+function frontJapaneseText(c){
+  if(c.type==='vocabulary') return c.word || c.furigana || '';
+  if(c.type==='grammar') return c.pattern || '';
+  if(c.type==='kanji') return c.character || '';
+  return '';
+}
+function englishFrontText(c){
+  if(c.type==='vocabulary') return c.meaning || '';
+  if(c.type==='grammar') return c.explanation || '';
+  if(c.type==='kanji') return c.meaning || '';
+  return '';
+}
+function renderStudyCard(card){
+  const wrap = document.getElementById('studyCardWrap');
+  const sentenceMode = state.settings.sentenceMode && card.example && card.example.trim();
+  const typedMode = state.settings.typedAnswer && !sentenceMode && (card.type==='vocabulary' || card.type==='kanji');
+  const englishFirst = typedMode ? false : state.settings.englishFirst; // typing requires the JP prompt on front
+  const frontIsJapanese = !englishFirst;
+
+  const jpText = sentenceMode ? card.example : frontJapaneseText(card);
+  const enText = sentenceMode ? (card.exampleTranslation||'') : englishFrontText(card);
+  const frontText = frontIsJapanese ? jpText : enText;
+  const ttsBtn = ttsButtonHtml(jpText);
+  const furiganaLine = (frontIsJapanese && !sentenceMode && state.settings.furigana && card.type==='vocabulary' && card.furigana) ? `<div class="furigana-wrap">${card.furigana}</div>` : '';
+  const frontClass = frontIsJapanese ? 'jp' : '';
+  const sentenceStyle = sentenceMode ? 'font-size:20px;line-height:1.5;' : '';
+
+  if(!studySession.revealed){
+    if(typedMode){
+      wrap.innerHTML = `
+        <div class="study-card" style="cursor:default;">
+          ${furiganaLine}
+          <div class="study-front-word ${frontClass}">${frontText}${ttsBtn}</div>
+          <div class="typed-answer-box">
+            <input id="typedAnswerInput" type="text" placeholder="Type your answer..." autocomplete="off">
+            <button class="btn btn-primary btn-sm" onclick="checkTypedAnswerUI()">Check</button>
+          </div>
+          <button class="btn btn-sm" style="margin-top:10px;" onclick="revealAnswer()">Show answer instead</button>
+        </div>`;
+      const inputEl = document.getElementById('typedAnswerInput');
+      inputEl.focus();
+      inputEl.addEventListener('keydown', e=>{ if(e.key==='Enter') checkTypedAnswerUI(); });
+    } else {
+      wrap.innerHTML = `
+        <div class="study-card" onclick="revealAnswer()">
+          ${furiganaLine}
+          <div class="study-front-word ${frontClass}" style="${sentenceStyle}">${frontText}${frontIsJapanese?ttsBtn:''}</div>
+          <div class="tap-hint">Tap to reveal answer</div>
+        </div>`;
+    }
+  } else {
+    const feedback = studySession.typedResult ? `<div class="typed-feedback ${studySession.typedResult.correct?'correct':'incorrect'}">${studySession.typedResult.correct ? "&#10003; Correct!" : `&#10007; Not quite — you typed "${escapeAttr(studySession.typedResult.typed)}"`}</div>` : '';
+    const jpRevealBlock = englishFirst ? `
+        ${(!sentenceMode && state.settings.furigana && card.type==='vocabulary' && card.furigana) ? `<div class="furigana-wrap">${card.furigana}</div>` : ''}
+        <div class="study-front-word jp" style="${sentenceMode?sentenceStyle:'font-size:28px;'}margin-bottom:4px;">${jpText}${ttsBtn}</div>` : '';
+    const rowsHtml = sentenceMode ? sentenceAnswerRowsHtml(card, englishFirst) : answerRowsHtml(card, englishFirst);
+    wrap.innerHTML = `
+      <div class="study-card" style="cursor:default;">
+        ${furiganaLine}
+        <div class="study-front-word ${frontClass}" style="${sentenceStyle}">${frontText}${frontIsJapanese?ttsBtn:''}</div>
+        <div class="answer-block">
+          ${feedback}
+          ${jpRevealBlock}
+          ${rowsHtml}
+        </div>
+      </div>
+      <div class="grade-row">
+        <button class="grade-btn grade-again" onclick="gradeCard(0)">Again</button>
+        <button class="grade-btn grade-hard" onclick="gradeCard(1)">Hard</button>
+        <button class="grade-btn grade-good" onclick="gradeCard(2)">Good</button>
+        <button class="grade-btn grade-easy" onclick="gradeCard(3)">Easy</button>
+      </div>`;
+  }
+}
+function answerRowsHtml(c, englishFirst){
+  const rows = [];
+  if(c.type==='vocabulary'){
+    if(state.settings.romaji && c.romaji) rows.push(['Romaji', c.romaji]);
+    if(!englishFirst) rows.push(['Meaning', c.meaning]);
+    if(c.pitchAccent){
+      const isPattern = /^[hl]+$/i.test(c.pitchAccent.trim());
+      const display = isPattern
+        ? `${patternLabel(c.pitchAccent)} ${buildPitchSVG(c.pitchAccent.toLowerCase())}`
+        : c.pitchAccent;
+      rows.push(['Pitch accent', display]);
+    }
+    if(c.example) rows.push(['Example', `<span class="jp">${c.example}</span>${ttsButtonHtml(c.example)}${c.exampleTranslation?' — '+c.exampleTranslation:''}`]);
+  } else if(c.type==='grammar'){
+    if(!englishFirst) rows.push(['Explanation', c.explanation]);
+    if(c.example) rows.push(['Example', `<span class="jp">${c.example}</span>${ttsButtonHtml(c.example)}${c.exampleTranslation?' — '+c.exampleTranslation:''}`]);
+  } else {
+    if(!englishFirst) rows.push(['Meaning', c.meaning]);
+    if(c.onyomi) rows.push(["On'yomi", c.onyomi]);
+    if(c.kunyomi) rows.push(["Kun'yomi", c.kunyomi]);
+    if(c.example) rows.push(['Example', `<span class="jp">${c.example}</span>${ttsButtonHtml(c.example)}${c.exampleTranslation?' — '+c.exampleTranslation:''}`]);
+  }
+  return rows.filter(r=>r[1]).map(r=>`<div class="answer-row"><span class="k">${r[0]}</span><span>${r[1]}</span></div>`).join('');
+}
+function sentenceAnswerRowsHtml(c, englishFirst){
+  const rows = [];
+  if(!englishFirst) rows.push(['Translation', c.exampleTranslation||'']);
+  if(c.type==='vocabulary') rows.push(['Key word', `<span class="jp">${c.word||c.furigana||''}</span>${c.meaning?' — '+c.meaning:''}`]);
+  else if(c.type==='grammar') rows.push(['Pattern', `<span class="jp">${c.pattern||''}</span>${c.explanation?' — '+c.explanation:''}`]);
+  else rows.push(['Kanji', `<span class="jp">${c.character||''}</span>${c.meaning?' — '+c.meaning:''}`]);
+  return rows.filter(r=>r[1]).map(r=>`<div class="answer-row"><span class="k">${r[0]}</span><span>${r[1]}</span></div>`).join('');
+}
+function revealAnswer(){ studySession.typedResult = null; studySession.revealed = true; renderStudyCard(studySession.queue[studySession.index]); }
+function splitAnswers(str){
+  return (str||'').split(';').map(s=>s.trim()).filter(Boolean);
+}
+function acceptedAnswers(card){
+  if(card.type==='vocabulary') return splitAnswers(card.meaning);
+  if(card.type==='kanji') return [...splitAnswers(card.meaning), ...splitAnswers(card.onyomi), ...splitAnswers(card.kunyomi)];
+  return [];
+}
+function checkTypedAnswerUI(){
+  const card = studySession.queue[studySession.index];
+  const input = document.getElementById('typedAnswerInput');
+  const typed = input ? input.value.trim() : '';
+  const norm = s => s.trim().toLowerCase();
+  const accepted = acceptedAnswers(card).map(norm);
+  const correct = accepted.includes(norm(typed));
+  studySession.typedResult = { typed, correct };
+  studySession.revealed = true;
+  renderStudyCard(card);
+}
+function gradeCard(grade){
+  const card = studySession.queue[studySession.index];
+  applySM2(card, grade);
+  studySession.typedResult = null;
+  if(grade === 0){
+    // Again: keep studying this card today — requeue it a few cards further along
+    // in this same session, rather than letting it fall out to tomorrow's due date.
+    studySession.queue.splice(studySession.index, 1);
+    const insertAt = Math.min(studySession.queue.length, studySession.index + 3);
+    studySession.queue.splice(insertAt, 0, card);
+  } else {
+    studySession.index += 1;
+  }
+  studySession.revealed = false;
+  renderStudy(document.getElementById('main'));
+}
+function speak(text){
+  if(!('speechSynthesis' in window)) return;
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = 'ja-JP';
+  const voices = speechSynthesis.getVoices();
+  const jpVoice = voices.find(v=>v.lang && v.lang.startsWith('ja'));
+  if(jpVoice) utter.voice = jpVoice;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(utter);
+}
+function ttsButtonHtml(text){
+  if(!state.settings.tts || !text) return '';
+  return `<button class="tts-btn" onclick="speak('${escapeAttr(text)}');event.stopPropagation();" title="Play audio">&#128266;</button>`;
+}
+
+/* ================= SETTINGS ================= */
+function renderSettings(main){
+  main.innerHTML = `
+    <h1 class="page-h">Settings</h1>
+    <p class="page-sub">Defaults applied to new study sessions.</p>
+    <div class="card-box" style="max-width:400px;">
+      <label class="row-flex" style="margin-bottom:14px;"><input type="checkbox" ${state.settings.sentenceMode?'checked':''} onchange="state.settings.sentenceMode=this.checked;saveData()"> Sentence translation practice by default</label>
+      <label class="row-flex" style="margin-bottom:14px;"><input type="checkbox" ${state.settings.typedAnswer?'checked':''} onchange="state.settings.typedAnswer=this.checked;saveData()"> Type answers for vocab/kanji by default</label>
+      <label class="row-flex" style="margin-bottom:14px;"><input type="checkbox" ${state.settings.englishFirst?'checked':''} onchange="state.settings.englishFirst=this.checked;saveData()"> Active recall (start sessions with English)</label>
+      <label class="row-flex" style="margin-bottom:14px;"><input type="checkbox" ${state.settings.furigana?'checked':''} onchange="state.settings.furigana=this.checked;saveData()"> Show furigana by default</label>
+      <label class="row-flex" style="margin-bottom:14px;"><input type="checkbox" ${state.settings.romaji?'checked':''} onchange="state.settings.romaji=this.checked;saveData()"> Show romaji by default</label>
+      <label class="row-flex"><input type="checkbox" ${state.settings.tts?'checked':''} onchange="state.settings.tts=this.checked;saveData()"> Enable text-to-speech</label>
+    </div>
+    <p style="font-size:12px;color:var(--grey-text);margin-top:16px;max-width:400px;">Text-to-speech uses your browser's built-in Japanese voice, if one is installed. Voice quality varies by device.</p>
+  `;
+}
+
+/* ================= STATS ================= */
+function renderStats(main){
+  const totalCards = state.cards.length;
+  const totalDecks = state.decks.length;
+  const mature = state.cards.filter(c=>c.srs.repetitions>=3).length;
+  const learning = state.cards.filter(c=>c.srs.repetitions>0 && c.srs.repetitions<3).length;
+  const newC = state.cards.filter(c=>c.srs.repetitions===0).length;
+  main.innerHTML = `
+    <h1 class="page-h">Stats</h1>
+    <p class="page-sub">Your overall progress.</p>
+    <div class="metric-grid">
+      <div class="metric-card"><div class="metric-label">Total decks</div><div class="metric-value">${totalDecks}</div></div>
+      <div class="metric-card"><div class="metric-label">Total cards</div><div class="metric-value">${totalCards}</div></div>
+      <div class="metric-card"><div class="metric-label">Current streak</div><div class="metric-value">${state.stats.streak}</div></div>
+    </div>
+    <div class="section-label">Card maturity</div>
+    <div class="card-box" style="max-width:400px;">
+      <div class="answer-row"><span class="k">New</span><span>${newC}</span></div>
+      <div class="answer-row"><span class="k">Learning</span><span>${learning}</span></div>
+      <div class="answer-row"><span class="k">Mature</span><span>${mature}</span></div>
+    </div>
+  `;
+}
+
+/* ================= BULK IMPORT ================= */
+const CSV_HEADERS = {
+  vocabulary: ['word','furigana','romaji','meaning','pitchAccent','example','exampleTranslation'],
+  grammar: ['pattern','explanation','example','exampleTranslation'],
+  kanji: ['character','meaning','onyomi','kunyomi','example','exampleTranslation']
+};
+let importState = { type:'vocabulary', rows:[] };
+
+function renderImport(main){
+  const deckOptions = state.decks.map(d=>`<option value="${d.id}">${escapeAttr(d.name)}</option>`).join('');
+  main.innerHTML = `
+    <h1 class="page-h">Bulk import</h1>
+    <p class="page-sub">Paste rows (comma or tab separated), or fill out a blank CSV template.</p>
+    <div class="row-flex" style="margin-bottom:14px;">
+      <div class="field" style="max-width:200px;">
+        <label>Card type</label>
+        <select id="importType" onchange="onImportTypeChange(this.value)">
+          <option value="vocabulary" ${importState.type==='vocabulary'?'selected':''}>Vocabulary</option>
+          <option value="grammar" ${importState.type==='grammar'?'selected':''}>Grammar</option>
+          <option value="kanji" ${importState.type==='kanji'?'selected':''}>Kanji</option>
+        </select>
+      </div>
+      <div class="field" style="max-width:220px;">
+        <label>Import into deck</label>
+        <select id="importDeck">${deckOptions || '<option>Create a deck first</option>'}</select>
+      </div>
+      <div class="field">
+        <label>&nbsp;</label>
+        <button class="btn" onclick="downloadCsvTemplate()">&#8615; Download blank CSV template</button>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--grey-text);margin-bottom:6px;">Column order for <b>${importState.type}</b>: ${CSV_HEADERS[importState.type].join(', ')}</p>
+    ${importState.type==='vocabulary' ? `<p style="font-size:11px;color:var(--grey-text);margin-bottom:10px;">Pitch accent: type the pattern as lowercase letters, one per mora plus a trailing letter for the following particle — h for high, l for low (e.g. <code>lhl</code>). This matches what the pattern buttons generate on the Add card screen.</p>` : ''}
+    <textarea id="importTextarea" class="import-textarea" placeholder="Paste rows here, one per line..."></textarea>
+    <div class="row-flex" style="margin-top:10px;">
+      <button class="btn btn-navy" onclick="previewImport()">Preview</button>
+    </div>
+    <div id="importPreviewWrap"></div>
+  `;
+}
+function onImportTypeChange(t){ importState.type = t; render(); }
+
+function downloadCsvTemplate(){
+  const headers = CSV_HEADERS[importState.type];
+  const csv = headers.join(',') + '\n';
+  const blob = new Blob([csv], {type:'text/csv'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `${importState.type}_template.csv`;
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function parseDelimitedLine(line){
+  const delim = line.includes('\t') ? '\t' : ',';
+  return line.split(delim).map(s=>s.trim());
+}
+function previewImport(){
+  const raw = document.getElementById('importTextarea').value.trim();
+  if(!raw){ return; }
+  const lines = raw.split('\n').map(l=>l.trim()).filter(Boolean);
+  const headers = CSV_HEADERS[importState.type];
+  // skip a header row if it matches
+  const firstCells = parseDelimitedLine(lines[0]).map(c=>c.toLowerCase());
+  const dataLines = firstCells[0]===headers[0].toLowerCase() ? lines.slice(1) : lines;
+  const rows = dataLines.map(l=>{
+    const cells = parseDelimitedLine(l);
+    const obj = {};
+    headers.forEach((h,i)=> obj[h] = cells[i] || '');
+    return obj;
+  });
+  importState.rows = rows;
+  const wrap = document.getElementById('importPreviewWrap');
+  wrap.innerHTML = `
+    <p class="section-label">Preview (${rows.length} row${rows.length===1?'':'s'})</p>
+    <table class="preview-tbl">
+      <thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead>
+      <tbody>${rows.slice(0,8).map(r=>`<tr>${headers.map(h=>`<td class="jp">${escapeAttr(r[h])}</td>`).join('')}</tr>`).join('')}</tbody>
+    </table>
+    ${rows.length>8 ? `<p style="font-size:11px;color:var(--grey-text);margin-top:4px;">+ ${rows.length-8} more row(s)</p>` : ''}
+    <div class="row-flex" style="margin-top:14px;">
+      <button class="btn btn-primary" onclick="confirmImport()">Import ${rows.length} card${rows.length===1?'':'s'}</button>
+    </div>
+  `;
+}
+function confirmImport(){
+  const deckId = document.getElementById('importDeck').value;
+  if(!deckId){ alert('Create a deck first.'); return; }
+  importState.rows.forEach(r=>{
+    const card = newCard(deckId, importState.type);
+    Object.assign(card, r);
+    state.cards.push(card);
+  });
+  saveData();
+  navigate('deck', { deckId });
+}
+
+/* ================= PITCH ACCENT ================= */
+// Splits a hiragana/katakana string into morae. Small ya/yu/yo attach to the
+// preceding kana (e.g. きゃ = 1 mora). っ, ん, and ー each count as their own mora.
+function moraSplit(kana){
+  const smallY = ['ゃ','ゅ','ょ','ャ','ュ','ョ'];
+  const chars = Array.from((kana||'').trim());
+  const out = [];
+  chars.forEach(ch=>{
+    if(smallY.includes(ch) && out.length) out[out.length-1] += ch;
+    else out.push(ch);
+  });
+  return out;
+}
+
+// Returns the set of valid pitch patterns for an n-mora word.
+// Each pattern string has n+1 characters: one per mora, plus a trailing
+// character for the particle that follows (this is what distinguishes
+// heiban from odaka, which are identical within the word itself).
+function pitchPatternOptions(n){
+  if(n<=0) return [];
+  const opts = [];
+  if(n===1){
+    opts.push({ key:'heiban', label:'Heiban (0)', pattern:'lh' });
+    opts.push({ key:'atamadaka', label:'Atamadaka / Odaka (1)', pattern:'hl' });
+    return opts;
+  }
+  opts.push({ key:'heiban', label:'Heiban (0)', pattern:'l'+'h'.repeat(n-1)+'h' });
+  opts.push({ key:'atamadaka', label:'Atamadaka (1)', pattern:'h'+'l'.repeat(n-1)+'l' });
+  for(let k=2;k<=n-1;k++){
+    opts.push({ key:'naka'+k, label:`Nakadaka (${k})`, pattern:'l'+'h'.repeat(k-1)+'l'.repeat(n-k)+'l' });
+  }
+  opts.push({ key:'odaka', label:`Odaka (${n})`, pattern:'l'+'h'.repeat(n-1)+'l' });
+  return opts;
+}
+
+// Builds a small dot-and-line pitch diagram. `pattern` includes the trailing
+// particle char; the particle dot renders smaller and slightly separated.
+function buildPitchSVG(pattern, size='sm'){
+  const chars = (pattern||'').split('');
+  const n = chars.length;
+  if(!n) return '';
+  const stepX = size==='sm' ? 18 : 22;
+  const padX = size==='sm' ? 10 : 12;
+  const wordEnd = n-2; // index of last in-word mora (particle is last char)
+  const w = padX*2 + stepX*(n-1) + 6;
+  const highY = 8, lowY = 26;
+  let dots = '', lines = '';
+  for(let i=0;i<n;i++){
+    const x = padX + stepX*i;
+    const y = chars[i]==='h' ? highY : lowY;
+    const isParticle = i===n-1;
+    const r = isParticle ? 3 : 4.5;
+    const fill = isParticle ? '#c9cdd6' : '#E13B82';
+    dots += `<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}"/>`;
+    if(i>0){
+      const px = padX + stepX*(i-1);
+      const py = chars[i-1]==='h' ? highY : lowY;
+      const dash = isParticle ? ' stroke-dasharray="2,2"' : '';
+      lines += `<line x1="${px}" y1="${py}" x2="${x}" y2="${y}" stroke="#b5bcc7" stroke-width="1.5"${dash}/>`;
+    }
+  }
+  return `<svg width="${w}" height="34" class="pitch-diagram-inline">${lines}${dots}</svg>`;
+}
+
+function patternLabel(pattern){
+  return (pattern||'').toUpperCase().split('').join('-');
+}
+
+function refreshPitchButtons(){
+  const wrap = document.getElementById('pitchButtonsWrap');
+  if(!wrap) return;
+  const furigana = document.getElementById('f_furigana') ? document.getElementById('f_furigana').value : '';
+  const morae = moraSplit(furigana);
+  if(!morae.length){
+    wrap.innerHTML = `<span class="pitch-hint">Enter furigana to see pattern options.</span>`;
+    return;
+  }
+  const opts = pitchPatternOptions(morae.length);
+  wrap.innerHTML = opts.map(o => `
+    <button type="button" class="pitch-btn" data-pattern="${o.pattern}" onclick="selectPitchPattern('${o.pattern}')">
+      <span class="pname">${o.label}</span>
+      ${buildPitchSVG(o.pattern)}
+      <span class="pcode">${patternLabel(o.pattern)}</span>
+    </button>`).join('');
+  highlightSelectedPitchBtn();
+}
+function selectPitchPattern(pattern){
+  document.getElementById('f_pitchAccent').value = pattern;
+  highlightSelectedPitchBtn();
+}
+function highlightSelectedPitchBtn(){
+  const input = document.getElementById('f_pitchAccent');
+  if(!input) return;
+  const val = input.value.trim().toLowerCase();
+  document.querySelectorAll('.pitch-btn').forEach(btn=>{
+    btn.classList.toggle('selected', btn.dataset.pattern===val);
+  });
+}
+
+let addCardState = { type:'vocabulary' };
+function renderAddCard(main){
+  const editing = view.editingCardId ? state.cards.find(c=>c.id===view.editingCardId) : null;
+  addCardState.type = editing ? editing.type : (addCardState.type||'vocabulary');
+  const deckOptions = state.decks.map(d=>`<option value="${d.id}" ${view.deckId===d.id?'selected':''}>${escapeAttr(d.name)}</option>`).join('');
+
+  main.innerHTML = `
+    <h1 class="page-h">${editing?'Edit card':'Add card'}</h1>
+    <p class="page-sub">Choose a card type, then fill in the fields.</p>
+    <div class="field" style="max-width:300px;margin-bottom:16px;">
+      <label>Deck</label>
+      <select id="cardDeckSelect">${deckOptions || '<option>Create a deck first</option>'}</select>
+    </div>
+    <div class="type-tabs">
+      <button class="type-tab ${addCardState.type==='vocabulary'?'active':''}" onclick="setCardType('vocabulary')">Vocabulary</button>
+      <button class="type-tab ${addCardState.type==='grammar'?'active':''}" onclick="setCardType('grammar')">Grammar</button>
+      <button class="type-tab ${addCardState.type==='kanji'?'active':''}" onclick="setCardType('kanji')">Kanji</button>
+    </div>
+    <div id="cardFieldsWrap"></div>
+    <div class="row-flex" style="margin-top:20px;">
+      <button class="btn btn-primary" onclick="saveCard('${editing?editing.id:''}')">Save card</button>
+      <button class="btn" onclick="navigate(view.deckId?'deck':'home', view.deckId?{deckId:view.deckId}:{})">Cancel</button>
+    </div>
+  `;
+  renderCardFields(editing);
+}
+function setCardType(t){ addCardState.type = t; render(); }
+
+function renderCardFields(editing){
+  const wrap = document.getElementById('cardFieldsWrap');
+  const v = (field)=> editing ? escapeAttr(editing[field]) : '';
+  if(addCardState.type==='vocabulary'){
+    wrap.innerHTML = `
+    <div class="form-grid">
+      <div class="field"><label>Word (kanji, or hiragana if no kanji)</label><input id="f_word" class="jp" value="${v('word')}"></div>
+      <div class="field"><label>Furigana</label><input id="f_furigana" class="jp" value="${v('furigana')}"></div>
+      <div class="field"><label>Romaji</label><input id="f_romaji" value="${v('romaji')}"></div>
+      <div class="field field-full">
+        <label>Pitch accent pattern</label>
+        <p class="pitch-hint">Type the furigana above, then pick the pattern that matches — or edit the code directly. <button type="button" class="btn btn-sm" style="margin-left:4px;" onclick="refreshPitchButtons()">Show patterns</button></p>
+        <div id="pitchButtonsWrap" class="pitch-btn-grid"></div>
+        <input id="f_pitchAccent" style="margin-top:8px;max-width:200px;" placeholder="e.g. lhl" value="${v('pitchAccent')}" oninput="highlightSelectedPitchBtn()">
+      </div>
+      <div class="field field-full"><label>English meaning</label><input id="f_meaning" value="${v('meaning')}" placeholder="e.g. student; pupil"><p class="pitch-hint" style="margin-top:4px;margin-bottom:0;">Separate multiple accepted meanings with a semicolon — all become correct answers when typing.</p></div>
+      <div class="field field-full"><label>Example sentence (Japanese)</label><input id="f_example" class="jp" value="${v('example')}"></div>
+      <div class="field field-full"><label>Example translation</label><input id="f_exampleTranslation" value="${v('exampleTranslation')}"></div>
+    </div>`;
+    refreshPitchButtons();
+    const furiganaEl = document.getElementById('f_furigana');
+    if(furiganaEl){
+      ['input','keyup','change','compositionend','paste'].forEach(evt=>{
+        furiganaEl.addEventListener(evt, ()=> setTimeout(refreshPitchButtons, 0));
+      });
+    }
+  } else if(addCardState.type==='grammar'){
+    wrap.innerHTML = `
+    <div class="form-grid">
+      <div class="field field-full"><label>Grammar pattern</label><input id="f_pattern" class="jp" value="${v('pattern')}"></div>
+      <div class="field field-full"><label>Explanation</label><textarea id="f_explanation" rows="3">${v('explanation')}</textarea></div>
+      <div class="field field-full"><label>Example sentence (Japanese)</label><input id="f_example" class="jp" value="${v('example')}"></div>
+      <div class="field field-full"><label>Example translation</label><input id="f_exampleTranslation" value="${v('exampleTranslation')}"></div>
+    </div>`;
+  } else {
+    wrap.innerHTML = `
+    <div class="form-grid">
+      <div class="field"><label>Kanji character</label><input id="f_character" class="jp" style="font-size:20px" value="${v('character')}"></div>
+      <div class="field"><label>English meaning</label><input id="f_meaning" value="${v('meaning')}" placeholder="e.g. student; pupil"></div>
+      <div class="field"><label>On'yomi readings</label><input id="f_onyomi" class="jp" value="${v('onyomi')}" placeholder="e.g. セイ; ショウ"></div>
+      <div class="field"><label>Kun'yomi readings</label><input id="f_kunyomi" class="jp" value="${v('kunyomi')}" placeholder="e.g. いきる; う"></div>
+      <p class="pitch-hint field-full" style="margin:0 0 4px;">Separate multiple readings/meanings with a semicolon — any of them (meaning, on'yomi, or kun'yomi) count as a correct typed answer.</p>
+      <div class="field field-full"><label>Example word (Japanese)</label><input id="f_example" class="jp" value="${v('example')}"></div>
+      <div class="field field-full"><label>Example translation</label><input id="f_exampleTranslation" value="${v('exampleTranslation')}"></div>
+    </div>`;
+  }
+}
+function saveCard(existingId){
+  const deckId = document.getElementById('cardDeckSelect').value;
+  if(!deckId){ alert('Create a deck first.'); return; }
+  const type = addCardState.type;
+  const grab = (id)=> document.getElementById(id) ? document.getElementById(id).value.trim() : '';
+  let card = existingId ? state.cards.find(c=>c.id===existingId) : newCard(deckId, type);
+  card.deckId = deckId; card.type = type;
+  if(type==='vocabulary'){
+    Object.assign(card, { word:grab('f_word'), furigana:grab('f_furigana'), romaji:grab('f_romaji'), pitchAccent:grab('f_pitchAccent'), meaning:grab('f_meaning'), example:grab('f_example'), exampleTranslation:grab('f_exampleTranslation') });
+  } else if(type==='grammar'){
+    Object.assign(card, { pattern:grab('f_pattern'), explanation:grab('f_explanation'), example:grab('f_example'), exampleTranslation:grab('f_exampleTranslation') });
+  } else {
+    Object.assign(card, { character:grab('f_character'), meaning:grab('f_meaning'), onyomi:grab('f_onyomi'), kunyomi:grab('f_kunyomi'), example:grab('f_example'), exampleTranslation:grab('f_exampleTranslation') });
+  }
+  if(!existingId) state.cards.push(card);
+  saveData();
+  navigate('deck', { deckId });
+}
+
+/* ================= DECK BROWSE ================= */
+function deckStatsSummary(deckId){
+  const cards = state.cards.filter(c=>c.deckId===deckId);
+  const totalReviews = cards.reduce((sum,c)=> sum + Object.values(c.stats||{}).reduce((a,b)=>a+b,0), 0);
+  const mature = cards.filter(c=>c.srs.repetitions>=3).length;
+  const learning = cards.filter(c=>c.srs.repetitions>0 && c.srs.repetitions<3).length;
+  const newC = cards.filter(c=>c.srs.repetitions===0).length;
+  return { totalReviews, mature, learning, newC };
+}
+function renderDeckBrowse(main){
+  const deck = state.decks.find(d=>d.id===view.deckId);
+  if(!deck){ navigate('home'); return; }
+  const cards = state.cards.filter(c=>c.deckId===deck.id);
+  const s = deckStatsSummary(deck.id);
+  main.innerHTML = `
+    <div class="row-flex" style="justify-content:space-between;margin-bottom:4px;">
+      <h1 class="page-h">${escapeAttr(deck.name)}</h1>
+      <div class="row-flex">
+        <button class="btn" onclick="navigate('addcard',{deckId:'${deck.id}'})">+ Add card</button>
+        <button class="btn btn-primary" onclick="startStudy('${deck.id}')">Study this deck</button>
+      </div>
+    </div>
+    <p class="page-sub">${cards.length} card${cards.length===1?'':'s'} &middot; ${dueCount(deck.id)} due</p>
+    ${cards.length ? `
+    <div class="metric-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px;">
+      <div class="metric-card"><div class="metric-label">New</div><div class="metric-value">${s.newC}</div></div>
+      <div class="metric-card"><div class="metric-label">Learning</div><div class="metric-value">${s.learning}</div></div>
+      <div class="metric-card"><div class="metric-label">Mature</div><div class="metric-value">${s.mature}</div></div>
+      <div class="metric-card"><div class="metric-label">Total reviews</div><div class="metric-value pink">${s.totalReviews}</div></div>
+    </div>
+    <table class="tbl">
+      <thead><tr><th><input type="checkbox" onchange="toggleAllCardSelect(this.checked)"></th><th>Type</th><th>Front</th><th>Back summary</th><th>Marked as</th><th>Ease</th><th>Due</th><th></th></tr></thead>
+      <tbody>
+        ${cards.map(c=>cardRowHtml(c)).join('')}
+      </tbody>
+    </table>` : `<div class="empty-state"><div class="big">No cards yet</div>Add your first card or bulk import a list.</div>`}
+    <div id="card-bulk-bar" class="row-flex" style="margin-top:12px;display:none;">
+      <span style="font-size:12px;color:var(--grey-text)" id="cardSelCountLabel"></span>
+      <button class="btn btn-sm" style="color:#c0392b;border-color:#c0392b;" onclick="bulkDeleteSelectedCards()">Delete selected</button>
+    </div>
+  `;
+}
+function cardFrontLabel(c){
+  if(c.type==='vocabulary') return c.word || '(no word)';
+  if(c.type==='grammar') return c.pattern || '(no pattern)';
+  if(c.type==='kanji') return c.character || '(no character)';
+  return '';
+}
+function cardBackSummary(c){
+  if(c.type==='vocabulary') return [c.meaning, c.pitchAccent?`Pitch: ${c.pitchAccent}`:''].filter(Boolean).join(' &middot; ');
+  if(c.type==='grammar') return c.explanation||'';
+  if(c.type==='kanji') return [c.meaning, c.onyomi?`On: ${c.onyomi}`:'', c.kunyomi?`Kun: ${c.kunyomi}`:''].filter(Boolean).join(' &middot; ');
+  return '';
+}
+function markedAsHtml(c){
+  const st = c.stats || {again:0,hard:0,good:0,easy:0};
+  const total = st.again+st.hard+st.good+st.easy;
+  if(total===0) return `<span style="font-size:11px;color:var(--grey-text);">Not studied yet</span>`;
+  const chip = (cls,label,n)=> n>0 ? `<span class="grade-btn ${cls}" style="padding:2px 7px;font-size:10px;display:inline-block;">${label} ${n}</span>` : '';
+  return `<div style="display:flex;gap:4px;flex-wrap:wrap;">
+    ${chip('grade-again','Again',st.again)}
+    ${chip('grade-hard','Hard',st.hard)}
+    ${chip('grade-good','Good',st.good)}
+    ${chip('grade-easy','Easy',st.easy)}
+  </div>`;
+}
+function cardRowHtml(c){
+  const chip = c.type==='vocabulary'?'type-vocab':c.type==='grammar'?'type-grammar':'type-kanji';
+  const due = isDue(c);
+  return `<tr>
+    <td><input type="checkbox" class="card-select-cb" data-card-id="${c.id}" onchange="onCardSelectChange()"></td>
+    <td><span class="type-chip ${chip}">${c.type}</span></td>
+    <td class="jp">${cardFrontLabel(c)}</td>
+    <td>${cardBackSummary(c)}</td>
+    <td>${markedAsHtml(c)}</td>
+    <td style="font-size:12px;color:var(--grey-text);">${c.srs.ease.toFixed(2)}</td>
+    <td>${due?'<span class="badge badge-due">Due</span>':new Date(c.srs.due).toLocaleDateString('en-AU')}</td>
+    <td class="row-flex">
+      <button class="edit-btn" onclick="navigate('addcard',{deckId:'${c.deckId}', editingCardId:'${c.id}'})" title="Edit">&#9998;</button>
+      <button class="trash-btn" onclick="deleteCard('${c.id}')" title="Delete">&#128465;</button>
+    </td>
+  </tr>`;
+}
+function deleteCard(id){
+  if(confirm('Delete this card?')){
+    state.cards = state.cards.filter(c=>c.id!==id);
+    saveData(); render();
+  }
+}
+function toggleAllCardSelect(checked){
+  document.querySelectorAll('.card-select-cb').forEach(cb=> cb.checked = checked);
+  onCardSelectChange();
+}
+function onCardSelectChange(){
+  const checked = [...document.querySelectorAll('.card-select-cb:checked')];
+  const bar = document.getElementById('card-bulk-bar');
+  if(checked.length>0){
+    bar.style.display='flex';
+    document.getElementById('cardSelCountLabel').textContent = `${checked.length} card${checked.length===1?'':'s'} selected`;
+  } else {
+    bar.style.display='none';
+  }
+}
+function bulkDeleteSelectedCards(){
+  const ids = [...document.querySelectorAll('.card-select-cb:checked')].map(cb=>cb.dataset.cardId);
+  if(ids.length===0) return;
+  if(confirm(`Delete ${ids.length} selected card${ids.length===1?'':'s'}? This can't be undone.`)){
+    state.cards = state.cards.filter(c=>!ids.includes(c.id));
+    saveData(); render();
+  }
+}
+
+/* ================= ALL DECKS ================= */
+function renderAllDecks(main){
+  const term = view.searchTerm;
+  const folders = state.folders.filter(f=> !term || f.name.toLowerCase().includes(term));
+  const decks = sortedDecks().filter(d=> !d.folderId && (!term || d.name.toLowerCase().includes(term)));
+  main.innerHTML = `
+    <h1 class="page-h">All decks</h1>
+    <p class="page-sub">${decks.length} ungrouped deck${decks.length===1?'':'s'} &middot; ${folders.length} folder${folders.length===1?'':'s'}</p>
+    ${folders.length ? `<div class="section-label">Folders</div><div class="deck-list">${folders.map(f=>folderRowHtml(f)).join('')}</div>` : ''}
+    <div class="section-label">Decks</div>
+    <div class="deck-list">
+      ${decks.length ? decks.map(d=>deckRowHtml(d)).join('') : `<div style="padding:20px;text-align:center;" class="deck-empty">No decks match.</div>`}
+    </div>
+    <div class="quick-row"><button class="btn" onclick="promptNewDeck()">+ New deck</button><button class="btn" onclick="promptNewFolder()">+ New folder</button></div>
+  `;
+  wireDeckRowEvents();
+}
+</script>
+</body>
+</html>
