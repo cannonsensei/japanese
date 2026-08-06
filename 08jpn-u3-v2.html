@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>レストランで: At the Restaurant | Year 8 Japanese</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-dark:#001233; --navy:#002855; --navy-mid:#1a407a; --navy-tint:#eef3fa;
+  --border-light:#c8d4e8; --pink:#C4007A; --pink-light:#fdf0f8; --pink-hover:#a0005f;
+  --text-sec:#4d6a99; --text-en:#445566; --white:#ffffff;
+  --font-en:'Montserrat',sans-serif; --font-jp:'Noto Sans JP',sans-serif;
+  --trans:0.18s ease;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--white);font-family:var(--font-en);color:var(--navy);}
+.jp{font-family:var(--font-jp);}
+
+/* ── HEADER ── */
+.site-header{background:var(--navy-dark);padding:22px 40px;}
+.header-inner{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;}
+.header-eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8fa8d4;margin-bottom:6px;}
+.header-title{font-size:1.5rem;font-weight:800;color:white;margin:0;letter-spacing:-0.01em;}
+.header-title .jp{font-weight:700;}
+.header-sub{font-size:0.78rem;color:#a9bce0;margin-top:5px;}
+.header-badge{background:var(--pink);color:white;font-size:0.68rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:8px 16px;border-radius:20px;white-space:nowrap;}
+
+main{max-width:1180px;margin:0 auto;padding:32px 40px 140px;}
+
+/* ── INTRO ── */
+.intro{margin-bottom:28px;}
+.intro-label{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--pink);margin-bottom:8px;}
+.intro-heading{font-size:1.25rem;font-weight:800;color:var(--navy);margin:0 0 8px;}
+.intro-body{font-size:0.85rem;color:var(--text-en);line-height:1.6;max-width:760px;margin:0;}
+
+/* ── TAB NAV ── */
+.tab-nav{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 28px;padding:14px;background:white;border:1.5px solid var(--border-light);border-radius:12px;}
+.tab-btn{font-family:var(--font-en);font-size:0.68rem;font-weight:700;letter-spacing:0.02em;color:var(--navy-mid);background:var(--navy-tint);border:1.5px solid var(--border-light);border-radius:8px;padding:9px 14px;cursor:pointer;transition:all var(--trans);display:flex;align-items:center;gap:7px;}
+.tab-btn .tnum{font-family:var(--font-en);font-weight:800;font-size:0.62rem;color:var(--text-sec);}
+.tab-btn:hover{background:var(--pink-light);border-color:var(--pink);color:var(--pink-hover);}
+.tab-btn.active{background:var(--navy);border-color:var(--navy);color:white;}
+.tab-btn.active .tnum{color:#9fc0f0;}
+
+/* ── STAGE SECTION ── */
+.stage{display:none;}
+.stage.active{display:block;animation:fadeIn 0.25s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+.stage-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;flex-wrap:wrap;}
+.stage-num{font-family:var(--font-en);font-size:1.6rem;font-weight:800;color:var(--border-light);}
+.stage-title{font-size:1.15rem;font-weight:800;color:var(--navy);margin:0;}
+.stage-jp{font-size:0.85rem;color:var(--pink);font-weight:700;}
+.stage-note{font-size:0.8rem;color:var(--text-en);line-height:1.55;margin:6px 0 20px;max-width:760px;}
+
+/* ── COLUMN GRID ── */
+.board-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+@media (max-width:760px){.board-grid{grid-template-columns:1fr;}}
+.col-head{display:flex;align-items:center;gap:9px;margin-bottom:12px;padding-bottom:10px;border-bottom:2px solid var(--border-light);}
+.col-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0;}
+.col-staff .col-icon{background:var(--navy);color:white;}
+.col-customer .col-icon{background:var(--pink);color:white;}
+.col-title{font-size:0.72rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--navy);}
+.col-title .jp{font-size:0.72rem;color:var(--text-sec);font-weight:600;margin-left:4px;text-transform:none;letter-spacing:0;}
+
+.card-list{display:flex;flex-direction:column;gap:10px;}
+.card{background:white;border:1.5px solid var(--border-light);border-radius:10px;padding:14px 16px;transition:box-shadow var(--trans),border-color var(--trans);}
+.card:hover{border-color:var(--navy-mid);box-shadow:0 3px 10px rgba(0,40,85,0.08);}
+.col-customer .card:hover{border-color:var(--pink);}
+.card-tag{display:inline-block;font-size:0.56rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-sec);background:var(--navy-tint);border:1px solid var(--border-light);border-radius:3px;padding:2px 7px;margin-bottom:8px;}
+.col-customer .card-tag{color:var(--pink-hover);background:var(--pink-light);border-color:#f3c6e2;}
+.card-jp{font-family:var(--font-jp);font-size:1.02rem;font-weight:500;color:var(--navy);line-height:1.5;margin-bottom:4px;}
+.card-jp .fill{color:var(--pink);font-weight:700;border-bottom:1.5px dashed var(--pink);}
+.card-en{font-size:0.76rem;color:var(--text-en);font-style:italic;line-height:1.4;}
+.card-sel{margin-top:9px;width:100%;font-family:var(--font-jp);font-size:0.78rem;color:var(--navy);background:var(--navy-tint);border:1.5px solid var(--border-light);border-radius:6px;padding:6px 8px;cursor:pointer;}
+.card-foot{display:flex;gap:8px;margin-top:10px;}
+.btn-mini{flex:1;font-family:var(--font-en);font-size:0.62rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;padding:7px 10px;border-radius:6px;cursor:pointer;text-align:center;border:1.5px solid var(--border-light);background:var(--navy-tint);color:var(--navy);transition:all var(--trans);}
+.btn-mini:hover{background:var(--navy);color:white;border-color:var(--navy);}
+.btn-mini.pink{background:var(--pink-light);border-color:#f3c6e2;color:var(--pink-hover);}
+.btn-mini.pink:hover{background:var(--pink);color:white;border-color:var(--pink);}
+
+/* ── VOCAB ACCORDION ── */
+.vocab-section{margin-top:40px;}
+.vocab-title{font-size:0.9rem;font-weight:800;color:var(--navy);margin-bottom:12px;}
+.vocab-acc{border:1.5px solid var(--border-light);border-radius:10px;overflow:hidden;margin-bottom:10px;background:white;}
+.vocab-acc-head{padding:13px 18px;background:var(--navy-tint);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:0.8rem;font-weight:700;color:var(--navy);}
+.vocab-acc-head:hover{background:#e2ebf7;}
+.vocab-acc-body{display:none;padding:14px 18px;}
+.vocab-acc.open .vocab-acc-body{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 20px;}
+.vocab-acc.open .vocab-arrow{transform:rotate(90deg);}
+.vocab-arrow{transition:transform var(--trans);color:var(--pink);font-weight:800;}
+.vocab-item{display:flex;justify-content:space-between;font-size:0.8rem;padding:5px 0;border-bottom:1px dotted var(--border-light);}
+.vocab-item .jp{color:var(--navy);font-weight:500;}
+.vocab-item .en{color:var(--text-en);font-style:italic;font-size:0.74rem;}
+@media (max-width:600px){.vocab-acc.open .vocab-acc-body{grid-template-columns:1fr;}}
+
+/* ── SCRIPT PANEL ── */
+.script-toggle{position:fixed;right:24px;bottom:24px;background:var(--pink);color:white;border:none;border-radius:30px;padding:13px 20px;font-family:var(--font-en);font-size:0.75rem;font-weight:800;letter-spacing:0.04em;cursor:pointer;box-shadow:0 6px 18px rgba(196,0,122,0.35);z-index:50;display:flex;align-items:center;gap:8px;}
+.script-toggle:hover{background:var(--pink-hover);}
+.script-badge{background:white;color:var(--pink-hover);border-radius:50%;width:20px;height:20px;font-size:0.68rem;display:flex;align-items:center;justify-content:center;font-weight:800;}
+.script-panel{position:fixed;right:24px;bottom:88px;width:340px;max-height:60vh;background:white;border:1.5px solid var(--border-light);border-radius:14px;box-shadow:0 10px 30px rgba(0,20,50,0.2);z-index:49;display:none;flex-direction:column;overflow:hidden;}
+.script-panel.open{display:flex;}
+.script-panel-head{background:var(--navy-dark);color:white;padding:14px 18px;font-size:0.78rem;font-weight:800;display:flex;justify-content:space-between;align-items:center;}
+.script-panel-close{cursor:pointer;color:#a9bce0;font-size:1rem;}
+.script-items{flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:8px;}
+.script-empty{font-size:0.76rem;color:var(--text-sec);text-align:center;padding:24px 10px;}
+.script-item{background:var(--navy-tint);border:1px solid var(--border-light);border-radius:8px;padding:9px 11px;position:relative;}
+.script-item.playing{border-color:var(--pink);background:var(--pink-light);}
+.script-item-jp{font-family:var(--font-jp);font-size:0.85rem;color:var(--navy);}
+.script-item-en{font-size:0.7rem;color:var(--text-en);font-style:italic;margin-top:2px;}
+.script-item-rm{position:absolute;top:6px;right:8px;font-size:0.7rem;color:var(--text-sec);cursor:pointer;}
+.script-item-rm:hover{color:var(--pink);}
+.script-panel-foot{display:flex;gap:8px;padding:12px 14px;border-top:1.5px solid var(--border-light);}
+.script-panel-foot .btn-mini{font-size:0.6rem;}
+
+/* ── TTS BAR ── */
+.tts-bar{position:fixed;left:0;bottom:0;width:100%;background:var(--navy-dark);padding:12px 24px;display:none;align-items:center;gap:14px;z-index:48;}
+.tts-bar.on{display:flex;}
+.tts-dot{width:10px;height:10px;border-radius:50%;background:var(--pink);animation:pulse 1s infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.tts-txt{font-family:var(--font-jp);color:white;font-size:0.85rem;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div>
+      <div class="header-eyebrow">St Aidan's Anglican Girls' School &nbsp;·&nbsp; Japanese</div>
+      <h1 class="header-title"><span class="jp">レストランで</span>: At the Restaurant</h1>
+      <div class="header-sub">Interactive talking board: from arriving and waiting through to paying the bill</div>
+    </div>
+    <div class="header-badge">Year 8 Japanese</div>
+  </div>
+</header>
+
+<main>
+  <div class="intro">
+    <div class="intro-label">Talking Board</div>
+    <h2 class="intro-heading">Choose a stage of the meal &nbsp;<span class="jp">· しょくじの ばめんを えらんでください</span></h2>
+    <p class="intro-body">Work through each stage in order, or jump straight to the one you need. Staff (てんいんさん) phrases sit on the left, customer (おきゃくさん) phrases on the right. Tap 🔊 to hear a line, and <strong>+ Script</strong> to build your own dialogue in the panel bottom-right.</p>
+  </div>
+
+  <nav class="tab-nav" id="tabNav"></nav>
+
+  <div id="stagesWrap"></div>
+
+  <div class="vocab-section">
+    <div class="vocab-title">📖 Key Vocabulary</div>
+    <div id="vocabWrap"></div>
+  </div>
+</main>
+
+<button class="script-toggle" id="scriptToggleBtn" onclick="toggleScriptPanel()">
+  🗒 My Script <span class="script-badge" id="scriptCount">0</span>
+</button>
+
+<div class="script-panel" id="scriptPanel">
+  <div class="script-panel-head">
+    <span>🗒 My Script</span>
+    <span class="script-panel-close" onclick="toggleScriptPanel()">✕</span>
+  </div>
+  <div class="script-items" id="scriptItems">
+    <div class="script-empty">Tap <strong>+ Script</strong> on any card to add it here.</div>
+  </div>
+  <div class="script-panel-foot">
+    <button class="btn-mini pink" onclick="playScript()">▶ Play All</button>
+    <button class="btn-mini" onclick="copyScript()">📋 Copy</button>
+    <button class="btn-mini" onclick="clearScript()">🗑 Clear</button>
+  </div>
+</div>
+
+<div class="tts-bar" id="ttsBar">
+  <div class="tts-dot"></div>
+  <div class="tts-txt" id="ttsTxt"></div>
+</div>
+
+<script>
+const DATA = {"stages": [{"id": "arrival", "num": "01", "label": "Arrival & Waiting", "jpLabel": "入店・待ち時間", "note": "The restaurant may be full: staff greet you, ask your party size, and let you know how long you'll wait.", "staff": [{"tag": "GREETING", "jp": "いらっしゃいませ！", "en": "Welcome!"}, {"tag": "QUESTION", "jp": "ごよやくは されているんでしょうか。", "en": "Have you made a reservation?"}, {"tag": "QUESTION", "jp": "なんめいさまですか。", "en": "How many people, please?"}, {"tag": "STATUS", "jp": "もうしわけございません、ただいま まんせきです。", "en": "I'm sorry, we're fully booked right now."}, {"tag": "STATUS", "jp": "もうしわけございません、ほんじつは かしきりに なっております。", "en": "Sorry, we're fully booked today due to a private function."}, {"tag": "FAREWELL", "jp": "またのおこしを おまちしております。", "en": "We look forward to your next visit."}, {"tag": "WAIT TIME", "dyn": true, "tplJp": "○○くらい まちます。", "tplEn": "It'll be about a ___ wait.", "opts": [{"jp": "じゅっぷん", "en": "10 minutes"}, {"jp": "にじゅっぷん", "en": "20 minutes"}, {"jp": "よんじゅっぷん", "en": "40 minutes"}, {"jp": "さんじゅっぷん", "en": "30 minutes"}, {"jp": "さんじゅっぷんいじょう", "en": "more than 30 minutes"}]}, {"tag": "REQUEST", "jp": "おなまえを おねがいします。", "en": "May I have your name, please?"}, {"tag": "INFO", "jp": "おせきの じゅんびが できましたら およびします。", "en": "We'll call your name when your table's ready."}, {"tag": "QUESTION", "jp": "きんえんせきと きつえんせき、どちらが よろしいですか。", "en": "Non-smoking or smoking, which would you prefer?"}, {"tag": "INFO", "jp": "こちらへ どうぞ。", "en": "This way, please."}], "customer": [{"tag": "RESPONSE", "jp": "よやくをしています。[surname]です。", "en": "Yes, I have a reservation. It's booked under the name [surname]."}, {"tag": "RESPONSE", "jp": "いえ。", "en": "No."}, {"tag": "QUESTION", "jp": "すみません、よやくしてないのですが、あいていますか。", "en": "Sorry, I haven't booked, but is there a table available?"}, {"tag": "PARTY SIZE", "dyn": true, "tplJp": "○○です。", "tplEn": "___ people.", "opts": [{"jp": "ひとり", "en": "One"}, {"jp": "ふたり", "en": "Two"}, {"jp": "さんにん", "en": "Three"}, {"jp": "よにん", "en": "Four"}, {"jp": "ごにん", "en": "Five"}, {"jp": "ろくにん", "en": "Six"}]}, {"tag": "QUESTION", "jp": "どのくらい まちますか。", "en": "How long will we have to wait?"}, {"tag": "SEAT PREF", "dyn": true, "tplJp": "○○で おねがいします。", "tplEn": "___, please.", "opts": [{"jp": "きんえんせき", "en": "Non-smoking"}, {"jp": "きつえんせき", "en": "Smoking"}]}, {"tag": "QUESTION", "jp": "まどぎわの せきは ありますか。", "en": "Is there a seat by the window?"}, {"tag": "QUESTION", "jp": "こしつは ありますか。", "en": "Do you have a private room?"}, {"tag": "RESPONSE", "jp": "はい、まちます。", "en": "Yes, we'll wait."}, {"tag": "RESPONSE", "jp": "わかりました、また きます。", "en": "Understood, we'll come back later."}]}, {"id": "seating", "num": "02", "label": "Being Seated", "jpLabel": "せきに つく", "note": "Once your table's ready, staff show you to your seat and hand over the menu.", "staff": [{"tag": "QUESTION", "jp": "おざしきと いすせき、どちらに なさいますか。", "en": "Would you like tatami seating or chair seating?"}, {"tag": "INFO", "jp": "ごあんない いたします。", "en": "I'll show you the way."}, {"tag": "ETIQUETTE", "jp": "しつれいします。", "en": "Excuse me (said when entering the room)."}, {"tag": "ETIQUETTE", "jp": "くつしたを どうぞ。", "en": "Please put on socks (for the tatami room)."}, {"tag": "QUESTION", "jp": "こちらの せきで よろしいですか。", "en": "Is this seat okay?"}, {"tag": "INFO", "jp": "メニューです、どうぞ。", "en": "Here's the menu, please."}, {"tag": "INFO", "jp": "メニューになります。", "en": "Here is the menu."}, {"tag": "INFO", "dyn": true, "tplJp": "こちらが○○の メニューで ございます。", "tplEn": "Here is the ___ menu.", "opts": [{"jp": "おひる", "en": "lunch"}, {"jp": "よる", "en": "dinner"}]}, {"tag": "INFO", "dyn": true, "tplJp": "えいごの メニューも ○○。", "tplEn": "We also have an English menu.", "opts": [{"jp": "ございます", "en": "we have (polite)"}, {"jp": "あります", "en": "we have (plain)"}]}, {"tag": "INFO", "jp": "おきまりになりましたら およびください。", "en": "Please call us when you've decided."}], "customer": [{"tag": "SEAT TYPE", "dyn": true, "tplJp": "○○で おねがいします。", "tplEn": "___, please.", "opts": [{"jp": "おざしき", "en": "Tatami seating"}, {"jp": "いすせき", "en": "Chair seating"}]}, {"tag": "RESPONSE", "jp": "はい、けっこうです。", "en": "Yes, that's fine."}, {"tag": "REQUEST", "jp": "べつの せきは ありますか。", "en": "Is there another seat available?"}, {"tag": "REQUEST", "jp": "メニューを みせて ください。", "en": "Could you show me the menu, please?"}, {"tag": "QUESTION", "jp": "えいごの メニューは ありますか。", "en": "Do you have an English menu?"}, {"tag": "CALLING", "jp": "すみません！", "en": "Excuse me! (calling staff over)"}, {"tag": "COMMENT", "jp": "すてきな おみせですね。", "en": "What a lovely restaurant!"}]}, {"id": "ordering", "num": "03", "label": "Ordering", "jpLabel": "ちゅうもん", "note": "Deciding what to eat, asking for recommendations, and placing the order.", "staff": [{"tag": "QUESTION", "jp": "ごちゅうもんは おきまりですか。", "en": "Have you decided on your order?"}, {"tag": "RECOMMEND", "dyn": true, "tplJp": "きょうの おすすめは○○です。", "tplEn": "Today's recommendation is ___.", "opts": [{"jp": "おすし", "en": "sushi"}, {"jp": "てんぷら", "en": "tempura"}, {"jp": "すきやき", "en": "sukiyaki"}, {"jp": "うなぎ", "en": "eel"}]}, {"tag": "RECOMMEND", "jp": "こちらが いちばん にんきです。", "en": "This is the most popular."}, {"tag": "INFO", "jp": "このりょうりは からいです。", "en": "This dish is spicy."}, {"tag": "INFO", "jp": "ふたりまえで じゅうぶんです。", "en": "That's enough for two people."}, {"tag": "RESPONSE", "jp": "かしこまりました。", "en": "Certainly."}, {"tag": "QUESTION", "jp": "おのみものは さきに おもちしましょうか。", "en": "Shall I bring your drinks first?"}], "customer": [{"tag": "STATEMENT", "jp": "まだ きまっていません、もうすこし じかんを ください。", "en": "We haven't decided yet, a bit more time, please."}, {"tag": "REQUEST", "jp": "ちゅうもんを おねがいします。", "en": "I'd like to order, please."}, {"tag": "QUESTION", "jp": "おすすめは なんですか。", "en": "What do you recommend?"}, {"tag": "QUESTION", "jp": "おすすめは どれですか。", "en": "Which one do you recommend? (pointing at the menu)"}, {"tag": "QUESTION", "jp": "これは どんな りょうりですか。", "en": "What kind of dish is this?"}, {"tag": "QUESTION", "jp": "りょうは おおいですか。", "en": "Is the portion large?"}, {"tag": "ORDER", "dyn": true, "tplJp": "○○を ください。", "tplEn": "I'll have ___, please.", "opts": [{"jp": "おすし", "en": "sushi"}, {"jp": "ラーメン", "en": "ramen"}, {"jp": "てんぷら", "en": "tempura"}, {"jp": "からあげ", "en": "fried chicken"}, {"jp": "うどん", "en": "udon"}, {"jp": "カレー", "en": "curry"}, {"jp": "ぎょうざ", "en": "gyoza"}, {"jp": "おこのみやき", "en": "okonomiyaki"}]}, {"tag": "REQUEST", "jp": "わたしも おなじものを おねがいします。", "en": "I'll have the same, please."}, {"tag": "ORDER", "dyn": true, "tplJp": "それを○○ ください。", "tplEn": "___ of that, please. (pointing at the menu)", "opts": [{"jp": "ひとつ", "en": "One"}, {"jp": "ふたつ", "en": "Two"}, {"jp": "みっつ", "en": "Three"}, {"jp": "よっつ", "en": "Four"}, {"jp": "いつつ", "en": "Five"}]}, {"tag": "QUANTITY", "dyn": true, "tplJp": "○○を おねがいします。", "tplEn": "___, please.", "opts": [{"jp": "ひとつ", "en": "One"}, {"jp": "ふたつ", "en": "Two"}, {"jp": "みっつ", "en": "Three"}, {"jp": "よっつ", "en": "Four"}, {"jp": "いつつ", "en": "Five"}, {"jp": "むっつ", "en": "Six"}, {"jp": "ななつ", "en": "Seven"}, {"jp": "やっつ", "en": "Eight"}, {"jp": "ここのつ", "en": "Nine"}, {"jp": "とお", "en": "Ten"}]}, {"tag": "CLOSING", "jp": "いじょうです。", "en": "That's all."}]}, {"id": "dietary", "num": "04", "label": "Dietary Requirements & Allergies", "jpLabel": "アレルギー・しょくじせいげん", "note": "Checking dishes for allergies, and stating dietary needs before ordering.", "staff": [{"tag": "QUESTION", "jp": "アレルギーは ありますか。", "en": "Do you have any allergies?"}, {"tag": "RESPONSE", "jp": "かしこまりました。", "en": "Certainly."}, {"tag": "INFO", "jp": "しょうしょう おまちください、かくにんいたします。", "en": "One moment, I'll check for you."}, {"tag": "CONFIRM", "dyn": true, "tplJp": "このりょうりには○○が はいっていません。", "tplEn": "This dish doesn't contain ___.", "opts": [{"jp": "にく", "en": "meat"}, {"jp": "さかな", "en": "fish"}, {"jp": "たまご", "en": "egg"}, {"jp": "にゅうせいひん", "en": "dairy"}, {"jp": "こむぎ", "en": "wheat"}]}, {"tag": "INFO", "jp": "ハラールの りょうりも ございます。", "en": "We also have halal dishes."}, {"tag": "INFO", "jp": "グルテンフリーの りょうりも ございます。", "en": "We also have gluten-free dishes."}], "customer": [{"tag": "ALLERGY", "dyn": true, "tplJp": "わたしは○○アレルギーです。", "tplEn": "I have a ___ allergy.", "opts": [{"jp": "ピーナッツ", "en": "peanut"}, {"jp": "たまご", "en": "egg"}, {"jp": "にゅうせいひん", "en": "dairy"}, {"jp": "こむぎ", "en": "wheat"}, {"jp": "そば", "en": "buckwheat"}]}, {"tag": "STATEMENT", "jp": "えびや かにが たべられません。", "en": "I can't eat shrimp or crab."}, {"tag": "QUESTION", "jp": "ベジタリアンメニューは ありますか。", "en": "Do you have a vegetarian menu?"}, {"tag": "QUESTION", "jp": "おこさまメニューは ありますか。", "en": "Do you have a children's menu?"}, {"tag": "STATEMENT", "jp": "ベジタリアンです。", "en": "I'm a vegetarian."}, {"tag": "STATEMENT", "jp": "ヴィーガンです。", "en": "I'm vegan."}, {"tag": "QUESTION", "jp": "これに にくが はいっていますか。", "en": "Does this contain meat?"}, {"tag": "QUESTION", "jp": "これは なんの おにくですか。", "en": "What kind of meat is this?"}, {"tag": "QUESTION", "jp": "これに だしが つかわれていますか。", "en": "Is dashi (fish stock) used in this?"}, {"tag": "STATEMENT", "jp": "からいものが にがてです。", "en": "I don't do well with spicy food."}, {"tag": "REQUEST", "jp": "しょうがぬきで おねがいします。", "en": "Without ginger, please."}]}, {"id": "drinks", "num": "05", "label": "Drinks", "jpLabel": "おのみもの", "note": "Ordering something to drink with the meal.", "staff": [{"tag": "QUESTION", "jp": "おのみものは いかがですか。", "en": "Would you like something to drink?"}, {"tag": "INFO", "jp": "つめたい おのみものは おちゃ、コーラ、オレンジジュースが あります。", "en": "For cold drinks we have tea, cola, and orange juice."}, {"tag": "RESPONSE", "jp": "かしこまりました、しょうしょう おまちください。", "en": "Certainly, one moment please."}], "customer": [{"tag": "DRINK", "dyn": true, "tplJp": "○○を ください。", "tplEn": "___, please.", "opts": [{"jp": "おみず", "en": "Water"}, {"jp": "おちゃ", "en": "Tea"}, {"jp": "ウーロンちゃ", "en": "Oolong tea"}, {"jp": "コーラ", "en": "Cola"}, {"jp": "オレンジジュース", "en": "Orange juice"}, {"jp": "ビール", "en": "Beer"}, {"jp": "にほんしゅ", "en": "Sake"}]}, {"tag": "REQUEST", "jp": "おかわりを ください。", "en": "A refill, please."}, {"tag": "REQUEST", "jp": "こおりぬきで おねがいします。", "en": "No ice, please."}, {"tag": "REQUEST", "jp": "あたたかい おちゃを ください。", "en": "Hot tea, please."}]}, {"id": "meal", "num": "06", "label": "During the Meal & Problems", "jpLabel": "しょくじちゅう・トラブル", "note": "Table manners, small requests, and sorting out any mistakes with the order.", "staff": [{"tag": "SERVING", "jp": "おまたせいたしました。", "en": "Sorry to keep you waiting."}, {"tag": "SERVING", "dyn": true, "tplJp": "こちら、○○で ございます。", "tplEn": "Here is your ___.", "opts": [{"jp": "ぜんさい", "en": "appetiser"}, {"jp": "さしみ", "en": "sashimi"}, {"jp": "デザート", "en": "dessert"}, {"jp": "おのみもの", "en": "drink"}]}, {"tag": "SERVING", "jp": "どうぞ、めしあがってください。", "en": "Please, go ahead and enjoy."}, {"tag": "APOLOGY", "jp": "もうしわけございません、すぐに おとりかえします。", "en": "I'm very sorry, I'll replace it right away."}, {"tag": "RESPONSE", "jp": "しょうしょう おまちください。", "en": "One moment, please."}], "customer": [{"tag": "RESPONSE", "jp": "ありがとうございます。", "en": "Thank you (said when a dish is served)."}, {"tag": "GREETING", "jp": "いただきます。", "en": "Thank you for the meal (said before eating)."}, {"tag": "COMMENT", "jp": "とても おいしいです。", "en": "It's very delicious."}, {"tag": "COMMENT", "jp": "きれいな もりつけですね。", "en": "What a beautiful presentation!"}, {"tag": "REQUEST", "jp": "おはしを もう いっぽん ください。", "en": "Another pair of chopsticks, please."}, {"tag": "REQUEST", "jp": "しょうゆを とって ください。", "en": "Could you pass the soy sauce, please?"}, {"tag": "PROBLEM", "jp": "これは ちゅうもんしていません。", "en": "I didn't order this."}, {"tag": "PROBLEM", "jp": "ちがう りょうりが きました。", "en": "The wrong dish has come."}, {"tag": "PROBLEM", "jp": "りょうりが おそいです。", "en": "The food is taking a while."}, {"tag": "QUESTION", "jp": "トイレは どこですか。", "en": "Where's the toilet?"}]}, {"id": "finishing", "num": "07", "label": "Finishing Up", "jpLabel": "しょくじの おわり", "note": "Dessert, extra orders, and wrapping up the meal.", "staff": [{"tag": "QUESTION", "jp": "デザートは いかがですか。", "en": "Would you like some dessert?"}, {"tag": "INFO", "jp": "デザートメニューです、どうぞ。", "en": "Here's the dessert menu, please."}, {"tag": "QUESTION", "jp": "ほかに なにか いかがですか。", "en": "Would you like anything else?"}], "customer": [{"tag": "RESPONSE", "jp": "けっこうです。", "en": "No, thank you (I'm fine)."}, {"tag": "RESPONSE", "jp": "だいじょうぶです。", "en": "I'm good, thanks (no thank you)."}, {"tag": "STATEMENT", "jp": "おなかが いっぱいです。", "en": "I'm full."}, {"tag": "REQUEST", "jp": "もうひとつ おねがいします。", "en": "One more, please."}, {"tag": "COMMENT", "jp": "とても おいしかったです。", "en": "That was very delicious."}, {"tag": "CLOSING", "jp": "ごちそうさまでした。", "en": "Thank you for the meal (said after eating)."}]}, {"id": "paying", "num": "08", "label": "Paying & Leaving", "jpLabel": "おかいけい", "note": "Asking for the bill, sorting out payment, and saying goodbye.", "staff": [{"tag": "QUESTION", "jp": "おかいけいは いっしょに いたしますか。", "en": "Will you be paying together?"}, {"tag": "QUESTION", "jp": "おしはらい ほうほうは？", "en": "How would you like to pay?"}, {"tag": "TOTAL", "dyn": true, "tplJp": "ぜんぶで○○えんに なります。", "tplEn": "That'll be ___ yen altogether.", "opts": [{"jp": "1000", "en": "1000"}, {"jp": "2000", "en": "2000"}, {"jp": "3000", "en": "3000"}, {"jp": "5000", "en": "5000"}]}, {"tag": "INFO", "jp": "クレジットカードも つかえます。", "en": "You can also use a credit card."}, {"tag": "INFO", "jp": "りょうしゅうしょです、どうぞ。", "en": "Here's your receipt."}, {"tag": "FAREWELL", "jp": "また きて ください。", "en": "Please come again."}, {"tag": "FAREWELL", "jp": "ありがとうございました。", "en": "Thank you very much."}], "customer": [{"tag": "REQUEST", "jp": "おかいけいを おねがいします。", "en": "The bill, please."}, {"tag": "RESPONSE", "jp": "げんきんで おねがいします。", "en": "By cash, please."}, {"tag": "QUESTION", "jp": "おかいけいは べつべつに できますか。", "en": "Can we pay separately?"}, {"tag": "QUESTION", "jp": "ぜんぶで いくらですか。", "en": "How much is it altogether?"}, {"tag": "QUESTION", "jp": "クレジットカードは つかえますか。", "en": "Can I use a credit card?"}, {"tag": "REQUEST", "jp": "りょうしゅうしょを ください。", "en": "A receipt, please."}, {"tag": "FAREWELL", "jp": "ごちそうさまでした、しつれいします。", "en": "Thank you for the meal, excuse me (leaving)."}]}], "vocab": {"Dietary & allergy terms": [["アレルギー", "allergy"], ["ベジタリアン", "vegetarian"], ["ヴィーガン", "vegan"], ["にゅうせいひん", "dairy"], ["こむぎ", "wheat"], ["そば", "buckwheat"], ["グルテンフリー", "gluten-free"], ["ハラール", "halal"], ["だし", "dashi (fish stock)"]], "Tableware & requests": [["おはし", "chopsticks"], ["フォーク", "fork"], ["スプーン", "spoon"], ["とりざら", "small serving plate"], ["おしぼり", "wet hand towel"], ["しょうゆ", "soy sauce"]], "Common dishes": [["おすし", "sushi"], ["ラーメン", "ramen"], ["てんぷら", "tempura"], ["うどん", "udon"], ["からあげ", "fried chicken"], ["ぎょうざ", "gyoza"], ["おこのみやき", "okonomiyaki"], ["カレー", "curry"]], "Drinks": [["おみず", "water"], ["おちゃ", "tea"], ["ウーロンちゃ", "oolong tea"], ["コーラ", "cola"], ["オレンジジュース", "orange juice"], ["ビール", "beer"], ["にほんしゅ", "sake"]], "Counting (Universal Counters)": [["ひとつ", "one"], ["ふたつ", "two"], ["みっつ", "three"], ["よっつ", "four"], ["いつつ", "five"], ["むっつ", "six"], ["ななつ", "seven"], ["やっつ", "eight"], ["ここのつ", "nine"], ["とお", "ten"]], "Seating & Restaurant Style": [["おざしき", "tatami-mat seating"], ["いすせき", "chair seating"], ["たたみ", "tatami mat"], ["こうきゅう", "high-end / upscale"], ["かいせきりょうり", "kaiseki (multi-course meal)"]], "Food, Presentation & Payment": [["ぜんさい", "appetiser"], ["さしみ", "sashimi"], ["もりつけ", "presentation / plating"], ["おしはらいほうほう", "payment method"], ["げんきん", "cash"], ["くつした", "socks"]]}};
+/* ═══ STATE ═══ */
+let activeStage = DATA.stages[0].id;
+const cardCurrent = {}; // uid -> {jp, en}
+let scriptItems = [];
+
+/* ═══ RENDER: TAB NAV ═══ */
+function renderNav(){
+  const nav = document.getElementById('tabNav');
+  nav.innerHTML = DATA.stages.map(s => `
+    <button class="tab-btn ${s.id===activeStage?'active':''}" data-stage="${s.id}" onclick="showStage('${s.id}')">
+      <span class="tnum">${s.num}</span> ${s.label}
+    </button>
+  `).join('');
+}
+
+/* ═══ RENDER: CARD ═══ */
+function renderCard(stageId, role, card, idx){
+  const uid = `${stageId}-${role}-${idx}`;
+  let jpHtml, enText;
+  if(card.dyn){
+    const opt = card.opts[0];
+    jpHtml = card.tplJp.replace('○○', `<span class="fill">${opt.jp}</span>`);
+    enText = card.tplEn.replace('___', opt.en);
+    cardCurrent[uid] = { jp: card.tplJp.replace('○○', opt.jp), en: enText };
+  } else {
+    jpHtml = card.jp;
+    enText = card.en;
+    cardCurrent[uid] = { jp: card.jp, en: card.en };
+  }
+  const selectHtml = card.dyn ? `
+    <select class="card-sel" data-uid="${uid}" onchange="updateDynCard('${uid}', this.value)">
+      ${card.opts.map((o,i) => `<option value="${i}">${o.jp}: ${o.en}</option>`).join('')}
+    </select>` : '';
+  return `
+    <div class="card" data-uid="${uid}">
+      <span class="card-tag">${card.tag}</span>
+      <div class="card-jp" id="jp-${uid}">${jpHtml}</div>
+      <div class="card-en" id="en-${uid}">${enText}</div>
+      ${selectHtml}
+      <div class="card-foot">
+        <button class="btn-mini" onclick="speak('${uid}')">🔊 Listen</button>
+        <button class="btn-mini pink" onclick="addToScript('${uid}', '${stageId}')">+ Script</button>
+      </div>
+    </div>`;
+}
+
+/* ═══ RENDER: STAGE ═══ */
+function renderStages(){
+  const wrap = document.getElementById('stagesWrap');
+  wrap.innerHTML = DATA.stages.map(s => `
+    <section class="stage ${s.id===activeStage?'active':''}" data-stage="${s.id}">
+      <div class="stage-head">
+        <span class="stage-num">${s.num}</span>
+        <h3 class="stage-title">${s.label}</h3>
+        <span class="stage-jp jp">${s.jpLabel}</span>
+      </div>
+      <p class="stage-note">${s.note}</p>
+      <div class="board-grid">
+        <div class="col-staff">
+          <div class="col-head"><span class="col-icon">👩‍🍳</span><span class="col-title">Staff <span class="jp">てんいんさん</span></span></div>
+          <div class="card-list">${s.staff.map((c,i) => renderCard(s.id,'staff',c,i)).join('')}</div>
+        </div>
+        <div class="col-customer">
+          <div class="col-head"><span class="col-icon">🙋</span><span class="col-title">Customer <span class="jp">おきゃくさん</span></span></div>
+          <div class="card-list">${s.customer.map((c,i) => renderCard(s.id,'customer',c,i)).join('')}</div>
+        </div>
+      </div>
+    </section>
+  `).join('');
+}
+
+/* ═══ RENDER: VOCAB ═══ */
+function renderVocab(){
+  const wrap = document.getElementById('vocabWrap');
+  wrap.innerHTML = Object.keys(DATA.vocab).map((title, i) => `
+    <div class="vocab-acc ${i===0?'open':''}" id="vacc-${i}">
+      <div class="vocab-acc-head" onclick="toggleVocab(${i})">
+        <span>${title}</span>
+        <span class="vocab-arrow">▶</span>
+      </div>
+      <div class="vocab-acc-body">
+        ${DATA.vocab[title].map(([jp,en]) => `
+          <div class="vocab-item"><span class="jp">${jp}</span><span class="en">${en}</span></div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+function toggleVocab(i){
+  document.getElementById(`vacc-${i}`).classList.toggle('open');
+}
+
+/* ═══ NAV ═══ */
+function showStage(id){
+  activeStage = id;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.stage===id));
+  document.querySelectorAll('.stage').forEach(s => s.classList.toggle('active', s.dataset.stage===id));
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* ═══ DYNAMIC CARDS ═══ */
+function updateDynCard(uid, optIdx){
+  const [stageId, role, idx] = uid.split('-');
+  const stage = DATA.stages.find(s => s.id===stageId);
+  const card = stage[role][parseInt(idx)];
+  const opt = card.opts[parseInt(optIdx)];
+  const jpFull = card.tplJp.replace('○○', opt.jp);
+  const enFull = card.tplEn.replace('___', opt.en);
+  document.getElementById(`jp-${uid}`).innerHTML = card.tplJp.replace('○○', `<span class="fill">${opt.jp}</span>`);
+  document.getElementById(`en-${uid}`).textContent = enFull;
+  cardCurrent[uid] = { jp: jpFull, en: enFull };
+}
+
+/* ═══ TTS ═══ */
+function speak(uid){
+  const item = cardCurrent[uid];
+  if(!item) return;
+  speechSynthesis.cancel();
+  const utt = new SpeechSynthesisUtterance(item.jp);
+  utt.lang = 'ja-JP'; utt.rate = 0.85;
+  document.getElementById('ttsTxt').textContent = item.jp;
+  document.getElementById('ttsBar').classList.add('on');
+  utt.onend = () => document.getElementById('ttsBar').classList.remove('on');
+  speechSynthesis.speak(utt);
+}
+
+/* ═══ SCRIPT BUILDER ═══ */
+function addToScript(uid, stageId){
+  const item = cardCurrent[uid];
+  if(!item) return;
+  const stage = DATA.stages.find(s => s.id===stageId);
+  scriptItems.push({ jp: item.jp, en: item.en, stage: stage.label, id: Date.now()+Math.random() });
+  renderScriptItems();
+  if(!document.getElementById('scriptPanel').classList.contains('open')){
+    toggleScriptPanel();
+  }
+}
+function removeScriptItem(id){
+  scriptItems = scriptItems.filter(i => i.id !== id);
+  renderScriptItems();
+}
+function renderScriptItems(){
+  document.getElementById('scriptCount').textContent = scriptItems.length;
+  const wrap = document.getElementById('scriptItems');
+  if(!scriptItems.length){
+    wrap.innerHTML = '<div class="script-empty">Tap <strong>+ Script</strong> on any card to add it here.</div>';
+    return;
+  }
+  wrap.innerHTML = scriptItems.map(it => `
+    <div class="script-item" data-sid="${it.id}">
+      <span class="script-item-rm" onclick="removeScriptItem(${it.id})">✕</span>
+      <div class="script-item-jp jp">${it.jp}</div>
+      <div class="script-item-en">${it.en}</div>
+    </div>
+  `).join('');
+}
+function toggleScriptPanel(){
+  document.getElementById('scriptPanel').classList.toggle('open');
+}
+function clearScript(){
+  if(scriptItems.length && !confirm('Clear all lines from your script?')) return;
+  scriptItems = [];
+  renderScriptItems();
+}
+function copyScript(){
+  if(!scriptItems.length) return;
+  const text = scriptItems.map((it,i) => `[${i+1}] ${it.jp}\n${it.en}`).join('\n\n');
+  navigator.clipboard.writeText(text);
+}
+function playScript(){
+  if(!scriptItems.length) return;
+  speechSynthesis.cancel();
+  let idx = 0;
+  function next(){
+    document.querySelectorAll('.script-item.playing').forEach(el => el.classList.remove('playing'));
+    if(idx >= scriptItems.length){ document.getElementById('ttsBar').classList.remove('on'); return; }
+    const it = scriptItems[idx];
+    const el = document.querySelector(`[data-sid="${it.id}"]`);
+    if(el){ el.classList.add('playing'); el.scrollIntoView({behavior:'smooth', block:'nearest'}); }
+    const utt = new SpeechSynthesisUtterance(it.jp);
+    utt.lang = 'ja-JP'; utt.rate = 0.85;
+    document.getElementById('ttsTxt').textContent = it.jp;
+    document.getElementById('ttsBar').classList.add('on');
+    utt.onend = () => { idx++; setTimeout(next, 450); };
+    utt.onerror = () => { idx++; setTimeout(next, 200); };
+    speechSynthesis.speak(utt);
+  }
+  next();
+}
+
+/* ═══ BOOT ═══ */
+window.addEventListener('DOMContentLoaded', () => {
+  renderNav();
+  renderStages();
+  renderVocab();
+});
+</script></body></html>
