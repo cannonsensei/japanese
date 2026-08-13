@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>休みに — On Your Holidays | St Aidan's Japanese</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#041E42; --navy2:#0e2849; --navy3:#122d55; --pink:#E13B82;
+  --white:#ffffff; --grey:#f4f5f7; --grey-line:#dde1e8;
+  --ok:#1c7a4d; --bad:#b3261e; --gap:1.5rem; --margin:clamp(1.25rem, 4vw, 3.5rem); --radius:2px;
+}
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{ font-family:'Montserrat', sans-serif; background:var(--white); color:var(--navy); font-weight:400; line-height:1.5; -webkit-font-smoothing:antialiased; }
+h1,h2,h3,h4{ font-family:'Montserrat', sans-serif; font-weight:500; margin:0; line-height:1.15; }
+p{ margin:0 0 0.75rem; }
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; }
+img,svg{ display:block; max-width:100%; }
+.wrap{ max-width:1100px; margin:0 auto; padding:0 var(--margin); }
+
+/* Nav */
+.site-nav{ border-bottom:3px solid var(--navy); background:var(--white); position:sticky; top:0; z-index:50; }
+.site-nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:64px; flex-wrap:wrap; gap:0.5rem; }
+.brand{ font-weight:500; font-size:1.05rem; letter-spacing:0.02em; display:flex; align-items:baseline; gap:0.5rem; white-space:nowrap; }
+.brand .jp{ font-size:1.3rem; color:var(--pink); font-weight:500; }
+.nav-links{ display:flex; gap:1.5rem; overflow-x:auto; }
+.nav-links a{ font-size:0.82rem; font-weight:500; text-transform:uppercase; letter-spacing:0.05em; padding:0.4rem 0; border-bottom:3px solid transparent; white-space:nowrap; cursor:pointer; }
+.nav-links a.active{ border-bottom-color:var(--pink); color:var(--pink); }
+.nav-links a:hover{ color:var(--pink); }
+
+/* Pages */
+.page{ display:none; }
+.page.active{ display:block; }
+
+.page-head{ padding:2.5rem var(--margin) 2rem; border-bottom:1px solid var(--grey-line); }
+.eyebrow{ font-size:0.75rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--pink); margin-bottom:0.5rem; display:block; }
+.page-head h1{ font-size:clamp(1.8rem, 4vw, 2.6rem); }
+.page-head .jp-title{ color:var(--pink); }
+.page-head .sub{ margin-top:0.75rem; max-width:640px; color:var(--navy2); font-size:0.98rem; }
+main.content{ padding:2.5rem var(--margin) 4rem; max-width:1100px; margin:0 auto; }
+
+/* Home */
+.hero{ background:var(--navy); color:var(--white); padding:4rem var(--margin) 3.5rem; }
+.hero .jp-hero{ font-size:clamp(2.6rem, 8vw, 4.5rem); color:var(--pink); font-weight:500; }
+.hero h1{ color:var(--white); font-size:clamp(1.3rem, 3vw, 1.8rem); margin-top:0.25rem;}
+.hero p{ color:#c9d3e3; max-width:520px; margin-top:1rem; font-size:0.95rem;}
+.tile-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:var(--gap); margin-top:2.5rem; }
+.tile{ border:1px solid var(--grey-line); padding:1.5rem; display:flex; flex-direction:column; gap:0.6rem; transition:border-color .15s, transform .15s; min-height:150px; cursor:pointer; background:none; text-align:left; width:100%; }
+.tile:hover{ border-color:var(--pink); transform:translateY(-2px); }
+.tile .num{ font-size:0.75rem; color:var(--pink); font-weight:500; letter-spacing:0.08em; }
+.tile h3{ font-size:1.15rem; }
+.tile .jp{ color:var(--pink); }
+.tile p{ font-size:0.85rem; color:var(--navy2); margin:0; }
+
+/* Buttons */
+.btn{ display:inline-flex; align-items:center; gap:0.5rem; border:2px solid var(--navy); background:var(--white); color:var(--navy); padding:0.65rem 1.3rem; font-size:0.85rem; font-weight:500; letter-spacing:0.03em; text-transform:uppercase; border-radius:var(--radius); }
+.btn:hover{ background:var(--navy); color:var(--white); }
+.btn.primary{ background:var(--pink); border-color:var(--pink); color:var(--white); }
+.btn.primary:hover{ background:var(--navy2); border-color:var(--navy2); }
+.btn.ghost{ border-color:var(--grey-line); color:var(--navy2); }
+.btn.ghost:hover{ border-color:var(--navy); background:var(--white); color:var(--navy); }
+.btn:disabled{ opacity:0.4; cursor:not-allowed; }
+.btn:disabled:hover{ background:var(--white); color:var(--navy); }
+.btn-row{ display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.5rem; }
+.speak-btn{ border:1px solid var(--navy); background:var(--white); width:34px; height:34px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.9rem; flex-shrink:0; }
+.speak-btn:hover{ background:var(--navy); color:var(--white); }
+
+.section{ margin-bottom:3rem; }
+.section-head{ display:flex; align-items:baseline; justify-content:space-between; gap:1rem; margin-bottom:1.25rem; flex-wrap:wrap;}
+.section-head h2{ font-size:1.3rem; }
+.section-head .jp{ color:var(--pink); }
+hr.rule{ border:none; border-top:1px solid var(--grey-line); margin:2.5rem 0; }
+.card{ border:1px solid var(--grey-line); padding:1.25rem; }
+
+/* Flashcards */
+.flash-stage{ display:flex; flex-direction:column; align-items:center; gap:1.25rem; }
+.flashcard{ width:100%; max-width:420px; height:260px; border:2px solid var(--navy); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.75rem; cursor:pointer; position:relative; background:var(--white); padding:1.5rem; text-align:center; }
+.flashcard .face-jp{ font-size:2.6rem; color:var(--navy); }
+.flashcard .face-en{ font-size:1.1rem; color:var(--pink); font-weight:500; display:none; }
+.flashcard.flipped .face-jp{ display:none; }
+.flashcard.flipped .face-en{ display:block; }
+.flashcard .hint{ position:absolute; bottom:0.75rem; font-size:0.7rem; color:#9aa4b5; letter-spacing:0.06em; text-transform:uppercase; }
+.deck-progress{ font-size:0.85rem; color:var(--navy2); }
+
+/* Matching */
+.match-cols{ display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; }
+.match-item{ border:1px solid var(--grey-line); padding:0.85rem 1rem; display:flex; align-items:center; justify-content:space-between; gap:0.5rem; font-size:1rem; cursor:pointer; }
+.match-item.selected{ border-color:var(--pink); background:#fdf1f6; }
+.match-item.correct{ border-color:var(--ok); background:#eef7f1; }
+.match-item.wrong{ border-color:var(--bad); background:#fbeceb; animation:shake .3s; }
+@keyframes shake{ 0%,100%{transform:translateX(0);} 25%{transform:translateX(-4px);} 75%{transform:translateX(4px);} }
+
+/* Quiz */
+.q-block{ border:1px solid var(--grey-line); padding:1.5rem; margin-bottom:1.25rem; }
+.q-block .jp-line{ font-size:1.15rem; margin-bottom:0.9rem; }
+.opt-row{ display:flex; gap:0.75rem; flex-wrap:wrap; }
+.opt{ border:2px solid var(--grey-line); padding:0.55rem 1.1rem; font-size:0.9rem; font-weight:500; background:var(--white); }
+.opt.correct{ border-color:var(--ok); color:var(--ok); }
+.opt.wrong{ border-color:var(--bad); color:var(--bad); }
+.feedback{ margin-top:0.75rem; font-size:0.85rem; font-weight:500; }
+.feedback.ok{ color:var(--ok); }
+.feedback.bad{ color:var(--bad); }
+.score-pill{ display:inline-block; border:2px solid var(--navy); padding:0.35rem 0.9rem; font-size:0.85rem; font-weight:500; }
+
+/* Sentence builder */
+.sentence-strip{ min-height:70px; border:2px dashed var(--grey-line); display:flex; align-items:center; flex-wrap:wrap; gap:0.5rem; padding:0.75rem; margin-bottom:1.5rem; font-size:1.4rem; }
+.sentence-strip .placeholder{ color:#b7bec9; font-size:0.9rem; }
+.chip{ border:1px solid var(--navy); padding:0.4rem 0.9rem; font-size:1rem; background:var(--white); }
+.chip.in-strip{ background:var(--navy); color:var(--white); position:relative; padding-right:1.8rem; }
+.chip.in-strip .x{ position:absolute; right:0.5rem; top:50%; transform:translateY(-50%); font-size:0.8rem; }
+.chip-bank{ display:flex; gap:0.6rem; flex-wrap:wrap; }
+.chip-bank button.chip{ cursor:pointer; }
+.chip-bank button.chip:hover{ border-color:var(--pink); color:var(--pink); }
+.bank-label{ font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--navy2); margin:1.25rem 0 0.5rem; }
+
+/* Game boards */
+.battle-boards{ display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
+.board-table{ width:100%; border-collapse:collapse; font-size:0.85rem; }
+.board-table th, .board-table td{ border:1px solid var(--grey-line); padding:0.5rem; text-align:center; }
+.board-table th{ background:var(--grey); font-weight:500; }
+.cell-btn{ width:100%; height:100%; border:none; background:transparent; padding:0.35rem; font-family:inherit; font-size:0.85rem; cursor:pointer; }
+.cell-btn:hover:not(:disabled){ background:#fdf1f6; }
+.cell-hit{ background:var(--pink); color:var(--white); }
+.cell-miss{ background:var(--grey); color:#9aa4b5; }
+.cell-btn:disabled{ cursor:default; }
+.hp-row{ display:flex; gap:1.5rem; margin-bottom:1rem; font-size:0.9rem; flex-wrap:wrap; }
+.hp-row .pill{ border:2px solid var(--navy); padding:0.3rem 0.9rem; }
+
+/* Janken */
+.hand-row{ display:flex; gap:1rem; justify-content:center; margin:1.5rem 0; }
+.hand-btn{ width:88px; height:88px; border:2px solid var(--navy); background:var(--white); font-size:2rem; display:flex; align-items:center; justify-content:center; }
+.hand-btn:hover:not(:disabled){ border-color:var(--pink); }
+.race-track{ display:flex; flex-wrap:wrap; gap:0.4rem; margin:1.5rem 0; }
+.race-space{ border:1px solid var(--grey-line); padding:0.6rem 0.4rem; min-width:64px; text-align:center; font-size:0.85rem; position:relative; }
+.race-space .token{ position:absolute; top:-10px; font-size:1.1rem; }
+.race-space .token.you{ left:2px; }
+.race-space .token.cpu{ right:2px; }
+.result-line{ text-align:center; font-size:1.1rem; font-weight:500; margin:1rem 0; min-height:1.5rem; }
+
+/* Amidakuji */
+.amida-wrap{ display:flex; justify-content:center; margin:2rem 0; }
+.amida-outcome{ text-align:center; font-size:1.4rem; font-weight:500; color:var(--pink); min-height:2rem; margin-top:1rem; }
+
+/* Game sub-tabs */
+.subtabs{ display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:2rem; }
+.subtab{ border:2px solid var(--grey-line); background:var(--white); padding:0.6rem 1.1rem; font-size:0.85rem; font-weight:500; }
+.subtab.active{ border-color:var(--pink); color:var(--pink); }
+.subgame{ display:none; }
+.subgame.active{ display:block; }
+
+footer{ border-top:3px solid var(--navy); padding:1.5rem var(--margin); font-size:0.8rem; color:var(--navy2); text-align:center; }
+
+@media (max-width:720px){ .grid-2, .grid-3, .match-cols, .battle-boards{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a class="brand" data-page="home"><span class="jp">休みに</span>On Your Holidays</a>
+    <div class="nav-links">
+      <a data-page="home">Home</a>
+      <a data-page="vocab">Vocab Lab</a>
+      <a data-page="sentences">Sentence Builder</a>
+      <a data-page="games">Games</a>
+      <a data-page="quiz">Reading Check</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HOME ============ -->
+<section class="page active" id="page-home">
+  <div class="hero">
+    <div class="wrap">
+      <span class="eyebrow" style="color:#f6a8c6;">St Aidan's Japanese</span>
+      <div class="jp-hero">休みに</div>
+      <h1>On Your Holidays!</h1>
+      <p>Practise talking about where you went in the holidays and what you thought about it — vocab, sentence building, and three games to test what you know.</p>
+    </div>
+  </div>
+  <main class="content">
+    <div class="tile-grid">
+      <button class="tile" data-page="vocab">
+        <span class="num">01 — Vocab Lab</span>
+        <h3><span class="jp">場所</span> Places &amp; opinions</h3>
+        <p>Flashcards, matching and listening practice for the holiday places and past-tense opinion words.</p>
+      </button>
+      <button class="tile" data-page="sentences">
+        <span class="num">02 — Sentence Builder</span>
+        <h3><span class="jp">文</span> Build a sentence</h3>
+        <p>どこに行きましたか。→ 〜に行きました。Tap the pieces together and hear it read aloud.</p>
+      </button>
+      <button class="tile" data-page="games">
+        <span class="num">03 — Games</span>
+        <h3><span class="jp">ゲーム</span> Play vs the computer</h3>
+        <p>ごきぶりゲーム, ジャンケン漢字レース, and あみだくじ — three ways to practise under pressure.</p>
+      </button>
+      <button class="tile" data-page="quiz">
+        <span class="num">04 — Reading Check</span>
+        <h3><span class="jp">確認</span> Test yourself</h3>
+        <p>True/false and matching checks — read a holiday sentence and pick the correct English meaning.</p>
+      </button>
+    </div>
+  </main>
+</section>
+
+<!-- ============ VOCAB ============ -->
+<section class="page" id="page-vocab">
+  <header class="page-head">
+    <span class="eyebrow">01 — Vocab Lab</span>
+    <h1><span class="jp-title">場所</span> Places &amp; opinions</h1>
+    <p class="sub">Work through the flashcards, then test yourself with matching and listening drills.</p>
+  </header>
+  <main class="content">
+    <section class="section">
+      <div class="section-head">
+        <h2><span class="jp">1</span> Flashcards</h2>
+        <div class="btn-row" style="margin:0;">
+          <button class="btn ghost" id="vb-setPlaces">Places</button>
+          <button class="btn ghost" id="vb-setOpinions">Opinions</button>
+        </div>
+      </div>
+      <div class="flash-stage">
+        <div class="deck-progress" id="vb-deckProgress">1 / 10</div>
+        <div class="flashcard" id="vb-flashcard">
+          <div class="face-jp" id="vb-faceJp">川</div>
+          <div class="face-en" id="vb-faceEn">river</div>
+          <span class="hint">Tap card to flip</span>
+        </div>
+        <div class="btn-row">
+          <button class="btn" id="vb-prevCard">← Prev</button>
+          <button class="btn ghost" id="vb-playCard">🔊 Listen</button>
+          <button class="btn" id="vb-nextCard">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <section class="section">
+      <div class="section-head">
+        <h2><span class="jp">2</span> Matching drill</h2>
+        <span class="score-pill" id="vb-matchScore">0 / 0</span>
+      </div>
+      <p class="sub" style="max-width:none;">Tap a Japanese word, then tap its English meaning.</p>
+      <div class="match-cols">
+        <div id="vb-matchJp"></div>
+        <div id="vb-matchEn"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn primary" id="vb-newMatchRound">New round</button>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <section class="section">
+      <div class="section-head"><h2><span class="jp">3</span> Listening — order heard</h2></div>
+      <p class="sub" style="max-width:none;">Press play. Listen to the order the words are read in, then number each word 1–5.</p>
+      <div class="btn-row" style="margin-top:0;">
+        <button class="btn primary" id="vb-playSequence">▶ Play sequence</button>
+      </div>
+      <div id="vb-listenList" style="margin-top:1.25rem; display:flex; flex-direction:column; gap:0.6rem;"></div>
+      <div class="btn-row">
+        <button class="btn" id="vb-checkSequence">Check answers</button>
+        <button class="btn ghost" id="vb-newSequence">New sequence</button>
+      </div>
+      <p class="feedback" id="vb-seqFeedback"></p>
+    </section>
+  </main>
+</section>
+
+<!-- ============ SENTENCES ============ -->
+<section class="page" id="page-sentences">
+  <header class="page-head">
+    <span class="eyebrow">02 — Sentence Builder</span>
+    <h1><span class="jp-title">文</span> Build a sentence</h1>
+    <p class="sub">休みに、どこに行きましたか。 — Tap the chips below in order, then listen back to what you built.</p>
+  </header>
+  <main class="content">
+    <section class="section">
+      <div class="section-head"><h2>Your sentence</h2></div>
+      <div class="sentence-strip" id="sb-strip">
+        <span class="placeholder">Tap chips below to build 〜に行きました。〜です。</span>
+      </div>
+      <div class="btn-row" style="margin-top:0;">
+        <button class="btn primary" id="sb-readStrip">🔊 Read it aloud</button>
+        <button class="btn ghost" id="sb-clearStrip">Clear</button>
+      </div>
+      <p class="bank-label">1 — Place</p>
+      <div class="chip-bank" id="sb-bankPlace"></div>
+      <p class="bank-label">2 — Grammar</p>
+      <div class="chip-bank" id="sb-bankGrammar"></div>
+      <p class="bank-label">3 — Opinion</p>
+      <div class="chip-bank" id="sb-bankOpinion"></div>
+    </section>
+
+    <hr class="rule">
+
+    <section class="section">
+      <div class="section-head"><h2><span class="jp">自由</span> Your turn — free write</h2></div>
+      <p class="sub" style="max-width:none;">Write about where <em>you</em> really went in the holidays, and what you thought about it.</p>
+      <textarea id="sb-freeWrite" rows="3" style="width:100%; font-family:inherit; font-size:1.1rem; border:1px solid var(--grey-line); padding:0.75rem; margin-top:0.75rem;" placeholder="休みに、＿＿＿に行きました。＿＿＿でした。"></textarea>
+      <div class="btn-row">
+        <button class="btn primary" id="sb-readFree">🔊 Read my sentence</button>
+      </div>
+    </section>
+  </main>
+</section>
+
+<!-- ============ GAMES ============ -->
+<section class="page" id="page-games">
+  <header class="page-head">
+    <span class="eyebrow">03 — Games</span>
+    <h1><span class="jp-title">ゲーム</span> Play against the computer</h1>
+    <p class="sub">Three games, each freshly randomised every time you play — no memorising a pattern.</p>
+  </header>
+  <main class="content">
+    <div class="subtabs">
+      <button class="subtab active" data-game="gokiburi">🪳 Cockroach Battleship</button>
+      <button class="subtab" data-game="janken">✊ Kanji Race</button>
+      <button class="subtab" data-game="amidakuji">🪜 Random Decision Maker</button>
+    </div>
+
+    <!-- GOKIBURI -->
+    <div class="subgame active" id="subgame-gokiburi">
+      <p class="sub" style="max-width:none;">The computer has hidden 8 cockroaches on its board. Pick a place + opinion cell, read the sentence aloud, then attack. First to 5 hits wins.</p>
+      <div class="hp-row">
+        <span class="pill" id="gk-youHp">You: 0 / 5 hits</span>
+        <span class="pill" id="gk-cpuHp">Computer: 0 / 5 hits</span>
+      </div>
+      <div class="card" id="gk-promptCard" style="margin-bottom:1.5rem; display:none;">
+        <p class="sub" style="max-width:none; margin-bottom:0.5rem;">Read this aloud, then fire:</p>
+        <div style="display:flex; align-items:center; gap:0.75rem; font-size:1.2rem;">
+          <span id="gk-promptSentence"></span>
+        </div>
+        <div class="btn-row" style="margin-top:1rem;">
+          <button class="btn primary" id="gk-fireBtn">🎯 Attack!</button>
+          <button class="btn ghost" id="gk-cancelBtn">Cancel</button>
+        </div>
+      </div>
+      <p class="result-line" id="gk-resultLine"></p>
+      <div class="battle-boards">
+        <div>
+          <h3 style="margin-bottom:0.75rem;">Computer's board — attack here</h3>
+          <table class="board-table" id="gk-cpuBoard"></table>
+        </div>
+        <div>
+          <h3 style="margin-bottom:0.75rem;">Your board — computer attacks this</h3>
+          <table class="board-table" id="gk-youBoard"></table>
+        </div>
+      </div>
+      <div class="btn-row"><button class="btn" id="gk-newGame">New game</button></div>
+    </div>
+
+    <!-- JANKEN -->
+    <div class="subgame" id="subgame-janken">
+      <p class="sub" style="max-width:none;">Beat the computer at janken to move around the track. ぐう wins move 3, ちょき wins move 2, ぱあ wins move 1. Read aloud whatever word you land on. First to 15 wins.</p>
+      <div class="hp-row">
+        <span class="pill" id="jk-youProgress">You: 0 / 15</span>
+        <span class="pill" id="jk-cpuProgress">Computer: 0 / 15</span>
+      </div>
+      <div class="race-track" id="jk-track"></div>
+      <div class="result-line" id="jk-resultLine">Choose your hand to begin.</div>
+      <div class="hand-row" id="jk-handRow">
+        <button class="hand-btn" data-hand="ぐう" title="ぐう (rock)">✊</button>
+        <button class="hand-btn" data-hand="ちょき" title="ちょき (scissors)">✌️</button>
+        <button class="hand-btn" data-hand="ぱあ" title="ぱあ (paper)">✋</button>
+      </div>
+      <div class="btn-row" id="jk-continueRow" style="display:none; justify-content:center;">
+        <button class="btn primary" id="jk-continueBtn">Next round →</button>
+      </div>
+      <div class="btn-row" style="justify-content:center;">
+        <button class="btn ghost" id="jk-newRace">New race</button>
+      </div>
+    </div>
+
+    <!-- AMIDAKUJI -->
+    <div class="subgame" id="subgame-amidakuji">
+      <p class="sub" style="max-width:none;">Pick a starting line. Watch it thread through the ladder and land on a holiday activity — say a sentence about it using 〜に行きました。</p>
+      <div class="btn-row" id="ak-startButtons" style="justify-content:center; margin-top:0;"></div>
+      <div class="amida-wrap">
+        <div style="position:relative;">
+          <svg id="ak-ladder" width="440" height="260"></svg>
+          <div id="ak-token" style="position:absolute; width:16px; height:16px; border-radius:50%; background:var(--pink); transform:translate(-8px,-8px); display:none;"></div>
+        </div>
+      </div>
+      <div class="amida-outcome" id="ak-outcome"></div>
+      <div class="btn-row" style="justify-content:center;">
+        <button class="btn primary" id="ak-newLadder">🔀 New ladder</button>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="page" id="page-quiz">
+  <header class="page-head">
+    <span class="eyebrow">04 — Reading Check</span>
+    <h1><span class="jp-title">確認</span> Test yourself</h1>
+    <p class="sub">Read each holiday sentence and choose the correct English meaning.</p>
+  </header>
+  <main class="content">
+    <div class="section-head">
+      <h2 id="qz-questionCounter">Question 1 / 6</h2>
+      <span class="score-pill" id="qz-scorePill">Score: 0 / 0</span>
+    </div>
+    <div class="q-block" id="qz-quizBlock"></div>
+    <div class="btn-row">
+      <button class="btn primary" id="qz-nextBtn" style="display:none;">Next question →</button>
+      <button class="btn ghost" id="qz-restartBtn" style="display:none;">Restart quiz</button>
+    </div>
+  </main>
+</section>
+
+<footer>St Aidan's Anglican Girls' School — Japanese</footer>
+
+<script>
+/* ================= Shared data ================= */
+const PLACES = [
+  { jp:'川', en:'river' }, { jp:'山', en:'mountain' }, { jp:'海', en:'sea / beach' },
+  { jp:'海外', en:'overseas' }, { jp:'町', en:'town' }, { jp:'プール', en:'the pool' },
+  { jp:'えいが', en:'the movies' }, { jp:'友達の家', en:'a friend\'s house' },
+  { jp:'こうえん', en:'the park' }, { jp:'キャンプ', en:'camping' },
+];
+const OPINIONS = [
+  { jp:'よかった', en:'it was good' }, { jp:'天気はわるかった', en:'the weather was bad' },
+  { jp:'あつかった', en:'it was hot' }, { jp:'さむかった', en:'it was cold' },
+  { jp:'たのしかった', en:'it was fun' }, { jp:'つまらなかった', en:'it was boring' },
+  { jp:'おもしろかった', en:'it was interesting' },
+];
+const GAME_PLACES = ['山','海','えいが','友達の家','こうえん','プール','キャンプ'];
+const GAME_OPINIONS = ['よかった','天気はわるかった','あつかった','たのしかった','つまらなかった'];
+const READING_CHECK = [
+  { jp:'休みに、山に行きました。さむかったです。', correctEn:'In the holidays, I went to the mountains. It was cold.', options:['In the holidays, I went to the mountains. It was interesting.','In the holidays, I went to the mountains. It was cold.','In the holidays, I went to the beach. It was cold.'] },
+  { jp:'休みに、えいがに行きました。つまらなかったです。', correctEn:'In the holidays, I went to the movies. It was boring.', options:['In the holidays, I went to the park. It was boring.','In the holidays, I went to the movies. It was fun.','In the holidays, I went to the movies. It was boring.'] },
+  { jp:'休みに、友達の家に行きました。たのしかったです。', correctEn:'In the holidays, I went to my friend\'s house. It was fun.', options:['In the holidays, I went to my friend\'s house. It was fun.','In the holidays, I went to my friend\'s house. It was boring.','In the holidays, I went to town. It was fun.'] },
+  { jp:'休みに、海に行きました。天気はわるかったです。', correctEn:'In the holidays, I went to the beach. The weather was bad.', options:['In the holidays, I went to the beach. The weather was good.','In the holidays, I went to the mountains. The weather was bad.','In the holidays, I went to the beach. The weather was bad.'] },
+  { jp:'やすみに町に行きました。つまらなかったです。', correctEn:'In the holidays, I went to town. It was boring.', options:['In the holidays, I went to town. It was boring.','In the holidays, I went to the beach. It was fun.','In the holidays, I went to the movies. It was boring.'] },
+  { jp:'やすみに海に行きました。たのしかったです。', correctEn:'In the holidays, I went to the beach. It was fun.', options:['In the holidays, I went to the beach. It was cold.','In the holidays, I went to the beach. It was fun.','In the holidays, I went to camp. It was fun.'] },
+];
+function shuffle(arr){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+
+/* ================= TTS ================= */
+const TTS = (() => {
+  let jaVoice = null;
+  function pickVoice(){
+    const voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+    jaVoice = voices.find(v => v.lang && v.lang.startsWith('ja')) || null;
+  }
+  if (window.speechSynthesis){ pickVoice(); window.speechSynthesis.onvoiceschanged = pickVoice; }
+  function speak(text){
+    if (!window.speechSynthesis || !text) return;
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'ja-JP';
+    if (jaVoice) utter.voice = jaVoice;
+    utter.rate = 0.9;
+    window.speechSynthesis.speak(utter);
+  }
+  return { speak };
+})();
+function makeSpeakBtn(text){
+  const b = document.createElement('button');
+  b.className = 'speak-btn';
+  b.type = 'button';
+  b.setAttribute('aria-label', 'Play audio');
+  b.textContent = '🔊';
+  b.addEventListener('click', (e) => { e.stopPropagation(); TTS.speak(text); });
+  return b;
+}
+
+/* ================= Page navigation ================= */
+function showPage(key){
+  document.querySelectorAll('.page').forEach(p => p.classList.toggle('active', p.id === 'page-' + key));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('active', a.dataset.page === key));
+  window.scrollTo(0, 0);
+}
+document.querySelectorAll('[data-page]').forEach(el => {
+  el.addEventListener('click', () => showPage(el.dataset.page));
+});
+
+/* ================= Games sub-tabs ================= */
+function showGame(key){
+  document.querySelectorAll('.subgame').forEach(g => g.classList.toggle('active', g.id === 'subgame-' + key));
+  document.querySelectorAll('.subtab').forEach(t => t.classList.toggle('active', t.dataset.game === key));
+}
+document.querySelectorAll('.subtab').forEach(t => t.addEventListener('click', () => showGame(t.dataset.game)));
+
+/* ================= VOCAB LAB ================= */
+(function(){
+  let deck = PLACES, idx = 0;
+  const flashcard = document.getElementById('vb-flashcard');
+  const faceJp = document.getElementById('vb-faceJp');
+  const faceEn = document.getElementById('vb-faceEn');
+  const deckProgress = document.getElementById('vb-deckProgress');
+
+  function renderCard(){
+    flashcard.classList.remove('flipped');
+    faceJp.textContent = deck[idx].jp;
+    faceEn.textContent = deck[idx].en;
+    deckProgress.textContent = `${idx+1} / ${deck.length}`;
+  }
+  flashcard.addEventListener('click', () => flashcard.classList.toggle('flipped'));
+  document.getElementById('vb-prevCard').addEventListener('click', () => { idx = (idx - 1 + deck.length) % deck.length; renderCard(); });
+  document.getElementById('vb-nextCard').addEventListener('click', () => { idx = (idx + 1) % deck.length; renderCard(); });
+  document.getElementById('vb-playCard').addEventListener('click', () => TTS.speak(deck[idx].jp));
+  document.getElementById('vb-setPlaces').addEventListener('click', () => { deck = PLACES; idx = 0; renderCard(); });
+  document.getElementById('vb-setOpinions').addEventListener('click', () => { deck = OPINIONS; idx = 0; renderCard(); });
+  renderCard();
+
+  let matchPool, matchRight = 0, matchTotal = 0, selectedJp = null;
+  function newMatchRound(){
+    const source = Math.random() < 0.5 ? PLACES : OPINIONS;
+    matchPool = shuffle(source).slice(0, 5);
+    selectedJp = null;
+    const jpCol = document.getElementById('vb-matchJp');
+    const enCol = document.getElementById('vb-matchEn');
+    jpCol.innerHTML = ''; enCol.innerHTML = '';
+    matchPool.forEach(item => {
+      const jpDiv = document.createElement('div');
+      jpDiv.className = 'match-item';
+      jpDiv.innerHTML = `<span>${item.jp}</span>`;
+      jpDiv.appendChild(makeSpeakBtn(item.jp));
+      jpDiv.addEventListener('click', () => selectJp(jpDiv, item));
+      jpCol.appendChild(jpDiv);
+    });
+    shuffle(matchPool).forEach(item => {
+      const enDiv = document.createElement('div');
+      enDiv.className = 'match-item';
+      enDiv.textContent = item.en;
+      enDiv.addEventListener('click', () => selectEn(enDiv, item));
+      enCol.appendChild(enDiv);
+    });
+  }
+  function selectJp(el, item){
+    document.querySelectorAll('#vb-matchJp .match-item').forEach(e => e.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedJp = { el, item };
+  }
+  function selectEn(el, item){
+    if (!selectedJp) return;
+    matchTotal++;
+    if (selectedJp.item.jp === item.jp){
+      selectedJp.el.classList.remove('selected'); selectedJp.el.classList.add('correct');
+      el.classList.add('correct'); matchRight++;
+    } else {
+      el.classList.add('wrong'); setTimeout(() => el.classList.remove('wrong'), 400);
+    }
+    document.getElementById('vb-matchScore').textContent = `${matchRight} / ${matchTotal}`;
+    selectedJp = null;
+  }
+  document.getElementById('vb-newMatchRound').addEventListener('click', newMatchRound);
+  newMatchRound();
+
+  let seqOrder = [];
+  function newSequence(){
+    seqOrder = shuffle(GAME_PLACES.concat(['プール','キャンプ'])).slice(0, 5);
+    const list = document.getElementById('vb-listenList');
+    list.innerHTML = '';
+    shuffle(seqOrder).forEach(word => {
+      const row = document.createElement('div');
+      row.style.display = 'flex'; row.style.alignItems = 'center'; row.style.gap = '0.75rem';
+      row.dataset.word = word;
+      row.innerHTML = `<input type="number" min="1" max="5" style="width:3rem; padding:0.4rem; border:1px solid var(--grey-line); text-align:center;"><span style="font-size:1.1rem;">${word}</span>`;
+      list.appendChild(row);
+    });
+    document.getElementById('vb-seqFeedback').textContent = '';
+  }
+  document.getElementById('vb-playSequence').addEventListener('click', () => {
+    seqOrder.forEach((word, i) => setTimeout(() => TTS.speak(word), i * 1400));
+  });
+  document.getElementById('vb-checkSequence').addEventListener('click', () => {
+    const rows = document.querySelectorAll('#vb-listenList > div');
+    let correct = 0;
+    rows.forEach(row => {
+      const input = row.querySelector('input');
+      const expected = seqOrder.indexOf(row.dataset.word) + 1;
+      if (parseInt(input.value) === expected){ input.style.borderColor = 'var(--ok)'; correct++; }
+      else { input.style.borderColor = 'var(--bad)'; }
+    });
+    const fb = document.getElementById('vb-seqFeedback');
+    fb.className = 'feedback ' + (correct === rows.length ? 'ok' : 'bad');
+    fb.textContent = `${correct} / ${rows.length} correct`;
+  });
+  document.getElementById('vb-newSequence').addEventListener('click', newSequence);
+  newSequence();
+})();
+
+/* ================= SENTENCE BUILDER ================= */
+(function(){
+  const strip = document.getElementById('sb-strip');
+  let stripChips = [];
+  function renderStrip(){
+    strip.innerHTML = '';
+    if (stripChips.length === 0){
+      strip.innerHTML = '<span class="placeholder">Tap chips below to build 〜に行きました。〜です。</span>';
+      return;
+    }
+    stripChips.forEach((text, i) => {
+      const c = document.createElement('span');
+      c.className = 'chip in-strip';
+      c.innerHTML = `${text}<span class="x">✕</span>`;
+      c.addEventListener('click', () => { stripChips.splice(i, 1); renderStrip(); });
+      strip.appendChild(c);
+    });
+  }
+  function addChip(text){ stripChips.push(text); renderStrip(); }
+  function fillBank(containerId, words){
+    const el = document.getElementById(containerId);
+    words.forEach(w => {
+      const b = document.createElement('button');
+      b.className = 'chip'; b.textContent = w;
+      b.addEventListener('click', () => addChip(w));
+      el.appendChild(b);
+    });
+  }
+  fillBank('sb-bankPlace', PLACES.map(p => p.jp));
+  fillBank('sb-bankGrammar', ['に', '行きました', 'です', '。']);
+  fillBank('sb-bankOpinion', OPINIONS.map(o => o.jp));
+  document.getElementById('sb-clearStrip').addEventListener('click', () => { stripChips = []; renderStrip(); });
+  document.getElementById('sb-readStrip').addEventListener('click', () => { if (stripChips.length) TTS.speak(stripChips.join('')); });
+  document.getElementById('sb-readFree').addEventListener('click', () => {
+    const text = document.getElementById('sb-freeWrite').value.trim();
+    if (text) TTS.speak(text);
+  });
+  renderStrip();
+})();
+
+/* ================= GOKIBURI ================= */
+(function(){
+  const ROWS = GAME_PLACES, COLS = GAME_OPINIONS, N = ROWS.length * COLS.length;
+  let cpuRoaches, youRoaches, cpuAttacked, youAttacked, youHits, cpuHits, gameOver, pending;
+
+  function placeRoaches(){ return new Set(shuffle([...Array(N).keys()]).slice(0, 8)); }
+  function newGame(){
+    cpuRoaches = placeRoaches(); youRoaches = placeRoaches();
+    cpuAttacked = new Set(); youAttacked = new Set();
+    youHits = 0; cpuHits = 0; gameOver = false; pending = null;
+    document.getElementById('gk-resultLine').textContent = '';
+    document.getElementById('gk-promptCard').style.display = 'none';
+    updateHp(); renderBoards();
+  }
+  function updateHp(){
+    document.getElementById('gk-youHp').textContent = `You: ${youHits} / 5 hits`;
+    document.getElementById('gk-cpuHp').textContent = `Computer: ${cpuHits} / 5 hits`;
+  }
+  function buildTable(tableEl, cellFactory){
+    tableEl.innerHTML = '';
+    const thead = document.createElement('tr');
+    thead.innerHTML = '<th></th>' + COLS.map(c => `<th>${c}</th>`).join('');
+    tableEl.appendChild(thead);
+    ROWS.forEach((r, ri) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<th>${r}</th>`;
+      COLS.forEach((c, ci) => {
+        const i = ri * COLS.length + ci;
+        const td = document.createElement('td');
+        td.appendChild(cellFactory(i, r, c));
+        tr.appendChild(td);
+      });
+      tableEl.appendChild(tr);
+    });
+  }
+  function renderBoards(){
+    buildTable(document.getElementById('gk-cpuBoard'), (i, r, c) => {
+      const btn = document.createElement('button');
+      btn.className = 'cell-btn';
+      if (cpuAttacked.has(i)){
+        btn.disabled = true;
+        if (cpuRoaches.has(i)){ btn.textContent = '🪳'; btn.classList.add('cell-hit'); }
+        else { btn.textContent = '·'; btn.classList.add('cell-miss'); }
+      } else {
+        btn.disabled = gameOver || !!pending;
+        btn.addEventListener('click', () => startAttack(i, r, c));
+      }
+      return btn;
+    });
+    buildTable(document.getElementById('gk-youBoard'), (i) => {
+      const span = document.createElement('button');
+      span.className = 'cell-btn'; span.disabled = true;
+      if (youAttacked.has(i)){
+        if (youRoaches.has(i)){ span.textContent = '🪳'; span.classList.add('cell-hit'); }
+        else { span.textContent = '·'; span.classList.add('cell-miss'); }
+      } else if (youRoaches.has(i)){
+        span.textContent = '🪳'; span.style.opacity = '0.55';
+      }
+      return span;
+    });
+  }
+  function startAttack(i, r, c){
+    pending = { i, r, c };
+    const sentence = `${r}に行きました。${c}です。`;
+    document.getElementById('gk-promptSentence').textContent = sentence;
+    document.getElementById('gk-promptCard').style.display = 'block';
+    const card = document.getElementById('gk-promptCard');
+    const old = card.querySelector('.speak-btn');
+    if (old) old.remove();
+    document.getElementById('gk-promptSentence').after(makeSpeakBtn(sentence));
+    renderBoards();
+  }
+  document.getElementById('gk-cancelBtn').addEventListener('click', () => {
+    pending = null; document.getElementById('gk-promptCard').style.display = 'none'; renderBoards();
+  });
+  document.getElementById('gk-fireBtn').addEventListener('click', () => {
+    if (!pending || gameOver) return;
+    const { i } = pending;
+    cpuAttacked.add(i);
+    const hit = cpuRoaches.has(i);
+    if (hit) youHits++;
+    document.getElementById('gk-resultLine').textContent = hit ? '🎯 Hit!' : 'Miss.';
+    pending = null;
+    document.getElementById('gk-promptCard').style.display = 'none';
+    updateHp(); renderBoards(); checkWin();
+    if (!gameOver) setTimeout(computerTurn, 700);
+  });
+  function computerTurn(){
+    if (gameOver) return;
+    const remaining = [...Array(N).keys()].filter(i => !youAttacked.has(i));
+    const i = remaining[Math.floor(Math.random() * remaining.length)];
+    youAttacked.add(i);
+    const hit = youRoaches.has(i);
+    if (hit) cpuHits++;
+    document.getElementById('gk-resultLine').textContent += hit ? ' The computer scored a hit on your board!' : ' The computer missed your board.';
+    updateHp(); renderBoards(); checkWin();
+  }
+  function checkWin(){
+    if (youHits >= 5){ gameOver = true; document.getElementById('gk-resultLine').textContent = '🏆 You win! You found 5 cockroaches first.'; }
+    else if (cpuHits >= 5){ gameOver = true; document.getElementById('gk-resultLine').textContent = '💻 The computer wins this round. New game?'; }
+    if (gameOver) renderBoards();
+  }
+  document.getElementById('gk-newGame').addEventListener('click', newGame);
+  newGame();
+})();
+
+/* ================= JANKEN ================= */
+(function(){
+  const trackWords = PLACES.map(p => p.jp);
+  const TRACK_LEN = trackWords.length, WIN_DISTANCE = 15;
+  let youDist = 0, cpuDist = 0, gameOver = false;
+
+  function renderTrack(){
+    const track = document.getElementById('jk-track');
+    track.innerHTML = '';
+    for (let i = 0; i < TRACK_LEN; i++){
+      const space = document.createElement('div');
+      space.className = 'race-space';
+      space.textContent = trackWords[i];
+      if (youDist % TRACK_LEN === i){ const t = document.createElement('span'); t.className = 'token you'; t.textContent = '🧍'; space.appendChild(t); }
+      if (cpuDist % TRACK_LEN === i){ const t = document.createElement('span'); t.className = 'token cpu'; t.textContent = '💻'; space.appendChild(t); }
+      track.appendChild(space);
+    }
+    document.getElementById('jk-youProgress').textContent = `You: ${Math.min(youDist, WIN_DISTANCE)} / ${WIN_DISTANCE}`;
+    document.getElementById('jk-cpuProgress').textContent = `Computer: ${Math.min(cpuDist, WIN_DISTANCE)} / ${WIN_DISTANCE}`;
+  }
+  function beats(a, b){ return (a === 'ぐう' && b === 'ちょき') || (a === 'ちょき' && b === 'ぱあ') || (a === 'ぱあ' && b === 'ぐう'); }
+  const MOVE = { 'ぐう':3, 'ちょき':2, 'ぱあ':1 };
+  const HAND_ICON = { 'ぐう':'✊', 'ちょき':'✌️', 'ぱあ':'✋' };
+
+  function throwHand(hand){
+    if (gameOver) return;
+    document.getElementById('jk-handRow').querySelectorAll('button').forEach(b => b.disabled = true);
+    const cpuHand = ['ぐう','ちょき','ぱあ'][Math.floor(Math.random() * 3)];
+    let msg, mover = null;
+    if (hand === cpuHand){ msg = `Draw — you both threw ${HAND_ICON[hand]} ${hand}. No one moves.`; }
+    else if (beats(hand, cpuHand)){ mover = 'you'; youDist += MOVE[hand]; msg = `You win! ${HAND_ICON[hand]} beats ${HAND_ICON[cpuHand]} — you move ${MOVE[hand]}.`; }
+    else { mover = 'cpu'; cpuDist += MOVE[cpuHand]; msg = `Computer wins — ${HAND_ICON[cpuHand]} beats ${HAND_ICON[hand]}. Computer moves ${MOVE[cpuHand]}.`; }
+    let landMsg = '';
+    if (mover === 'you'){ landMsg = ` You land on ${trackWords[youDist % TRACK_LEN]} — read it aloud!`; }
+    else if (mover === 'cpu'){ landMsg = ` Computer lands on ${trackWords[cpuDist % TRACK_LEN]}.`; }
+    document.getElementById('jk-resultLine').textContent = msg + landMsg;
+    renderTrack();
+    if (youDist >= WIN_DISTANCE || cpuDist >= WIN_DISTANCE){
+      gameOver = true;
+      document.getElementById('jk-resultLine').textContent += youDist >= WIN_DISTANCE ? ' 🏆 You win the race!' : ' 💻 Computer wins the race.';
+      document.getElementById('jk-continueRow').style.display = 'none';
+    } else {
+      document.getElementById('jk-continueRow').style.display = 'flex';
+    }
+  }
+  document.querySelectorAll('#subgame-janken .hand-btn').forEach(b => b.addEventListener('click', () => throwHand(b.dataset.hand)));
+  document.getElementById('jk-continueBtn').addEventListener('click', () => {
+    document.getElementById('jk-continueRow').style.display = 'none';
+    document.getElementById('jk-handRow').querySelectorAll('button').forEach(b => b.disabled = false);
+    document.getElementById('jk-resultLine').textContent = 'Choose your hand.';
+  });
+  function newRace(){
+    youDist = 0; cpuDist = 0; gameOver = false;
+    document.getElementById('jk-resultLine').textContent = 'Choose your hand to begin.';
+    document.getElementById('jk-continueRow').style.display = 'none';
+    document.getElementById('jk-handRow').querySelectorAll('button').forEach(b => b.disabled = false);
+    renderTrack();
+  }
+  document.getElementById('jk-newRace').addEventListener('click', newRace);
+  newRace();
+})();
+
+/* ================= AMIDAKUJI ================= */
+(function(){
+  const N = 4, TOPY = 20, BOTY = 240, LEVELS = 6;
+  const xs = [70, 170, 270, 370];
+  let rungs = [], outcomes = [], animating = false;
+
+  function genRungs(){
+    rungs = [];
+    for (let lvl = 0; lvl < LEVELS; lvl++){
+      const row = new Array(N - 1).fill(false);
+      let i = 0;
+      while (i < N - 1){
+        if (Math.random() < 0.45){ row[i] = true; i += 2; } else { i += 1; }
+      }
+      rungs.push(row);
+    }
+  }
+  function genOutcomes(){ outcomes = shuffle(PLACES).slice(0, N).map(p => p.jp); }
+  function drawLadder(){
+    const svg = document.getElementById('ak-ladder');
+    svg.innerHTML = '';
+    const levelHeight = (BOTY - TOPY) / LEVELS;
+    xs.forEach(x => {
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', x); line.setAttribute('y1', TOPY); line.setAttribute('x2', x); line.setAttribute('y2', BOTY);
+      line.setAttribute('stroke', '#dde1e8'); line.setAttribute('stroke-width', 3);
+      svg.appendChild(line);
+    });
+    rungs.forEach((row, lvl) => {
+      const y = TOPY + lvl * levelHeight + levelHeight / 2;
+      row.forEach((has, gap) => {
+        if (!has) return;
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', xs[gap]); line.setAttribute('y1', y); line.setAttribute('x2', xs[gap + 1]); line.setAttribute('y2', y);
+        line.setAttribute('stroke', '#041E42'); line.setAttribute('stroke-width', 3);
+        svg.appendChild(line);
+      });
+    });
+    xs.forEach((x, i) => {
+      const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      t.setAttribute('x', x); t.setAttribute('y', TOPY - 6); t.setAttribute('text-anchor', 'middle');
+      t.setAttribute('font-family', 'Montserrat'); t.setAttribute('font-size', '14'); t.setAttribute('fill', '#041E42');
+      t.textContent = i + 1; svg.appendChild(t);
+    });
+    xs.forEach((x, i) => {
+      const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      t.setAttribute('x', x); t.setAttribute('y', BOTY + 22); t.setAttribute('text-anchor', 'middle');
+      t.setAttribute('font-family', 'Montserrat'); t.setAttribute('font-size', '15'); t.setAttribute('font-weight', '500'); t.setAttribute('fill', '#E13B82');
+      t.textContent = outcomes[i]; svg.appendChild(t);
+    });
+  }
+  function computePath(start){
+    let line = start;
+    const levelHeight = (BOTY - TOPY) / LEVELS;
+    const points = [{ x: xs[line], y: TOPY }];
+    for (let lvl = 0; lvl < LEVELS; lvl++){
+      const y = TOPY + lvl * levelHeight + levelHeight / 2;
+      const yNext = TOPY + (lvl + 1) * levelHeight;
+      if (line > 0 && rungs[lvl][line - 1]){ points.push({ x: xs[line], y }); line -= 1; points.push({ x: xs[line], y }); }
+      else if (line < N - 1 && rungs[lvl][line]){ points.push({ x: xs[line], y }); line += 1; points.push({ x: xs[line], y }); }
+      points.push({ x: xs[line], y: yNext });
+    }
+    return { points, finalLine: line };
+  }
+  function buildStartButtons(){
+    const wrap = document.getElementById('ak-startButtons');
+    wrap.innerHTML = '';
+    for (let i = 0; i < N; i++){
+      const b = document.createElement('button');
+      b.className = 'btn'; b.textContent = `Line ${i + 1}`;
+      b.addEventListener('click', () => run(i));
+      wrap.appendChild(b);
+    }
+  }
+  function run(start){
+    if (animating) return;
+    animating = true;
+    document.getElementById('ak-startButtons').querySelectorAll('button').forEach(b => b.disabled = true);
+    document.getElementById('ak-outcome').textContent = '';
+    const token = document.getElementById('ak-token');
+    token.style.display = 'block';
+    const { points, finalLine } = computePath(start);
+    let step = 0;
+    function moveNext(){
+      if (step >= points.length){
+        animating = false;
+        document.getElementById('ak-startButtons').querySelectorAll('button').forEach(b => b.disabled = false);
+        const word = outcomes[finalLine];
+        document.getElementById('ak-outcome').textContent = `→ ${word}`;
+        TTS.speak(word + 'に行きました。');
+        return;
+      }
+      const p = points[step];
+      token.style.transition = 'left .25s linear, top .25s linear';
+      token.style.left = p.x + 'px'; token.style.top = p.y + 'px';
+      step++;
+      setTimeout(moveNext, 260);
+    }
+    token.style.transition = 'none';
+    token.style.left = points[0].x + 'px'; token.style.top = points[0].y + 'px';
+    setTimeout(moveNext, 200);
+  }
+  function newLadder(){
+    genRungs(); genOutcomes(); drawLadder(); buildStartButtons();
+    document.getElementById('ak-outcome').textContent = '';
+    document.getElementById('ak-token').style.display = 'none';
+  }
+  document.getElementById('ak-newLadder').addEventListener('click', newLadder);
+  newLadder();
+})();
+
+/* ================= READING CHECK QUIZ ================= */
+(function(){
+  let order, i, correct, answered;
+  function startQuiz(){
+    order = shuffle(READING_CHECK); i = 0; correct = 0; answered = false;
+    document.getElementById('qz-restartBtn').style.display = 'none';
+    renderQuestion();
+  }
+  function renderQuestion(){
+    const q = order[i]; answered = false;
+    document.getElementById('qz-questionCounter').textContent = `Question ${i + 1} / ${order.length}`;
+    document.getElementById('qz-scorePill').textContent = `Score: ${correct} / ${i}`;
+    document.getElementById('qz-nextBtn').style.display = 'none';
+    const block = document.getElementById('qz-quizBlock');
+    block.innerHTML = '';
+    const jpLine = document.createElement('div');
+    jpLine.className = 'jp-line'; jpLine.style.display = 'flex'; jpLine.style.alignItems = 'center'; jpLine.style.gap = '0.75rem';
+    const jpText = document.createElement('span'); jpText.textContent = q.jp;
+    jpLine.appendChild(jpText); jpLine.appendChild(makeSpeakBtn(q.jp));
+    block.appendChild(jpLine);
+    const optRow = document.createElement('div'); optRow.className = 'opt-row';
+    shuffle(q.options).forEach(opt => {
+      const b = document.createElement('button'); b.className = 'opt'; b.textContent = opt;
+      b.addEventListener('click', () => selectAnswer(b, opt, q));
+      optRow.appendChild(b);
+    });
+    block.appendChild(optRow);
+    const fb = document.createElement('p'); fb.className = 'feedback'; fb.id = 'qz-fb';
+    block.appendChild(fb);
+  }
+  function selectAnswer(btn, opt, q){
+    if (answered) return;
+    answered = true;
+    const isRight = opt === q.correctEn;
+    document.querySelectorAll('#qz-quizBlock .opt').forEach(b => {
+      b.disabled = true;
+      if (b.textContent === q.correctEn) b.classList.add('correct');
+      else if (b === btn) b.classList.add('wrong');
+    });
+    const fb = document.getElementById('qz-fb');
+    if (isRight){ correct++; fb.className = 'feedback ok'; fb.textContent = '✓ Correct!'; }
+    else { fb.className = 'feedback bad'; fb.textContent = `✕ Not quite — it means: ${q.correctEn}`; }
+    document.getElementById('qz-scorePill').textContent = `Score: ${correct} / ${i + 1}`;
+    if (i < order.length - 1){ document.getElementById('qz-nextBtn').style.display = 'inline-flex'; }
+    else { fb.textContent += ` — Final score: ${correct} / ${order.length}`; document.getElementById('qz-restartBtn').style.display = 'inline-flex'; }
+  }
+  document.getElementById('qz-nextBtn').addEventListener('click', () => { i++; renderQuestion(); });
+  document.getElementById('qz-restartBtn').addEventListener('click', startQuiz);
+  startQuiz();
+})();
+</script>
+</body>
+</html>
