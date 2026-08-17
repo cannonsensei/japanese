@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essay Code Lookup | Year 8 English</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Montserrat+Alternates:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #12213e;
+    --navy-2: #1c3059;
+    --pink: #e2467e;
+    --pink-light: #fbe6ee;
+    --paper: #f7f6f3;
+    --ink: #1a1a1a;
+    --line: #d9d9d4;
+    --mono-grey: #6b6f76;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    background: var(--navy);
+    color: #fff;
+    padding: 3.2rem 1.5rem 2.6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before{
+    content: "";
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(226,70,126,0.22) 0%, rgba(226,70,126,0) 70%);
+    pointer-events: none;
+  }
+
+  .header-inner{
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .eyebrow{
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--pink);
+    margin: 0 0 0.9rem;
+  }
+
+  h1{
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+    line-height: 1.12;
+    margin: 0 0 0.9rem;
+    letter-spacing: -0.01em;
+  }
+
+  header p.sub{
+    max-width: 560px;
+    font-size: 1rem;
+    line-height: 1.55;
+    color: #cbd3e3;
+    margin: 0;
+  }
+
+  /* ---------- Search ---------- */
+  .search-wrap{
+    max-width: 900px;
+    margin: -1.8rem auto 0;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .search-box{
+    background: #fff;
+    border: 2px solid var(--navy);
+    border-radius: 4px;
+    box-shadow: 6px 6px 0 var(--pink);
+    display: flex;
+    align-items: center;
+    padding: 0.35rem 0.35rem 0.35rem 1.1rem;
+  }
+
+  .search-box svg{
+    flex-shrink: 0;
+    stroke: var(--navy);
+    opacity: 0.55;
+  }
+
+  #search{
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 0.95rem 0.8rem;
+    width: 100%;
+    color: var(--navy);
+    letter-spacing: 0.01em;
+  }
+
+  #search::placeholder{
+    color: #9099ab;
+    font-weight: 500;
+  }
+
+  #clear-btn{
+    border: none;
+    background: var(--paper);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.7rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    white-space: nowrap;
+    display: none;
+  }
+  #clear-btn:hover{ background: var(--line); }
+
+  .hint{
+    max-width: 900px;
+    margin: 0.7rem auto 0;
+    padding: 0 1.6rem;
+    font-size: 0.82rem;
+    color: var(--mono-grey);
+  }
+
+  /* ---------- Main ---------- */
+  main{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.6rem 1.5rem 5rem;
+  }
+
+  .section-title{
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin: 3rem 0 1.2rem;
+  }
+
+  .section-title:first-of-type{ margin-top: 0; }
+
+  .section-title h2{
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  .section-title .count{
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--mono-grey);
+    background: var(--line);
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+  }
+
+  .section-rule{
+    border: none;
+    border-top: 2px solid var(--navy);
+    margin: -0.4rem 0 1.4rem;
+    opacity: 0.12;
+  }
+
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  /* ---------- Card ---------- */
+  .card{
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.3rem 1.3rem 1.4rem;
+    position: relative;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+
+  .card.match{
+    border-color: var(--pink);
+    box-shadow: 0 4px 0 0 var(--pink);
+    transform: translateY(-2px);
+  }
+
+  .card.hidden{ display: none; }
+
+  .subcard{
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px dashed var(--line);
+  }
+
+  .subcard .sub-label{
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--pink);
+    margin-bottom: 0.4rem;
+  }
+
+  .subcard .sub-code{
+    display: inline-block;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: var(--navy);
+    background: var(--pink-light);
+    border: 1.3px solid var(--navy);
+    border-radius: 4px;
+    padding: 0.15rem 0.45rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .subcard h4{
+    font-size: 0.92rem;
+    font-weight: 700;
+    margin: 0 0 0.4rem;
+    color: var(--ink);
+  }
+
+  .subcard p{
+    font-size: 0.88rem;
+  }
+
+  .card-code{
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--navy);
+    background: var(--pink-light);
+    border: 1.5px solid var(--navy);
+    border-radius: 4px;
+    padding: 0.25rem 0.6rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.01em;
+  }
+
+  .card.match .card-code{
+    background: var(--pink);
+    color: #fff;
+    border-color: var(--pink);
+  }
+
+  .card h3{
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .card p{
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #45484f;
+    margin: 0 0 0.7rem;
+  }
+
+  .card p:last-child{ margin-bottom: 0; }
+
+  .example{
+    background: var(--paper);
+    border-left: 3px solid var(--pink);
+    padding: 0.55rem 0.75rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--navy-2);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .example strong{
+    display: block;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--mono-grey);
+    margin-bottom: 0.2rem;
+    font-weight: 700;
+  }
+
+  /* ---------- Empty state ---------- */
+  #empty-state{
+    display: none;
+    text-align: center;
+    padding: 3.5rem 1rem;
+    color: var(--mono-grey);
+  }
+
+  #empty-state svg{ opacity: 0.35; margin-bottom: 1rem; }
+
+  #empty-state h3{
+    font-family: 'Montserrat Alternates', sans-serif;
+    color: var(--navy);
+    font-size: 1.1rem;
+    margin: 0 0 0.4rem;
+  }
+
+  #empty-state p{ font-size: 0.9rem; margin: 0; max-width: 380px; margin: 0 auto; }
+
+  /* ---------- Footer ---------- */
+  footer{
+    text-align: center;
+    padding: 1.6rem 1.5rem 2.4rem;
+    font-size: 0.78rem;
+    color: var(--mono-grey);
+  }
+
+  footer strong{ color: var(--navy); }
+
+  @media (max-width: 480px){
+    .search-box{ padding-left: 0.8rem; }
+    #search{ font-size: 0.98rem; padding: 0.85rem 0.6rem; }
+    .grid{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <p class="eyebrow">Year 8 English</p>
+    <h1>What does that code mean?</h1>
+    <p class="sub">Look up the codes your teacher has written on your essay to work out exactly what feedback you need to act on before your next draft.</p>
+  </div>
+</header>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <input id="search" type="text" placeholder="Type a code, e.g. SP, CD, R.O." autocomplete="off" spellcheck="false">
+    <button id="clear-btn" type="button">Clear</button>
+  </div>
+</div>
+<p class="hint">Codes are not case sensitive. Full stops and spaces don't matter, so "we", "W.E." and "w. e." all find the same thing.</p>
+
+<main>
+
+  <div class="section-title"><h2>Introduction</h2><span class="count">4 codes</span></div>
+  <hr class="section-rule">
+  <div class="grid" id="intro-grid"></div>
+
+  <div class="section-title"><h2>Body paragraphs</h2><span class="count">2 codes</span></div>
+  <hr class="section-rule">
+  <div class="grid" id="bodypara-grid"></div>
+
+  <div class="section-title"><h2>Language, punctuation &amp; style</h2><span class="count">14 codes</span></div>
+  <hr class="section-rule">
+  <div class="grid" id="body-grid"></div>
+
+  <div id="empty-state">
+    <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#12213e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <h3>No code matches that</h3>
+    <p>Check the spelling, or ask your teacher what she's written if you're still not sure.</p>
+  </div>
+
+</main>
+
+<footer>Made for <strong>St Aidan's Anglican Girls' School</strong> &middot; Year 8 English</footer>
+
+<script>
+  const introCodes = [
+    {
+      code: "1",
+      title: "Background, context or synopsis",
+      description: "Your introduction needs a piece of background information, context about the text, or a brief synopsis of the novel. Check where you've placed this: the order in which you introduce a novel matters.",
+      example: "Try this order: title and author first, then a one sentence synopsis, then the context or background your essay needs."
+    },
+    {
+      code: "2",
+      title: "Thesis statement",
+      description: "Your introduction is missing a clear thesis statement, or the one you have isn't clear enough. This is the single sentence that states your overall argument or answer to the question."
+    },
+    {
+      code: "3",
+      title: "Signposting of arguments",
+      description: "Your introduction needs to signpost the arguments you'll make in your body paragraphs, so the reader knows what's coming and in what order."
+    },
+    {
+      code: "4",
+      title: "Articulation of supporting ideas",
+      description: "This is about the articulation of your supporting ideas, or your selection of evidence. Either you've included too little to support your thesis, you've repeated the same idea, or your two supporting ideas aren't clearly distinguished from each other."
+    }
+  ];
+
+  const bodyParaCodes = [
+    {
+      code: "T",
+      title: "Topic sentence",
+      description: "Ensure your topic sentence gives a clear statement which supports your thesis statement. It should tell the reader exactly what this paragraph is going to argue."
+    },
+    {
+      code: "E",
+      title: "Evidence",
+      description: "This paragraph needs evidence from the text, such as a short embedded quote or detail, that clearly supports and proves your topic sentence.",
+      subcards: [
+        {
+          code: "C.E.",
+          title: "Contextualised evidence",
+          description: "You need to provide the context or situation that results in the evidence you present. Explain what is happening, and where the reader is in the novel, when the quote or detail occurs."
+        },
+        {
+          code: "R.E.",
+          title: "Relevant evidence",
+          description: "The evidence you've selected isn't relevant to your argument. Choose a different piece of evidence that more clearly supports your topic sentence."
+        }
+      ]
+    }
+  ];
+
+  const bodyCodes = [
+    {
+      code: "CD",
+      title: "Cohesive devices",
+      description: "You need a linking or cohesion word or phrase here to move smoothly between ideas.",
+      example: "\u201cOne of the main characters, Boxer, ...\u201d links back to an idea already introduced, rather than starting a new sentence with no connection."
+    },
+    {
+      code: "CO",
+      title: "Connective",
+      description: "You need a connective here to logically link your ideas together.",
+      example: "Middle of a paragraph: \u201cFurthermore, similarly, in addition...\u201d Linking or final sentence of an analytical paragraph: \u201cTherefore, ultimately, as a result...\u201d"
+    },
+    {
+      code: "F",
+      title: "Formality",
+      description: "This is too informal for essay writing. Avoid contractions and casual language, and don't use first person (I) or second person (you) language. Aim for formal, academic language throughout."
+    },
+    {
+      code: "Nu",
+      title: "Numbers",
+      description: "Write numbers under 20 out in full words rather than using numerals."
+    },
+    {
+      code: "P",
+      title: "Punctuation",
+      description: "There's a punctuation error here, such as a missing comma, full stop, or incorrect use of a quotation mark."
+    },
+    {
+      code: "Para",
+      title: "Paragraphing",
+      description: "You need to clearly define two separate body paragraphs here to reflect the two arguments you signposted in your introduction."
+    },
+    {
+      code: "R",
+      title: "Referencing",
+      description: "You need to reference this point with a page number so your evidence can be checked against the text."
+    },
+    {
+      code: "RO",
+      title: "Run-on sentence",
+      description: "This sentence runs on. You've joined two or more complete ideas without the punctuation or connecting word they need. Split it into separate sentences, or join the ideas properly with a comma and a conjunction, a semicolon, or a full stop."
+    },
+    {
+      code: "RW",
+      title: "Re-write",
+      description: "Finish the sentence starter provided. Your ending needs to be more than three words long."
+    },
+    {
+      code: "S",
+      title: "Specific",
+      description: "This word or phrase is too vague. Replace it with something more specific and precise.",
+      example: "Instead of \u201cthe farm\u201d, write \u201cManor Farm\u201d, the farm on which the animals live."
+    },
+    {
+      code: "SP",
+      title: "Spelling",
+      description: "There's a spelling error here. Check the word carefully, including any character or place names from the novel."
+    },
+    {
+      code: "To",
+      title: "Tone",
+      description: "Think about the tone of this sentence or paragraph. Could you make it take on a more particular tone, such as negative, positive, critical or sympathetic, to match what you're arguing?"
+    },
+    {
+      code: "W.C.",
+      title: "Word choice",
+      description: "The word you've chosen here isn't quite right for the meaning or tone you're after. Look for a more precise or more formal alternative."
+    },
+    {
+      code: "W.E.",
+      title: "Written expression",
+      description: "This sentence needs to be clearer. Read it aloud: if it doesn't flow or make sense on the first read, it needs reworking."
+    }
+  ];
+
+  function normalise(str){
+    return str.toLowerCase().replace(/[.\s]/g, "");
+  }
+
+  function buildCard(item){
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const extraCodes = (item.subcards || []).map(s => normalise(s.code));
+    card.dataset.code = normalise(item.code);
+    card.dataset.extra = extraCodes.join(",");
+    card.dataset.raw = item.code;
+
+    let html = `<span class="card-code">${item.code}</span><h3>${item.title}</h3><p>${item.description}</p>`;
+    if (item.example){
+      html += `<div class="example"><strong>Example</strong>${item.example}</div>`;
+    }
+
+    (item.subcards || []).forEach(sub => {
+      html += `<div class="subcard"><span class="sub-label">Also covers</span><span class="sub-code">${sub.code}</span><h4>${sub.title}</h4><p>${sub.description}</p>`;
+      if (sub.example){
+        html += `<div class="example"><strong>Example</strong>${sub.example}</div>`;
+      }
+      html += `</div>`;
+    });
+
+    card.innerHTML = html;
+    return card;
+  }
+
+  const introGrid = document.getElementById("intro-grid");
+  const bodyParaGrid = document.getElementById("bodypara-grid");
+  const bodyGrid = document.getElementById("body-grid");
+
+  introCodes.forEach(item => introGrid.appendChild(buildCard(item)));
+  bodyParaCodes.forEach(item => bodyParaGrid.appendChild(buildCard(item)));
+  bodyCodes.forEach(item => bodyGrid.appendChild(buildCard(item)));
+
+  const allCards = Array.from(document.querySelectorAll(".card"));
+  const searchInput = document.getElementById("search");
+  const clearBtn = document.getElementById("clear-btn");
+  const emptyState = document.getElementById("empty-state");
+  const sectionTitles = document.querySelectorAll(".section-title, .section-rule");
+
+  function runFilter(){
+    const query = normalise(searchInput.value);
+    clearBtn.style.display = query.length ? "block" : "none";
+
+    if (!query){
+      allCards.forEach(card => {
+        card.classList.remove("hidden", "match");
+      });
+      sectionTitles.forEach(el => el.style.display = "");
+      emptyState.style.display = "none";
+      return;
+    }
+
+    let visibleCount = 0;
+
+    allCards.forEach(card => {
+      const extras = card.dataset.extra ? card.dataset.extra.split(",") : [];
+      const isMatch = card.dataset.code === query || extras.includes(query);
+      const isPartial = !isMatch && (card.dataset.code.includes(query) || extras.some(e => e.includes(query)));
+      const show = isMatch || isPartial;
+
+      card.classList.toggle("hidden", !show);
+      card.classList.toggle("match", isMatch);
+
+      if (show) visibleCount++;
+    });
+
+    sectionTitles.forEach(el => el.style.display = "none");
+    document.querySelectorAll(".grid").forEach(grid => {
+      const hasVisible = Array.from(grid.children).some(c => !c.classList.contains("hidden"));
+      const wrapper = grid.previousElementSibling.previousElementSibling;
+      const rule = grid.previousElementSibling;
+      if (hasVisible){
+        if (wrapper) wrapper.style.display = "";
+        if (rule) rule.style.display = "";
+      }
+    });
+
+    emptyState.style.display = visibleCount === 0 ? "block" : "none";
+  }
+
+  searchInput.addEventListener("input", runFilter);
+  clearBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    runFilter();
+    searchInput.focus();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape"){
+      searchInput.value = "";
+      runFilter();
+    }
+  });
+</script>
+
+</body>
+</html>
