@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Year 7 Japanese | Flashcards &amp; Activities</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0d1b3e;
+    --navy-2:#1a2f5c;
+    --pink:#e8447a;
+    --pink-2:#f472a0;
+    --paper:#ffffff;
+    --white:#ffffff;
+    --line:#d8d5cd;
+    --ink:#101418;
+    --muted:#6a6f76;
+    --green:#1f8a4c;
+    --amber:#b8791f;
+    --red:#c0392b;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Montserrat','Noto Sans JP',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+  .jp{font-family:'Noto Sans JP',sans-serif;}
+  [hidden]{display:none !important;}
+
+  /* ---------- Header ---------- */
+  header{
+    background:var(--navy);
+    color:var(--white);
+    padding:28px 32px 24px;
+    border-bottom:6px solid var(--pink);
+  }
+  .header-inner{
+    max-width:1100px;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .brand-eyebrow{
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--pink-2);
+    font-weight:700;
+    margin:0 0 6px;
+  }
+  h1{
+    margin:0;
+    font-size:28px;
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+  .header-sub{
+    font-size:13px;
+    color:#cfd6ea;
+    margin-top:4px;
+  }
+  .st-aidans{
+    text-align:right;
+    font-size:12px;
+    color:#cfd6ea;
+    line-height:1.4;
+  }
+  .st-aidans strong{color:var(--white); font-weight:700;}
+
+  /* ---------- Main layout ---------- */
+  main{
+    max-width:1100px;
+    margin:0 auto;
+    padding:32px 24px 80px;
+  }
+
+  /* ---------- Mode tabs (Flashcards / Activities) ---------- */
+  .mode-tabs{
+    display:flex;
+    gap:24px;
+    margin-bottom:28px;
+    border-bottom:2px solid var(--line);
+  }
+  .mode-tab{
+    font-family:'Montserrat','Noto Sans JP',sans-serif;
+    background:none;
+    border:none;
+    border-bottom:3px solid transparent;
+    padding:10px 2px 12px;
+    font-size:16px;
+    font-weight:700;
+    color:var(--muted);
+    cursor:pointer;
+  }
+  .mode-tab.active{
+    color:var(--navy);
+    border-bottom-color:var(--pink);
+  }
+  .mode-tab:hover{color:var(--navy);}
+
+  /* ---------- Activity sub-tabs ---------- */
+  .activity-tabs{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:26px;
+  }
+  .activity-tab{
+    font-family:'Montserrat','Noto Sans JP',sans-serif;
+    border:2px solid var(--navy);
+    background:var(--white);
+    color:var(--navy);
+    padding:10px 18px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.02em;
+    cursor:pointer;
+    border-radius:2px;
+    transition:all .15s ease;
+  }
+  .activity-tab:hover{background:var(--navy); color:var(--white);}
+  .activity-tab.active{background:var(--pink); border-color:var(--pink); color:var(--white);}
+
+  .activity-panel{
+    background:var(--white);
+    border:1.5px solid var(--line);
+    border-radius:6px;
+    padding:26px;
+    margin-bottom:24px;
+  }
+  .activity-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:22px;
+  }
+  .activity-head h3{
+    margin:0 0 4px;
+    font-size:19px;
+    color:var(--navy);
+    font-weight:800;
+  }
+  .activity-sub{
+    margin:0;
+    font-size:13px;
+    color:var(--muted);
+    max-width:460px;
+    line-height:1.5;
+  }
+
+  .timer-block{text-align:right;}
+  .timer-display{
+    font-size:28px;
+    font-weight:800;
+    color:var(--pink);
+    font-variant-numeric:tabular-nums;
+  }
+  .timer-best{
+    font-size:11px;
+    color:var(--muted);
+    font-weight:700;
+    margin-top:2px;
+    letter-spacing:.02em;
+  }
+
+  /* ---------- Category selector (also reused for Writing Practice) ---------- */
+  .deck-select{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:28px;
+  }
+  .deck-btn{
+    font-family:'Montserrat','Noto Sans JP',sans-serif;
+    border:2px solid var(--navy);
+    background:var(--white);
+    color:var(--navy);
+    padding:12px 20px;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:.02em;
+    cursor:pointer;
+    border-radius:2px;
+    transition:all .15s ease;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .deck-btn .count{
+    font-size:11px;
+    background:var(--navy);
+    color:var(--white);
+    padding:2px 7px;
+    border-radius:10px;
+    font-weight:700;
+  }
+  .deck-btn:hover{background:var(--navy); color:var(--white);}
+  .deck-btn:hover .count{background:var(--pink);}
+  .deck-btn.active{background:var(--pink); border-color:var(--pink); color:var(--white);}
+  .deck-btn.active .count{background:var(--navy);}
+  .deck-btn.all-btn{border-style:dashed; border-color:var(--pink); color:var(--pink);}
+  .deck-btn.all-btn:hover{background:var(--pink); border-style:solid; color:var(--white);}
+  .deck-btn.all-btn.active{border-style:solid;}
+
+  /* ---------- Progress bar ---------- */
+  .progress-wrap{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:22px;
+  }
+  .progress-track{
+    flex:1;
+    height:8px;
+    background:var(--line);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    background:var(--pink);
+    width:0%;
+    transition:width .25s ease;
+  }
+  .progress-label{
+    font-size:13px;
+    font-weight:700;
+    color:var(--navy);
+    white-space:nowrap;
+    min-width:64px;
+    text-align:right;
+  }
+
+  /* ---------- Flashcard ---------- */
+  .card-stage{
+    display:flex;
+    justify-content:center;
+    margin-bottom:26px;
+  }
+  .card-scene{
+    width:100%;
+    max-width:520px;
+    height:320px;
+    perspective:1400px;
+    cursor:pointer;
+  }
+  .card{
+    width:100%;
+    height:100%;
+    position:relative;
+    transition:transform .5s cubic-bezier(.4,.2,.2,1);
+    transform-style:preserve-3d;
+  }
+  .card.flipped{transform:rotateY(180deg);}
+  .card-face{
+    position:absolute;
+    inset:0;
+    backface-visibility:hidden;
+    border-radius:6px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:28px;
+    border:2px solid var(--navy);
+  }
+  .card-front{background:var(--white);}
+  .card-back{
+    background:var(--navy);
+    color:var(--white);
+    transform:rotateY(180deg);
+  }
+  .card-tag{
+    position:absolute;
+    top:16px;
+    left:18px;
+    font-size:10px;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--pink);
+  }
+  .card-back .card-tag{color:var(--pink-2);}
+  .card-index{
+    position:absolute;
+    top:16px;
+    right:18px;
+    font-size:11px;
+    font-weight:700;
+    color:var(--muted);
+  }
+  .card-back .card-index{color:#a9b3cf;}
+
+  .word-jp{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:52px;
+    font-weight:700;
+    color:var(--navy);
+    line-height:1.2;
+  }
+  .card-back .word-jp{
+    color:var(--white);
+    font-size:32px;
+    font-weight:500;
+    margin-bottom:12px;
+  }
+  .word-en{font-size:26px; font-weight:800; color:var(--white);}
+  .hint{font-size:12px; color:var(--muted); margin-top:18px; letter-spacing:.03em;}
+  .card-back .hint{color:#a9b3cf;}
+
+  .speak-btn{
+    position:absolute;
+    bottom:16px;
+    right:16px;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:2px solid var(--pink);
+    background:var(--white);
+    color:var(--pink);
+    font-size:17px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:all .15s ease;
+  }
+  .speak-btn:hover{background:var(--pink); color:var(--white);}
+  .card-back .speak-btn{
+    border-color:var(--pink-2);
+    background:transparent;
+    color:var(--pink-2);
+  }
+  .card-back .speak-btn:hover{background:var(--pink-2); color:var(--navy);}
+
+  /* ---------- Controls ---------- */
+  .controls{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:14px;
+    margin-bottom:36px;
+    flex-wrap:wrap;
+  }
+  .ctrl-btn{
+    font-family:'Montserrat','Noto Sans JP',sans-serif;
+    border:2px solid var(--navy);
+    background:var(--white);
+    color:var(--navy);
+    padding:11px 22px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.03em;
+    cursor:pointer;
+    border-radius:2px;
+    transition:all .15s ease;
+  }
+  .ctrl-btn:hover{background:var(--navy);color:var(--white);}
+  .ctrl-btn.primary{background:var(--pink);border-color:var(--pink);color:var(--white);}
+  .ctrl-btn.primary:hover{background:var(--navy);border-color:var(--navy);}
+  .ctrl-btn.icon-only{padding:11px 16px;}
+  .ctrl-btn:disabled{opacity:.35;cursor:not-allowed;}
+
+  .self-check{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-bottom:36px;
+    flex-wrap:wrap;
+  }
+  .check-btn{
+    font-family:'Montserrat','Noto Sans JP',sans-serif;
+    border:2px solid var(--line);
+    background:var(--white);
+    padding:10px 20px;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+    border-radius:2px;
+  }
+  .check-btn.got-it{border-color:var(--green);color:var(--green);}
+  .check-btn.got-it:hover{background:var(--green);color:var(--white);}
+  .check-btn.again{border-color:var(--amber);color:var(--amber);}
+  .check-btn.again:hover{background:var(--amber);color:var(--white);}
+
+  /* ---------- Grid overview ---------- */
+  .grid-section{
+    margin-top:12px;
+    border-top:2px solid var(--line);
+    padding-top:28px;
+  }
+  .grid-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:16px;
+  }
+  .grid-heading h2{
+    font-size:15px;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:var(--navy);
+    margin:0;
+    font-weight:700;
+  }
+  .grid-toggle{
+    font-size:12px;
+    font-weight:700;
+    color:var(--pink);
+    background:none;
+    border:none;
+    cursor:pointer;
+    text-decoration:underline;
+  }
+  .vocab-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(210px, 1fr));
+    gap:10px;
+  }
+  .vocab-tile{
+    background:var(--white);
+    border:1.5px solid var(--line);
+    border-radius:4px;
+    padding:14px 16px;
+    cursor:pointer;
+    transition:border-color .15s ease;
+  }
+  .vocab-tile:hover{border-color:var(--pink);}
+  .vocab-tile.current{border-color:var(--navy); border-width:2px;}
+  .vocab-tile .t-jp{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:18px;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:4px;
+  }
+  .vocab-tile .t-en{font-size:12px; color:var(--muted); font-weight:600;}
+  .vocab-tile.mastered{background:#f1f8f4;}
+  .vocab-tile.mastered .t-jp{color:var(--green);}
+
+  /* ---------- Timed matching (Zodiac / Colours) — scatter-field drag & drop ---------- */
+  .scatter-field{
+    position:relative;
+    width:100%;
+    border:2px dashed var(--line);
+    border-radius:8px;
+    background:
+      linear-gradient(var(--paper) 0 0);
+    margin-bottom:22px;
+    overflow:visible;
+  }
+  .scatter-tile{
+    position:absolute;
+    padding:10px 14px;
+    border-radius:10px;
+    font-family:'Montserrat','Noto Sans JP',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    line-height:1.3;
+    text-align:center;
+    max-width:150px;
+    border:2px solid var(--navy);
+    background:var(--white);
+    color:var(--navy);
+    box-shadow:0 2px 5px rgba(0,0,0,.07);
+    cursor:grab;
+    user-select:none;
+    touch-action:none;
+    transition:border-color .15s ease, background .15s ease, box-shadow .15s ease;
+  }
+  .scatter-tile.jp-tile{font-family:'Noto Sans JP',sans-serif; font-size:16px; max-width:170px;}
+  .scatter-tile.dragging{cursor:grabbing; box-shadow:0 12px 24px rgba(0,0,0,.28); z-index:60;}
+  .scatter-tile.matched{border-color:var(--green); background:#f1f8f4; color:var(--green); cursor:default; box-shadow:none;}
+  .scatter-tile.wrong{border-color:var(--red); background:#fbeceb; animation:shake .35s;}
+
+  @keyframes shake{
+    0%,100%{transform:translateX(0);}
+    25%{transform:translateX(-5px);}
+    75%{transform:translateX(5px);}
+  }
+  .shake-anim{animation:shake .3s;}
+
+  .activity-controls{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .match-progress{font-size:13px; font-weight:700; color:var(--navy);}
+  .activity-complete{
+    margin-top:18px;
+    padding:14px 18px;
+    background:#f1f8f4;
+    border:2px solid var(--green);
+    border-radius:4px;
+    color:var(--green);
+    font-weight:700;
+    font-size:14px;
+  }
+
+  /* ---------- Drag and drop (Greetings context match) ---------- */
+  .drag-columns{
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:22px;
+    margin-bottom:22px;
+  }
+  .drag-pool{display:flex; flex-direction:column; gap:10px; min-height:40px;}
+  .drag-pill{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:16px;
+    font-weight:700;
+    color:var(--white);
+    background:var(--navy);
+    border:2px solid var(--navy);
+    padding:13px 16px;
+    border-radius:22px;
+    text-align:center;
+    cursor:grab;
+    user-select:none;
+    touch-action:none;
+  }
+  .drag-pill.dragging{cursor:grabbing; box-shadow:0 10px 24px rgba(0,0,0,.28); opacity:.95;}
+  .drag-targets{display:flex; flex-direction:column; gap:10px;}
+  .drop-target{
+    border:2px dashed var(--line);
+    border-radius:4px;
+    padding:12px 14px;
+    background:var(--paper);
+  }
+  .drop-target.filled{border-style:solid; border-color:var(--green); background:#f1f8f4;}
+  .drop-context{font-size:12.5px; color:var(--muted); margin-bottom:6px; line-height:1.4;}
+  .drop-slot{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:16px;
+    font-weight:700;
+    color:var(--navy);
+    min-height:20px;
+  }
+  .drop-target.filled .drop-slot{color:var(--green);}
+  .drop-slot.placeholder{color:#b9b5ac; font-family:'Montserrat','Noto Sans JP',sans-serif; font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.06em;}
+
+  /* ---------- Writing practice ---------- */
+  .writing-progress{font-size:13px; font-weight:700; color:var(--navy); margin-bottom:18px;}
+  .writing-stage{display:flex; flex-direction:column; align-items:center; gap:16px;}
+  .writing-prompt{
+    font-size:26px;
+    font-weight:800;
+    color:var(--navy);
+    text-align:center;
+    background:var(--paper);
+    border:2px solid var(--navy);
+    border-radius:6px;
+    padding:22px 28px;
+    width:100%;
+    max-width:480px;
+  }
+  .sketch-canvas{
+    width:100%;
+    max-width:480px;
+    height:260px;
+    background:var(--white);
+    border:2px solid var(--navy);
+    border-radius:6px;
+    touch-action:none;
+    cursor:crosshair;
+  }
+  .sketch-controls{display:flex; gap:12px; flex-wrap:wrap; justify-content:center;}
+  .answer-reveal{text-align:center; width:100%;}
+  .answer-jp{
+    font-family:'Noto Sans JP',sans-serif;
+    font-size:40px;
+    font-weight:700;
+    color:var(--pink);
+    margin-bottom:14px;
+  }
+  .writing-nav{margin-top:2px;}
+  .writing-note{
+    font-size:11.5px;
+    color:var(--muted);
+    text-align:center;
+    max-width:440px;
+    margin:0 auto 4px;
+    line-height:1.5;
+  }
+
+  footer{
+    text-align:center;
+    font-size:11px;
+    color:var(--muted);
+    padding:24px;
+    letter-spacing:.03em;
+  }
+
+  @media (max-width:640px){
+    .word-jp{font-size:38px;}
+    .card-scene{height:280px;}
+    header{padding:22px 18px 18px;}
+    .st-aidans{text-align:left;}
+    .header-inner{flex-direction:column; align-items:flex-start;}
+    .drag-columns{grid-template-columns:1fr;}
+    .activity-head{flex-direction:column;}
+    .timer-block{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <p class="brand-eyebrow">Japanese &middot; Year 7</p>
+      <h1>Vocabulary Flashcards &amp; Activities</h1>
+      <p class="header-sub">Greetings &amp; farewells, zodiac animals, and colours</p>
+    </div>
+    <div class="st-aidans">
+      <strong>St Aidan's Anglican Girls' School</strong><br>
+      Japanese Department
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div class="mode-tabs" id="modeTabs">
+    <button class="mode-tab active" data-mode="flashcards">Flashcards</button>
+    <button class="mode-tab" data-mode="activities">Activities</button>
+  </div>
+
+  <!-- ================= FLASHCARDS VIEW ================= -->
+  <section id="flashcardsView">
+
+    <div class="deck-select" id="deckSelect"></div>
+
+    <div class="progress-wrap">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel">1 / 10</div>
+    </div>
+
+    <div class="card-stage">
+      <div class="card-scene" id="cardScene">
+        <div class="card" id="card">
+          <div class="card-face card-front">
+            <span class="card-tag">Japanese</span>
+            <span class="card-index" id="indexFront"></span>
+            <div class="word-jp" id="frontJp"></div>
+            <div class="hint">Tap the card to reveal the meaning</div>
+            <button class="speak-btn" id="speakFront" type="button" aria-label="Listen to pronunciation" title="Listen">&#128266;</button>
+          </div>
+          <div class="card-face card-back">
+            <span class="card-tag">English</span>
+            <span class="card-index" id="indexBack"></span>
+            <div class="word-jp" id="backJp"></div>
+            <div class="word-en" id="backEn"></div>
+            <div class="hint">Tap again to flip back</div>
+            <button class="speak-btn" id="speakBack" type="button" aria-label="Listen to pronunciation" title="Listen">&#128266;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="self-check">
+      <button class="check-btn again" id="btnAgain">Study again</button>
+      <button class="check-btn got-it" id="btnGotIt">Got it! &check;</button>
+    </div>
+
+    <div class="controls">
+      <button class="ctrl-btn icon-only" id="btnPrev">&larr; Prev</button>
+      <button class="ctrl-btn" id="btnShuffle">Shuffle deck</button>
+      <button class="ctrl-btn" id="btnReset">Reset progress</button>
+      <button class="ctrl-btn primary" id="btnNext">Next &rarr;</button>
+    </div>
+
+    <div class="grid-section">
+      <div class="grid-heading">
+        <h2 id="gridTitle">All words in this deck</h2>
+        <button class="grid-toggle" id="gridToggle">Hide list</button>
+      </div>
+      <div class="vocab-grid" id="vocabGrid"></div>
+    </div>
+
+  </section>
+
+  <!-- ================= ACTIVITIES VIEW ================= -->
+  <section id="activitiesView" hidden>
+
+    <div class="activity-tabs" id="activityTabs">
+      <button class="activity-tab active" data-activity="greet-match">Greetings Match</button>
+      <button class="activity-tab" data-activity="zodiac-match">Zodiac Timed</button>
+      <button class="activity-tab" data-activity="colour-match">Colours Timed</button>
+      <button class="activity-tab" data-activity="writing">Writing Practice</button>
+    </div>
+
+    <!-- Greetings: drag and drop context matching -->
+    <div class="activity-panel" id="panel-greet-match">
+      <div class="activity-head">
+        <div>
+          <h3>Greetings &mdash; Match to the Situation</h3>
+          <p class="activity-sub">Drag each greeting onto the situation where you'd actually use it.</p>
+        </div>
+        <div class="match-progress" id="greetProgress">0 / 14 matched</div>
+      </div>
+      <div class="drag-columns">
+        <div class="drag-pool" id="greetPool"></div>
+        <div class="drag-targets" id="greetTargets"></div>
+      </div>
+      <div class="activity-controls">
+        <button class="ctrl-btn" id="greetRestart">New round</button>
+        <div></div>
+      </div>
+      <div class="activity-complete" id="greetComplete" hidden>&#127881; Well done! You matched every greeting to its situation.</div>
+    </div>
+
+    <!-- Zodiac: timed matching -->
+    <div class="activity-panel" id="panel-zodiac-match" hidden>
+      <div class="activity-head">
+        <div>
+          <h3>Zodiac Animals &mdash; Timed Matching</h3>
+          <p class="activity-sub">Drag each tile onto its matching pair, scattered across the board. Match every pair as fast as you can.</p>
+        </div>
+        <div class="timer-block">
+          <div class="timer-display" id="zodiacTimer">00:00.00</div>
+          <div class="timer-best" id="zodiacBest">Best this session: --:--</div>
+        </div>
+      </div>
+      <div class="scatter-field" id="zodiacField"></div>
+      <div class="activity-controls">
+        <button class="ctrl-btn" id="zodiacRestart">Restart round</button>
+        <div class="match-progress" id="zodiacProgress">0 / 14 matched</div>
+      </div>
+      <div class="activity-complete" id="zodiacComplete" hidden>&#127881; Completed in <span id="zodiacFinalTime"></span></div>
+    </div>
+
+    <!-- Colours: timed matching -->
+    <div class="activity-panel" id="panel-colour-match" hidden>
+      <div class="activity-head">
+        <div>
+          <h3>Colours &mdash; Timed Matching</h3>
+          <p class="activity-sub">Drag each tile onto its matching pair, scattered across the board. Match every pair as fast as you can.</p>
+        </div>
+        <div class="timer-block">
+          <div class="timer-display" id="colourTimer">00:00.00</div>
+          <div class="timer-best" id="colourBest">Best this session: --:--</div>
+        </div>
+      </div>
+      <div class="scatter-field" id="colourField"></div>
+      <div class="activity-controls">
+        <button class="ctrl-btn" id="colourRestart">Restart round</button>
+        <div class="match-progress" id="colourProgress">0 / 12 matched</div>
+      </div>
+      <div class="activity-complete" id="colourComplete" hidden>&#127881; Completed in <span id="colourFinalTime"></span></div>
+    </div>
+
+    <!-- Writing practice: sketchpad -->
+    <div class="activity-panel" id="panel-writing" hidden>
+      <div class="activity-head">
+        <div>
+          <h3>Writing Practice</h3>
+          <p class="activity-sub">Read the English meaning, write the Japanese with your finger or stylus, then check yourself.</p>
+        </div>
+      </div>
+      <div class="deck-select" id="writingDeckSelect"></div>
+      <div class="writing-progress" id="writingProgress">Written correctly: 0 / 0</div>
+      <div class="writing-stage">
+        <div class="writing-prompt" id="writingPrompt">Loading&hellip;</div>
+        <canvas class="sketch-canvas" id="sketchCanvas"></canvas>
+        <div class="sketch-controls">
+          <button class="ctrl-btn" id="btnClearSketch">Clear</button>
+          <button class="ctrl-btn primary" id="btnRevealAnswer">Show answer</button>
+        </div>
+        <div class="answer-reveal" id="answerReveal" hidden>
+          <div class="answer-jp jp" id="answerJp"></div>
+          <div class="self-check">
+            <button class="check-btn again" id="btnWriteAgain">Needs practice</button>
+            <button class="check-btn got-it" id="btnWriteGotIt">Nailed it! &check;</button>
+          </div>
+        </div>
+        <div class="writing-nav">
+          <button class="ctrl-btn" id="btnWritingNext">Next word &rarr;</button>
+        </div>
+        <p class="writing-note">This is a self-check activity &mdash; there's no handwriting recognition, so compare your writing to the revealed answer and judge for yourself.</p>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>Languages Learning Area | Japanese</footer>
+
+<script>
+  /* =====================================================================
+     VOCABULARY DATA
+     ===================================================================== */
+  const decks = {
+    greetings: {
+      label: "Greetings & Farewells",
+      words: [
+        { jp: "こんにちは", en: "Hello / Good afternoon", context: "You bump into your teacher in the corridor around lunchtime." },
+        { jp: "おはよう", en: "Good morning (casual)", context: "You wave hello to your best friend just before first period." },
+        { jp: "おはようございます", en: "Good morning (polite)", context: "You greet your teacher as you walk into class first thing in the morning." },
+        { jp: "さようなら", en: "Goodbye", context: "You formally say goodbye to your homestay family before flying home." },
+        { jp: "またね", en: "See you (casual)", context: "You wave to a friend at the school gate, expecting to see her again soon." },
+        { jp: "じゃあ、またね", en: "Well then, see you", context: "You're wrapping up a phone call with a friend, keeping it casual." },
+        { jp: "またあした", en: "See you tomorrow", context: "You leave your friend's sleepover, knowing you'll see her at school tomorrow." },
+        { jp: "はじめまして", en: "How do you do / Nice to meet you", context: "You meet your new Japanese pen pal for the very first time." },
+        { jp: "よろしくおねがいします", en: "Please be kind to me / Nice to meet you", context: "You've just introduced yourself to your new class and want to make a good impression." },
+        { jp: "やっほ", en: "Yo! / Hey there! (very casual)", context: "You spot your best friend across the oval and shout out to get her attention." },
+        { jp: "いってきます", en: "I'm off! (said when leaving home)", context: "You call this out as you head out the front door to school." },
+        { jp: "いってらしゃい", en: "Take care! / See you later (said to the person leaving)", context: "Your mum says this to you as you leave the house for school." },
+        { jp: "おかえりなさい", en: "Welcome home (said to the person returning)", context: "Your family says this to you the moment you walk in the front door." },
+        { jp: "ただいま", en: "I'm home! (said when arriving home)", context: "You call this out the second you step through your own front door." }
+      ]
+    },
+    zodiac: {
+      label: "Zodiac Animals",
+      words: [
+        { jp: "ねずみ", en: "Rat" },
+        { jp: "うし", en: "Cow / Ox" },
+        { jp: "とら", en: "Tiger" },
+        { jp: "うさぎ", en: "Rabbit" },
+        { jp: "たつ / りゅう", en: "Dragon" },
+        { jp: "へび", en: "Snake" },
+        { jp: "うま", en: "Horse" },
+        { jp: "ひつじ", en: "Sheep" },
+        { jp: "さる", en: "Monkey" },
+        { jp: "とり / にわとり", en: "Rooster" },
+        { jp: "いぬ", en: "Dog" },
+        { jp: "ぶた / いのしし", en: "Pig / Boar" },
+        { jp: "ねこ", en: "Cat" },
+        { jp: "さかな / きんぎょう", en: "Fish / Goldfish" }
+      ]
+    },
+    colours: {
+      label: "Colours",
+      words: [
+        { jp: "あか", en: "Red" },
+        { jp: "おれんじ", en: "Orange" },
+        { jp: "きいろ", en: "Yellow" },
+        { jp: "あお", en: "Blue" },
+        { jp: "みどり", en: "Green" },
+        { jp: "むらさき", en: "Purple" },
+        { jp: "ちゃいろ", en: "Brown" },
+        { jp: "しろ", en: "White" },
+        { jp: "くろ", en: "Black" },
+        { jp: "きんいろ", en: "Gold" },
+        { jp: "ぎんいろ", en: "Silver" },
+        { jp: "ぴんく", en: "Pink" }
+      ]
+    }
+  };
+
+  // Give every word a stable global id, then build a combined "all decks" view
+  Object.keys(decks).forEach(deckKey => {
+    decks[deckKey].words.forEach((word, idx) => { word.id = deckKey + '-' + idx; });
+  });
+  const allWords = Object.keys(decks).flatMap(deckKey => decks[deckKey].words);
+  decks.all = { label: "All decks mixed", words: allWords, isAll: true };
+
+  function shuffleArr(arr){
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  /* =====================================================================
+     MODE TABS  (Flashcards / Activities)
+     ===================================================================== */
+  document.querySelectorAll('.mode-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.mode-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const mode = btn.dataset.mode;
+      document.getElementById('flashcardsView').hidden = (mode !== 'flashcards');
+      document.getElementById('activitiesView').hidden = (mode !== 'activities');
+    });
+  });
+
+  document.querySelectorAll('.activity-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.activity-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.activity-panel').forEach(p => p.hidden = true);
+      const act = btn.dataset.activity;
+      document.getElementById('panel-' + act).hidden = false;
+      if (act === 'writing') ensureWritingInit();
+    });
+  });
+
+  /* =====================================================================
+     FLASHCARDS
+     ===================================================================== */
+  let currentDeckKey = "greetings";
+  let order = [];
+  let currentIndex = 0;
+  let masteredIds = new Set();
+  let gridVisible = true;
+
+  const deckSelect = document.getElementById('deckSelect');
+  const cardScene = document.getElementById('cardScene');
+  const card = document.getElementById('card');
+  const frontJp = document.getElementById('frontJp');
+  const backJp = document.getElementById('backJp');
+  const backEn = document.getElementById('backEn');
+  const indexFront = document.getElementById('indexFront');
+  const indexBack = document.getElementById('indexBack');
+  const progressFill = document.getElementById('progressFill');
+  const progressLabel = document.getElementById('progressLabel');
+  const vocabGrid = document.getElementById('vocabGrid');
+  const gridTitle = document.getElementById('gridTitle');
+  const gridToggle = document.getElementById('gridToggle');
+
+  function buildDeckSelector(){
+    deckSelect.innerHTML = '';
+    Object.keys(decks).filter(k => k !== 'all').forEach(key => {
+      const btn = document.createElement('button');
+      btn.className = 'deck-btn' + (key === currentDeckKey ? ' active' : '');
+      btn.innerHTML = decks[key].label + ' <span class="count">' + decks[key].words.length + '</span>';
+      btn.addEventListener('click', () => switchDeck(key));
+      deckSelect.appendChild(btn);
+    });
+    const allBtn = document.createElement('button');
+    allBtn.className = 'deck-btn all-btn' + (currentDeckKey === 'all' ? ' active' : '');
+    allBtn.innerHTML = '&#128256; All decks (shuffled) <span class="count">' + decks.all.words.length + '</span>';
+    allBtn.addEventListener('click', () => switchDeck('all', true));
+    deckSelect.appendChild(allBtn);
+  }
+
+  function switchDeck(key, forceShuffle){
+    currentDeckKey = key;
+    order = decks[key].words.map((_, i) => i);
+    if (key === 'all' || forceShuffle) shuffleArr(order);
+    currentIndex = 0;
+    buildDeckSelector();
+    renderCard();
+    renderGrid();
+  }
+
+  function renderCard(){
+    card.classList.remove('flipped');
+    const deck = decks[currentDeckKey];
+    const wordIdx = order[currentIndex];
+    const word = deck.words[wordIdx];
+
+    frontJp.textContent = word.jp;
+    backJp.textContent = word.jp;
+    backEn.textContent = word.en;
+
+    const posLabel = (currentIndex + 1) + ' / ' + order.length;
+    indexFront.textContent = posLabel;
+    indexBack.textContent = posLabel;
+    progressLabel.textContent = posLabel;
+    const pct = ((currentIndex) / (order.length - 1 || 1)) * 100;
+    progressFill.style.width = (order.length === 1 ? 100 : pct) + '%';
+
+    renderGrid();
+  }
+
+  function flipCard(){ card.classList.toggle('flipped'); }
+  cardScene.addEventListener('click', flipCard);
+
+  function speakJapanese(text){
+    if (!('speechSynthesis' in window)) {
+      alert("Sorry, this browser doesn't support text-to-speech.");
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'ja-JP';
+    utter.rate = 0.85;
+    window.speechSynthesis.speak(utter);
+  }
+
+  document.getElementById('speakFront').addEventListener('click', (e) => {
+    e.stopPropagation();
+    speakJapanese(frontJp.textContent);
+  });
+  document.getElementById('speakBack').addEventListener('click', (e) => {
+    e.stopPropagation();
+    speakJapanese(backJp.textContent);
+  });
+
+  function goNext(){ currentIndex = (currentIndex + 1) % order.length; renderCard(); }
+  function goPrev(){ currentIndex = (currentIndex - 1 + order.length) % order.length; renderCard(); }
+
+  document.getElementById('btnNext').addEventListener('click', goNext);
+  document.getElementById('btnPrev').addEventListener('click', goPrev);
+
+  document.getElementById('btnShuffle').addEventListener('click', () => {
+    shuffleArr(order); currentIndex = 0; renderCard();
+  });
+
+  document.getElementById('btnReset').addEventListener('click', () => {
+    const deck = decks[currentDeckKey];
+    deck.words.forEach(word => masteredIds.delete(word.id));
+    currentIndex = 0;
+    order = deck.words.map((_, i) => i);
+    renderCard();
+  });
+
+  document.getElementById('btnGotIt').addEventListener('click', () => {
+    const word = decks[currentDeckKey].words[order[currentIndex]];
+    masteredIds.add(word.id);
+    renderGrid();
+    goNext();
+  });
+  document.getElementById('btnAgain').addEventListener('click', () => {
+    const word = decks[currentDeckKey].words[order[currentIndex]];
+    masteredIds.delete(word.id);
+    renderGrid();
+    goNext();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('flashcardsView').hidden) {
+      if (e.key === 'ArrowRight') goNext();
+      if (e.key === 'ArrowLeft') goPrev();
+      if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flipCard(); }
+    }
+  });
+
+  function renderGrid(){
+    const deck = decks[currentDeckKey];
+    const masteredCount = deck.words.filter(w => masteredIds.has(w.id)).length;
+    gridTitle.textContent = 'All words: ' + deck.label + ' (' + masteredCount + ' / ' + deck.words.length + ' mastered)';
+    vocabGrid.innerHTML = '';
+    if (!gridVisible) { vocabGrid.style.display = 'none'; return; }
+    vocabGrid.style.display = 'grid';
+
+    deck.words.forEach((word, idx) => {
+      const tile = document.createElement('div');
+      const isCurrent = order[currentIndex] === idx;
+      const isMastered = masteredIds.has(word.id);
+      tile.className = 'vocab-tile' + (isCurrent ? ' current' : '') + (isMastered ? ' mastered' : '');
+      tile.innerHTML = '<div class="t-jp">' + word.jp + '</div><div class="t-en">' + word.en + '</div>';
+      tile.addEventListener('click', () => { currentIndex = order.indexOf(idx); renderCard(); });
+      vocabGrid.appendChild(tile);
+    });
+  }
+
+  gridToggle.addEventListener('click', () => {
+    gridVisible = !gridVisible;
+    gridToggle.textContent = gridVisible ? 'Hide list' : 'Show list';
+    renderGrid();
+  });
+
+  buildDeckSelector();
+  order = decks[currentDeckKey].words.map((_, i) => i);
+  renderCard();
+
+  /* =====================================================================
+     ACTIVITY 1 — Greetings: drag-and-drop context matching
+     ===================================================================== */
+  const greetPool = document.getElementById('greetPool');
+  const greetTargets = document.getElementById('greetTargets');
+  const greetProgress = document.getElementById('greetProgress');
+  const greetComplete = document.getElementById('greetComplete');
+  let matchedGreetCount = 0;
+  let dragEl = null, dragOffsetX = 0, dragOffsetY = 0;
+
+  function buildGreetRound(){
+    matchedGreetCount = 0;
+    greetComplete.hidden = true;
+    greetPool.innerHTML = '';
+    greetTargets.innerHTML = '';
+
+    const words = decks.greetings.words;
+    const poolOrder = shuffleArr(words.map((_, i) => i));
+    const targetOrder = shuffleArr(words.map((_, i) => i));
+
+    poolOrder.forEach(idx => {
+      const word = words[idx];
+      const pill = document.createElement('div');
+      pill.className = 'drag-pill jp';
+      pill.textContent = word.jp;
+      pill.dataset.id = word.id;
+      initDrag(pill);
+      greetPool.appendChild(pill);
+    });
+
+    targetOrder.forEach(idx => {
+      const word = words[idx];
+      const target = document.createElement('div');
+      target.className = 'drop-target';
+      target.dataset.id = word.id;
+      target.innerHTML = '<div class="drop-context">' + word.context + '</div><div class="drop-slot placeholder">Drop here</div>';
+      greetTargets.appendChild(target);
+    });
+
+    greetProgress.textContent = '0 / ' + words.length + ' matched';
+  }
+
+  function initDrag(pill){
+    pill.addEventListener('pointerdown', (e) => {
+      if (pill.classList.contains('placed')) return;
+      e.preventDefault();
+      dragEl = pill;
+      pill.setPointerCapture(e.pointerId);
+      pill.classList.add('dragging');
+      const rect = pill.getBoundingClientRect();
+      dragOffsetX = e.clientX - rect.left;
+      dragOffsetY = e.clientY - rect.top;
+      pill.style.position = 'fixed';
+      pill.style.width = rect.width + 'px';
+      pill.style.height = rect.height + 'px';
+      pill.style.zIndex = 1000;
+      movePill(pill, e.clientX, e.clientY);
+    });
+    pill.addEventListener('pointermove', (e) => {
+      if (dragEl !== pill) return;
+      movePill(pill, e.clientX, e.clientY);
+    });
+    pill.addEventListener('pointerup', (e) => {
+      if (dragEl !== pill) return;
+      dropPill(pill, e.clientX, e.clientY);
+    });
+    pill.addEventListener('pointercancel', () => {
+      if (dragEl !== pill) return;
+      resetPillPosition(pill);
+      dragEl = null;
+    });
+  }
+
+  function movePill(pill, x, y){
+    pill.style.left = (x - dragOffsetX) + 'px';
+    pill.style.top = (y - dragOffsetY) + 'px';
+  }
+
+  function resetPillPosition(pill){
+    pill.style.position = '';
+    pill.style.left = '';
+    pill.style.top = '';
+    pill.style.width = '';
+    pill.style.height = '';
+    pill.style.zIndex = '';
+    pill.classList.remove('dragging');
+  }
+
+  function dropPill(pill, x, y){
+    pill.classList.remove('dragging');
+    pill.style.pointerEvents = 'none';
+    const dropEl = document.elementFromPoint(x, y);
+    pill.style.pointerEvents = '';
+    dragEl = null;
+
+    const target = dropEl ? dropEl.closest('.drop-target') : null;
+    if (target && !target.classList.contains('filled')) {
+      if (target.dataset.id === pill.dataset.id) {
+        resetPillPosition(pill);
+        target.querySelector('.drop-slot').textContent = pill.textContent;
+        target.querySelector('.drop-slot').classList.remove('placeholder');
+        target.classList.add('filled');
+        pill.remove();
+        matchedGreetCount++;
+        greetProgress.textContent = matchedGreetCount + ' / ' + decks.greetings.words.length + ' matched';
+        if (matchedGreetCount === decks.greetings.words.length) greetComplete.hidden = false;
+        return;
+      } else {
+        target.classList.add('shake');
+        setTimeout(() => target.classList.remove('shake'), 350);
+      }
+    }
+    resetPillPosition(pill);
+  }
+
+  document.getElementById('greetRestart').addEventListener('click', buildGreetRound);
+  buildGreetRound();
+
+  /* =====================================================================
+     ACTIVITY 2 & 3 — Timed matching (Zodiac / Colours), drag-and-drop scatter field
+     ===================================================================== */
+  function createScatterMatch(config){
+    const deck = decks[config.deckKey];
+    const field = document.getElementById(config.fieldId);
+    const timerEl = document.getElementById(config.timerId);
+    const bestEl = document.getElementById(config.bestId);
+    const progressEl = document.getElementById(config.progressId);
+    const completeEl = document.getElementById(config.completeId);
+    const finalTimeEl = document.getElementById(config.finalTimeId);
+
+    let matchedCount = 0;
+    let timerInterval = null;
+    let startTime = null;
+    let bestTime = null;
+    let dragTile = null, dragOffsetX = 0, dragOffsetY = 0;
+
+    function formatTime(ms){
+      const totalSeconds = Math.floor(ms / 1000);
+      const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+      const s = (totalSeconds % 60).toString().padStart(2, '0');
+      const cs = Math.floor((ms % 1000) / 10).toString().padStart(2, '0');
+      return m + ':' + s + '.' + cs;
+    }
+
+    function columnsForWidth(){
+      const w = window.innerWidth;
+      if (w < 480) return 2;
+      if (w < 760) return 3;
+      if (w < 980) return 4;
+      return 5;
+    }
+
+    function startTimerIfNeeded(){
+      if (startTime) return;
+      startTime = Date.now();
+      timerInterval = setInterval(() => {
+        timerEl.textContent = formatTime(Date.now() - startTime);
+      }, 60);
+    }
+    function stopTimer(){ if (timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
+
+    function finishRound(){
+      stopTimer();
+      const elapsed = Date.now() - startTime;
+      timerEl.textContent = formatTime(elapsed);
+      if (bestTime === null || elapsed < bestTime) {
+        bestTime = elapsed;
+        bestEl.textContent = 'Best this session: ' + formatTime(bestTime);
+      }
+      finalTimeEl.textContent = formatTime(elapsed);
+      completeEl.hidden = false;
+    }
+
+    function buildRound(){
+      matchedCount = 0;
+      completeEl.hidden = true;
+      stopTimer();
+      timerEl.textContent = '00:00.00';
+      startTime = null;
+      field.innerHTML = '';
+
+      const tilesData = [];
+      deck.words.forEach(word => {
+        tilesData.push({ id: word.id, text: word.jp, type: 'jp' });
+        tilesData.push({ id: word.id, text: word.en, type: 'en' });
+      });
+      shuffleArr(tilesData);
+
+      const columns = columnsForWidth();
+      const rowHeight = 100;
+      const cellPct = 90 / columns;
+      const rows = Math.ceil(tilesData.length / columns);
+      field.style.height = (rows * rowHeight + 30) + 'px';
+
+      tilesData.forEach((data, i) => {
+        const row = Math.floor(i / columns);
+        const col = i % columns;
+        const jitterX = (Math.random() * cellPct * 0.4) - (cellPct * 0.2);
+        const jitterY = (Math.random() * 24) - 12;
+        let leftPct = 3 + col * cellPct + jitterX;
+        leftPct = Math.max(2, Math.min(leftPct, 90));
+        const topPx = Math.max(6, row * rowHeight + 12 + jitterY);
+
+        const tile = document.createElement('div');
+        tile.className = 'scatter-tile ' + (data.type === 'jp' ? 'jp-tile jp' : 'en-tile');
+        tile.textContent = data.text;
+        tile.dataset.id = data.id;
+        tile.dataset.type = data.type;
+        tile.dataset.spawnLeft = leftPct + '%';
+        tile.dataset.spawnTop = topPx + 'px';
+        tile.style.left = leftPct + '%';
+        tile.style.top = topPx + 'px';
+        initScatterDrag(tile);
+        field.appendChild(tile);
+      });
+
+      progressEl.textContent = '0 / ' + deck.words.length + ' matched';
+    }
+
+    function initScatterDrag(tile){
+      tile.addEventListener('pointerdown', (e) => {
+        if (tile.classList.contains('matched')) return;
+        e.preventDefault();
+        startTimerIfNeeded();
+        dragTile = tile;
+        tile.setPointerCapture(e.pointerId);
+        tile.classList.add('dragging');
+        const rect = tile.getBoundingClientRect();
+        dragOffsetX = e.clientX - rect.left;
+        dragOffsetY = e.clientY - rect.top;
+        tile.style.width = rect.width + 'px';
+        const fieldRect = field.getBoundingClientRect();
+        tile.style.left = (rect.left - fieldRect.left) + 'px';
+        tile.style.top = (rect.top - fieldRect.top) + 'px';
+      });
+      tile.addEventListener('pointermove', (e) => {
+        if (dragTile !== tile) return;
+        const fieldRect = field.getBoundingClientRect();
+        tile.style.left = (e.clientX - fieldRect.left - dragOffsetX) + 'px';
+        tile.style.top = (e.clientY - fieldRect.top - dragOffsetY) + 'px';
+      });
+      tile.addEventListener('pointerup', (e) => {
+        if (dragTile !== tile) return;
+        handleDrop(tile, e.clientX, e.clientY);
+      });
+      tile.addEventListener('pointercancel', () => {
+        if (dragTile !== tile) return;
+        snapBack(tile);
+        dragTile = null;
+      });
+    }
+
+    function snapBack(tile){
+      tile.style.width = '';
+      tile.style.left = tile.dataset.spawnLeft;
+      tile.style.top = tile.dataset.spawnTop;
+      tile.classList.remove('dragging');
+    }
+
+    function handleDrop(tile, x, y){
+      tile.classList.remove('dragging');
+      tile.style.pointerEvents = 'none';
+      const under = document.elementFromPoint(x, y);
+      tile.style.pointerEvents = '';
+      dragTile = null;
+
+      const target = under ? under.closest('.scatter-tile') : null;
+
+      if (target && target !== tile && field.contains(target) && !target.classList.contains('matched')) {
+        if (target.dataset.id === tile.dataset.id && target.dataset.type !== tile.dataset.type) {
+          const fieldRect = field.getBoundingClientRect();
+          const targetRect = target.getBoundingClientRect();
+          tile.style.width = '';
+          tile.style.left = (targetRect.left - fieldRect.left) + 'px';
+          tile.style.top = (targetRect.top - fieldRect.top + targetRect.height + 8) + 'px';
+          tile.classList.add('matched');
+          target.classList.add('matched');
+          matchedCount++;
+          progressEl.textContent = matchedCount + ' / ' + deck.words.length + ' matched';
+          if (matchedCount === deck.words.length) finishRound();
+          return;
+        } else {
+          target.classList.add('wrong');
+          setTimeout(() => target.classList.remove('wrong'), 400);
+        }
+      }
+      snapBack(tile);
+    }
+
+    document.getElementById(config.restartId).addEventListener('click', buildRound);
+    buildRound();
+  }
+
+  createScatterMatch({
+    deckKey: 'zodiac',
+    fieldId: 'zodiacField',
+    timerId: 'zodiacTimer', bestId: 'zodiacBest',
+    progressId: 'zodiacProgress', restartId: 'zodiacRestart',
+    completeId: 'zodiacComplete', finalTimeId: 'zodiacFinalTime'
+  });
+
+  createScatterMatch({
+    deckKey: 'colours',
+    fieldId: 'colourField',
+    timerId: 'colourTimer', bestId: 'colourBest',
+    progressId: 'colourProgress', restartId: 'colourRestart',
+    completeId: 'colourComplete', finalTimeId: 'colourFinalTime'
+  });
+
+  /* =====================================================================
+     ACTIVITY 4 — Writing practice (sketchpad)
+     ===================================================================== */
+  let writingDeckKey = 'greetings';
+  let writingOrder = [];
+  let writingIndex = 0;
+  let writingMasteredIds = new Set();
+  let currentWritingWord = null;
+  let writingInitialized = false;
+
+  const writingDeckSelect = document.getElementById('writingDeckSelect');
+  const writingPrompt = document.getElementById('writingPrompt');
+  const writingProgress = document.getElementById('writingProgress');
+  const answerReveal = document.getElementById('answerReveal');
+  const answerJp = document.getElementById('answerJp');
+  const sketchCanvas = document.getElementById('sketchCanvas');
+  const sketchCtx = sketchCanvas.getContext('2d');
+  let sketchDrawing = false;
+
+  function buildWritingDeckSelector(){
+    writingDeckSelect.innerHTML = '';
+    Object.keys(decks).filter(k => k !== 'all').forEach(key => {
+      const btn = document.createElement('button');
+      btn.className = 'deck-btn' + (key === writingDeckKey ? ' active' : '');
+      btn.innerHTML = decks[key].label + ' <span class="count">' + decks[key].words.length + '</span>';
+      btn.addEventListener('click', () => switchWritingDeck(key));
+      writingDeckSelect.appendChild(btn);
+    });
+    const allBtn = document.createElement('button');
+    allBtn.className = 'deck-btn all-btn' + (writingDeckKey === 'all' ? ' active' : '');
+    allBtn.innerHTML = '&#128256; All decks mixed <span class="count">' + decks.all.words.length + '</span>';
+    allBtn.addEventListener('click', () => switchWritingDeck('all'));
+    writingDeckSelect.appendChild(allBtn);
+  }
+
+  function switchWritingDeck(key){
+    writingDeckKey = key;
+    writingOrder = shuffleArr(decks[key].words.map((_, i) => i));
+    writingIndex = 0;
+    buildWritingDeckSelector();
+    renderWritingWord();
+  }
+
+  function renderWritingWord(){
+    const deck = decks[writingDeckKey];
+    if (writingIndex >= writingOrder.length) {
+      writingOrder = shuffleArr(deck.words.map((_, i) => i));
+      writingIndex = 0;
+    }
+    currentWritingWord = deck.words[writingOrder[writingIndex]];
+    writingPrompt.textContent = currentWritingWord.en;
+    answerReveal.hidden = true;
+    answerJp.textContent = '';
+    clearSketch();
+    const masteredCount = deck.words.filter(w => writingMasteredIds.has(w.id)).length;
+    writingProgress.textContent = 'Written correctly: ' + masteredCount + ' / ' + deck.words.length;
+  }
+
+  function goWritingNext(){ writingIndex++; renderWritingWord(); }
+
+  document.getElementById('btnRevealAnswer').addEventListener('click', () => {
+    answerJp.textContent = currentWritingWord.jp;
+    answerReveal.hidden = false;
+  });
+  document.getElementById('btnWriteGotIt').addEventListener('click', () => {
+    writingMasteredIds.add(currentWritingWord.id);
+    goWritingNext();
+  });
+  document.getElementById('btnWriteAgain').addEventListener('click', () => {
+    writingMasteredIds.delete(currentWritingWord.id);
+    goWritingNext();
+  });
+  document.getElementById('btnWritingNext').addEventListener('click', goWritingNext);
+  document.getElementById('btnClearSketch').addEventListener('click', clearSketch);
+
+  function resizeSketchCanvas(){
+    const rect = sketchCanvas.getBoundingClientRect();
+    if (rect.width === 0 || rect.height === 0) return;
+    const dpr = window.devicePixelRatio || 1;
+    sketchCanvas.width = rect.width * dpr;
+    sketchCanvas.height = rect.height * dpr;
+    sketchCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    sketchCtx.lineJoin = 'round';
+    sketchCtx.lineCap = 'round';
+    sketchCtx.strokeStyle = '#0d1b3e';
+  }
+
+  function clearSketch(){
+    const rect = sketchCanvas.getBoundingClientRect();
+    sketchCtx.clearRect(0, 0, rect.width, rect.height);
+  }
+
+  function getSketchPos(e){
+    const rect = sketchCanvas.getBoundingClientRect();
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  }
+
+  sketchCanvas.addEventListener('pointerdown', (e) => {
+    sketchDrawing = true;
+    sketchCanvas.setPointerCapture(e.pointerId);
+    const p = getSketchPos(e);
+    sketchCtx.beginPath();
+    sketchCtx.moveTo(p.x, p.y);
+    e.preventDefault();
+  });
+  sketchCanvas.addEventListener('pointermove', (e) => {
+    if (!sketchDrawing) return;
+    const p = getSketchPos(e);
+    sketchCtx.lineWidth = e.pointerType === 'pen' ? (1.5 + (e.pressure || 0.5) * 4) : 3.5;
+    sketchCtx.lineTo(p.x, p.y);
+    sketchCtx.stroke();
+    e.preventDefault();
+  });
+  function endStroke(){ sketchDrawing = false; }
+  sketchCanvas.addEventListener('pointerup', endStroke);
+  sketchCanvas.addEventListener('pointercancel', endStroke);
+  sketchCanvas.addEventListener('pointerleave', endStroke);
+
+  window.addEventListener('resize', () => { if (writingInitialized) resizeSketchCanvas(); });
+
+  function ensureWritingInit(){
+    if (writingInitialized) return;
+    writingInitialized = true;
+    resizeSketchCanvas();
+    buildWritingDeckSelector();
+    writingOrder = shuffleArr(decks[writingDeckKey].words.map((_, i) => i));
+    writingIndex = 0;
+    renderWritingWord();
+  }
+</script>
+
+</body>
+</html>
