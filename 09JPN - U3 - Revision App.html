@@ -84,7 +84,7 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 100px;}
 .flip-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px;border:2px solid var(--navy);}
 .flip-front{background:white;}
 .flip-back{background:var(--navy);color:white;transform:rotateY(180deg);}
-.flip-tag{position:absolute;top:14px;left:16px;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:800;color:var(--pink);}
+.flip-tag{position:absolute;top:14px;left:16px;right:56px;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:800;color:var(--pink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .flip-back .flip-tag{color:var(--pink-light);}
 .flip-index{position:absolute;top:14px;right:16px;font-size:0.7rem;font-weight:700;color:var(--text-sec);}
 .flip-back .flip-index{color:#a9bce0;}
@@ -226,11 +226,19 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 100px;}
 .tq-input-row{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;}
 .tq-input{font-family:var(--font-en);font-size:0.9rem;padding:10px 13px;border-radius:7px;border:2px solid white;background:white;color:var(--navy);min-width:220px;text-align:center;}
 .tq-input:focus{outline:2px solid var(--pink);}
+.tq-input.computer-typing{background:var(--pink-light);}
+.tq-race-computer{margin-top:14px;font-size:0.8rem;font-weight:700;color:#cfe0fa;min-height:20px;font-family:var(--font-en);}
 .tq-submit{font-family:var(--font-en);border:2px solid var(--pink);background:var(--pink);color:white;padding:10px 20px;font-size:0.75rem;font-weight:800;cursor:pointer;border-radius:7px;}
 .tq-submit:hover{background:var(--pink-hover);border-color:var(--pink-hover);}
+.tq-submit:disabled{opacity:0.5;cursor:not-allowed;}
 .tq-feedback{margin-top:13px;font-size:0.78rem;font-weight:700;min-height:18px;}
 .tq-feedback.correct{color:#8ee0ab;}
 .tq-feedback.incorrect{color:#f5a3a3;}
+.tq-decision-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:11px;}
+.tq-override-btn{font-family:var(--font-en);font-size:0.68rem;font-weight:800;letter-spacing:0.02em;color:white;background:none;border:1.5px solid #f5a3a3;border-radius:6px;padding:7px 13px;cursor:pointer;transition:all var(--trans);}
+.tq-override-btn:hover{background:rgba(245,163,163,0.15);border-color:white;}
+.tq-continue-btn{font-family:var(--font-en);font-size:0.68rem;font-weight:800;letter-spacing:0.02em;color:var(--navy);background:white;border:1.5px solid white;border-radius:6px;padding:7px 13px;cursor:pointer;transition:all var(--trans);}
+.tq-continue-btn:hover{background:var(--pink-light);}
 .typhoon-result{text-align:center;padding:20px;border:2px solid var(--pink);border-radius:12px;background:var(--pink-light);margin-bottom:18px;}
 .typhoon-result h4{margin:0 0 6px;font-size:1.15rem;color:var(--navy);}
 .typhoon-result p{margin:0;font-size:0.78rem;color:var(--text-sec);}
@@ -240,8 +248,9 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 100px;}
 .house-cell:hover:not(.revealed):not(:disabled){background:var(--pink-light);border-color:var(--pink);}
 .house-cell:disabled{cursor:not-allowed;}
 .house-cell.revealed{cursor:default;}
-.house-cell.revealed.points{background:#eef8f1;border-color:var(--green);color:var(--green);font-size:1rem;font-weight:800;}
-.house-cell.revealed.typhoon{background:#fdeceb;border-color:var(--red);font-size:1.3rem;}
+.house-cell.revealed.points{background:#eef8f1;border-color:var(--green);color:var(--green);font-weight:800;}
+.house-cell.revealed.typhoon{background:#fdeceb;border-color:var(--red);}
+.house-cell.revealed.missed{background:#eef1f5;border-color:var(--border-light);color:var(--text-sec);font-weight:800;}
 .house-cell.active-question{border-color:var(--pink);background:var(--pink-light);box-shadow:0 0 0 3px rgba(196,0,122,0.18);}
 .typhoon-footer-controls{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
 
@@ -266,7 +275,7 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 100px;}
       <h1 class="header-title jp">ファッション <span style="font-family:var(--font-en);">— Fashion &amp; Clothing</span></h1>
       <p class="header-sub">Year 9 Japanese &middot; Vocabulary Revision</p>
     </div>
-    <div class="header-badge">Year 9 &middot; Unit 9.3</div>
+    <div class="header-badge">Year 9 Japanese</div>
   </div>
 </header>
 
@@ -471,6 +480,7 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 100px;}
             <input type="text" class="tq-input" id="tqInput" autocomplete="off" placeholder="Type your answer&hellip;">
             <button class="tq-submit" id="tqSubmit" onclick="submitTyphoonAnswer()">Submit</button>
           </div>
+          <div class="tq-race-computer" id="raceComputerLine" hidden></div>
           <div class="tq-feedback" id="tqFeedback"></div>
         </div>
         <div class="typhoon-result" id="typhoonResult" hidden>
@@ -531,7 +541,7 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 100px;}
 
 <script>
 /* ══════════════════════ DATA ══════════════════════ */
-const CATEGORIES = [{"id": "clothing", "label": "5.1 Clothing & Accessories", "words": [{"id": "w0", "en": "apparel", "enAll": ["apparel"], "jp": "アパレル", "reading": null, "kanaForm": "アパレル", "kanjiForm": null}, {"id": "w1", "en": "belt", "enAll": ["belt"], "jp": "ベルト", "reading": null, "kanaForm": "ベルト", "kanjiForm": null}, {"id": "w2", "en": "blazer", "enAll": ["blazer"], "jp": "ブレザー", "reading": null, "kanaForm": "ブレザー", "kanjiForm": null}, {"id": "w3", "en": "blouse", "enAll": ["blouse"], "jp": "ブラウス", "reading": null, "kanaForm": "ブラウス", "kanjiForm": null}, {"id": "w4", "en": "boots", "enAll": ["boots"], "jp": "ブーツ", "reading": null, "kanaForm": "ブーツ", "kanjiForm": null}, {"id": "w5", "en": "bra", "enAll": ["bra"], "jp": "ブラジャー", "reading": null, "kanaForm": "ブラジャー", "kanjiForm": null}, {"id": "w6", "en": "business shirt", "enAll": ["business shirt"], "jp": "ワイシャツ", "reading": null, "kanaForm": "ワイシャツ", "kanjiForm": null}, {"id": "w7", "en": "business suit", "enAll": ["business suit"], "jp": "せびろ", "reading": null, "kanaForm": "せびろ", "kanjiForm": null}, {"id": "w8", "en": "cardigan", "enAll": ["cardigan"], "jp": "カーディガン", "reading": null, "kanaForm": "カーディガン", "kanjiForm": null}, {"id": "w9", "en": "clothes", "enAll": ["clothes"], "jp": "ふく", "reading": null, "kanaForm": "ふく", "kanjiForm": null}, {"id": "w10", "en": "clothing", "enAll": ["clothing"], "jp": "いりょうひん", "reading": null, "kanaForm": "いりょうひん", "kanjiForm": null}, {"id": "w11", "en": "coat", "enAll": ["coat"], "jp": "コート", "reading": null, "kanaForm": "コート", "kanjiForm": null}, {"id": "w12", "en": "coat", "enAll": ["coat", "jacket"], "jp": "うわぎ", "reading": null, "kanaForm": "うわぎ", "kanjiForm": null}, {"id": "w13", "en": "dress", "enAll": ["dress"], "jp": "ドレス", "reading": null, "kanaForm": "ドレス", "kanjiForm": null}, {"id": "w14", "en": "dress", "enAll": ["dress"], "jp": "ワンピース", "reading": null, "kanaForm": "ワンピース", "kanjiForm": null}, {"id": "w15", "en": "earring", "enAll": ["earring"], "jp": "イヤリング", "reading": null, "kanaForm": "イヤリング", "kanjiForm": null}, {"id": "w16", "en": "hat", "enAll": ["hat", "cap"], "jp": "ぼうし", "reading": null, "kanaForm": "ぼうし", "kanjiForm": null}, {"id": "w17", "en": "high heeled shoes", "enAll": ["high heeled shoes"], "jp": "ハイヒール", "reading": null, "kanaForm": "ハイヒール", "kanjiForm": null}, {"id": "w18", "en": "jacket", "enAll": ["jacket"], "jp": "ジャケット", "reading": null, "kanaForm": "ジャケット", "kanjiForm": null}, {"id": "w19", "en": "japanese summer kimono", "enAll": ["japanese summer kimono"], "jp": "ゆかた", "reading": null, "kanaForm": "ゆかた", "kanjiForm": null}, {"id": "w20", "en": "jean", "enAll": ["jean"], "jp": "ジーンズ", "reading": null, "kanaForm": "ジーンズ", "kanjiForm": null}, {"id": "w21", "en": "kimono", "enAll": ["kimono"], "jp": "きもの", "reading": null, "kanaForm": "きもの", "kanjiForm": null}, {"id": "w22", "en": "necklace", "enAll": ["necklace"], "jp": "ネックレス", "reading": null, "kanaForm": "ネックレス", "kanjiForm": null}, {"id": "w23", "en": "necktie", "enAll": ["necktie"], "jp": "ネクタイ", "reading": null, "kanaForm": "ネクタイ", "kanjiForm": null}, {"id": "w24", "en": "overcoat", "enAll": ["overcoat"], "jp": "オーバー", "reading": null, "kanaForm": "オーバー", "kanjiForm": null}, {"id": "w25", "en": "pajamas", "enAll": ["pajamas"], "jp": "パジャマ", "reading": null, "kanaForm": "パジャマ", "kanjiForm": null}, {"id": "w26", "en": "pierced earring", "enAll": ["pierced earring"], "jp": "ピアス", "reading": null, "kanaForm": "ピアス", "kanjiForm": null}, {"id": "w27", "en": "raincoat", "enAll": ["raincoat"], "jp": "レインコート", "reading": null, "kanaForm": "レインコート", "kanjiForm": null}, {"id": "w28", "en": "ring", "enAll": ["ring"], "jp": "ゆびわ", "reading": null, "kanaForm": "ゆびわ", "kanjiForm": null}, {"id": "w29", "en": "sandals", "enAll": ["sandals"], "jp": "サンダル", "reading": null, "kanaForm": "サンダル", "kanjiForm": null}, {"id": "w30", "en": "scarf", "enAll": ["scarf"], "jp": "スカーフ", "reading": null, "kanaForm": "スカーフ", "kanjiForm": null}, {"id": "w31", "en": "shirt", "enAll": ["shirt"], "jp": "シャツ", "reading": null, "kanaForm": "シャツ", "kanjiForm": null}, {"id": "w32", "en": "shoes", "enAll": ["shoes"], "jp": "くつ", "reading": null, "kanaForm": "くつ", "kanjiForm": null}, {"id": "w33", "en": "short pants", "enAll": ["short pants"], "jp": "はんズボン", "reading": null, "kanaForm": "はんズボン", "kanjiForm": null}, {"id": "w34", "en": "shorts", "enAll": ["shorts"], "jp": "ショーツ", "reading": null, "kanaForm": "ショーツ", "kanjiForm": null}, {"id": "w35", "en": "skirt", "enAll": ["skirt"], "jp": "スカート", "reading": null, "kanaForm": "スカート", "kanjiForm": null}, {"id": "w36", "en": "slacks", "enAll": ["slacks"], "jp": "スラックス", "reading": null, "kanaForm": "スラックス", "kanjiForm": null}, {"id": "w37", "en": "slippers", "enAll": ["slippers"], "jp": "スリッパ", "reading": null, "kanaForm": "スリッパ", "kanjiForm": null}, {"id": "w38", "en": "sneakers", "enAll": ["sneakers"], "jp": "スニーカー", "reading": null, "kanaForm": "スニーカー", "kanjiForm": null}, {"id": "w39", "en": "socks", "enAll": ["socks"], "jp": "くつした", "reading": null, "kanaForm": "くつした", "kanjiForm": null}, {"id": "w40", "en": "suit", "enAll": ["suit"], "jp": "スーツ", "reading": null, "kanaForm": "スーツ", "kanjiForm": null}, {"id": "w41", "en": "sweat shirt", "enAll": ["sweat shirt"], "jp": "トレーナー", "reading": null, "kanaForm": "トレーナー", "kanjiForm": null}, {"id": "w42", "en": "sweater", "enAll": ["sweater"], "jp": "セーター", "reading": null, "kanaForm": "セーター", "kanjiForm": null}, {"id": "w43", "en": "swimwear", "enAll": ["swimwear", "swimsuit"], "jp": "みずぎ", "reading": null, "kanaForm": "みずぎ", "kanjiForm": null}, {"id": "w44", "en": "t-shirt", "enAll": ["t-shirt"], "jp": "T-シャツ", "reading": null, "kanaForm": "T-シャツ", "kanjiForm": null}, {"id": "w45", "en": "trousers", "enAll": ["trousers"], "jp": "ズボン", "reading": null, "kanaForm": "ズボン", "kanjiForm": null}, {"id": "w46", "en": "underpants", "enAll": ["underpants", "underwear"], "jp": "パンツ", "reading": null, "kanaForm": "パンツ", "kanjiForm": null}, {"id": "w47", "en": "underwear", "enAll": ["underwear"], "jp": "したぎ", "reading": null, "kanaForm": "したぎ", "kanjiForm": null}], "num": "5.1"}, {"id": "wearing", "label": "6.1 Wearing Verbs", "words": [{"id": "w48", "en": "wear a shirt", "enAll": ["wear a shirt", "wear a dress", "wear a jacket"], "jp": "きます", "reading": null, "kanaForm": "きます", "kanjiForm": null}, {"id": "w49", "en": "wear pants", "enAll": ["wear pants", "wear a skirt", "wear socks", "wear shoes"], "jp": "はきます", "reading": null, "kanaForm": "はきます", "kanjiForm": null}, {"id": "w50", "en": "wear a hat", "enAll": ["wear a hat", "wear a cap", "wear a helmet"], "jp": "かぶります", "reading": null, "kanaForm": "かぶります", "kanjiForm": null}, {"id": "w51", "en": "wear glasses", "enAll": ["wear glasses", "wear sunglasses"], "jp": "かけます", "reading": null, "kanaForm": "かけます", "kanjiForm": null}, {"id": "w52", "en": "wear a necklace", "enAll": ["wear a necklace", "wear a tie", "wear a scarf"], "jp": "します", "reading": null, "kanaForm": "します", "kanjiForm": null}, {"id": "w53", "en": "wear a scarf", "enAll": ["wear a scarf", "wear a wrap", "wear a shawl"], "jp": "まきます", "reading": null, "kanaForm": "まきます", "kanjiForm": null}, {"id": "w54", "en": "wear earrings", "enAll": ["wear earrings", "wear perfume", "wear make-up"], "jp": "つけます", "reading": null, "kanaForm": "つけます", "kanjiForm": null}], "num": "6.1"}, {"id": "colours", "label": "7.1 Colours", "words": [{"id": "w55", "en": "colour", "enAll": ["colour", "color"], "jp": "色", "reading": "いろ", "kanaForm": "いろ", "kanjiForm": "色"}, {"id": "w56", "en": "blue", "enAll": ["blue"], "jp": "青", "reading": "あお", "kanaForm": "あお", "kanjiForm": "青"}, {"id": "w57", "en": "red", "enAll": ["red"], "jp": "赤", "reading": "あか", "kanaForm": "あか", "kanjiForm": "赤"}, {"id": "w58", "en": "yellow", "enAll": ["yellow"], "jp": "黄色", "reading": "きいろ", "kanaForm": "きいろ", "kanjiForm": "黄色"}, {"id": "w59", "en": "black", "enAll": ["black"], "jp": "黒", "reading": "くろ", "kanaForm": "くろ", "kanjiForm": "黒"}, {"id": "w60", "en": "white", "enAll": ["white"], "jp": "白", "reading": "しろ", "kanaForm": "しろ", "kanjiForm": "白"}, {"id": "w61", "en": "brown", "enAll": ["brown"], "jp": "茶色", "reading": "ちゃいろ", "kanaForm": "ちゃいろ", "kanjiForm": "茶色"}, {"id": "w62", "en": "pink", "enAll": ["pink"], "jp": "ピンク", "reading": null, "kanaForm": "ピンク", "kanjiForm": null}, {"id": "w63", "en": "green", "enAll": ["green"], "jp": "緑", "reading": "みどり", "kanaForm": "みどり", "kanjiForm": "緑"}, {"id": "w64", "en": "orange", "enAll": ["orange"], "jp": "オレンジ", "reading": null, "kanaForm": "オレンジ", "kanjiForm": null}], "num": "7.1"}, {"id": "describing-colours", "label": "7.2 Describing Colours", "words": [{"id": "w65", "en": "bright", "enAll": ["bright"], "jp": "あかるい", "reading": null, "kanaForm": "あかるい", "kanjiForm": null}, {"id": "w66", "en": "clear", "enAll": ["clear"], "jp": "クリア", "reading": null, "kanaForm": "クリア", "kanjiForm": null}, {"id": "w67", "en": "colourful", "enAll": ["colourful"], "jp": "カラフル", "reading": null, "kanaForm": "カラフル", "kanjiForm": null}, {"id": "w68", "en": "dark", "enAll": ["dark"], "jp": "くらい", "reading": null, "kanaForm": "くらい", "kanjiForm": null}, {"id": "w69", "en": "deep", "enAll": ["deep"], "jp": "こい", "reading": null, "kanaForm": "こい", "kanjiForm": null}, {"id": "w70", "en": "dull", "enAll": ["dull", "muted"], "jp": "くすんだ", "reading": null, "kanaForm": "くすんだ", "kanjiForm": null}, {"id": "w71", "en": "flashy", "enAll": ["flashy"], "jp": "はで", "reading": null, "kanaForm": "はで", "kanjiForm": null}, {"id": "w72", "en": "light", "enAll": ["light", "weak"], "jp": "うすい", "reading": null, "kanaForm": "うすい", "kanjiForm": null}, {"id": "w73", "en": "multicoloured", "enAll": ["multicoloured"], "jp": "マルチカラー", "reading": null, "kanaForm": "マルチカラー", "kanjiForm": null}, {"id": "w74", "en": "pastel", "enAll": ["pastel"], "jp": "パステル", "reading": null, "kanaForm": "パステル", "kanjiForm": null}, {"id": "w75", "en": "soft", "enAll": ["soft", "light"], "jp": "あわい", "reading": null, "kanaForm": "あわい", "kanjiForm": null}, {"id": "w76", "en": "vivid", "enAll": ["vivid"], "jp": "ビビッド", "reading": null, "kanaForm": "ビビッド", "kanjiForm": null}, {"id": "w77", "en": "vivid", "enAll": ["vivid", "bright"], "jp": "あざやか", "reading": null, "kanaForm": "あざやか", "kanjiForm": null}], "num": "7.2"}, {"id": "patterns", "label": "7.3 Patterns & Prints", "words": [{"id": "w78", "en": "camouflage", "enAll": ["camouflage"], "jp": "めいさいがら", "reading": null, "kanaForm": "めいさいがら", "kanjiForm": null}, {"id": "w79", "en": "floral print", "enAll": ["floral print"], "jp": "花柄", "reading": "はながら", "kanaForm": "はながら", "kanjiForm": "花柄"}, {"id": "w80", "en": "gingham check", "enAll": ["gingham check", "gingham"], "jp": "ギンガムチェック", "reading": null, "kanaForm": "ギンガムチェック", "kanjiForm": null}, {"id": "w81", "en": "heart print", "enAll": ["heart print"], "jp": "ハート柄", "reading": "ハートがら", "kanaForm": "ハートがら", "kanjiForm": "ハート柄"}, {"id": "w82", "en": "horizontal stripes", "enAll": ["horizontal stripes", "stripes"], "jp": "ボーダー柄", "reading": "ボーダーがら", "kanaForm": "ボーダーがら", "kanjiForm": "ボーダー柄"}, {"id": "w83", "en": "leopard print", "enAll": ["leopard print"], "jp": "ヒョウ柄", "reading": "ヒョウがら", "kanaForm": "ヒョウがら", "kanjiForm": "ヒョウ柄"}, {"id": "w84", "en": "logo", "enAll": ["logo"], "jp": "ロゴ", "reading": null, "kanaForm": "ロゴ", "kanjiForm": null}, {"id": "w85", "en": "multicolour stripes", "enAll": ["multicolour stripes"], "jp": "マルチストライプ柄", "reading": "マルチストライプがら", "kanaForm": "マルチストライプがら", "kanjiForm": "マルチストライプ柄"}, {"id": "w86", "en": "paisley", "enAll": ["paisley"], "jp": "ペイズリー柄", "reading": "ペイズリーがら", "kanaForm": "ペイズリーがら", "kanjiForm": "ペイズリー柄"}, {"id": "w87", "en": "plain", "enAll": ["plain"], "jp": "むじ", "reading": null, "kanaForm": "むじ", "kanjiForm": null}, {"id": "w88", "en": "polka dot", "enAll": ["polka dot"], "jp": "水玉模様", "reading": "みずたまもよう", "kanaForm": "みずたまもよう", "kanjiForm": "水玉模様"}, {"id": "w89", "en": "small floral print", "enAll": ["small floral print"], "jp": "小花柄", "reading": "こばながら", "kanaForm": "こばながら", "kanjiForm": "小花柄"}, {"id": "w90", "en": "large floral print", "enAll": ["large floral print"], "jp": "大きめの花柄", "reading": "おおきいめのはながら", "kanaForm": "おおきいめのはながら", "kanjiForm": "大きめの花柄"}, {"id": "w91", "en": "snake print", "enAll": ["snake print", "python print"], "jp": "ヘビ柄", "reading": "ヘビがら", "kanaForm": "ヘビがら", "kanjiForm": "ヘビ柄"}, {"id": "w92", "en": "star print", "enAll": ["star print"], "jp": "ほしがら", "reading": null, "kanaForm": "ほしがら", "kanjiForm": null}, {"id": "w93", "en": "small dots", "enAll": ["small dots"], "jp": "小さめのドット", "reading": "ちいさめのドット", "kanaForm": "ちいさめのドット", "kanjiForm": "小さめのドット"}, {"id": "w94", "en": "tartan", "enAll": ["tartan", "tartan check"], "jp": "タータンチェック", "reading": null, "kanaForm": "タータンチェック", "kanjiForm": null}, {"id": "w95", "en": "tropical print", "enAll": ["tropical print"], "jp": "トロピカル柄", "reading": "トロピカルがら", "kanaForm": "トロピカルがら", "kanjiForm": "トロピカル柄"}, {"id": "w96", "en": "vertical stripes", "enAll": ["vertical stripes", "stripes"], "jp": "ストライプ柄", "reading": "ストライプがら", "kanaForm": "ストライプがら", "kanjiForm": "ストライプ柄"}, {"id": "w97", "en": "zebra print", "enAll": ["zebra print"], "jp": "ゼブラ柄", "reading": "ゼブラがら", "kanaForm": "ゼブラがら", "kanjiForm": "ゼブラ柄"}], "num": "7.3"}, {"id": "describing-clothes", "label": "7.4 Describing Clothes", "words": [{"id": "w98", "en": "baggy", "enAll": ["baggy"], "jp": "ゆったりした", "reading": null, "kanaForm": "ゆったりした", "kanjiForm": null}, {"id": "w99", "en": "boxy", "enAll": ["boxy"], "jp": "ボックスがたの", "reading": null, "kanaForm": "ボックスがたの", "kanjiForm": null}, {"id": "w100", "en": "casual", "enAll": ["casual"], "jp": "カジュアルな", "reading": null, "kanaForm": "カジュアルな", "kanjiForm": null}, {"id": "w101", "en": "cool", "enAll": ["cool"], "jp": "かっこいい", "reading": null, "kanaForm": "かっこいい", "kanjiForm": null}, {"id": "w102", "en": "cool", "enAll": ["cool"], "jp": "クールな", "reading": null, "kanaForm": "クールな", "kanjiForm": null}, {"id": "w103", "en": "cute", "enAll": ["cute"], "jp": "かわいい", "reading": null, "kanaForm": "かわいい", "kanjiForm": null}, {"id": "w104", "en": "elegant", "enAll": ["elegant"], "jp": "じょうひんな", "reading": null, "kanaForm": "じょうひんな", "kanjiForm": null}, {"id": "w105", "en": "elegant", "enAll": ["elegant"], "jp": "エレガントの", "reading": null, "kanaForm": "エレガントの", "kanjiForm": null}, {"id": "w106", "en": "formal", "enAll": ["formal"], "jp": "フォーマルな", "reading": null, "kanaForm": "フォーマルな", "kanjiForm": null}, {"id": "w107", "en": "fresh", "enAll": ["fresh"], "jp": "さわやかな", "reading": null, "kanaForm": "さわやかな", "kanjiForm": null}, {"id": "w108", "en": "frilly", "enAll": ["frilly"], "jp": "フリフリの", "reading": null, "kanaForm": "フリフリの", "kanjiForm": null}, {"id": "w109", "en": "girly", "enAll": ["girly"], "jp": "ガーリーな", "reading": null, "kanaForm": "ガーリーな", "kanjiForm": null}, {"id": "w110", "en": "mature", "enAll": ["mature"], "jp": "おとなっぽい", "reading": null, "kanaForm": "おとなっぽい", "kanjiForm": null}, {"id": "w111", "en": "modest", "enAll": ["modest"], "jp": "ひかえめ", "reading": null, "kanaForm": "ひかえめ", "kanjiForm": null}, {"id": "w112", "en": "pretty", "enAll": ["pretty"], "jp": "きれいな", "reading": null, "kanaForm": "きれいな", "kanjiForm": null}, {"id": "w113", "en": "simple", "enAll": ["simple"], "jp": "シンプルな", "reading": null, "kanaForm": "シンプルな", "kanjiForm": null}, {"id": "w114", "en": "stylish", "enAll": ["stylish"], "jp": "おしゃれな", "reading": null, "kanaForm": "おしゃれな", "kanjiForm": null}, {"id": "w115", "en": "tailored", "enAll": ["tailored", "fitted"], "jp": "ぴったりした", "reading": null, "kanaForm": "ぴったりした", "kanjiForm": null}, {"id": "w116", "en": "tight", "enAll": ["tight"], "jp": "タイトの", "reading": null, "kanaForm": "タイトの", "kanjiForm": null}], "num": "7.4"}];
+const CATEGORIES = [{"id": "clothing", "label": "Clothing & Accessories", "words": [{"id": "w0", "en": "apparel", "enAll": ["apparel"], "jp": "アパレル", "reading": null, "kanaForm": "アパレル", "kanjiForm": null}, {"id": "w1", "en": "belt", "enAll": ["belt"], "jp": "ベルト", "reading": null, "kanaForm": "ベルト", "kanjiForm": null}, {"id": "w2", "en": "blazer", "enAll": ["blazer"], "jp": "ブレザー", "reading": null, "kanaForm": "ブレザー", "kanjiForm": null}, {"id": "w3", "en": "blouse", "enAll": ["blouse"], "jp": "ブラウス", "reading": null, "kanaForm": "ブラウス", "kanjiForm": null}, {"id": "w4", "en": "boots", "enAll": ["boots"], "jp": "ブーツ", "reading": null, "kanaForm": "ブーツ", "kanjiForm": null}, {"id": "w5", "en": "bra", "enAll": ["bra"], "jp": "ブラジャー", "reading": null, "kanaForm": "ブラジャー", "kanjiForm": null}, {"id": "w6", "en": "business shirt", "enAll": ["business shirt"], "jp": "ワイシャツ", "reading": null, "kanaForm": "ワイシャツ", "kanjiForm": null}, {"id": "w7", "en": "business suit", "enAll": ["business suit"], "jp": "せびろ", "reading": null, "kanaForm": "せびろ", "kanjiForm": null}, {"id": "w8", "en": "cardigan", "enAll": ["cardigan"], "jp": "カーディガン", "reading": null, "kanaForm": "カーディガン", "kanjiForm": null}, {"id": "w9", "en": "clothes", "enAll": ["clothes"], "jp": "ふく", "reading": null, "kanaForm": "ふく", "kanjiForm": null}, {"id": "w10", "en": "clothing", "enAll": ["clothing"], "jp": "いりょうひん", "reading": null, "kanaForm": "いりょうひん", "kanjiForm": null}, {"id": "w11", "en": "coat", "enAll": ["coat"], "jp": "コート", "reading": null, "kanaForm": "コート", "kanjiForm": null}, {"id": "w12", "en": "coat", "enAll": ["coat", "jacket"], "jp": "うわぎ", "reading": null, "kanaForm": "うわぎ", "kanjiForm": null}, {"id": "w13", "en": "dress", "enAll": ["dress"], "jp": "ドレス", "reading": null, "kanaForm": "ドレス", "kanjiForm": null}, {"id": "w14", "en": "dress", "enAll": ["dress"], "jp": "ワンピース", "reading": null, "kanaForm": "ワンピース", "kanjiForm": null}, {"id": "w15", "en": "earring", "enAll": ["earring"], "jp": "イヤリング", "reading": null, "kanaForm": "イヤリング", "kanjiForm": null}, {"id": "w16", "en": "hat", "enAll": ["hat", "cap"], "jp": "ぼうし", "reading": null, "kanaForm": "ぼうし", "kanjiForm": null}, {"id": "w17", "en": "high heeled shoes", "enAll": ["high heeled shoes"], "jp": "ハイヒール", "reading": null, "kanaForm": "ハイヒール", "kanjiForm": null}, {"id": "w18", "en": "jacket", "enAll": ["jacket"], "jp": "ジャケット", "reading": null, "kanaForm": "ジャケット", "kanjiForm": null}, {"id": "w19", "en": "japanese summer kimono", "enAll": ["japanese summer kimono"], "jp": "ゆかた", "reading": null, "kanaForm": "ゆかた", "kanjiForm": null}, {"id": "w20", "en": "jean", "enAll": ["jean"], "jp": "ジーンズ", "reading": null, "kanaForm": "ジーンズ", "kanjiForm": null}, {"id": "w21", "en": "kimono", "enAll": ["kimono"], "jp": "きもの", "reading": null, "kanaForm": "きもの", "kanjiForm": null}, {"id": "w22", "en": "necklace", "enAll": ["necklace"], "jp": "ネックレス", "reading": null, "kanaForm": "ネックレス", "kanjiForm": null}, {"id": "w23", "en": "necktie", "enAll": ["necktie"], "jp": "ネクタイ", "reading": null, "kanaForm": "ネクタイ", "kanjiForm": null}, {"id": "w24", "en": "overcoat", "enAll": ["overcoat"], "jp": "オーバー", "reading": null, "kanaForm": "オーバー", "kanjiForm": null}, {"id": "w25", "en": "pajamas", "enAll": ["pajamas"], "jp": "パジャマ", "reading": null, "kanaForm": "パジャマ", "kanjiForm": null}, {"id": "w26", "en": "pierced earring", "enAll": ["pierced earring"], "jp": "ピアス", "reading": null, "kanaForm": "ピアス", "kanjiForm": null}, {"id": "w27", "en": "raincoat", "enAll": ["raincoat"], "jp": "レインコート", "reading": null, "kanaForm": "レインコート", "kanjiForm": null}, {"id": "w28", "en": "ring", "enAll": ["ring"], "jp": "ゆびわ", "reading": null, "kanaForm": "ゆびわ", "kanjiForm": null}, {"id": "w29", "en": "sandals", "enAll": ["sandals"], "jp": "サンダル", "reading": null, "kanaForm": "サンダル", "kanjiForm": null}, {"id": "w30", "en": "scarf", "enAll": ["scarf"], "jp": "スカーフ", "reading": null, "kanaForm": "スカーフ", "kanjiForm": null}, {"id": "w31", "en": "shirt", "enAll": ["shirt"], "jp": "シャツ", "reading": null, "kanaForm": "シャツ", "kanjiForm": null}, {"id": "w32", "en": "shoes", "enAll": ["shoes"], "jp": "くつ", "reading": null, "kanaForm": "くつ", "kanjiForm": null}, {"id": "w33", "en": "short pants", "enAll": ["short pants"], "jp": "はんズボン", "reading": null, "kanaForm": "はんズボン", "kanjiForm": null}, {"id": "w34", "en": "shorts", "enAll": ["shorts"], "jp": "ショーツ", "reading": null, "kanaForm": "ショーツ", "kanjiForm": null}, {"id": "w35", "en": "skirt", "enAll": ["skirt"], "jp": "スカート", "reading": null, "kanaForm": "スカート", "kanjiForm": null}, {"id": "w36", "en": "slacks", "enAll": ["slacks"], "jp": "スラックス", "reading": null, "kanaForm": "スラックス", "kanjiForm": null}, {"id": "w37", "en": "slippers", "enAll": ["slippers"], "jp": "スリッパ", "reading": null, "kanaForm": "スリッパ", "kanjiForm": null}, {"id": "w38", "en": "sneakers", "enAll": ["sneakers"], "jp": "スニーカー", "reading": null, "kanaForm": "スニーカー", "kanjiForm": null}, {"id": "w39", "en": "socks", "enAll": ["socks"], "jp": "くつした", "reading": null, "kanaForm": "くつした", "kanjiForm": null}, {"id": "w40", "en": "suit", "enAll": ["suit"], "jp": "スーツ", "reading": null, "kanaForm": "スーツ", "kanjiForm": null}, {"id": "w41", "en": "sweat shirt", "enAll": ["sweat shirt"], "jp": "トレーナー", "reading": null, "kanaForm": "トレーナー", "kanjiForm": null}, {"id": "w42", "en": "sweater", "enAll": ["sweater"], "jp": "セーター", "reading": null, "kanaForm": "セーター", "kanjiForm": null}, {"id": "w43", "en": "swimwear", "enAll": ["swimwear", "swimsuit"], "jp": "みずぎ", "reading": null, "kanaForm": "みずぎ", "kanjiForm": null}, {"id": "w44", "en": "t-shirt", "enAll": ["t-shirt"], "jp": "T-シャツ", "reading": null, "kanaForm": "T-シャツ", "kanjiForm": null}, {"id": "w45", "en": "trousers", "enAll": ["trousers"], "jp": "ズボン", "reading": null, "kanaForm": "ズボン", "kanjiForm": null}, {"id": "w46", "en": "underpants", "enAll": ["underpants", "underwear"], "jp": "パンツ", "reading": null, "kanaForm": "パンツ", "kanjiForm": null}, {"id": "w47", "en": "underwear", "enAll": ["underwear"], "jp": "したぎ", "reading": null, "kanaForm": "したぎ", "kanjiForm": null}], "num": "5.1"}, {"id": "wearing", "label": "Wearing Verbs", "words": [{"id": "w48", "en": "wear a shirt", "enAll": ["wear a shirt", "wear a dress", "wear a jacket"], "jp": "きます", "reading": null, "kanaForm": "きます", "kanjiForm": null}, {"id": "w49", "en": "wear pants", "enAll": ["wear pants", "wear a skirt", "wear socks", "wear shoes"], "jp": "はきます", "reading": null, "kanaForm": "はきます", "kanjiForm": null}, {"id": "w50", "en": "wear a hat", "enAll": ["wear a hat", "wear a cap", "wear a helmet"], "jp": "かぶります", "reading": null, "kanaForm": "かぶります", "kanjiForm": null}, {"id": "w51", "en": "wear glasses", "enAll": ["wear glasses", "wear sunglasses"], "jp": "かけます", "reading": null, "kanaForm": "かけます", "kanjiForm": null}, {"id": "w52", "en": "wear a necklace", "enAll": ["wear a necklace", "wear a tie", "wear a scarf"], "jp": "します", "reading": null, "kanaForm": "します", "kanjiForm": null}, {"id": "w53", "en": "wear a scarf", "enAll": ["wear a scarf", "wear a wrap", "wear a shawl"], "jp": "まきます", "reading": null, "kanaForm": "まきます", "kanjiForm": null}, {"id": "w54", "en": "wear earrings", "enAll": ["wear earrings", "wear perfume", "wear make-up"], "jp": "つけます", "reading": null, "kanaForm": "つけます", "kanjiForm": null}], "num": "6.1"}, {"id": "colours", "label": "Colours", "words": [{"id": "w55", "en": "colour", "enAll": ["colour", "color"], "jp": "色", "reading": "いろ", "kanaForm": "いろ", "kanjiForm": "色"}, {"id": "w56", "en": "blue", "enAll": ["blue"], "jp": "青", "reading": "あお", "kanaForm": "あお", "kanjiForm": "青"}, {"id": "w57", "en": "red", "enAll": ["red"], "jp": "赤", "reading": "あか", "kanaForm": "あか", "kanjiForm": "赤"}, {"id": "w58", "en": "yellow", "enAll": ["yellow"], "jp": "黄色", "reading": "きいろ", "kanaForm": "きいろ", "kanjiForm": "黄色"}, {"id": "w59", "en": "black", "enAll": ["black"], "jp": "黒", "reading": "くろ", "kanaForm": "くろ", "kanjiForm": "黒"}, {"id": "w60", "en": "white", "enAll": ["white"], "jp": "白", "reading": "しろ", "kanaForm": "しろ", "kanjiForm": "白"}, {"id": "w61", "en": "brown", "enAll": ["brown"], "jp": "茶色", "reading": "ちゃいろ", "kanaForm": "ちゃいろ", "kanjiForm": "茶色"}, {"id": "w62", "en": "pink", "enAll": ["pink"], "jp": "ピンク", "reading": null, "kanaForm": "ピンク", "kanjiForm": null}, {"id": "w63", "en": "green", "enAll": ["green"], "jp": "緑", "reading": "みどり", "kanaForm": "みどり", "kanjiForm": "緑"}, {"id": "w64", "en": "orange", "enAll": ["orange"], "jp": "オレンジ", "reading": null, "kanaForm": "オレンジ", "kanjiForm": null}], "num": "7.1"}, {"id": "describing-colours", "label": "Describing Colours", "words": [{"id": "w65", "en": "bright", "enAll": ["bright"], "jp": "あかるい", "reading": null, "kanaForm": "あかるい", "kanjiForm": null}, {"id": "w66", "en": "clear", "enAll": ["clear"], "jp": "クリア", "reading": null, "kanaForm": "クリア", "kanjiForm": null}, {"id": "w67", "en": "colourful", "enAll": ["colourful"], "jp": "カラフル", "reading": null, "kanaForm": "カラフル", "kanjiForm": null}, {"id": "w68", "en": "dark", "enAll": ["dark"], "jp": "くらい", "reading": null, "kanaForm": "くらい", "kanjiForm": null}, {"id": "w69", "en": "deep", "enAll": ["deep"], "jp": "こい", "reading": null, "kanaForm": "こい", "kanjiForm": null}, {"id": "w70", "en": "dull", "enAll": ["dull", "muted"], "jp": "くすんだ", "reading": null, "kanaForm": "くすんだ", "kanjiForm": null}, {"id": "w71", "en": "flashy", "enAll": ["flashy"], "jp": "はで", "reading": null, "kanaForm": "はで", "kanjiForm": null}, {"id": "w72", "en": "light", "enAll": ["light", "weak"], "jp": "うすい", "reading": null, "kanaForm": "うすい", "kanjiForm": null}, {"id": "w73", "en": "multicoloured", "enAll": ["multicoloured"], "jp": "マルチカラー", "reading": null, "kanaForm": "マルチカラー", "kanjiForm": null}, {"id": "w74", "en": "pastel", "enAll": ["pastel"], "jp": "パステル", "reading": null, "kanaForm": "パステル", "kanjiForm": null}, {"id": "w75", "en": "soft", "enAll": ["soft", "light"], "jp": "あわい", "reading": null, "kanaForm": "あわい", "kanjiForm": null}, {"id": "w76", "en": "vivid", "enAll": ["vivid"], "jp": "ビビッド", "reading": null, "kanaForm": "ビビッド", "kanjiForm": null}, {"id": "w77", "en": "vivid", "enAll": ["vivid", "bright"], "jp": "あざやか", "reading": null, "kanaForm": "あざやか", "kanjiForm": null}], "num": "7.2"}, {"id": "patterns", "label": "Patterns & Prints", "words": [{"id": "w78", "en": "camouflage", "enAll": ["camouflage"], "jp": "めいさいがら", "reading": null, "kanaForm": "めいさいがら", "kanjiForm": null}, {"id": "w79", "en": "floral print", "enAll": ["floral print"], "jp": "花柄", "reading": "はながら", "kanaForm": "はながら", "kanjiForm": "花柄"}, {"id": "w80", "en": "gingham check", "enAll": ["gingham check", "gingham"], "jp": "ギンガムチェック", "reading": null, "kanaForm": "ギンガムチェック", "kanjiForm": null}, {"id": "w81", "en": "heart print", "enAll": ["heart print"], "jp": "ハート柄", "reading": "ハートがら", "kanaForm": "ハートがら", "kanjiForm": "ハート柄"}, {"id": "w82", "en": "horizontal stripes", "enAll": ["horizontal stripes", "stripes"], "jp": "ボーダー柄", "reading": "ボーダーがら", "kanaForm": "ボーダーがら", "kanjiForm": "ボーダー柄"}, {"id": "w83", "en": "leopard print", "enAll": ["leopard print"], "jp": "ヒョウ柄", "reading": "ヒョウがら", "kanaForm": "ヒョウがら", "kanjiForm": "ヒョウ柄"}, {"id": "w84", "en": "logo", "enAll": ["logo"], "jp": "ロゴ", "reading": null, "kanaForm": "ロゴ", "kanjiForm": null}, {"id": "w85", "en": "multicolour stripes", "enAll": ["multicolour stripes"], "jp": "マルチストライプ柄", "reading": "マルチストライプがら", "kanaForm": "マルチストライプがら", "kanjiForm": "マルチストライプ柄"}, {"id": "w86", "en": "paisley", "enAll": ["paisley"], "jp": "ペイズリー柄", "reading": "ペイズリーがら", "kanaForm": "ペイズリーがら", "kanjiForm": "ペイズリー柄"}, {"id": "w87", "en": "plain", "enAll": ["plain"], "jp": "むじ", "reading": null, "kanaForm": "むじ", "kanjiForm": null}, {"id": "w88", "en": "polka dot", "enAll": ["polka dot"], "jp": "水玉模様", "reading": "みずたまもよう", "kanaForm": "みずたまもよう", "kanjiForm": "水玉模様"}, {"id": "w89", "en": "small floral print", "enAll": ["small floral print"], "jp": "小花柄", "reading": "こばながら", "kanaForm": "こばながら", "kanjiForm": "小花柄"}, {"id": "w90", "en": "large floral print", "enAll": ["large floral print"], "jp": "大きめの花柄", "reading": "おおきいめのはながら", "kanaForm": "おおきいめのはながら", "kanjiForm": "大きめの花柄"}, {"id": "w91", "en": "snake print", "enAll": ["snake print", "python print"], "jp": "ヘビ柄", "reading": "ヘビがら", "kanaForm": "ヘビがら", "kanjiForm": "ヘビ柄"}, {"id": "w92", "en": "star print", "enAll": ["star print"], "jp": "ほしがら", "reading": null, "kanaForm": "ほしがら", "kanjiForm": null}, {"id": "w93", "en": "small dots", "enAll": ["small dots"], "jp": "小さめのドット", "reading": "ちいさめのドット", "kanaForm": "ちいさめのドット", "kanjiForm": "小さめのドット"}, {"id": "w94", "en": "tartan", "enAll": ["tartan", "tartan check"], "jp": "タータンチェック", "reading": null, "kanaForm": "タータンチェック", "kanjiForm": null}, {"id": "w95", "en": "tropical print", "enAll": ["tropical print"], "jp": "トロピカル柄", "reading": "トロピカルがら", "kanaForm": "トロピカルがら", "kanjiForm": "トロピカル柄"}, {"id": "w96", "en": "vertical stripes", "enAll": ["vertical stripes", "stripes"], "jp": "ストライプ柄", "reading": "ストライプがら", "kanaForm": "ストライプがら", "kanjiForm": "ストライプ柄"}, {"id": "w97", "en": "zebra print", "enAll": ["zebra print"], "jp": "ゼブラ柄", "reading": "ゼブラがら", "kanaForm": "ゼブラがら", "kanjiForm": "ゼブラ柄"}], "num": "7.3"}, {"id": "describing-clothes", "label": "Describing Clothes", "words": [{"id": "w98", "en": "baggy", "enAll": ["baggy"], "jp": "ゆったりした", "reading": null, "kanaForm": "ゆったりした", "kanjiForm": null}, {"id": "w99", "en": "boxy", "enAll": ["boxy"], "jp": "ボックスがたの", "reading": null, "kanaForm": "ボックスがたの", "kanjiForm": null}, {"id": "w100", "en": "casual", "enAll": ["casual"], "jp": "カジュアルな", "reading": null, "kanaForm": "カジュアルな", "kanjiForm": null}, {"id": "w101", "en": "cool", "enAll": ["cool"], "jp": "かっこいい", "reading": null, "kanaForm": "かっこいい", "kanjiForm": null}, {"id": "w102", "en": "cool", "enAll": ["cool"], "jp": "クールな", "reading": null, "kanaForm": "クールな", "kanjiForm": null}, {"id": "w103", "en": "cute", "enAll": ["cute"], "jp": "かわいい", "reading": null, "kanaForm": "かわいい", "kanjiForm": null}, {"id": "w104", "en": "elegant", "enAll": ["elegant"], "jp": "じょうひんな", "reading": null, "kanaForm": "じょうひんな", "kanjiForm": null}, {"id": "w105", "en": "elegant", "enAll": ["elegant"], "jp": "エレガントの", "reading": null, "kanaForm": "エレガントの", "kanjiForm": null}, {"id": "w106", "en": "formal", "enAll": ["formal"], "jp": "フォーマルな", "reading": null, "kanaForm": "フォーマルな", "kanjiForm": null}, {"id": "w107", "en": "fresh", "enAll": ["fresh"], "jp": "さわやかな", "reading": null, "kanaForm": "さわやかな", "kanjiForm": null}, {"id": "w108", "en": "frilly", "enAll": ["frilly"], "jp": "フリフリの", "reading": null, "kanaForm": "フリフリの", "kanjiForm": null}, {"id": "w109", "en": "girly", "enAll": ["girly"], "jp": "ガーリーな", "reading": null, "kanaForm": "ガーリーな", "kanjiForm": null}, {"id": "w110", "en": "mature", "enAll": ["mature"], "jp": "おとなっぽい", "reading": null, "kanaForm": "おとなっぽい", "kanjiForm": null}, {"id": "w111", "en": "modest", "enAll": ["modest"], "jp": "ひかえめ", "reading": null, "kanaForm": "ひかえめ", "kanjiForm": null}, {"id": "w112", "en": "pretty", "enAll": ["pretty"], "jp": "きれいな", "reading": null, "kanaForm": "きれいな", "kanjiForm": null}, {"id": "w113", "en": "simple", "enAll": ["simple"], "jp": "シンプルな", "reading": null, "kanaForm": "シンプルな", "kanjiForm": null}, {"id": "w114", "en": "stylish", "enAll": ["stylish"], "jp": "おしゃれな", "reading": null, "kanaForm": "おしゃれな", "kanjiForm": null}, {"id": "w115", "en": "tailored", "enAll": ["tailored", "fitted"], "jp": "ぴったりした", "reading": null, "kanaForm": "ぴったりした", "kanjiForm": null}, {"id": "w116", "en": "tight", "enAll": ["tight"], "jp": "タイトの", "reading": null, "kanaForm": "タイトの", "kanjiForm": null}], "num": "7.4"}];
 
 // Flatten all words with a reference back to their category
 const ALL_WORDS = [];
@@ -589,7 +599,6 @@ function renderCatGrid(){
     <label class="cat-card" data-catid="${cat.id}">
       <input type="checkbox" onchange="onCatCardToggle(this,'${cat.id}')">
       <div class="cat-card-text">
-        <div class="cat-card-num">${cat.num}</div>
         <div class="cat-card-label">${cat.label}</div>
         <div class="cat-card-count">${cat.words.length} words</div>
       </div>
@@ -651,8 +660,8 @@ function sfCurrentWord(){ return studyDeck[sfOrder[sfIndex]]; }
 function sfRenderCard(){
   document.getElementById('sfCard').classList.remove('flipped');
   const item = sfCurrentWord();
-  document.getElementById('sfTagFront').textContent = catNum(item.catId);
-  document.getElementById('sfTagBack').textContent = catNum(item.catId);
+  document.getElementById('sfTagFront').textContent = catLabel(item.catId);
+  document.getElementById('sfTagBack').textContent = catLabel(item.catId);
   document.getElementById('sfFrontJp').textContent = item.jp;
   document.getElementById('sfBackJp').textContent = item.jp;
   document.getElementById('sfBackEn').textContent = enJoined(item);
@@ -734,7 +743,7 @@ function renderStagePicker(wrapId, onChangeFn){
     </label>`;
   const chips = CATEGORIES.map(c => `
     <label class="stage-chip" data-catid="${c.id}">
-      <input type="checkbox" onchange="onStageChipToggle('${wrapId}', this, ${onChangeFn.name})"> ${c.num} ${c.label}
+      <input type="checkbox" onchange="onStageChipToggle('${wrapId}', this, ${onChangeFn.name})"> ${c.label}
     </label>
   `).join('');
   wrap.innerHTML = allChip + chips;
@@ -1055,6 +1064,7 @@ let typhoonScores = { p1: 0, p2: 0 };
 let typhoonRemaining = GRID_SIZE;
 let activeCellIndex = null;
 let typhoonLocked = false;
+let raceState = null; // { idx, playerAttempted, computerAttempted, resolved, computerTimerId } — PvC race mode only
 
 function onTyphoonStageChange(){ typhoonSelectedCatIds = syncSelectedCats('typhoonStageChips'); }
 
@@ -1083,7 +1093,7 @@ function buildTyphoonBoardData(){
   }
   shuffleArr(rewards);
   return chosen.map((wordIdx, i) => ({
-    wordIdx, direction: Math.random() < 0.5 ? 'jp2en' : 'en2jp', reward: rewards[i], revealed: false
+    wordIdx, direction: Math.random() < 0.5 ? 'jp2en' : 'en2jp', reward: rewards[i], revealed: false, correct: null
   }));
 }
 function startTyphoonMode(mode){
@@ -1094,6 +1104,7 @@ function startTyphoonMode(mode){
   typhoonRemaining = GRID_SIZE;
   activeCellIndex = null;
   typhoonLocked = false;
+  raceState = null;
 
   document.getElementById('scoreNameP1').textContent = 'Player 1';
   document.getElementById('scoreNameP2').textContent = mode === 'pvc' ? 'Computer' : 'Player 2';
@@ -1105,13 +1116,25 @@ function startTyphoonMode(mode){
 
   renderTyphoonBoard();
   updateTyphoonScoreboard();
-  updateTyphoonTurnBanner();
+  if(mode === 'pvc'){
+    document.getElementById('typhoonTurnBanner').classList.remove('thinking');
+    document.getElementById('typhoonTurnBanner').textContent = 'Pick any house \u2014 race the computer to answer first!';
+  } else {
+    updateTyphoonTurnBanner();
+  }
 }
 function updateTyphoonScoreboard(){
   document.getElementById('scoreValueP1').textContent = typhoonScores.p1;
   document.getElementById('scoreValueP2').textContent = typhoonScores.p2;
-  document.getElementById('scoreCardP1').classList.toggle('active', typhoonCurrentTurn === 'p1');
-  document.getElementById('scoreCardP2').classList.toggle('active', typhoonCurrentTurn === 'p2');
+  if(typhoonMode === 'pvc'){
+    // It's a simultaneous race in this mode, not alternating turns, so neither
+    // scorecard is highlighted as "active".
+    document.getElementById('scoreCardP1').classList.remove('active');
+    document.getElementById('scoreCardP2').classList.remove('active');
+  } else {
+    document.getElementById('scoreCardP1').classList.toggle('active', typhoonCurrentTurn === 'p1');
+    document.getElementById('scoreCardP2').classList.toggle('active', typhoonCurrentTurn === 'p2');
+  }
 }
 function currentPlayerName(){
   if(typhoonCurrentTurn === 'p1') return 'Player 1';
@@ -1128,19 +1151,46 @@ function renderTyphoonBoard(){
   typhoonCells.forEach((cell, idx) => {
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'house-cell' + (cell.revealed ? ' revealed ' + cell.reward.type : '');
+    btn.className = 'house-cell' + (cell.revealed ? ' revealed ' + (cell.correct ? cell.reward.type : 'missed') : '');
     btn.disabled = cell.revealed || typhoonLocked;
-    btn.textContent = cell.revealed ? (cell.reward.type === 'typhoon' ? '\u{1F32A}\uFE0F' : ('+' + cell.reward.value)) : '\u{1F3E0}';
+    btn.textContent = cell.revealed
+      ? (cell.correct ? (cell.reward.type === 'typhoon' ? '\u{1F32A}\uFE0F' : ('+' + cell.reward.value)) : '\u2717')
+      : '\u{1F3E0}';
     if(idx === activeCellIndex) btn.classList.add('active-question');
     btn.addEventListener('click', () => onHouseClick(idx));
     board.appendChild(btn);
   });
+  requestAnimationFrame(sizeTyphoonCells);
 }
+/* Keep the house emojis / points / typhoon symbols big and legible at any screen
+   size by sizing them relative to the actual rendered cell, not a fixed rem value. */
+function sizeTyphoonCells(){
+  const cells = document.querySelectorAll('#typhoonBoard .house-cell');
+  cells.forEach(cell => {
+    const w = cell.getBoundingClientRect().width;
+    if(w > 0){
+      const isShortText = cell.classList.contains('points') || cell.classList.contains('missed');
+      cell.style.fontSize = Math.max(18, w * (isShortText ? 0.42 : 0.56)) + 'px';
+    }
+  });
+}
+let typhoonResizeQueued = false;
+window.addEventListener('resize', () => {
+  if(typhoonResizeQueued) return;
+  typhoonResizeQueued = true;
+  requestAnimationFrame(() => { sizeTyphoonCells(); typhoonResizeQueued = false; });
+});
 function onHouseClick(idx){
   if(typhoonLocked) return;
   const cell = typhoonCells[idx];
   if(cell.revealed) return;
-  if(typhoonCurrentTurn === 'p2' && typhoonMode === 'pvc') return;
+  if(typhoonMode === 'pvc'){
+    typhoonLocked = true;
+    activeCellIndex = idx;
+    renderTyphoonBoard();
+    startRaceQuestion(idx);
+    return;
+  }
   activeCellIndex = idx;
   renderTyphoonBoard();
   openTyphoonQuestion(idx);
@@ -1154,13 +1204,196 @@ function getAcceptedAnswers(word, direction){
   if(word.kanaForm) accepted.push(word.kanaForm.trim());
   return accepted;
 }
+
+/* ═══ PLAYER VS COMPUTER: a genuine typing race ═══
+   The player can attempt the question at any moment; meanwhile the computer is
+   given its own single attempt after a randomised delay (anywhere from almost
+   instant to quite slow) and a randomised chance of getting it right at all.
+   Whoever answers correctly first wins the house. If a side answers wrong, that
+   side is simply out of the running for this house - the other side can still win it. */
+const RACE_COMPUTER_MIN_DELAY = 600;   // fastest the computer can "buzz in"
+const RACE_COMPUTER_MAX_DELAY = 7500;  // slowest - gives the player a real chance
+
+function startRaceQuestion(idx){
+  const cell = typhoonCells[idx];
+  const word = typhoonPool[cell.wordIdx];
+  raceState = { idx, playerAttempted: false, playerMissDecided: false, computerAttempted: false, resolved: false, computerTimerId: null };
+
+  const fb = document.getElementById('tqFeedback');
+  fb.innerHTML = ''; fb.className = 'tq-feedback';
+  const input = document.getElementById('tqInput');
+  input.value = '';
+  input.disabled = false;
+  input.classList.remove('computer-typing');
+  document.getElementById('tqSubmit').disabled = false;
+  document.getElementById('typhoonQuestion').hidden = false;
+
+  const raceLine = document.getElementById('raceComputerLine');
+  raceLine.hidden = false;
+  raceLine.textContent = '\u{1F916} Computer is thinking\u2026';
+
+  const prompt = document.getElementById('tqPrompt');
+  if(cell.direction === 'jp2en'){
+    document.getElementById('tqLabel').textContent = 'Type the English meaning \u2014 race the computer!';
+    prompt.textContent = word.jp;
+    prompt.classList.add('jp');
+  } else {
+    document.getElementById('tqLabel').textContent = '\u65E5\u672C\u8A9E\u3067\u66F8\u3044\u3066\u306D\uFF01 \u2014 race the computer!';
+    prompt.textContent = enJoined(word);
+    prompt.classList.remove('jp');
+  }
+  document.getElementById('typhoonTurnBanner').textContent = 'Go! Answer before the computer does\u2026';
+  input.focus();
+
+  // Vary both HOW LONG the computer takes and HOW OFTEN it's right, so it
+  // never feels like a fixed-speed, fixed-accuracy opponent.
+  const delay = RACE_COMPUTER_MIN_DELAY + Math.random() * (RACE_COMPUTER_MAX_DELAY - RACE_COMPUTER_MIN_DELAY);
+  const accuracyThisRound = 0.4 + Math.random() * 0.4; // roughly 40%-80%, different every house
+  const willBeCorrect = Math.random() < accuracyThisRound;
+  raceState.computerTimerId = setTimeout(() => runComputerRaceAttempt(idx, willBeCorrect), delay);
+}
+
+function submitRaceAnswer(){
+  if(!raceState || raceState.idx === null || raceState.resolved || raceState.playerAttempted) return;
+  const idx = raceState.idx;
+  const cell = typhoonCells[idx];
+  const word = typhoonPool[cell.wordIdx];
+  const accepted = getAcceptedAnswers(word, cell.direction);
+  const raw = document.getElementById('tqInput').value;
+  const userAnswer = cell.direction === 'jp2en' ? normalizeAnswer(raw) : raw.trim();
+  const isCorrect = accepted.includes(userAnswer);
+  raceState.playerAttempted = true;
+
+  const fb = document.getElementById('tqFeedback');
+  document.getElementById('tqSubmit').disabled = true;
+  document.getElementById('tqInput').disabled = true;
+
+  if(isCorrect){
+    finalizeRace(idx, 'player');
+  } else {
+    const correctDisplay = cell.direction === 'jp2en' ? enJoined(word) : word.jp;
+    fb.className = 'tq-feedback incorrect';
+    fb.innerHTML = '\u274C Not quite \u2014 it was "' + correctDisplay + '".'
+      + '<div class="tq-decision-row">'
+      + '<button type="button" class="tq-override-btn" id="tqOverrideBtn">I was actually correct</button>'
+      + '<button type="button" class="tq-continue-btn" id="tqContinueBtn">Continue</button>'
+      + '</div>';
+    document.getElementById('tqOverrideBtn').addEventListener('click', () => {
+      if(!raceState || raceState.resolved) return;
+      finalizeRace(idx, 'player');
+    });
+    document.getElementById('tqContinueBtn').addEventListener('click', () => {
+      if(!raceState || raceState.resolved) return;
+      fb.innerHTML = '';
+      raceState.playerMissDecided = true;
+      maybeCloseRaceAsMissed(idx);
+    });
+  }
+}
+
+function runComputerRaceAttempt(idx, willBeCorrect){
+  if(!raceState || raceState.idx !== idx || raceState.resolved) return;
+  const cell = typhoonCells[idx];
+  const word = typhoonPool[cell.wordIdx];
+  const raceLine = document.getElementById('raceComputerLine');
+
+  let textToType;
+  if(willBeCorrect){
+    textToType = cell.direction === 'jp2en' ? word.enAll[0] : (word.kanjiForm || word.kanaForm);
+  } else {
+    const others = typhoonPool.filter(w => w.id !== word.id);
+    const guess = others[Math.floor(Math.random() * others.length)];
+    textToType = cell.direction === 'jp2en' ? guess.enAll[0] : (guess.kanjiForm || guess.kanaForm);
+  }
+
+  typewriteIntoElement(raceLine, '\u{1F916} ', textToType, () => {
+    if(!raceState || raceState.idx !== idx || raceState.resolved){ return; } // player already won it
+    raceState.computerAttempted = true;
+    if(willBeCorrect){
+      raceLine.textContent = '\u{1F916} ' + textToType + ' \u2705';
+      finalizeRace(idx, 'computer');
+    } else {
+      raceLine.textContent = '\u{1F916} ' + textToType + ' \u274C';
+      maybeCloseRaceAsMissed(idx);
+    }
+  });
+}
+
+function typewriteIntoElement(el, prefix, text, onDone){
+  let i = 0;
+  function step(){
+    if(i >= text.length){ onDone(); return; }
+    el.textContent = prefix + text.slice(0, i + 1);
+    i++;
+    setTimeout(step, 70 + Math.random() * 90);
+  }
+  step();
+}
+
+function finalizeRace(idx, winner){
+  if(!raceState || raceState.resolved) return;
+  raceState.resolved = true;
+  clearTimeout(raceState.computerTimerId);
+  const cell = typhoonCells[idx];
+  cell.revealed = true;
+  cell.correct = true;
+  typhoonRemaining--;
+
+  const scoreKey = winner === 'player' ? 'p1' : 'p2';
+  if(cell.reward.type === 'typhoon') typhoonScores[scoreKey] = 0;
+  else typhoonScores[scoreKey] += cell.reward.value;
+
+  const fb = document.getElementById('tqFeedback');
+  fb.className = 'tq-feedback correct';
+  fb.textContent = winner === 'player' ? '\u2705 You got it first! Flipping the house\u2026' : '\u{1F916} Computer answered first \u2014 it got the house!';
+  document.getElementById('raceComputerLine').hidden = true;
+
+  setTimeout(() => closeRaceQuestion(), 1100);
+}
+
+/* Only closes the house once BOTH sides have conclusively missed - if the player
+   still has an "I was actually correct" decision pending, a computer miss alone
+   won't close the house out from under them. */
+function maybeCloseRaceAsMissed(idx){
+  if(!raceState || raceState.resolved) return;
+  if(raceState.playerMissDecided && raceState.computerAttempted){
+    raceState.resolved = true;
+    clearTimeout(raceState.computerTimerId);
+    const cell = typhoonCells[idx];
+    cell.revealed = true;
+    cell.correct = false;
+    typhoonRemaining--;
+    const fb = document.getElementById('tqFeedback');
+    fb.className = 'tq-feedback incorrect';
+    fb.textContent = 'Nobody got it in time \u2014 house missed.';
+    document.getElementById('raceComputerLine').hidden = true;
+    setTimeout(() => closeRaceQuestion(), 1300);
+  }
+}
+
+function closeRaceQuestion(){
+  document.getElementById('typhoonQuestion').hidden = true;
+  document.getElementById('tqFeedback').innerHTML = '';
+  document.getElementById('raceComputerLine').hidden = true;
+  activeCellIndex = null;
+  raceState = null;
+  typhoonLocked = false;
+  renderTyphoonBoard();
+  updateTyphoonScoreboard();
+  if(typhoonRemaining <= 0){ finishTyphoonGame(); return; }
+  document.getElementById('typhoonTurnBanner').textContent = 'Pick another house \u2014 race the computer!';
+}
+
 function openTyphoonQuestion(idx){
   const cell = typhoonCells[idx];
   const word = typhoonPool[cell.wordIdx];
   const fb = document.getElementById('tqFeedback');
-  fb.textContent = ''; fb.className = 'tq-feedback';
+  fb.innerHTML = ''; fb.className = 'tq-feedback';
   const input = document.getElementById('tqInput');
   input.value = '';
+  input.disabled = false;
+  input.classList.remove('computer-typing');
+  document.getElementById('tqSubmit').disabled = false;
   document.getElementById('typhoonQuestion').hidden = false;
   const prompt = document.getElementById('tqPrompt');
   if(cell.direction === 'jp2en'){
@@ -1172,10 +1405,11 @@ function openTyphoonQuestion(idx){
     prompt.textContent = enJoined(word);
     prompt.classList.remove('jp');
   }
-  input.focus();
+  if(typhoonCurrentTurn === 'p1' || typhoonMode === 'pvp') input.focus();
 }
 function submitTyphoonAnswer(){
-  if(activeCellIndex === null) return;
+  if(typhoonMode === 'pvc'){ submitRaceAnswer(); return; }
+  if(activeCellIndex === null || typhoonLocked) return;
   const idx = activeCellIndex;
   const cell = typhoonCells[idx];
   const word = typhoonPool[cell.wordIdx];
@@ -1184,38 +1418,84 @@ function submitTyphoonAnswer(){
   const userAnswer = cell.direction === 'jp2en' ? normalizeAnswer(raw) : raw.trim();
   const isCorrect = accepted.includes(userAnswer);
   const correctDisplay = cell.direction === 'jp2en' ? enJoined(word) : word.jp;
-  resolveTyphoonAttempt(idx, isCorrect, correctDisplay);
+  // A genuine human submission (either player) always gets the self-correct option.
+  resolveTyphoonAttempt(idx, isCorrect, correctDisplay, true);
 }
-function resolveTyphoonAttempt(idx, isCorrect, correctAnswerDisplay){
+
+let typhoonPendingTimer = null;
+
+/* allowOverride is true only for a human's own typed submission - the computer's
+   automatic answers (see playComputerTurn) skip straight to a normal pass/fail so
+   only the student ever gets to say "I was actually correct". */
+function resolveTyphoonAttempt(idx, isCorrect, correctAnswerDisplay, allowOverride){
   const cell = typhoonCells[idx];
   const fb = document.getElementById('tqFeedback');
+  typhoonLocked = true;
+  document.getElementById('tqSubmit').disabled = true;
+  document.getElementById('tqInput').disabled = true;
+
   if(isCorrect){
     fb.textContent = '\u2705 Correct! Flipping the house\u2026';
     fb.className = 'tq-feedback correct';
+    typhoonPendingTimer = setTimeout(() => finalizeTyphoonOutcome(idx, true), 900);
+  } else if(allowOverride){
+    // Give the student a genuine chance to self-correct (e.g. they answered with
+    // different but acceptable phrasing) before the turn passes automatically.
+    fb.className = 'tq-feedback incorrect';
+    fb.innerHTML = '\u274C Not quite \u2014 it was "' + correctAnswerDisplay + '".'
+      + '<div class="tq-decision-row">'
+      + '<button type="button" class="tq-override-btn" id="tqOverrideBtn">I was actually correct</button>'
+      + '<button type="button" class="tq-continue-btn" id="tqContinueBtn">Continue</button>'
+      + '</div>';
+    document.getElementById('tqOverrideBtn').addEventListener('click', () => overrideTyphoonAsCorrect(idx));
+    document.getElementById('tqContinueBtn').addEventListener('click', () => continueTyphoonAsIncorrect(idx));
   } else {
     fb.textContent = '\u274C Not quite \u2014 it was "' + correctAnswerDisplay + '". Turn passes.';
     fb.className = 'tq-feedback incorrect';
+    typhoonPendingTimer = setTimeout(() => finalizeTyphoonOutcome(idx, false), 1400);
   }
-  typhoonLocked = true;
-  setTimeout(() => {
-    document.getElementById('typhoonQuestion').hidden = true;
-    if(isCorrect){
-      cell.revealed = true;
-      typhoonRemaining--;
-      if(cell.reward.type === 'typhoon') typhoonScores[typhoonCurrentTurn] = 0;
-      else typhoonScores[typhoonCurrentTurn] += cell.reward.value;
-    }
-    activeCellIndex = null;
-    typhoonLocked = false;
-    renderTyphoonBoard();
-    updateTyphoonScoreboard();
-    if(typhoonRemaining <= 0){ finishTyphoonGame(); return; }
-    typhoonCurrentTurn = typhoonCurrentTurn === 'p1' ? 'p2' : 'p1';
-    updateTyphoonScoreboard();
-    updateTyphoonTurnBanner();
-    if(typhoonMode === 'pvc' && typhoonCurrentTurn === 'p2') playComputerTurn();
-  }, isCorrect ? 900 : 1400);
 }
+function overrideTyphoonAsCorrect(idx){
+  clearTimeout(typhoonPendingTimer);
+  const fb = document.getElementById('tqFeedback');
+  fb.textContent = '\u2705 Marked as correct! Flipping the house\u2026';
+  fb.className = 'tq-feedback correct';
+  typhoonPendingTimer = setTimeout(() => finalizeTyphoonOutcome(idx, true), 700);
+}
+function continueTyphoonAsIncorrect(idx){
+  clearTimeout(typhoonPendingTimer);
+  const fb = document.getElementById('tqFeedback');
+  fb.textContent = 'Turn passes\u2026';
+  fb.className = 'tq-feedback incorrect';
+  typhoonPendingTimer = setTimeout(() => finalizeTyphoonOutcome(idx, false), 500);
+}
+function finalizeTyphoonOutcome(idx, isCorrect){
+  const cell = typhoonCells[idx];
+  document.getElementById('typhoonQuestion').hidden = true;
+  document.getElementById('tqFeedback').innerHTML = '';
+  // The house is used up on this attempt either way - a miss doesn't leave it
+  // free to try again later, it's just marked as missed and locked out.
+  cell.revealed = true;
+  cell.correct = isCorrect;
+  typhoonRemaining--;
+  if(isCorrect){
+    if(cell.reward.type === 'typhoon') typhoonScores[typhoonCurrentTurn] = 0;
+    else typhoonScores[typhoonCurrentTurn] += cell.reward.value;
+  }
+  activeCellIndex = null;
+  typhoonLocked = false;
+  renderTyphoonBoard();
+  updateTyphoonScoreboard();
+  if(typhoonRemaining <= 0){ finishTyphoonGame(); return; }
+  typhoonCurrentTurn = typhoonCurrentTurn === 'p1' ? 'p2' : 'p1';
+  updateTyphoonScoreboard();
+  updateTyphoonTurnBanner();
+  if(typhoonMode === 'pvc' && typhoonCurrentTurn === 'p2') playComputerTurn();
+}
+
+/* The computer visibly "thinks", picks and highlights a house, opens the question,
+   then types its answer into the input letter-by-letter before submitting - so
+   students can see exactly what it's doing rather than it resolving instantly. */
 function playComputerTurn(){
   typhoonLocked = true;
   renderTyphoonBoard();
@@ -1226,15 +1506,52 @@ function playComputerTurn(){
     const idx = unrevealed[Math.floor(Math.random() * unrevealed.length)];
     const cell = typhoonCells[idx];
     const word = typhoonPool[cell.wordIdx];
-    const isCorrect = Math.random() < COMPUTER_ACCURACY;
+    const willBeCorrect = Math.random() < COMPUTER_ACCURACY;
     const correctDisplay = cell.direction === 'jp2en' ? enJoined(word) : word.jp;
+
     activeCellIndex = idx;
-    typhoonLocked = false;
     renderTyphoonBoard();
     document.getElementById('typhoonTurnBanner').classList.remove('thinking');
-    document.getElementById('typhoonTurnBanner').textContent = 'Computer answers\u2026';
-    resolveTyphoonAttempt(idx, isCorrect, correctDisplay);
-  }, 900);
+    document.getElementById('typhoonTurnBanner').textContent = 'Computer is reading the question\u2026';
+    openTyphoonQuestion(idx);
+
+    const input = document.getElementById('tqInput');
+    input.disabled = true;
+    input.classList.add('computer-typing');
+    document.getElementById('tqSubmit').disabled = true;
+
+    let textToType;
+    if(willBeCorrect){
+      textToType = cell.direction === 'jp2en' ? word.enAll[0] : (word.kanjiForm || word.kanaForm);
+    } else {
+      const others = typhoonPool.filter(w => w.id !== word.id);
+      const guess = others[Math.floor(Math.random() * others.length)];
+      textToType = cell.direction === 'jp2en' ? guess.enAll[0] : (guess.kanjiForm || guess.kanaForm);
+    }
+
+    // Pause before it starts typing (reading the question), then type slowly
+    // letter-by-letter, then pause again before submitting - all clearly visible.
+    setTimeout(() => {
+      document.getElementById('typhoonTurnBanner').textContent = 'Computer is answering\u2026';
+      typewriteIntoInput(input, textToType, () => {
+        setTimeout(() => {
+          // allowOverride = false: this is the computer's answer, not the student's.
+          resolveTyphoonAttempt(idx, willBeCorrect, correctDisplay, false);
+        }, 900);
+      });
+    }, 1100);
+  }, 1600);
+}
+function typewriteIntoInput(input, text, onDone){
+  input.value = '';
+  let i = 0;
+  function step(){
+    if(i >= text.length){ onDone(); return; }
+    input.value += text[i];
+    i++;
+    setTimeout(step, 90 + Math.random() * 90);
+  }
+  step();
 }
 function finishTyphoonGame(){
   document.getElementById('typhoonTurnBanner').textContent = '';
