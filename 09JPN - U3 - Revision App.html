@@ -78,10 +78,10 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 100px;}
 .progress-label{font-size:0.78rem;font-weight:700;color:var(--navy);white-space:nowrap;min-width:60px;text-align:right;}
 
 .card-stage{display:flex;justify-content:center;margin-bottom:22px;}
-.card-scene{width:100%;max-width:480px;height:280px;perspective:1400px;cursor:pointer;}
+.card-scene{width:100%;max-width:480px;height:340px;perspective:1400px;cursor:pointer;}
 .flip-card{width:100%;height:100%;position:relative;transition:transform .5s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d;}
 .flip-card.flipped{transform:rotateY(180deg);}
-.flip-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px;border:2px solid var(--navy);}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px;border:2px solid var(--navy);overflow-y:auto;}
 .flip-front{background:white;}
 .flip-back{background:var(--navy);color:white;transform:rotateY(180deg);}
 .flip-tag{position:absolute;top:14px;left:16px;right:56px;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:800;color:var(--pink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
@@ -96,6 +96,11 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 100px;}
 .flip-back .flip-reading{color:#8fa8d4;}
 .flip-hint{font-size:0.7rem;color:var(--text-sec);margin-top:14px;}
 .flip-back .flip-hint{color:#8fa8d4;}
+.flip-usage{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.18);width:100%;max-width:100%;display:flex;flex-direction:column;gap:7px;}
+.flip-usage-row{font-size:0.68rem;line-height:1.4;text-align:center;}
+.flip-usage-label{display:block;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:800;color:var(--pink-light);margin-bottom:2px;}
+.flip-usage-jp{font-size:0.85rem;font-weight:700;color:white;margin-right:6px;}
+.flip-usage-en{color:#cfe0fa;font-style:italic;}
 .flip-speak{position:absolute;bottom:14px;right:16px;width:38px;height:38px;border-radius:50%;border:2px solid var(--pink);background:white;color:var(--pink);font-size:1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all var(--trans);}
 .flip-speak:hover{background:var(--pink);color:white;}
 .flip-back .flip-speak{border-color:var(--pink-light);background:transparent;color:var(--pink-light);}
@@ -135,6 +140,81 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 100px;}
 .activity-tab:hover{background:var(--navy);color:white;}
 .activity-tab.active{background:var(--pink);border-color:var(--pink);color:white;}
 .activity-panel{background:white;border:1.5px solid var(--border-light);border-radius:12px;padding:22px;}
+#grammarDetail .activity-panel{margin-bottom:36px;}
+.grammar-activities-label{font-size:0.75rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--pink);margin:36px 0 18px;}
+
+/* ── GRAMMAR REFERENCE ── */
+.grammar-ref-box{background:white;border:1.5px solid var(--border-light);border-radius:12px;padding:22px;margin-bottom:20px;}
+.grammar-ref-title{margin:0 0 16px;font-size:0.95rem;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:0.06em;}
+.grammar-ref-list{display:flex;flex-direction:column;gap:14px;}
+.grammar-ref-item{border-left:3px solid var(--pink);padding-left:14px;}
+.grammar-ref-jp{font-family:var(--font-jp);font-size:1.05rem;font-weight:700;color:var(--navy);}
+.grammar-ref-en{font-size:0.8rem;color:var(--text-en);font-style:italic;margin-top:2px;}
+.grammar-ref-structure{font-family:var(--font-en);font-size:0.68rem;font-weight:800;letter-spacing:0.03em;color:var(--pink-hover);text-transform:uppercase;margin-bottom:4px;}
+
+/* ── GRAMMAR TILES (hub) ── */
+.grammar-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
+.grammar-tile{text-align:left;background:white;border:2px solid var(--border-light);border-radius:12px;padding:18px;cursor:pointer;transition:all var(--trans);display:flex;flex-direction:column;gap:6px;font-family:var(--font-en);}
+.grammar-tile:hover{border-color:var(--pink);box-shadow:0 4px 12px rgba(0,20,50,0.08);}
+.grammar-tile-icon{font-size:1.6rem;}
+.grammar-tile-title{font-size:0.95rem;font-weight:800;color:var(--navy);}
+.grammar-tile-short{font-size:0.75rem;color:var(--text-en);line-height:1.4;}
+
+/* ── GRAMMAR DETAIL PAGE ── */
+.grammar-back-btn{display:inline-block;font-family:var(--font-en);border:2px solid var(--pink);background:var(--pink);color:white;padding:10px 20px;font-size:0.75rem;font-weight:800;cursor:pointer;border-radius:7px;text-decoration:none;transition:all var(--trans);}
+.grammar-back-btn:hover{background:var(--pink-hover);border-color:var(--pink-hover);}
+.grammar-back-row{display:flex;justify-content:flex-end;margin-bottom:14px;}
+.grammar-detail-title{font-size:1.3rem;font-weight:800;color:var(--navy);margin:0 0 18px;}
+.grammar-detail-note{font-size:0.76rem;color:var(--text-sec);line-height:1.5;background:var(--navy-tint);border-radius:8px;padding:10px 14px;margin-top:14px;}
+
+/* ── COLOUR-CODED GRAMMAR TOKENS ── */
+.gram-tok{display:inline-block;font-family:var(--font-jp);font-size:1.05rem;font-weight:700;padding:3px 8px;border-radius:6px;margin:2px 0;line-height:1.6;}
+.gram-tok-adjective{background:#ffd9ec;color:#9c1362;}
+.gram-tok-noun{background:#ffd6d6;color:#a3231e;}
+.gram-tok-colournoun{background:#d3e9ff;color:#1c5b8a;}
+.gram-tok-verb{background:#ffe0bf;color:#a3540e;}
+.gram-tok-particle{background:#e4e4e4;color:#4a4a4a;}
+.gram-tok-houga{background:#e6d9ff;color:#5b3a99;}
+.gram-tok-literal{font-weight:700;color:var(--navy);padding:3px 2px;}
+.gram-frame-row{margin-bottom:10px;line-height:2;}
+.gram-example-row{margin-bottom:4px;line-height:2;}
+.gram-legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
+.gram-legend-item{display:flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:700;color:var(--text-sec);}
+.gram-legend-swatch{width:14px;height:14px;border-radius:4px;display:inline-block;}
+.grammar-section-title{font-size:0.9rem;font-weight:800;color:var(--navy);margin:6px 0 10px;text-transform:uppercase;letter-spacing:0.04em;}
+.grammar-item-counter{font-size:0.72rem;font-weight:700;color:var(--pink-hover);margin:12px 0 4px;}
+.grammar-en-hint{font-size:0.8rem;color:var(--text-en);font-style:italic;margin-bottom:12px;}
+.grammar-feedback{font-size:0.8rem;font-weight:700;color:var(--navy);min-height:20px;margin-top:10px;}
+.grammar-feedback.correct{color:var(--green);}
+.grammar-feedback.incorrect{color:var(--red);}
+.grammar-btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+.grammar-btn-row-right{justify-content:flex-end;}
+
+/* Arrange (tap-to-order) tiles */
+.dnd-answer{display:flex;flex-wrap:wrap;gap:8px;min-height:52px;background:var(--navy-tint);border:1.5px dashed var(--border-light);border-radius:10px;padding:10px;margin-bottom:12px;}
+.dnd-bank{display:flex;flex-wrap:wrap;gap:8px;min-height:44px;}
+.dnd-tile{font-size:0.95rem;font-weight:700;padding:9px 14px;border-radius:8px;border:none;cursor:pointer;transition:all var(--trans);box-shadow:0 1px 3px rgba(0,20,50,0.12);}
+.dnd-tile:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,20,50,0.18);}
+
+/* Cloze */
+.grammar-cloze-sentence{font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.grammar-cloze-input-row{display:flex;gap:10px;flex-wrap:wrap;}
+.grammar-cloze-input{flex:1;min-width:200px;border:2px solid var(--pink);background:white;color:var(--navy);}
+.tq-input.grammar-cloze-input{border:2px solid var(--pink);}
+.tq-input.grammar-cloze-input:focus{border:2px solid var(--pink);outline:2px solid var(--pink);}
+
+/* Translation reveal lists */
+.grammar-reveal-list{display:flex;flex-direction:column;gap:14px;}
+.grammar-reveal-row{border-bottom:1px solid var(--border-light);padding-bottom:12px;}
+.grammar-reveal-prompt{font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.grammar-reveal-answer{font-size:0.85rem;color:var(--pink-hover);font-weight:700;margin-top:6px;}
+
+/* Free writing */
+.grammar-freewrite-list{display:flex;flex-direction:column;gap:18px;}
+.grammar-freewrite-item{border-bottom:1px solid var(--border-light);padding-bottom:16px;}
+.grammar-freewrite-words{font-size:0.78rem;font-weight:700;color:var(--pink-hover);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.03em;}
+.grammar-freewrite-textarea{width:100%;min-height:70px;border:1.5px solid var(--border-light);border-radius:8px;padding:10px 12px;font-size:1rem;resize:vertical;margin-bottom:8px;}
+.grammar-freewrite-textarea:focus{outline:2px solid var(--pink);border-color:var(--pink);}
 .timer-block{text-align:right;}
 .timer-display{font-size:1.4rem;font-weight:800;color:var(--pink);font-variant-numeric:tabular-nums;}
 .timer-best{font-size:0.68rem;color:var(--text-sec);font-weight:700;margin-top:2px;}
@@ -256,7 +336,7 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 100px;}
 
 @media (max-width:640px){
   .flip-jp{font-size:1.5rem;}
-  .card-scene{height:260px;}
+  .card-scene{height:320px;}
   .scatter-tile{font-size:0.68rem;}
   .site-header{padding:20px 20px 18px;}
   main{padding:24px 18px 80px;}
@@ -284,6 +364,7 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 100px;}
   <div class="mode-tabs" id="modeTabs">
     <button class="mode-tab active" data-mode="study" onclick="setPageMode('study')">📚 Study Mode</button>
     <button class="mode-tab" data-mode="activities" onclick="setPageMode('activities')">🎮 Activities</button>
+    <button class="mode-tab" data-mode="grammar" onclick="setPageMode('grammar')">📖 Grammar</button>
   </div>
 
   <!-- ══════════════ STUDY MODE ══════════════ -->
@@ -335,6 +416,18 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 100px;}
               <div class="flip-jp jp" id="sfBackJp"></div>
               <div class="flip-en" id="sfBackEn"></div>
               <div class="flip-reading jp" id="sfBackReading"></div>
+              <div class="flip-usage" id="sfUsage" hidden>
+                <div class="flip-usage-row">
+                  <span class="flip-usage-label">Describing:</span>
+                  <span class="flip-usage-jp jp" id="sfUsageDescribeJp"></span>
+                  <span class="flip-usage-en" id="sfUsageDescribeEn"></span>
+                </div>
+                <div class="flip-usage-row">
+                  <span class="flip-usage-label">Joining adjectives:</span>
+                  <span class="flip-usage-jp jp" id="sfUsageJoinJp"></span>
+                  <span class="flip-usage-en" id="sfUsageJoinEn"></span>
+                </div>
+              </div>
               <button class="flip-speak" id="sfSpeakBack" type="button" title="Listen" onclick="event.stopPropagation(); speakJp(sfCurrentWord().jp);">&#128266;</button>
             </div>
           </div>
@@ -537,11 +630,108 @@ main{max-width:1180px;margin:0 auto;padding:32px 40px 100px;}
 
   </div>
 
+  <!-- ══════════════ GRAMMAR ══════════════ -->
+  <div id="grammarView" hidden>
+
+    <!-- Grammar hub: reference + topic tiles -->
+    <div id="grammarHub">
+      <div class="intro">
+        <p class="intro-label">Fashion &amp; personal colour unit</p>
+        <h2 class="intro-heading">Grammar for talking about style</h2>
+        <p class="intro-body">Start with the key questions for this unit, then pick a grammar point below to work through an explanation, a word-order activity, a fill-in-the-blank, translation practice both ways, and free writing.</p>
+      </div>
+
+      <div class="grammar-ref-box">
+        <h3 class="grammar-ref-title">Key questions for this unit</h3>
+        <div class="grammar-ref-list" id="grammarQuestionsList"></div>
+      </div>
+
+      <div class="grammar-tiles" id="grammarTiles"></div>
+    </div>
+
+    <!-- Grammar topic detail page -->
+    <div id="grammarDetail" hidden>
+      <div class="grammar-back-row">
+        <button class="link-btn grammar-back-btn" onclick="showGrammarHub()">&larr; Back to Grammar</button>
+      </div>
+      <h2 class="grammar-detail-title" id="gdTitle"></h2>
+
+      <div class="grammar-ref-box">
+        <h3 class="grammar-ref-title">How to use it</h3>
+        <div class="gram-legend">
+          <span class="gram-legend-item"><span class="gram-legend-swatch" style="background:#ffd9ec;"></span>Adjective</span>
+          <span class="gram-legend-item"><span class="gram-legend-swatch" style="background:#ffd6d6;"></span>Noun</span>
+          <span class="gram-legend-item"><span class="gram-legend-swatch" style="background:#d3e9ff;"></span>Colour</span>
+          <span class="gram-legend-item"><span class="gram-legend-swatch" style="background:#ffe0bf;"></span>Verb</span>
+          <span class="gram-legend-item"><span class="gram-legend-swatch" style="background:#e4e4e4;"></span>Particle</span>
+          <span class="gram-legend-item" id="gdLegendHouga" hidden><span class="gram-legend-swatch" style="background:#e6d9ff;"></span>ほうが</span>
+        </div>
+        <div class="grammar-ref-structure" id="gdStructure"></div>
+        <div id="gdFrames"></div>
+        <div class="grammar-ref-list" id="gdExamples"></div>
+        <p class="grammar-detail-note" id="gdNote" hidden></p>
+      </div>
+
+      <p class="grammar-activities-label">Activities</p>
+
+      <div class="activity-panel">
+        <h3 class="grammar-section-title">1. Arrange the words in order</h3>
+        <p class="activity-sub">Tap the tiles in the correct order to build the sentence, then check your answer.</p>
+        <p class="grammar-item-counter" id="gdArrangeCounter"></p>
+        <div class="grammar-en-hint" id="gdArrangeHint"></div>
+        <div class="dnd-answer" id="gdArrangeAnswer"></div>
+        <div class="dnd-bank" id="gdArrangeBank"></div>
+        <div class="grammar-feedback" id="gdArrangeFeedback"></div>
+        <div class="grammar-btn-row">
+          <button class="ctrl-btn" onclick="gdArrangeReset()">Reset</button>
+          <button class="ctrl-btn primary" onclick="gdArrangeCheck()">Check</button>
+          <button class="ctrl-btn" onclick="gdArrangeNext()">Next &rarr;</button>
+        </div>
+      </div>
+
+      <div class="activity-panel">
+        <h3 class="grammar-section-title">2. Fill in the blank</h3>
+        <p class="activity-sub">Type the missing part of the sentence in Japanese.</p>
+        <p class="grammar-item-counter" id="gdClozeCounter"></p>
+        <div class="grammar-cloze-sentence jp" id="gdClozeSentence"></div>
+        <div class="grammar-en-hint" id="gdClozeHint"></div>
+        <div class="grammar-cloze-input-row">
+          <input type="text" class="tq-input grammar-cloze-input" id="gdClozeInput" autocomplete="off" placeholder="Type the missing part&hellip;">
+          <button class="tq-submit" onclick="gdClozeCheck()">Check</button>
+        </div>
+        <div class="grammar-feedback" id="gdClozeFeedback"></div>
+        <div class="grammar-btn-row grammar-btn-row-right">
+          <button class="ctrl-btn" onclick="gdClozeNext()">Next &rarr;</button>
+        </div>
+      </div>
+
+      <div class="activity-panel">
+        <h3 class="grammar-section-title">3. Translate: Japanese &rarr; English</h3>
+        <p class="activity-sub">Read each sentence and think of the English meaning, then reveal the answer to check yourself.</p>
+        <div class="grammar-reveal-list" id="gdJp2EnList"></div>
+      </div>
+
+      <div class="activity-panel">
+        <h3 class="grammar-section-title">4. Translate: English &rarr; Japanese</h3>
+        <p class="activity-sub">Think of the Japanese sentence, then reveal the answer to check yourself.</p>
+        <div class="grammar-reveal-list" id="gdEn2JpList"></div>
+      </div>
+
+      <div class="activity-panel">
+        <h3 class="grammar-section-title">5. Free writing</h3>
+        <p class="activity-sub">Use the given words to write your own sentence with this pattern, then reveal an example answer to compare.</p>
+        <div class="grammar-freewrite-list" id="gdFreeWriteList"></div>
+      </div>
+
+    </div>
+
+  </div>
+
 </main>
 
 <script>
 /* ══════════════════════ DATA ══════════════════════ */
-const CATEGORIES = [{"id": "clothing", "label": "Clothing & Accessories", "words": [{"id": "w0", "en": "apparel", "enAll": ["apparel"], "jp": "アパレル", "reading": null, "kanaForm": "アパレル", "kanjiForm": null}, {"id": "w1", "en": "belt", "enAll": ["belt"], "jp": "ベルト", "reading": null, "kanaForm": "ベルト", "kanjiForm": null}, {"id": "w2", "en": "blazer", "enAll": ["blazer"], "jp": "ブレザー", "reading": null, "kanaForm": "ブレザー", "kanjiForm": null}, {"id": "w3", "en": "blouse", "enAll": ["blouse"], "jp": "ブラウス", "reading": null, "kanaForm": "ブラウス", "kanjiForm": null}, {"id": "w4", "en": "boots", "enAll": ["boots"], "jp": "ブーツ", "reading": null, "kanaForm": "ブーツ", "kanjiForm": null}, {"id": "w5", "en": "bra", "enAll": ["bra"], "jp": "ブラジャー", "reading": null, "kanaForm": "ブラジャー", "kanjiForm": null}, {"id": "w6", "en": "business shirt", "enAll": ["business shirt"], "jp": "ワイシャツ", "reading": null, "kanaForm": "ワイシャツ", "kanjiForm": null}, {"id": "w7", "en": "business suit", "enAll": ["business suit"], "jp": "せびろ", "reading": null, "kanaForm": "せびろ", "kanjiForm": null}, {"id": "w8", "en": "cardigan", "enAll": ["cardigan"], "jp": "カーディガン", "reading": null, "kanaForm": "カーディガン", "kanjiForm": null}, {"id": "w9", "en": "clothes", "enAll": ["clothes"], "jp": "ふく", "reading": null, "kanaForm": "ふく", "kanjiForm": null}, {"id": "w10", "en": "clothing", "enAll": ["clothing"], "jp": "いりょうひん", "reading": null, "kanaForm": "いりょうひん", "kanjiForm": null}, {"id": "w11", "en": "coat", "enAll": ["coat"], "jp": "コート", "reading": null, "kanaForm": "コート", "kanjiForm": null}, {"id": "w12", "en": "coat", "enAll": ["coat", "jacket"], "jp": "うわぎ", "reading": null, "kanaForm": "うわぎ", "kanjiForm": null}, {"id": "w13", "en": "dress", "enAll": ["dress"], "jp": "ドレス", "reading": null, "kanaForm": "ドレス", "kanjiForm": null}, {"id": "w14", "en": "dress", "enAll": ["dress"], "jp": "ワンピース", "reading": null, "kanaForm": "ワンピース", "kanjiForm": null}, {"id": "w15", "en": "earring", "enAll": ["earring"], "jp": "イヤリング", "reading": null, "kanaForm": "イヤリング", "kanjiForm": null}, {"id": "w16", "en": "hat", "enAll": ["hat", "cap"], "jp": "ぼうし", "reading": null, "kanaForm": "ぼうし", "kanjiForm": null}, {"id": "w17", "en": "high heeled shoes", "enAll": ["high heeled shoes"], "jp": "ハイヒール", "reading": null, "kanaForm": "ハイヒール", "kanjiForm": null}, {"id": "w18", "en": "jacket", "enAll": ["jacket"], "jp": "ジャケット", "reading": null, "kanaForm": "ジャケット", "kanjiForm": null}, {"id": "w19", "en": "japanese summer kimono", "enAll": ["japanese summer kimono"], "jp": "ゆかた", "reading": null, "kanaForm": "ゆかた", "kanjiForm": null}, {"id": "w20", "en": "jean", "enAll": ["jean"], "jp": "ジーンズ", "reading": null, "kanaForm": "ジーンズ", "kanjiForm": null}, {"id": "w21", "en": "kimono", "enAll": ["kimono"], "jp": "きもの", "reading": null, "kanaForm": "きもの", "kanjiForm": null}, {"id": "w22", "en": "necklace", "enAll": ["necklace"], "jp": "ネックレス", "reading": null, "kanaForm": "ネックレス", "kanjiForm": null}, {"id": "w23", "en": "necktie", "enAll": ["necktie"], "jp": "ネクタイ", "reading": null, "kanaForm": "ネクタイ", "kanjiForm": null}, {"id": "w24", "en": "overcoat", "enAll": ["overcoat"], "jp": "オーバー", "reading": null, "kanaForm": "オーバー", "kanjiForm": null}, {"id": "w25", "en": "pajamas", "enAll": ["pajamas"], "jp": "パジャマ", "reading": null, "kanaForm": "パジャマ", "kanjiForm": null}, {"id": "w26", "en": "pierced earring", "enAll": ["pierced earring"], "jp": "ピアス", "reading": null, "kanaForm": "ピアス", "kanjiForm": null}, {"id": "w27", "en": "raincoat", "enAll": ["raincoat"], "jp": "レインコート", "reading": null, "kanaForm": "レインコート", "kanjiForm": null}, {"id": "w28", "en": "ring", "enAll": ["ring"], "jp": "ゆびわ", "reading": null, "kanaForm": "ゆびわ", "kanjiForm": null}, {"id": "w29", "en": "sandals", "enAll": ["sandals"], "jp": "サンダル", "reading": null, "kanaForm": "サンダル", "kanjiForm": null}, {"id": "w30", "en": "scarf", "enAll": ["scarf"], "jp": "スカーフ", "reading": null, "kanaForm": "スカーフ", "kanjiForm": null}, {"id": "w31", "en": "shirt", "enAll": ["shirt"], "jp": "シャツ", "reading": null, "kanaForm": "シャツ", "kanjiForm": null}, {"id": "w32", "en": "shoes", "enAll": ["shoes"], "jp": "くつ", "reading": null, "kanaForm": "くつ", "kanjiForm": null}, {"id": "w33", "en": "short pants", "enAll": ["short pants"], "jp": "はんズボン", "reading": null, "kanaForm": "はんズボン", "kanjiForm": null}, {"id": "w34", "en": "shorts", "enAll": ["shorts"], "jp": "ショーツ", "reading": null, "kanaForm": "ショーツ", "kanjiForm": null}, {"id": "w35", "en": "skirt", "enAll": ["skirt"], "jp": "スカート", "reading": null, "kanaForm": "スカート", "kanjiForm": null}, {"id": "w36", "en": "slacks", "enAll": ["slacks"], "jp": "スラックス", "reading": null, "kanaForm": "スラックス", "kanjiForm": null}, {"id": "w37", "en": "slippers", "enAll": ["slippers"], "jp": "スリッパ", "reading": null, "kanaForm": "スリッパ", "kanjiForm": null}, {"id": "w38", "en": "sneakers", "enAll": ["sneakers"], "jp": "スニーカー", "reading": null, "kanaForm": "スニーカー", "kanjiForm": null}, {"id": "w39", "en": "socks", "enAll": ["socks"], "jp": "くつした", "reading": null, "kanaForm": "くつした", "kanjiForm": null}, {"id": "w40", "en": "suit", "enAll": ["suit"], "jp": "スーツ", "reading": null, "kanaForm": "スーツ", "kanjiForm": null}, {"id": "w41", "en": "sweat shirt", "enAll": ["sweat shirt"], "jp": "トレーナー", "reading": null, "kanaForm": "トレーナー", "kanjiForm": null}, {"id": "w42", "en": "sweater", "enAll": ["sweater"], "jp": "セーター", "reading": null, "kanaForm": "セーター", "kanjiForm": null}, {"id": "w43", "en": "swimwear", "enAll": ["swimwear", "swimsuit"], "jp": "みずぎ", "reading": null, "kanaForm": "みずぎ", "kanjiForm": null}, {"id": "w44", "en": "t-shirt", "enAll": ["t-shirt"], "jp": "T-シャツ", "reading": null, "kanaForm": "T-シャツ", "kanjiForm": null}, {"id": "w45", "en": "trousers", "enAll": ["trousers"], "jp": "ズボン", "reading": null, "kanaForm": "ズボン", "kanjiForm": null}, {"id": "w46", "en": "underpants", "enAll": ["underpants", "underwear"], "jp": "パンツ", "reading": null, "kanaForm": "パンツ", "kanjiForm": null}, {"id": "w47", "en": "underwear", "enAll": ["underwear"], "jp": "したぎ", "reading": null, "kanaForm": "したぎ", "kanjiForm": null}], "num": "5.1"}, {"id": "wearing", "label": "Wearing Verbs", "words": [{"id": "w48", "en": "wear a shirt", "enAll": ["wear a shirt", "wear a dress", "wear a jacket"], "jp": "きます", "reading": null, "kanaForm": "きます", "kanjiForm": null}, {"id": "w49", "en": "wear pants", "enAll": ["wear pants", "wear a skirt", "wear socks", "wear shoes"], "jp": "はきます", "reading": null, "kanaForm": "はきます", "kanjiForm": null}, {"id": "w50", "en": "wear a hat", "enAll": ["wear a hat", "wear a cap", "wear a helmet"], "jp": "かぶります", "reading": null, "kanaForm": "かぶります", "kanjiForm": null}, {"id": "w51", "en": "wear glasses", "enAll": ["wear glasses", "wear sunglasses"], "jp": "かけます", "reading": null, "kanaForm": "かけます", "kanjiForm": null}, {"id": "w52", "en": "wear a necklace", "enAll": ["wear a necklace", "wear a tie", "wear a scarf"], "jp": "します", "reading": null, "kanaForm": "します", "kanjiForm": null}, {"id": "w53", "en": "wear a scarf", "enAll": ["wear a scarf", "wear a wrap", "wear a shawl"], "jp": "まきます", "reading": null, "kanaForm": "まきます", "kanjiForm": null}, {"id": "w54", "en": "wear earrings", "enAll": ["wear earrings", "wear perfume", "wear make-up"], "jp": "つけます", "reading": null, "kanaForm": "つけます", "kanjiForm": null}], "num": "6.1"}, {"id": "colours", "label": "Colours", "words": [{"id": "w55", "en": "colour", "enAll": ["colour", "color"], "jp": "色", "reading": "いろ", "kanaForm": "いろ", "kanjiForm": "色"}, {"id": "w56", "en": "blue", "enAll": ["blue"], "jp": "青", "reading": "あお", "kanaForm": "あお", "kanjiForm": "青"}, {"id": "w57", "en": "red", "enAll": ["red"], "jp": "赤", "reading": "あか", "kanaForm": "あか", "kanjiForm": "赤"}, {"id": "w58", "en": "yellow", "enAll": ["yellow"], "jp": "黄色", "reading": "きいろ", "kanaForm": "きいろ", "kanjiForm": "黄色"}, {"id": "w59", "en": "black", "enAll": ["black"], "jp": "黒", "reading": "くろ", "kanaForm": "くろ", "kanjiForm": "黒"}, {"id": "w60", "en": "white", "enAll": ["white"], "jp": "白", "reading": "しろ", "kanaForm": "しろ", "kanjiForm": "白"}, {"id": "w61", "en": "brown", "enAll": ["brown"], "jp": "茶色", "reading": "ちゃいろ", "kanaForm": "ちゃいろ", "kanjiForm": "茶色"}, {"id": "w62", "en": "pink", "enAll": ["pink"], "jp": "ピンク", "reading": null, "kanaForm": "ピンク", "kanjiForm": null}, {"id": "w63", "en": "green", "enAll": ["green"], "jp": "緑", "reading": "みどり", "kanaForm": "みどり", "kanjiForm": "緑"}, {"id": "w64", "en": "orange", "enAll": ["orange"], "jp": "オレンジ", "reading": null, "kanaForm": "オレンジ", "kanjiForm": null}], "num": "7.1"}, {"id": "describing-colours", "label": "Describing Colours", "words": [{"id": "w65", "en": "bright", "enAll": ["bright"], "jp": "あかるい", "reading": null, "kanaForm": "あかるい", "kanjiForm": null}, {"id": "w66", "en": "clear", "enAll": ["clear"], "jp": "クリア", "reading": null, "kanaForm": "クリア", "kanjiForm": null}, {"id": "w67", "en": "colourful", "enAll": ["colourful"], "jp": "カラフル", "reading": null, "kanaForm": "カラフル", "kanjiForm": null}, {"id": "w68", "en": "dark", "enAll": ["dark"], "jp": "くらい", "reading": null, "kanaForm": "くらい", "kanjiForm": null}, {"id": "w69", "en": "deep", "enAll": ["deep"], "jp": "こい", "reading": null, "kanaForm": "こい", "kanjiForm": null}, {"id": "w70", "en": "dull", "enAll": ["dull", "muted"], "jp": "くすんだ", "reading": null, "kanaForm": "くすんだ", "kanjiForm": null}, {"id": "w71", "en": "flashy", "enAll": ["flashy"], "jp": "はで", "reading": null, "kanaForm": "はで", "kanjiForm": null}, {"id": "w72", "en": "light", "enAll": ["light", "weak"], "jp": "うすい", "reading": null, "kanaForm": "うすい", "kanjiForm": null}, {"id": "w73", "en": "multicoloured", "enAll": ["multicoloured"], "jp": "マルチカラー", "reading": null, "kanaForm": "マルチカラー", "kanjiForm": null}, {"id": "w74", "en": "pastel", "enAll": ["pastel"], "jp": "パステル", "reading": null, "kanaForm": "パステル", "kanjiForm": null}, {"id": "w75", "en": "soft", "enAll": ["soft", "light"], "jp": "あわい", "reading": null, "kanaForm": "あわい", "kanjiForm": null}, {"id": "w76", "en": "vivid", "enAll": ["vivid"], "jp": "ビビッド", "reading": null, "kanaForm": "ビビッド", "kanjiForm": null}, {"id": "w77", "en": "vivid", "enAll": ["vivid", "bright"], "jp": "あざやか", "reading": null, "kanaForm": "あざやか", "kanjiForm": null}], "num": "7.2"}, {"id": "patterns", "label": "Patterns & Prints", "words": [{"id": "w78", "en": "camouflage", "enAll": ["camouflage"], "jp": "めいさいがら", "reading": null, "kanaForm": "めいさいがら", "kanjiForm": null}, {"id": "w79", "en": "floral print", "enAll": ["floral print"], "jp": "花柄", "reading": "はながら", "kanaForm": "はながら", "kanjiForm": "花柄"}, {"id": "w80", "en": "gingham check", "enAll": ["gingham check", "gingham"], "jp": "ギンガムチェック", "reading": null, "kanaForm": "ギンガムチェック", "kanjiForm": null}, {"id": "w81", "en": "heart print", "enAll": ["heart print"], "jp": "ハート柄", "reading": "ハートがら", "kanaForm": "ハートがら", "kanjiForm": "ハート柄"}, {"id": "w82", "en": "horizontal stripes", "enAll": ["horizontal stripes", "stripes"], "jp": "ボーダー柄", "reading": "ボーダーがら", "kanaForm": "ボーダーがら", "kanjiForm": "ボーダー柄"}, {"id": "w83", "en": "leopard print", "enAll": ["leopard print"], "jp": "ヒョウ柄", "reading": "ヒョウがら", "kanaForm": "ヒョウがら", "kanjiForm": "ヒョウ柄"}, {"id": "w84", "en": "logo", "enAll": ["logo"], "jp": "ロゴ", "reading": null, "kanaForm": "ロゴ", "kanjiForm": null}, {"id": "w85", "en": "multicolour stripes", "enAll": ["multicolour stripes"], "jp": "マルチストライプ柄", "reading": "マルチストライプがら", "kanaForm": "マルチストライプがら", "kanjiForm": "マルチストライプ柄"}, {"id": "w86", "en": "paisley", "enAll": ["paisley"], "jp": "ペイズリー柄", "reading": "ペイズリーがら", "kanaForm": "ペイズリーがら", "kanjiForm": "ペイズリー柄"}, {"id": "w87", "en": "plain", "enAll": ["plain"], "jp": "むじ", "reading": null, "kanaForm": "むじ", "kanjiForm": null}, {"id": "w88", "en": "polka dot", "enAll": ["polka dot"], "jp": "水玉模様", "reading": "みずたまもよう", "kanaForm": "みずたまもよう", "kanjiForm": "水玉模様"}, {"id": "w89", "en": "small floral print", "enAll": ["small floral print"], "jp": "小花柄", "reading": "こばながら", "kanaForm": "こばながら", "kanjiForm": "小花柄"}, {"id": "w90", "en": "large floral print", "enAll": ["large floral print"], "jp": "大きめの花柄", "reading": "おおきいめのはながら", "kanaForm": "おおきいめのはながら", "kanjiForm": "大きめの花柄"}, {"id": "w91", "en": "snake print", "enAll": ["snake print", "python print"], "jp": "ヘビ柄", "reading": "ヘビがら", "kanaForm": "ヘビがら", "kanjiForm": "ヘビ柄"}, {"id": "w92", "en": "star print", "enAll": ["star print"], "jp": "ほしがら", "reading": null, "kanaForm": "ほしがら", "kanjiForm": null}, {"id": "w93", "en": "small dots", "enAll": ["small dots"], "jp": "小さめのドット", "reading": "ちいさめのドット", "kanaForm": "ちいさめのドット", "kanjiForm": "小さめのドット"}, {"id": "w94", "en": "tartan", "enAll": ["tartan", "tartan check"], "jp": "タータンチェック", "reading": null, "kanaForm": "タータンチェック", "kanjiForm": null}, {"id": "w95", "en": "tropical print", "enAll": ["tropical print"], "jp": "トロピカル柄", "reading": "トロピカルがら", "kanaForm": "トロピカルがら", "kanjiForm": "トロピカル柄"}, {"id": "w96", "en": "vertical stripes", "enAll": ["vertical stripes", "stripes"], "jp": "ストライプ柄", "reading": "ストライプがら", "kanaForm": "ストライプがら", "kanjiForm": "ストライプ柄"}, {"id": "w97", "en": "zebra print", "enAll": ["zebra print"], "jp": "ゼブラ柄", "reading": "ゼブラがら", "kanaForm": "ゼブラがら", "kanjiForm": "ゼブラ柄"}], "num": "7.3"}, {"id": "describing-clothes", "label": "Describing Clothes", "words": [{"id": "w98", "en": "baggy", "enAll": ["baggy"], "jp": "ゆったりした", "reading": null, "kanaForm": "ゆったりした", "kanjiForm": null}, {"id": "w99", "en": "boxy", "enAll": ["boxy"], "jp": "ボックスがたの", "reading": null, "kanaForm": "ボックスがたの", "kanjiForm": null}, {"id": "w100", "en": "casual", "enAll": ["casual"], "jp": "カジュアルな", "reading": null, "kanaForm": "カジュアルな", "kanjiForm": null}, {"id": "w101", "en": "cool", "enAll": ["cool"], "jp": "かっこいい", "reading": null, "kanaForm": "かっこいい", "kanjiForm": null}, {"id": "w102", "en": "cool", "enAll": ["cool"], "jp": "クールな", "reading": null, "kanaForm": "クールな", "kanjiForm": null}, {"id": "w103", "en": "cute", "enAll": ["cute"], "jp": "かわいい", "reading": null, "kanaForm": "かわいい", "kanjiForm": null}, {"id": "w104", "en": "elegant", "enAll": ["elegant"], "jp": "じょうひんな", "reading": null, "kanaForm": "じょうひんな", "kanjiForm": null}, {"id": "w105", "en": "elegant", "enAll": ["elegant"], "jp": "エレガントの", "reading": null, "kanaForm": "エレガントの", "kanjiForm": null}, {"id": "w106", "en": "formal", "enAll": ["formal"], "jp": "フォーマルな", "reading": null, "kanaForm": "フォーマルな", "kanjiForm": null}, {"id": "w107", "en": "fresh", "enAll": ["fresh"], "jp": "さわやかな", "reading": null, "kanaForm": "さわやかな", "kanjiForm": null}, {"id": "w108", "en": "frilly", "enAll": ["frilly"], "jp": "フリフリの", "reading": null, "kanaForm": "フリフリの", "kanjiForm": null}, {"id": "w109", "en": "girly", "enAll": ["girly"], "jp": "ガーリーな", "reading": null, "kanaForm": "ガーリーな", "kanjiForm": null}, {"id": "w110", "en": "mature", "enAll": ["mature"], "jp": "おとなっぽい", "reading": null, "kanaForm": "おとなっぽい", "kanjiForm": null}, {"id": "w111", "en": "modest", "enAll": ["modest"], "jp": "ひかえめ", "reading": null, "kanaForm": "ひかえめ", "kanjiForm": null}, {"id": "w112", "en": "pretty", "enAll": ["pretty"], "jp": "きれいな", "reading": null, "kanaForm": "きれいな", "kanjiForm": null}, {"id": "w113", "en": "simple", "enAll": ["simple"], "jp": "シンプルな", "reading": null, "kanaForm": "シンプルな", "kanjiForm": null}, {"id": "w114", "en": "stylish", "enAll": ["stylish"], "jp": "おしゃれな", "reading": null, "kanaForm": "おしゃれな", "kanjiForm": null}, {"id": "w115", "en": "tailored", "enAll": ["tailored", "fitted"], "jp": "ぴったりした", "reading": null, "kanaForm": "ぴったりした", "kanjiForm": null}, {"id": "w116", "en": "tight", "enAll": ["tight"], "jp": "タイトの", "reading": null, "kanaForm": "タイトの", "kanjiForm": null}], "num": "7.4"}];
+const CATEGORIES = [{"id": "clothing", "label": "Clothing & Accessories", "words": [{"id": "w0", "en": "apparel", "enAll": ["apparel"], "jp": "アパレル", "reading": null, "kanaForm": "アパレル", "kanjiForm": null}, {"id": "w1", "en": "belt", "enAll": ["belt"], "jp": "ベルト", "reading": null, "kanaForm": "ベルト", "kanjiForm": null}, {"id": "w2", "en": "blazer", "enAll": ["blazer"], "jp": "ブレザー", "reading": null, "kanaForm": "ブレザー", "kanjiForm": null}, {"id": "w3", "en": "blouse", "enAll": ["blouse"], "jp": "ブラウス", "reading": null, "kanaForm": "ブラウス", "kanjiForm": null}, {"id": "w4", "en": "boots", "enAll": ["boots"], "jp": "ブーツ", "reading": null, "kanaForm": "ブーツ", "kanjiForm": null}, {"id": "w5", "en": "bra", "enAll": ["bra"], "jp": "ブラジャー", "reading": null, "kanaForm": "ブラジャー", "kanjiForm": null}, {"id": "w6", "en": "business shirt", "enAll": ["business shirt"], "jp": "ワイシャツ", "reading": null, "kanaForm": "ワイシャツ", "kanjiForm": null}, {"id": "w7", "en": "business suit", "enAll": ["business suit"], "jp": "せびろ", "reading": null, "kanaForm": "せびろ", "kanjiForm": null}, {"id": "w8", "en": "cardigan", "enAll": ["cardigan"], "jp": "カーディガン", "reading": null, "kanaForm": "カーディガン", "kanjiForm": null}, {"id": "w9", "en": "clothes", "enAll": ["clothes"], "jp": "ふく", "reading": null, "kanaForm": "ふく", "kanjiForm": null}, {"id": "w10", "en": "clothing", "enAll": ["clothing"], "jp": "いりょうひん", "reading": null, "kanaForm": "いりょうひん", "kanjiForm": null}, {"id": "w11", "en": "coat", "enAll": ["coat"], "jp": "コート", "reading": null, "kanaForm": "コート", "kanjiForm": null}, {"id": "w12", "en": "coat", "enAll": ["coat", "jacket"], "jp": "うわぎ", "reading": null, "kanaForm": "うわぎ", "kanjiForm": null}, {"id": "w13", "en": "dress", "enAll": ["dress"], "jp": "ドレス", "reading": null, "kanaForm": "ドレス", "kanjiForm": null}, {"id": "w14", "en": "dress", "enAll": ["dress"], "jp": "ワンピース", "reading": null, "kanaForm": "ワンピース", "kanjiForm": null}, {"id": "w15", "en": "earring", "enAll": ["earring"], "jp": "イヤリング", "reading": null, "kanaForm": "イヤリング", "kanjiForm": null}, {"id": "w16", "en": "hat", "enAll": ["hat", "cap"], "jp": "ぼうし", "reading": null, "kanaForm": "ぼうし", "kanjiForm": null}, {"id": "w17", "en": "high heeled shoes", "enAll": ["high heeled shoes"], "jp": "ハイヒール", "reading": null, "kanaForm": "ハイヒール", "kanjiForm": null}, {"id": "w18", "en": "jacket", "enAll": ["jacket"], "jp": "ジャケット", "reading": null, "kanaForm": "ジャケット", "kanjiForm": null}, {"id": "w19", "en": "japanese summer kimono", "enAll": ["japanese summer kimono"], "jp": "ゆかた", "reading": null, "kanaForm": "ゆかた", "kanjiForm": null}, {"id": "w20", "en": "jean", "enAll": ["jean"], "jp": "ジーンズ", "reading": null, "kanaForm": "ジーンズ", "kanjiForm": null}, {"id": "w21", "en": "kimono", "enAll": ["kimono"], "jp": "きもの", "reading": null, "kanaForm": "きもの", "kanjiForm": null}, {"id": "w22", "en": "necklace", "enAll": ["necklace"], "jp": "ネックレス", "reading": null, "kanaForm": "ネックレス", "kanjiForm": null}, {"id": "w23", "en": "necktie", "enAll": ["necktie"], "jp": "ネクタイ", "reading": null, "kanaForm": "ネクタイ", "kanjiForm": null}, {"id": "w24", "en": "overcoat", "enAll": ["overcoat"], "jp": "オーバー", "reading": null, "kanaForm": "オーバー", "kanjiForm": null}, {"id": "w25", "en": "pajamas", "enAll": ["pajamas"], "jp": "パジャマ", "reading": null, "kanaForm": "パジャマ", "kanjiForm": null}, {"id": "w26", "en": "pierced earring", "enAll": ["pierced earring"], "jp": "ピアス", "reading": null, "kanaForm": "ピアス", "kanjiForm": null}, {"id": "w27", "en": "raincoat", "enAll": ["raincoat"], "jp": "レインコート", "reading": null, "kanaForm": "レインコート", "kanjiForm": null}, {"id": "w28", "en": "ring", "enAll": ["ring"], "jp": "ゆびわ", "reading": null, "kanaForm": "ゆびわ", "kanjiForm": null}, {"id": "w29", "en": "sandals", "enAll": ["sandals"], "jp": "サンダル", "reading": null, "kanaForm": "サンダル", "kanjiForm": null}, {"id": "w30", "en": "scarf", "enAll": ["scarf"], "jp": "スカーフ", "reading": null, "kanaForm": "スカーフ", "kanjiForm": null}, {"id": "w31", "en": "shirt", "enAll": ["shirt"], "jp": "シャツ", "reading": null, "kanaForm": "シャツ", "kanjiForm": null}, {"id": "w32", "en": "shoes", "enAll": ["shoes"], "jp": "くつ", "reading": null, "kanaForm": "くつ", "kanjiForm": null}, {"id": "w33", "en": "short pants", "enAll": ["short pants"], "jp": "はんズボン", "reading": null, "kanaForm": "はんズボン", "kanjiForm": null}, {"id": "w34", "en": "shorts", "enAll": ["shorts"], "jp": "ショーツ", "reading": null, "kanaForm": "ショーツ", "kanjiForm": null}, {"id": "w35", "en": "skirt", "enAll": ["skirt"], "jp": "スカート", "reading": null, "kanaForm": "スカート", "kanjiForm": null}, {"id": "w36", "en": "slacks", "enAll": ["slacks"], "jp": "スラックス", "reading": null, "kanaForm": "スラックス", "kanjiForm": null}, {"id": "w37", "en": "slippers", "enAll": ["slippers"], "jp": "スリッパ", "reading": null, "kanaForm": "スリッパ", "kanjiForm": null}, {"id": "w38", "en": "sneakers", "enAll": ["sneakers"], "jp": "スニーカー", "reading": null, "kanaForm": "スニーカー", "kanjiForm": null}, {"id": "w39", "en": "socks", "enAll": ["socks"], "jp": "くつした", "reading": null, "kanaForm": "くつした", "kanjiForm": null}, {"id": "w40", "en": "suit", "enAll": ["suit"], "jp": "スーツ", "reading": null, "kanaForm": "スーツ", "kanjiForm": null}, {"id": "w41", "en": "sweat shirt", "enAll": ["sweat shirt"], "jp": "トレーナー", "reading": null, "kanaForm": "トレーナー", "kanjiForm": null}, {"id": "w42", "en": "sweater", "enAll": ["sweater"], "jp": "セーター", "reading": null, "kanaForm": "セーター", "kanjiForm": null}, {"id": "w43", "en": "swimwear", "enAll": ["swimwear", "swimsuit"], "jp": "みずぎ", "reading": null, "kanaForm": "みずぎ", "kanjiForm": null}, {"id": "w44", "en": "t-shirt", "enAll": ["t-shirt"], "jp": "T-シャツ", "reading": null, "kanaForm": "T-シャツ", "kanjiForm": null}, {"id": "w45", "en": "trousers", "enAll": ["trousers"], "jp": "ズボン", "reading": null, "kanaForm": "ズボン", "kanjiForm": null}, {"id": "w46", "en": "underpants", "enAll": ["underpants", "underwear"], "jp": "パンツ", "reading": null, "kanaForm": "パンツ", "kanjiForm": null}, {"id": "w47", "en": "underwear", "enAll": ["underwear"], "jp": "したぎ", "reading": null, "kanaForm": "したぎ", "kanjiForm": null}], "num": "5.1"}, {"id": "wearing", "label": "Wearing Verbs", "words": [{"id": "w48", "en": "wear a shirt", "enAll": ["wear a shirt", "wear a dress", "wear a jacket"], "jp": "きます", "reading": null, "kanaForm": "きます", "kanjiForm": null}, {"id": "w49", "en": "wear pants", "enAll": ["wear pants", "wear a skirt", "wear socks", "wear shoes"], "jp": "はきます", "reading": null, "kanaForm": "はきます", "kanjiForm": null}, {"id": "w50", "en": "wear a hat", "enAll": ["wear a hat", "wear a cap", "wear a helmet"], "jp": "かぶります", "reading": null, "kanaForm": "かぶります", "kanjiForm": null}, {"id": "w51", "en": "wear glasses", "enAll": ["wear glasses", "wear sunglasses"], "jp": "かけます", "reading": null, "kanaForm": "かけます", "kanjiForm": null}, {"id": "w52", "en": "wear a necklace", "enAll": ["wear a necklace", "wear a tie", "wear a scarf"], "jp": "します", "reading": null, "kanaForm": "します", "kanjiForm": null}, {"id": "w53", "en": "wear a scarf", "enAll": ["wear a scarf", "wear a wrap", "wear a shawl"], "jp": "まきます", "reading": null, "kanaForm": "まきます", "kanjiForm": null}, {"id": "w54", "en": "wear earrings", "enAll": ["wear earrings", "wear perfume", "wear make-up"], "jp": "つけます", "reading": null, "kanaForm": "つけます", "kanjiForm": null}], "num": "6.1"}, {"id": "colours", "label": "Colours", "words": [{"id": "w55", "en": "colour", "enAll": ["colour", "color"], "jp": "色", "reading": "いろ", "kanaForm": "いろ", "kanjiForm": "色"}, {"id": "w56", "en": "blue", "enAll": ["blue"], "jp": "青", "reading": "あお", "kanaForm": "あお", "kanjiForm": "青"}, {"id": "w57", "en": "red", "enAll": ["red"], "jp": "赤", "reading": "あか", "kanaForm": "あか", "kanjiForm": "赤"}, {"id": "w58", "en": "yellow", "enAll": ["yellow"], "jp": "黄色", "reading": "きいろ", "kanaForm": "きいろ", "kanjiForm": "黄色"}, {"id": "w59", "en": "black", "enAll": ["black"], "jp": "黒", "reading": "くろ", "kanaForm": "くろ", "kanjiForm": "黒"}, {"id": "w60", "en": "white", "enAll": ["white"], "jp": "白", "reading": "しろ", "kanaForm": "しろ", "kanjiForm": "白"}, {"id": "w61", "en": "brown", "enAll": ["brown"], "jp": "茶色", "reading": "ちゃいろ", "kanaForm": "ちゃいろ", "kanjiForm": "茶色"}, {"id": "w62", "en": "pink", "enAll": ["pink"], "jp": "ピンク", "reading": null, "kanaForm": "ピンク", "kanjiForm": null}, {"id": "w63", "en": "green", "enAll": ["green"], "jp": "緑", "reading": "みどり", "kanaForm": "みどり", "kanjiForm": "緑"}, {"id": "w64", "en": "orange", "enAll": ["orange"], "jp": "オレンジ", "reading": null, "kanaForm": "オレンジ", "kanjiForm": null}], "num": "7.1"}, {"id": "describing-colours", "label": "Describing Colours", "words": [{"id": "w65", "en": "bright", "enAll": ["bright"], "jp": "あかるい", "reading": null, "kanaForm": "あかるい", "kanjiForm": null}, {"id": "w66", "en": "clear", "enAll": ["clear"], "jp": "クリア", "reading": null, "kanaForm": "クリア", "kanjiForm": null, "particle": "な", "usageDescribeJp": "クリアな色", "usageDescribeEn": "a clear colour", "usageJoinJp": "クリアで あざやかな色", "usageJoinEn": "a clear, vivid colour"}, {"id": "w67", "en": "colourful", "enAll": ["colourful"], "jp": "カラフル", "reading": null, "kanaForm": "カラフル", "kanjiForm": null, "particle": "な", "usageDescribeJp": "カラフルな服", "usageDescribeEn": "colourful clothes", "usageJoinJp": "カラフルで あかるい服", "usageJoinEn": "colourful, bright clothes"}, {"id": "w68", "en": "dark", "enAll": ["dark"], "jp": "くらい", "reading": null, "kanaForm": "くらい", "kanjiForm": null}, {"id": "w69", "en": "deep", "enAll": ["deep"], "jp": "こい", "reading": null, "kanaForm": "こい", "kanjiForm": null}, {"id": "w70", "en": "dull", "enAll": ["dull", "muted"], "jp": "くすんだ", "reading": null, "kanaForm": "くすんだ", "kanjiForm": null}, {"id": "w71", "en": "flashy", "enAll": ["flashy"], "jp": "はで", "reading": null, "kanaForm": "はで", "kanjiForm": null, "particle": "な", "usageDescribeJp": "はでな色", "usageDescribeEn": "a flashy colour", "usageJoinJp": "はでで あざやかな色", "usageJoinEn": "a flashy, vivid colour"}, {"id": "w72", "en": "light", "enAll": ["light", "weak"], "jp": "うすい", "reading": null, "kanaForm": "うすい", "kanjiForm": null}, {"id": "w73", "en": "multicoloured", "enAll": ["multicoloured"], "jp": "マルチカラー", "reading": null, "kanaForm": "マルチカラー", "kanjiForm": null, "particle": "の", "usageDescribeJp": "マルチカラーの服", "usageDescribeEn": "multicoloured clothing", "usageJoinJp": "マルチカラーで はでな服", "usageJoinEn": "multicoloured, flashy clothes"}, {"id": "w74", "en": "pastel", "enAll": ["pastel"], "jp": "パステル", "reading": null, "kanaForm": "パステル", "kanjiForm": null, "particle": "の", "usageDescribeJp": "パステルの色", "usageDescribeEn": "a pastel colour", "usageJoinJp": "パステルで あわい色", "usageJoinEn": "a pastel, soft colour"}, {"id": "w75", "en": "soft", "enAll": ["soft", "light"], "jp": "あわい", "reading": null, "kanaForm": "あわい", "kanjiForm": null}, {"id": "w76", "en": "vivid", "enAll": ["vivid"], "jp": "ビビッド", "reading": null, "kanaForm": "ビビッド", "kanjiForm": null, "particle": "な", "usageDescribeJp": "ビビッドな色", "usageDescribeEn": "a vivid colour", "usageJoinJp": "ビビッドで あかるい色", "usageJoinEn": "a vivid, bright colour"}, {"id": "w77", "en": "vivid", "enAll": ["vivid", "bright"], "jp": "あざやか", "reading": null, "kanaForm": "あざやか", "kanjiForm": null, "particle": "な", "usageDescribeJp": "あざやかな色", "usageDescribeEn": "a vivid, bright colour", "usageJoinJp": "あざやかで マルチカラーの服", "usageJoinEn": "vivid, multicoloured clothes"}], "num": "7.2"}, {"id": "patterns", "label": "Patterns & Prints", "words": [{"id": "w78", "en": "camouflage", "enAll": ["camouflage"], "jp": "めいさいがら", "reading": null, "kanaForm": "めいさいがら", "kanjiForm": null}, {"id": "w79", "en": "floral print", "enAll": ["floral print"], "jp": "花柄", "reading": "はながら", "kanaForm": "はながら", "kanjiForm": "花柄"}, {"id": "w80", "en": "gingham check", "enAll": ["gingham check", "gingham"], "jp": "ギンガムチェック", "reading": null, "kanaForm": "ギンガムチェック", "kanjiForm": null}, {"id": "w81", "en": "heart print", "enAll": ["heart print"], "jp": "ハート柄", "reading": "ハートがら", "kanaForm": "ハートがら", "kanjiForm": "ハート柄"}, {"id": "w82", "en": "horizontal stripes", "enAll": ["horizontal stripes", "stripes"], "jp": "ボーダー柄", "reading": "ボーダーがら", "kanaForm": "ボーダーがら", "kanjiForm": "ボーダー柄"}, {"id": "w83", "en": "leopard print", "enAll": ["leopard print"], "jp": "ヒョウ柄", "reading": "ヒョウがら", "kanaForm": "ヒョウがら", "kanjiForm": "ヒョウ柄"}, {"id": "w84", "en": "logo", "enAll": ["logo"], "jp": "ロゴ", "reading": null, "kanaForm": "ロゴ", "kanjiForm": null}, {"id": "w85", "en": "multicolour stripes", "enAll": ["multicolour stripes"], "jp": "マルチストライプ柄", "reading": "マルチストライプがら", "kanaForm": "マルチストライプがら", "kanjiForm": "マルチストライプ柄"}, {"id": "w86", "en": "paisley", "enAll": ["paisley"], "jp": "ペイズリー柄", "reading": "ペイズリーがら", "kanaForm": "ペイズリーがら", "kanjiForm": "ペイズリー柄"}, {"id": "w87", "en": "plain", "enAll": ["plain"], "jp": "むじ", "reading": null, "kanaForm": "むじ", "kanjiForm": null}, {"id": "w88", "en": "polka dot", "enAll": ["polka dot"], "jp": "水玉模様", "reading": "みずたまもよう", "kanaForm": "みずたまもよう", "kanjiForm": "水玉模様"}, {"id": "w89", "en": "small floral print", "enAll": ["small floral print"], "jp": "小花柄", "reading": "こばながら", "kanaForm": "こばながら", "kanjiForm": "小花柄"}, {"id": "w90", "en": "large floral print", "enAll": ["large floral print"], "jp": "大きめの花柄", "reading": "おおきいめのはながら", "kanaForm": "おおきいめのはながら", "kanjiForm": "大きめの花柄"}, {"id": "w91", "en": "snake print", "enAll": ["snake print", "python print"], "jp": "ヘビ柄", "reading": "ヘビがら", "kanaForm": "ヘビがら", "kanjiForm": "ヘビ柄"}, {"id": "w92", "en": "star print", "enAll": ["star print"], "jp": "ほしがら", "reading": null, "kanaForm": "ほしがら", "kanjiForm": null}, {"id": "w93", "en": "small dots", "enAll": ["small dots"], "jp": "小さめのドット", "reading": "ちいさめのドット", "kanaForm": "ちいさめのドット", "kanjiForm": "小さめのドット"}, {"id": "w94", "en": "tartan", "enAll": ["tartan", "tartan check"], "jp": "タータンチェック", "reading": null, "kanaForm": "タータンチェック", "kanjiForm": null}, {"id": "w95", "en": "tropical print", "enAll": ["tropical print"], "jp": "トロピカル柄", "reading": "トロピカルがら", "kanaForm": "トロピカルがら", "kanjiForm": "トロピカル柄"}, {"id": "w96", "en": "vertical stripes", "enAll": ["vertical stripes", "stripes"], "jp": "ストライプ柄", "reading": "ストライプがら", "kanaForm": "ストライプがら", "kanjiForm": "ストライプ柄"}, {"id": "w97", "en": "zebra print", "enAll": ["zebra print"], "jp": "ゼブラ柄", "reading": "ゼブラがら", "kanaForm": "ゼブラがら", "kanjiForm": "ゼブラ柄"}], "num": "7.3"}, {"id": "describing-clothes", "label": "Describing Clothes", "words": [{"id": "w98", "en": "baggy", "enAll": ["baggy"], "jp": "ゆったりした", "reading": null, "kanaForm": "ゆったりした", "kanjiForm": null}, {"id": "w99", "en": "boxy", "enAll": ["boxy"], "jp": "ボックスがた", "reading": null, "kanaForm": "ボックスがた", "kanjiForm": null, "particle": "の", "usageDescribeJp": "ボックスがたの服", "usageDescribeEn": "boxy clothes", "usageJoinJp": "ボックスがたで カジュアルな服", "usageJoinEn": "boxy, casual clothes"}, {"id": "w100", "en": "casual", "enAll": ["casual"], "jp": "カジュアル", "reading": null, "kanaForm": "カジュアル", "kanjiForm": null, "particle": "な", "usageDescribeJp": "カジュアルな服", "usageDescribeEn": "casual clothes", "usageJoinJp": "カジュアルで おしゃれな服", "usageJoinEn": "casual, stylish clothes"}, {"id": "w101", "en": "cool", "enAll": ["cool"], "jp": "かっこいい", "reading": null, "kanaForm": "かっこいい", "kanjiForm": null}, {"id": "w102", "en": "cool", "enAll": ["cool"], "jp": "クール", "reading": null, "kanaForm": "クール", "kanjiForm": null, "particle": "な", "usageDescribeJp": "クールな服", "usageDescribeEn": "cool clothes", "usageJoinJp": "クールで シンプルな服", "usageJoinEn": "cool, simple clothes"}, {"id": "w103", "en": "cute", "enAll": ["cute"], "jp": "かわいい", "reading": null, "kanaForm": "かわいい", "kanjiForm": null}, {"id": "w104", "en": "elegant", "enAll": ["elegant"], "jp": "じょうひん", "reading": null, "kanaForm": "じょうひん", "kanjiForm": null, "particle": "な", "usageDescribeJp": "じょうひんな服", "usageDescribeEn": "elegant, refined clothes", "usageJoinJp": "じょうひんで エレガントの服", "usageJoinEn": "elegant, refined clothes"}, {"id": "w105", "en": "elegant", "enAll": ["elegant"], "jp": "エレガント", "reading": null, "kanaForm": "エレガント", "kanjiForm": null, "particle": "の", "usageDescribeJp": "エレガントの服", "usageDescribeEn": "elegant clothes", "usageJoinJp": "エレガントで じょうひんな服", "usageJoinEn": "elegant, refined clothes"}, {"id": "w106", "en": "formal", "enAll": ["formal"], "jp": "フォーマル", "reading": null, "kanaForm": "フォーマル", "kanjiForm": null, "particle": "な", "usageDescribeJp": "フォーマルな服", "usageDescribeEn": "formal clothes", "usageJoinJp": "フォーマルで きれいな服", "usageJoinEn": "formal, pretty clothes"}, {"id": "w107", "en": "fresh", "enAll": ["fresh"], "jp": "さわやか", "reading": null, "kanaForm": "さわやか", "kanjiForm": null, "particle": "な", "usageDescribeJp": "さわやかな服", "usageDescribeEn": "fresh(-looking) clothes", "usageJoinJp": "さわやかで カジュアルな服", "usageJoinEn": "fresh, casual clothes"}, {"id": "w108", "en": "frilly", "enAll": ["frilly"], "jp": "フリフリ", "reading": null, "kanaForm": "フリフリ", "kanjiForm": null, "particle": "の", "usageDescribeJp": "フリフリの服", "usageDescribeEn": "frilly clothes", "usageJoinJp": "フリフリで ガーリーな服", "usageJoinEn": "frilly, girly clothes"}, {"id": "w109", "en": "girly", "enAll": ["girly"], "jp": "ガーリー", "reading": null, "kanaForm": "ガーリー", "kanjiForm": null, "particle": "な", "usageDescribeJp": "ガーリーな服", "usageDescribeEn": "girly clothes", "usageJoinJp": "ガーリーで フリフリの服", "usageJoinEn": "girly, frilly clothes"}, {"id": "w110", "en": "mature", "enAll": ["mature"], "jp": "おとなっぽい", "reading": null, "kanaForm": "おとなっぽい", "kanjiForm": null}, {"id": "w111", "en": "modest", "enAll": ["modest"], "jp": "ひかえめ", "reading": null, "kanaForm": "ひかえめ", "kanjiForm": null, "particle": "な", "usageDescribeJp": "ひかえめな服", "usageDescribeEn": "modest clothes", "usageJoinJp": "ひかえめで シンプルな服", "usageJoinEn": "modest, simple clothes"}, {"id": "w112", "en": "pretty", "enAll": ["pretty"], "jp": "きれい", "reading": null, "kanaForm": "きれい", "kanjiForm": null, "particle": "な", "usageDescribeJp": "きれいな服", "usageDescribeEn": "pretty clothes", "usageJoinJp": "きれいで おしゃれな服", "usageJoinEn": "pretty, stylish clothes"}, {"id": "w113", "en": "simple", "enAll": ["simple"], "jp": "シンプル", "reading": null, "kanaForm": "シンプル", "kanjiForm": null, "particle": "な", "usageDescribeJp": "シンプルな服", "usageDescribeEn": "simple clothes", "usageJoinJp": "シンプルで きれいな服", "usageJoinEn": "simple, pretty clothes"}, {"id": "w114", "en": "stylish", "enAll": ["stylish"], "jp": "おしゃれ", "reading": null, "kanaForm": "おしゃれ", "kanjiForm": null, "particle": "な", "usageDescribeJp": "おしゃれな服", "usageDescribeEn": "stylish clothes", "usageJoinJp": "おしゃれで クールな服", "usageJoinEn": "stylish, cool clothes"}, {"id": "w115", "en": "tailored", "enAll": ["tailored", "fitted"], "jp": "ぴったりした", "reading": null, "kanaForm": "ぴったりした", "kanjiForm": null}, {"id": "w116", "en": "tight", "enAll": ["tight"], "jp": "タイト", "reading": null, "kanaForm": "タイト", "kanjiForm": null, "particle": "の", "usageDescribeJp": "タイトの服", "usageDescribeEn": "tight clothes", "usageJoinJp": "タイトで シンプルな服", "usageJoinEn": "tight, simple clothes"}], "num": "7.4"}];
 
 // Flatten all words with a reference back to their category
 const ALL_WORDS = [];
@@ -563,6 +753,9 @@ function catNum(catId){
   return c ? c.num : '';
 }
 function enJoined(w){ return w.enAll.join('; '); }
+// For na/no-adjectives, show the particle beside the English meaning rather than
+// attached to the Japanese word itself (e.g. "casual (な)").
+function enWithParticle(w){ return enJoined(w) + (w.particle ? ' (' + w.particle + ')' : ''); }
 
 function shuffleArr(arr){
   const a = arr.slice();
@@ -589,7 +782,9 @@ function setPageMode(mode){
   document.querySelectorAll('#modeTabs .mode-tab').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
   document.getElementById('studyModeView').hidden = (mode !== 'study');
   document.getElementById('activitiesView').hidden = (mode !== 'activities');
+  document.getElementById('grammarView').hidden = (mode !== 'grammar');
   if(mode === 'activities') ensureActivitiesInit();
+  if(mode === 'grammar') ensureGrammarInit();
 }
 
 /* ══════════════════════ STUDY MODE: CATEGORY SELECT ══════════════════════ */
@@ -664,8 +859,9 @@ function sfRenderCard(){
   document.getElementById('sfTagBack').textContent = catLabel(item.catId);
   document.getElementById('sfFrontJp').textContent = item.jp;
   document.getElementById('sfBackJp').textContent = item.jp;
-  document.getElementById('sfBackEn').textContent = enJoined(item);
+  document.getElementById('sfBackEn').textContent = enWithParticle(item);
   document.getElementById('sfBackReading').textContent = item.reading ? item.reading : '';
+  sfRenderUsage(item);
   const pos = (sfIndex + 1) + ' / ' + sfOrder.length;
   document.getElementById('sfIndexFront').textContent = pos;
   document.getElementById('sfIndexBack').textContent = pos;
@@ -673,6 +869,21 @@ function sfRenderCard(){
   const pct = sfOrder.length === 1 ? 100 : (sfIndex / (sfOrder.length - 1)) * 100;
   document.getElementById('sfProgressFill').style.width = pct + '%';
   sfRenderGrid();
+}
+/* For na/no-adjectives, show two quick usage examples on the back of the card:
+   how the word describes a colour/clothing item, and how it joins with another
+   adjective (using the で conjunctive form) before a noun. */
+function sfRenderUsage(item){
+  const wrap = document.getElementById('sfUsage');
+  if(!item.particle){
+    wrap.hidden = true;
+    return;
+  }
+  wrap.hidden = false;
+  document.getElementById('sfUsageDescribeJp').textContent = item.usageDescribeJp;
+  document.getElementById('sfUsageDescribeEn').textContent = item.usageDescribeEn;
+  document.getElementById('sfUsageJoinJp').textContent = item.usageJoinJp;
+  document.getElementById('sfUsageJoinEn').textContent = item.usageJoinEn;
 }
 function sfFlip(){ document.getElementById('sfCard').classList.toggle('flipped'); }
 function sfNext(){ sfIndex = (sfIndex + 1) % sfOrder.length; sfRenderCard(); }
@@ -694,7 +905,7 @@ function sfRenderGrid(){
     <div class="study-tile ${sfMastered.has(item.id) ? 'mastered' : ''}" onclick="sfJumpTo(${idx})">
       ${sfMastered.has(item.id) ? '<span class="study-tile-check">&check;</span>' : ''}
       <div class="study-tile-jp jp">${item.jp}</div>
-      <div class="study-tile-en">${enJoined(item)}</div>
+      <div class="study-tile-en">${enWithParticle(item)}</div>
     </div>
   `).join('');
 }
@@ -837,7 +1048,7 @@ function buildMatchRound(){
   const tilesData = [];
   roundItems.forEach(item => {
     tilesData.push({ id: item.id, text: item.jp, type: 'jp' });
-    tilesData.push({ id: item.id, text: enJoined(item), type: 'en' });
+    tilesData.push({ id: item.id, text: enWithParticle(item), type: 'en' });
   });
   shuffleArr(tilesData).forEach(() => {});
   const shuffled = shuffleArr(tilesData);
@@ -1037,7 +1248,7 @@ function writingNext(){
   document.getElementById('answerReveal').hidden = true;
   clearSketch();
   const w = writingCurrentWord();
-  document.getElementById('writingPrompt').textContent = enJoined(w);
+  document.getElementById('writingPrompt').textContent = enWithParticle(w);
 }
 function revealWritingAnswer(){
   const w = writingCurrentWord();
@@ -1202,6 +1413,9 @@ function getAcceptedAnswers(word, direction){
   const accepted = [];
   if(word.kanjiForm) accepted.push(word.kanjiForm.trim());
   if(word.kanaForm) accepted.push(word.kanaForm.trim());
+  // Also accept the full na/no form (e.g. "カジュアルな") since some students will
+  // naturally type it that way even though the base form is now the primary answer.
+  if(word.particle) accepted.push((word.kanaForm || word.kanjiForm).trim() + word.particle);
   return accepted;
 }
 
@@ -1239,7 +1453,7 @@ function startRaceQuestion(idx){
     prompt.classList.add('jp');
   } else {
     document.getElementById('tqLabel').textContent = '\u65E5\u672C\u8A9E\u3067\u66F8\u3044\u3066\u306D\uFF01 \u2014 race the computer!';
-    prompt.textContent = enJoined(word);
+    prompt.textContent = enWithParticle(word);
     prompt.classList.remove('jp');
   }
   document.getElementById('typhoonTurnBanner').textContent = 'Go! Answer before the computer does\u2026';
@@ -1271,7 +1485,7 @@ function submitRaceAnswer(){
   if(isCorrect){
     finalizeRace(idx, 'player');
   } else {
-    const correctDisplay = cell.direction === 'jp2en' ? enJoined(word) : word.jp;
+    const correctDisplay = cell.direction === 'jp2en' ? enWithParticle(word) : word.jp;
     fb.className = 'tq-feedback incorrect';
     fb.innerHTML = '\u274C Not quite \u2014 it was "' + correctDisplay + '".'
       + '<div class="tq-decision-row">'
@@ -1402,7 +1616,7 @@ function openTyphoonQuestion(idx){
     prompt.classList.add('jp');
   } else {
     document.getElementById('tqLabel').textContent = '\u65E5\u672C\u8A9E\u3067\u66F8\u3044\u3066\u306D\uFF01 (Type the Japanese)';
-    prompt.textContent = enJoined(word);
+    prompt.textContent = enWithParticle(word);
     prompt.classList.remove('jp');
   }
   if(typhoonCurrentTurn === 'p1' || typhoonMode === 'pvp') input.focus();
@@ -1417,7 +1631,7 @@ function submitTyphoonAnswer(){
   const raw = document.getElementById('tqInput').value;
   const userAnswer = cell.direction === 'jp2en' ? normalizeAnswer(raw) : raw.trim();
   const isCorrect = accepted.includes(userAnswer);
-  const correctDisplay = cell.direction === 'jp2en' ? enJoined(word) : word.jp;
+  const correctDisplay = cell.direction === 'jp2en' ? enWithParticle(word) : word.jp;
   // A genuine human submission (either player) always gets the self-correct option.
   resolveTyphoonAttempt(idx, isCorrect, correctDisplay, true);
 }
@@ -1507,7 +1721,7 @@ function playComputerTurn(){
     const cell = typhoonCells[idx];
     const word = typhoonPool[cell.wordIdx];
     const willBeCorrect = Math.random() < COMPUTER_ACCURACY;
-    const correctDisplay = cell.direction === 'jp2en' ? enJoined(word) : word.jp;
+    const correctDisplay = cell.direction === 'jp2en' ? enWithParticle(word) : word.jp;
 
     activeCellIndex = idx;
     renderTyphoonBoard();
@@ -1604,8 +1818,8 @@ function buildQuizRound(){
     const distractorPool = pool.filter(w => w.id !== word.id);
     const distractors = shuffleArr(distractorPool).slice(0, 3);
     const direction = quizDirectionMode;
-    const correctText = direction === 'jp2en' ? enJoined(word) : word.jp;
-    const optionTexts = shuffleArr([correctText, ...distractors.map(d => direction === 'jp2en' ? enJoined(d) : d.jp)]);
+    const correctText = direction === 'jp2en' ? enWithParticle(word) : word.jp;
+    const optionTexts = shuffleArr([correctText, ...distractors.map(d => direction === 'jp2en' ? enWithParticle(d) : d.jp)]);
     return { word, direction, correctText, optionTexts };
   });
   document.getElementById('quizScore').textContent = '0 / ' + quizQuestions.length;
@@ -1622,7 +1836,7 @@ function renderQuizQuestion(){
     promptEl.classList.add('jp');
   } else {
     labelEl.textContent = '\u65E5\u672C\u8A9E\u3092\u3048\u3089\u3093\u3067\u306D\uFF01 (Choose the Japanese)';
-    promptEl.textContent = enJoined(q.word);
+    promptEl.textContent = enWithParticle(q.word);
     promptEl.classList.remove('jp');
   }
   const optWrap = document.getElementById('quizOptions');
@@ -1667,6 +1881,795 @@ function finishQuiz(){
     quizBestScore = quizScore;
     document.getElementById('quizBest').textContent = 'Best this session: ' + quizBestScore + ' / ' + quizQuestions.length;
   }
+}
+
+/* ══════════════════════ GRAMMAR MODE ══════════════════════ */
+
+const GRAMMAR_QUESTIONS = [
+  { jp: 'かおタイプは何ですか。', en: 'What is your face type?' },
+  { jp: 'パーソナルカラーは何ですか。', en: 'What is your personal colour?' },
+  { jp: 'どんな色と柄がいいですか。', en: 'What colours and patterns suit you?' },
+  { jp: 'どんな服をおすすめしますか。', en: 'What clothes do you recommend?' },
+  { jp: '何をおすすめしませんか。', en: "What don't you recommend?" }
+];
+
+// Each topic drives its own detail page: explanation, arrange, cloze,
+// translation both ways, and free writing. Chunks in "arrange" are the
+// draggable/tappable pieces; "blank" in cloze is the accepted typed answer(s).
+const GRAMMAR_TOPICS = [
+  {
+    id: 'joining',
+    icon: '🔗',
+    title: 'Joining Adjectives',
+    short: 'Describe something with two qualities at once — the joining word depends on whether the first adjective is な/の-type or い-type.',
+    frames: [
+      [
+        { text: 'Adjective 1 (な/の-type)', type: 'adjective' },
+        { text: 'で', type: 'particle' },
+        { text: 'Adjective 2', type: 'adjective' },
+        { text: 'Noun', type: 'noun' },
+        { text: 'です', type: 'literal' },
+        { text: '。', type: 'literal' }
+      ],
+      [
+        { text: 'Adjective 1 (い-type stem)', type: 'adjective' },
+        { text: 'くて', type: 'particle' },
+        { text: 'Adjective 2', type: 'adjective' },
+        { text: 'Noun', type: 'noun' },
+        { text: 'です', type: 'literal' },
+        { text: '。', type: 'literal' }
+      ]
+    ],
+    note: 'For な/の-adjectives, drop な/の and add で to join (e.g. おしゃれな → おしゃれで). For い-adjectives, drop い and add くて (e.g. かわいい → かわいくて).',
+    examples: [
+      { tokens: [
+          { text: 'カジュアル', type: 'adjective' },
+          { text: 'で', type: 'particle' },
+          { text: 'おしゃれ', type: 'adjective' },
+          { text: 'な', type: 'particle' },
+          { text: '服', type: 'noun' },
+          { text: 'です', type: 'literal' },
+          { text: '。', type: 'literal' }
+        ], en: "It's casual, stylish clothing. (な-type first)" },
+      { tokens: [
+          { text: 'かわい', type: 'adjective' },
+          { text: 'くて', type: 'particle' },
+          { text: 'おしゃれ', type: 'adjective' },
+          { text: 'な', type: 'particle' },
+          { text: '服', type: 'noun' },
+          { text: 'です', type: 'literal' },
+          { text: '。', type: 'literal' }
+        ], en: "It's cute, stylish clothing. (い-type first)" }
+    ],
+    arrange: [
+      { chunks: [
+          { text: 'クール', type: 'adjective' }, { text: 'で', type: 'particle' },
+          { text: 'シンプル', type: 'adjective' }, { text: 'な', type: 'particle' },
+          { text: '服', type: 'noun' }, { text: 'です', type: 'literal' }, { text: '。', type: 'literal' }
+        ], en: "It's cool, simple clothing." },
+      { chunks: [
+          { text: 'はで', type: 'adjective' }, { text: 'で', type: 'particle' },
+          { text: 'あざやか', type: 'adjective' }, { text: 'な', type: 'particle' },
+          { text: '色', type: 'colournoun' }, { text: 'です', type: 'literal' }, { text: '。', type: 'literal' }
+        ], en: "It's a flashy, vivid colour." },
+      { chunks: [
+          { text: 'エレガント', type: 'adjective' }, { text: 'で', type: 'particle' },
+          { text: 'じょうひん', type: 'adjective' }, { text: 'な', type: 'particle' },
+          { text: '服', type: 'noun' }, { text: 'です', type: 'literal' }, { text: '。', type: 'literal' }
+        ], en: "It's elegant, refined clothing." },
+      { chunks: [
+          { text: 'あかる', type: 'adjective' }, { text: 'くて', type: 'particle' },
+          { text: 'かわいい', type: 'adjective' },
+          { text: '服', type: 'noun' }, { text: 'です', type: 'literal' }, { text: '。', type: 'literal' }
+        ], en: "It's bright, cute clothing. (い-type first)" }
+    ],
+    cloze: [
+      { before: 'カジュアル', blank: 'で', after: 'おしゃれな服です。', accepted: ['で'], en: "It's casual, stylish clothing. (particle)" },
+      { before: 'パステル', blank: 'で', after: 'あわい色です。', accepted: ['で'], en: "It's a pastel, soft colour. (particle)" },
+      { before: 'ガーリーで フリフリ', blank: 'の', after: '服です。', accepted: ['の'], en: "It's girly, frilly clothing. (particle)" },
+      { before: 'ボックスがたで', blank: 'カジュアル', after: 'な服です。', accepted: ['カジュアル'], en: "It's boxy, casual clothing. (vocabulary: casual)" },
+      { before: 'じょうひんで', blank: 'エレガント', after: 'の服です。', accepted: ['エレガント'], en: "It's elegant, refined clothing. (vocabulary: elegant)" }
+    ],
+    translateJp2En: [
+      { jp: 'カジュアルで おしゃれな服です。', en: "It's casual, stylish clothing." },
+      { jp: 'クールで シンプルな服です。', en: "It's cool, simple clothing." },
+      { jp: 'はでで あざやかな色です。', en: "It's a flashy, vivid colour." },
+      { jp: 'マルチカラーで はでな服です。', en: "It's multicoloured, flashy clothing." },
+      { jp: 'じょうひんで エレガントの服です。', en: "It's elegant, refined clothing." },
+      { jp: 'あかるくて きれいな色です。', en: "It's a bright, pretty colour." },
+      { jp: 'かわいくて おしゃれな服です。', en: "It's cute, stylish clothing." },
+      { jp: 'くらくて シンプルな服です。', en: "It's dark, simple clothing." },
+      { jp: 'うすくて あわい色です。', en: "It's a light, soft colour." },
+      { jp: 'かっこよくて シンプルな服です。', en: "It's good-looking, simple clothing." }
+    ],
+    translateEn2Jp: [
+      { jp: 'シンプルで きれいな服です。', en: "It's simple, pretty clothing." },
+      { jp: 'フォーマルで じょうひんな服です。', en: "It's formal, elegant clothing." },
+      { jp: 'あざやかで マルチカラーの服です。', en: "It's vivid, multicoloured clothing." },
+      { jp: 'タイトで シンプルな服です。', en: "It's tight, simple clothing." },
+      { jp: 'おしゃれで クールな服です。', en: "It's stylish, cool clothing." },
+      { jp: 'こくて はでな色です。', en: "It's a deep, flashy colour." },
+      { jp: 'かわいくて ガーリーな服です。', en: "It's cute, girly clothing." },
+      { jp: 'あわくて きれいな色です。', en: "It's a soft, pretty colour." },
+      { jp: 'くらくて じょうひんな服です。', en: "It's dark, elegant clothing." },
+      { jp: 'おとなっぽくて エレガントの服です。', en: "It's mature-looking, elegant clothing." }
+    ],
+    freeWrite: [
+      { words: ['fresh', 'girly', 'clothes'], example: 'さわやかでガーリーな服です。' },
+      { words: ['deep', 'vivid', 'colour'], example: 'こいであざやかな色です。' },
+      { words: ['tailored', 'formal', 'clothes'], example: 'ぴったりしてフォーマルな服です。' }
+    ]
+  },
+  {
+    id: 'osusume',
+    icon: '👍',
+    title: 'Making Recommendations',
+    short: 'Say what you recommend — and what you don\u2019t — with おすすめします。',
+    frames: [
+      [
+        { text: 'Noun', type: 'noun' },
+        { text: 'を', type: 'particle' },
+        { text: 'おすすめします。', type: 'verb' }
+      ],
+      [
+        { text: 'Noun', type: 'noun' },
+        { text: 'を', type: 'particle' },
+        { text: 'おすすめしません。', type: 'verb' }
+      ]
+    ],
+    note: 'おすすめします is a ます-verb, so its negative just swaps します → しません — the same pattern as any other polite verb.',
+    examples: [
+      { tokens: [
+          { text: 'カジュアルな', type: 'adjective' },
+          { text: '服', type: 'noun' },
+          { text: 'を', type: 'particle' },
+          { text: 'おすすめします。', type: 'verb' }
+        ], en: 'I recommend casual clothes.' },
+      { tokens: [
+          { text: 'はでな', type: 'adjective' },
+          { text: '柄', type: 'noun' },
+          { text: 'を', type: 'particle' },
+          { text: 'おすすめしません。', type: 'verb' }
+        ], en: "I don't recommend a flashy pattern." }
+    ],
+    arrange: [
+      { chunks: [
+          { text: 'きれい', type: 'adjective' }, { text: 'な', type: 'particle' },
+          { text: '色', type: 'colournoun' }, { text: 'を', type: 'particle' },
+          { text: 'おすすめします', type: 'verb' }, { text: '。', type: 'literal' }
+        ], en: 'I recommend a pretty colour.' },
+      { chunks: [
+          { text: 'ヒョウ柄', type: 'noun' }, { text: 'を', type: 'particle' },
+          { text: 'おすすめしません', type: 'verb' }, { text: '。', type: 'literal' }
+        ], en: "I don't recommend leopard print." },
+      { chunks: [
+          { text: 'フォーマル', type: 'adjective' }, { text: 'な', type: 'particle' },
+          { text: '服', type: 'noun' }, { text: 'を', type: 'particle' },
+          { text: 'おすすめします', type: 'verb' }, { text: '。', type: 'literal' }
+        ], en: 'I recommend formal clothes.' },
+      { chunks: [
+          { text: 'ゆったりした', type: 'adjective' },
+          { text: '服', type: 'noun' }, { text: 'を', type: 'particle' },
+          { text: 'おすすめしません', type: 'verb' }, { text: '。', type: 'literal' }
+        ], en: "I don't recommend baggy clothes." }
+    ],
+    cloze: [
+      { before: 'あかるい色', blank: 'を', after: 'おすすめします。', accepted: ['を'], en: 'I recommend bright colours. (particle)' },
+      { before: 'シンプルな柄', blank: 'を', after: 'おすすめします。', accepted: ['を'], en: 'I recommend a simple pattern. (particle)' },
+      { before: 'ボーダー柄', blank: 'を', after: 'おすすめしません。', accepted: ['を'], en: "I don't recommend stripes. (particle)" },
+      { before: 'パステルの', blank: '色', after: 'をおすすめします。', accepted: ['色'], en: 'I recommend pastel colours. (vocabulary: colour)' },
+      { before: 'くらい', blank: '色', after: 'をおすすめしません。', accepted: ['色'], en: "I don't recommend dark colours. (vocabulary: colour)" }
+    ],
+    translateJp2En: [
+      { jp: 'カジュアルな服をおすすめします。', en: 'I recommend casual clothes.' },
+      { jp: 'あかるい色をおすすめします。', en: 'I recommend bright colours.' },
+      { jp: 'シンプルな柄をおすすめします。', en: 'I recommend a simple pattern.' },
+      { jp: 'フォーマルな服をおすすめします。', en: 'I recommend formal clothes.' },
+      { jp: 'パステルの色をおすすめします。', en: 'I recommend pastel colours.' },
+      { jp: 'はでな柄をおすすめしません。', en: "I don't recommend a flashy pattern." },
+      { jp: 'くらい色をおすすめしません。', en: "I don't recommend dark colours." },
+      { jp: 'ゆったりした服をおすすめしません。', en: "I don't recommend baggy clothes." },
+      { jp: 'ヒョウ柄をおすすめしません。', en: "I don't recommend leopard print." },
+      { jp: 'ボーダー柄をおすすめします。', en: 'I recommend a striped pattern.' }
+    ],
+    translateEn2Jp: [
+      { jp: 'きれいな色をおすすめします。', en: 'I recommend a pretty colour.' },
+      { jp: 'おしゃれな服をおすすめします。', en: 'I recommend stylish clothes.' },
+      { jp: '水玉模様をおすすめします。', en: 'I recommend polka dots.' },
+      { jp: 'あざやかな色をおすすめします。', en: 'I recommend vivid colours.' },
+      { jp: 'ジャケットをおすすめします。', en: 'I recommend a jacket.' },
+      { jp: 'ゼブラ柄をおすすめしません。', en: "I don't recommend zebra print." },
+      { jp: 'うすい色をおすすめしません。', en: "I don't recommend light colours." },
+      { jp: 'カラフルな柄をおすすめしません。', en: "I don't recommend a colourful pattern." },
+      { jp: 'タイトの服をおすすめしません。', en: "I don't recommend tight clothes." },
+      { jp: 'ペイズリー柄をおすすめします。', en: 'I recommend paisley.' }
+    ],
+    freeWrite: [
+      { words: ['recommend', 'sneakers'], example: 'スニーカーをおすすめします。' },
+      { words: ["don't recommend", 'camouflage'], example: 'めいさいがらをおすすめしません。' },
+      { words: ['recommend', 'floral print'], example: '花柄をおすすめします。' }
+    ]
+  },
+  {
+    id: 'niau',
+    icon: '✨',
+    title: 'Suits You',
+    short: 'Say what suits (or doesn\u2019t suit) someone with にあいます。',
+    frames: [
+      [
+        { text: 'Noun', type: 'noun' },
+        { text: 'が', type: 'particle' },
+        { text: 'にあいます。', type: 'verb' }
+      ],
+      [
+        { text: 'Noun', type: 'noun' },
+        { text: 'が', type: 'particle' },
+        { text: 'にあいません。', type: 'verb' }
+      ]
+    ],
+    note: 'にあいます is also a ます-verb (from 似合う), so the negative is simply にあいます → にあいません.',
+    examples: [
+      { tokens: [
+          { text: 'あざやかな', type: 'adjective' },
+          { text: '色', type: 'colournoun' },
+          { text: 'が', type: 'particle' },
+          { text: 'にあいます。', type: 'verb' }
+        ], en: 'Vivid colours suit you.' },
+      { tokens: [
+          { text: 'はでな', type: 'adjective' },
+          { text: '柄', type: 'noun' },
+          { text: 'が', type: 'particle' },
+          { text: 'にあいません。', type: 'verb' }
+        ], en: "A flashy pattern doesn't suit you." }
+    ],
+    arrange: [
+      { chunks: [
+          { text: 'ピンク', type: 'colournoun' }, { text: 'が', type: 'particle' },
+          { text: 'にあいます', type: 'verb' }, { text: '。', type: 'literal' }
+        ], en: 'Pink suits you.' },
+      { chunks: [
+          { text: 'ゼブラ柄', type: 'noun' }, { text: 'が', type: 'particle' },
+          { text: 'にあいません', type: 'verb' }, { text: '。', type: 'literal' }
+        ], en: "Zebra print doesn't suit you." },
+      { chunks: [
+          { text: 'おしゃれ', type: 'adjective' }, { text: 'な', type: 'particle' },
+          { text: '服', type: 'noun' }, { text: 'が', type: 'particle' },
+          { text: 'にあいます', type: 'verb' }, { text: '。', type: 'literal' }
+        ], en: 'Stylish clothes suit you.' },
+      { chunks: [
+          { text: 'マルチストライプ柄', type: 'noun' }, { text: 'が', type: 'particle' },
+          { text: 'にあいません', type: 'verb' }, { text: '。', type: 'literal' }
+        ], en: "Multicolour stripes don't suit you." }
+    ],
+    cloze: [
+      { before: 'あかるい色', blank: 'が', after: 'にあいます。', accepted: ['が'], en: 'Bright colours suit you. (particle)' },
+      { before: 'シンプルな服', blank: 'が', after: 'にあいます。', accepted: ['が'], en: 'Simple clothes suit you. (particle)' },
+      { before: 'ヒョウ柄', blank: 'が', after: 'にあいません。', accepted: ['が'], en: "Leopard print doesn't suit you. (particle)" },
+      { before: 'ボックスがたの', blank: '服', after: 'がにあいます。', accepted: ['服'], en: 'Boxy clothes suit you. (vocabulary: clothes)' },
+      { before: 'うすい', blank: '色', after: 'がにあいません。', accepted: ['色'], en: "Light colours don't suit you. (vocabulary: colour)" }
+    ],
+    translateJp2En: [
+      { jp: 'あざやかな色がにあいます。', en: 'Vivid colours suit you.' },
+      { jp: 'シンプルな服がにあいます。', en: 'Simple clothes suit you.' },
+      { jp: '水玉模様がにあいます。', en: 'Polka dots suit you.' },
+      { jp: 'あかるい色がにあいます。', en: 'Bright colours suit you.' },
+      { jp: 'カジュアルな服がにあいます。', en: 'Casual clothes suit you.' },
+      { jp: 'はでな柄がにあいません。', en: "A flashy pattern doesn't suit you." },
+      { jp: 'くらい色がにあいません。', en: "Dark colours don't suit you." },
+      { jp: 'ヒョウ柄がにあいません。', en: "Leopard print doesn't suit you." },
+      { jp: 'ゆったりした服がにあいません。', en: "Baggy clothes don't suit you." },
+      { jp: 'ボックスがたの服がにあいます。', en: 'Boxy clothes suit you.' }
+    ],
+    translateEn2Jp: [
+      { jp: 'きれいな服がにあいます。', en: 'Pretty clothes suit you.' },
+      { jp: 'パステルの色がにあいます。', en: 'Pastel colours suit you.' },
+      { jp: 'ストライプ柄がにあいます。', en: 'Stripes suit you.' },
+      { jp: 'おしゃれな服がにあいます。', en: 'Stylish clothes suit you.' },
+      { jp: 'ピンクがにあいます。', en: 'Pink suits you.' },
+      { jp: 'ゼブラ柄がにあいません。', en: "Zebra print doesn't suit you." },
+      { jp: 'うすい色がにあいません。', en: "Light colours don't suit you." },
+      { jp: 'タイトの服がにあいません。', en: "Tight clothes don't suit you." },
+      { jp: 'マルチストライプ柄がにあいません。', en: "Multicolour stripes don't suit you." },
+      { jp: 'フォーマルな服がにあいます。', en: 'Formal clothes suit you.' }
+    ],
+    freeWrite: [
+      { words: ['suits you', 'orange'], example: 'オレンジがにあいます。' },
+      { words: ["doesn't suit you", 'tartan check'], example: 'タータンチェックがにあいません。' },
+      { words: ['suits you', 'girly clothes'], example: 'ガーリーな服がにあいます。' }
+    ]
+  },
+  {
+    id: 'tahoga',
+    icon: '👗',
+    title: "It's Better To\u2026",
+    short: 'Give advice about what\u2019s better to wear, using た-form + ほうがいい。',
+    frames: [
+      [
+        { text: 'Noun', type: 'noun' },
+        { text: 'を', type: 'particle' },
+        { text: 'Verb (た-form)', type: 'verb' },
+        { text: 'ほうが', type: 'houga' },
+        { text: 'Adjective', type: 'adjective' },
+        { text: 'です', type: 'literal' },
+        { text: '。', type: 'literal' }
+      ]
+    ],
+    examples: [
+      { tokens: [
+          { text: 'カジュアル', type: 'adjective' },
+          { text: 'な', type: 'particle' },
+          { text: '服', type: 'noun' },
+          { text: 'を', type: 'particle' },
+          { text: '着た', type: 'verb' },
+          { text: 'ほうが', type: 'houga' },
+          { text: 'いい', type: 'adjective' },
+          { text: 'です', type: 'literal' },
+          { text: '。', type: 'literal' }
+        ], en: "It's better to wear casual clothes." },
+      { tokens: [
+          { text: 'スカート', type: 'noun' },
+          { text: 'を', type: 'particle' },
+          { text: 'はいた', type: 'verb' },
+          { text: 'ほうが', type: 'houga' },
+          { text: 'かわいい', type: 'adjective' },
+          { text: 'です', type: 'literal' },
+          { text: '。', type: 'literal' }
+        ], en: "It's cuter to wear a skirt." }
+    ],
+    arrange: [
+      { chunks: [
+          { text: 'ネックレス', type: 'noun' }, { text: 'を', type: 'particle' },
+          { text: 'した', type: 'verb' }, { text: 'ほうが', type: 'houga' },
+          { text: 'きれい', type: 'adjective' }, { text: 'です', type: 'literal' }, { text: '。', type: 'literal' }
+        ], en: "It's prettier to wear a necklace." },
+      { chunks: [
+          { text: 'スニーカー', type: 'noun' }, { text: 'を', type: 'particle' },
+          { text: 'はいた', type: 'verb' }, { text: 'ほうが', type: 'houga' },
+          { text: 'カジュアル', type: 'adjective' }, { text: 'です', type: 'literal' }, { text: '。', type: 'literal' }
+        ], en: "It's more casual to wear sneakers." },
+      { chunks: [
+          { text: 'ワンピース', type: 'noun' }, { text: 'を', type: 'particle' },
+          { text: '着た', type: 'verb' }, { text: 'ほうが', type: 'houga' },
+          { text: 'エレガント', type: 'adjective' }, { text: 'です', type: 'literal' }, { text: '。', type: 'literal' }
+        ], en: "It's more elegant to wear a dress." },
+      { chunks: [
+          { text: 'ピアス', type: 'noun' }, { text: 'を', type: 'particle' },
+          { text: 'つけた', type: 'verb' }, { text: 'ほうが', type: 'houga' },
+          { text: 'ガーリー', type: 'adjective' }, { text: 'です', type: 'literal' }, { text: '。', type: 'literal' }
+        ], en: "It's more girly to wear pierced earrings." }
+    ],
+    cloze: [
+      { before: 'ぼうし', blank: 'を', after: 'かぶったほうがおしゃれです。', accepted: ['を'], en: "It's more stylish to wear a hat. (particle)" },
+      { before: 'ネクタイ', blank: 'を', after: 'したほうがフォーマルです。', accepted: ['を'], en: "It's more formal to wear a tie. (particle)" },
+      { before: 'くつ', blank: 'を', after: 'はいたほうがいいです。', accepted: ['を'], en: "It's better to wear shoes. (particle)" },
+      { before: '', blank: 'コート', after: 'を着たほうがいいです。', accepted: ['コート'], en: "It's better to wear a coat. (vocabulary: coat)" },
+      { before: '', blank: 'セーター', after: 'を着たほうがいいです。', accepted: ['セーター'], en: "It's better to wear a sweater. (vocabulary: sweater)" }
+    ],
+    translateJp2En: [
+      { jp: 'カジュアルな服を着たほうがいいです。', en: "It's better to wear casual clothes." },
+      { jp: 'スカートをはいたほうがかわいいです。', en: "It's cuter to wear a skirt." },
+      { jp: 'ぼうしをかぶったほうがおしゃれです。', en: "It's more stylish to wear a hat." },
+      { jp: 'ネクタイをしたほうがフォーマルです。', en: "It's more formal to wear a tie." },
+      { jp: 'スカーフをまいたほうがエレガントです。', en: "It's more elegant to wrap a scarf." },
+      { jp: 'くつをはいたほうがいいです。', en: "It's better to wear shoes." },
+      { jp: 'セーターを着たほうがいいです。', en: "It's better to wear a sweater." },
+      { jp: 'イヤリングをつけたほうがガーリーです。', en: "It's more girly to wear earrings." },
+      { jp: 'コートを着たほうがいいです。', en: "It's better to wear a coat." },
+      { jp: 'くつしたをはいたほうがいいです。', en: "It's better to wear socks." }
+    ],
+    translateEn2Jp: [
+      { jp: 'ジャケットを着たほうがいいです。', en: "It's better to wear a jacket." },
+      { jp: 'ジーンズをはいたほうがいいです。', en: "It's better to wear jeans." },
+      { jp: 'ぼうしをかぶったほうがかわいいです。', en: "It's cuter to wear a hat." },
+      { jp: 'ネックレスをしたほうがきれいです。', en: "It's prettier to wear a necklace." },
+      { jp: 'スカーフをまいたほうがかわいいです。', en: "It's cuter to wear a scarf." },
+      { jp: 'ブラウスを着たほうがおしゃれです。', en: "It's more stylish to wear a blouse." },
+      { jp: 'ピアスをつけたほうがガーリーです。', en: "It's more girly to wear pierced earrings." },
+      { jp: 'スニーカーをはいたほうがカジュアルです。', en: "It's more casual to wear sneakers." },
+      { jp: 'ワンピースを着たほうがエレガントです。', en: "It's more elegant to wear a dress." },
+      { jp: 'サンダルをはいたほうがいいです。', en: "It's better to wear sandals." }
+    ],
+    freeWrite: [
+      { words: ['better to wear', 'raincoat'], example: 'レインコートを着たほうがいいです。' },
+      { words: ['more formal', 'business suit'], example: 'せびろを着たほうがフォーマルです。' },
+      { words: ['better to wear', 'boots'], example: 'ブーツをはいたほうがいいです。' }
+    ]
+  },
+  {
+    id: 'gaadj',
+    icon: '💬',
+    title: 'Giving Opinions',
+    short: 'Say whether something is good, not good, or hedge with ちょっと。。。',
+    frames: [
+      [
+        { text: 'Noun', type: 'noun' },
+        { text: 'が', type: 'particle' },
+        { text: 'いい／よくない', type: 'adjective' },
+        { text: 'です。', type: 'literal' }
+      ],
+      [
+        { text: 'Noun', type: 'noun' },
+        { text: 'が', type: 'particle' },
+        { text: 'ちょっと。。。', type: 'literal' }
+      ],
+      [
+        { text: 'Noun', type: 'noun' },
+        { text: 'が', type: 'particle' },
+        { text: 'いい／よくない', type: 'adjective' },
+        { text: 'と思います。', type: 'literal' }
+      ]
+    ],
+    note: 'To soften a negative opinion, Japanese speakers often trail off with が ちょっと。。。instead of finishing the sentence, rather than bluntly saying something is bad. Swapping です for と思います turns a flat statement into "I think..." — a softer, more personal way to give an opinion.',
+    examples: [
+      { tokens: [
+          { text: 'あかるい', type: 'adjective' },
+          { text: '色', type: 'colournoun' },
+          { text: 'が', type: 'particle' },
+          { text: 'いいです。', type: 'adjective' }
+        ], en: 'Bright colours are good.' },
+      { tokens: [
+          { text: 'はでな', type: 'adjective' },
+          { text: '柄', type: 'noun' },
+          { text: 'が', type: 'particle' },
+          { text: 'ちょっと。。。', type: 'literal' }
+        ], en: "A flashy pattern is a bit\u2026 (implying it's not great)" },
+      { tokens: [
+          { text: 'あかるい', type: 'adjective' },
+          { text: '色', type: 'colournoun' },
+          { text: 'が', type: 'particle' },
+          { text: 'いい', type: 'adjective' },
+          { text: 'と思います。', type: 'literal' }
+        ], en: 'I think bright colours are good.' }
+    ],
+    arrange: [
+      { chunks: [
+          { text: 'うすい', type: 'adjective' },
+          { text: '色', type: 'colournoun' }, { text: 'が', type: 'particle' },
+          { text: 'よくない', type: 'adjective' }, { text: 'です', type: 'literal' }, { text: '。', type: 'literal' }
+        ], en: "Light colours aren't good." },
+      { chunks: [
+          { text: 'ゆったりした', type: 'adjective' },
+          { text: '服', type: 'noun' }, { text: 'が', type: 'particle' },
+          { text: 'ちょっと。。。', type: 'literal' }
+        ], en: 'Baggy clothes are a bit\u2026' },
+      { chunks: [
+          { text: '水玉模様', type: 'noun' }, { text: 'が', type: 'particle' },
+          { text: 'いい', type: 'adjective' }, { text: 'です', type: 'literal' }, { text: '。', type: 'literal' }
+        ], en: 'Polka dots are good.' },
+      { chunks: [
+          { text: 'ヒョウ柄', type: 'noun' }, { text: 'が', type: 'particle' },
+          { text: 'ちょっと。。。', type: 'literal' }
+        ], en: 'Leopard print is a bit\u2026' },
+      { chunks: [
+          { text: 'うすい', type: 'adjective' },
+          { text: '色', type: 'colournoun' }, { text: 'が', type: 'particle' },
+          { text: 'いい', type: 'adjective' }, { text: 'と思います', type: 'literal' }, { text: '。', type: 'literal' }
+        ], en: 'I think light colours are good.' },
+      { chunks: [
+          { text: '水玉模様', type: 'noun' }, { text: 'が', type: 'particle' },
+          { text: 'よくない', type: 'adjective' }, { text: 'と思います', type: 'literal' }, { text: '。', type: 'literal' }
+        ], en: "I think polka dots aren't good." }
+    ],
+    cloze: [
+      { before: 'あかるい色', blank: 'が', after: 'いいです。', accepted: ['が'], en: 'Bright colours are good. (particle)' },
+      { before: 'くらい色', blank: 'が', after: 'よくないです。', accepted: ['が'], en: "Dark colours aren't good. (particle)" },
+      { before: 'はでな柄', blank: 'が', after: 'ちょっと。。。', accepted: ['が'], en: "A flashy pattern is a bit\u2026 (particle)" },
+      { before: '', blank: 'パステル', after: 'の色がいいです。', accepted: ['パステル'], en: 'Pastel colours are good. (vocabulary: pastel)' },
+      { before: '', blank: 'ボーダー柄', after: 'がいいです。', accepted: ['ボーダー柄'], en: 'Stripes are good. (vocabulary: stripes)' },
+      { before: 'あかるい色がいい', blank: 'と思います', after: '。', accepted: ['と思います'], en: 'I think bright colours are good. (sentence ending)' },
+      { before: 'くらい色がよくない', blank: 'と思います', after: '。', accepted: ['と思います'], en: "I think dark colours aren't good. (sentence ending)" }
+    ],
+    translateJp2En: [
+      { jp: 'あかるい色がいいです。', en: 'Bright colours are good.' },
+      { jp: 'くらい色がよくないです。', en: "Dark colours aren't good." },
+      { jp: 'はでな柄がちょっと。。。', en: "A flashy pattern is a bit\u2026" },
+      { jp: 'パステルの色がいいです。', en: 'Pastel colours are good.' },
+      { jp: 'シンプルな服がいいです。', en: 'Simple clothes are good.' },
+      { jp: 'ヒョウ柄がちょっと。。。', en: "Leopard print is a bit\u2026" },
+      { jp: 'ゆったりした服がよくないです。', en: "Baggy clothes aren't good." },
+      { jp: 'あざやかな色がいいです。', en: 'Vivid colours are good.' },
+      { jp: 'ボーダー柄がいいです。', en: 'Stripes are good.' },
+      { jp: '黒がいいです。', en: 'Black is good.' },
+      { jp: 'あかるい色がいいと思います。', en: 'I think bright colours are good.' },
+      { jp: 'くらい色がよくないと思います。', en: "I think dark colours aren't good." },
+      { jp: 'ボーダー柄がいいと思います。', en: 'I think stripes are good.' }
+    ],
+    translateEn2Jp: [
+      { jp: 'きれいな色がいいです。', en: 'A pretty colour is good.' },
+      { jp: 'うすい色がよくないです。', en: "Light colours aren't good." },
+      { jp: 'ゼブラ柄がちょっと。。。', en: "Zebra print is a bit\u2026" },
+      { jp: 'マルチカラーの色がいいです。', en: 'Multicoloured is good.' },
+      { jp: 'おしゃれな服がいいです。', en: 'Stylish clothes are good.' },
+      { jp: 'カラフルな柄がちょっと。。。', en: "A colourful pattern is a bit\u2026" },
+      { jp: 'タイトの服がよくないです。', en: "Tight clothes aren't good." },
+      { jp: '水玉模様がいいです。', en: 'Polka dots are good.' },
+      { jp: 'ペイズリー柄がいいです。', en: 'Paisley is good.' },
+      { jp: '白がいいです。', en: 'White is good.' },
+      { jp: 'きれいな色がいいと思います。', en: 'I think a pretty colour is good.' },
+      { jp: 'タイトの服がよくないと思います。', en: "I think tight clothes aren't good." }
+    ],
+    freeWrite: [
+      { words: ['good', 'green'], example: '緑がいいです。' },
+      { words: ["a bit\u2026 (hedge)", 'snake print'], example: 'ヘビ柄がちょっと。。。' },
+      { words: ['not good', 'small floral print'], example: '小花柄がよくないです。' },
+      { words: ['I think', 'good', 'green'], example: '緑がいいと思います。' },
+      { words: ['I think', 'not good', 'small floral print'], example: '小花柄がよくないと思います。' }
+    ]
+  },
+  {
+    id: 'teimasu',
+    icon: '🧥',
+    title: 'Describing What Someone Is Wearing',
+    short: 'Describe an ongoing state — what someone has on — with ています。',
+    frames: [
+      [
+        { text: 'Noun', type: 'noun' },
+        { text: 'を', type: 'particle' },
+        { text: 'Verb (て-form)', type: 'verb' },
+        { text: 'います。', type: 'literal' }
+      ]
+    ],
+    examples: [
+      { tokens: [
+          { text: 'ジャケット', type: 'noun' },
+          { text: 'を', type: 'particle' },
+          { text: '着ています。', type: 'verb' }
+        ], en: '(They are) wearing a jacket.' },
+      { tokens: [
+          { text: 'スカート', type: 'noun' },
+          { text: 'を', type: 'particle' },
+          { text: 'はいています。', type: 'verb' }
+        ], en: '(They are) wearing a skirt.' }
+    ],
+    arrange: [
+      { chunks: [
+          { text: 'ブーツ', type: 'noun' }, { text: 'を', type: 'particle' },
+          { text: 'はいています', type: 'verb' }, { text: '。', type: 'literal' }
+        ], en: '(They are) wearing boots.' },
+      { chunks: [
+          { text: 'ゆびわ', type: 'noun' }, { text: 'を', type: 'particle' },
+          { text: 'しています', type: 'verb' }, { text: '。', type: 'literal' }
+        ], en: '(They are) wearing a ring.' },
+      { chunks: [
+          { text: 'ドレス', type: 'noun' }, { text: 'を', type: 'particle' },
+          { text: '着ています', type: 'verb' }, { text: '。', type: 'literal' }
+        ], en: '(They are) wearing a dress.' },
+      { chunks: [
+          { text: 'ピアス', type: 'noun' }, { text: 'を', type: 'particle' },
+          { text: 'つけています', type: 'verb' }, { text: '。', type: 'literal' }
+        ], en: '(They are) wearing pierced earrings.' }
+    ],
+    cloze: [
+      { before: 'ぼうし', blank: 'を', after: 'かぶっています。', accepted: ['を'], en: '(They are) wearing a hat. (particle)' },
+      { before: 'ネクタイ', blank: 'を', after: 'しています。', accepted: ['を'], en: '(They are) wearing a tie. (particle)' },
+      { before: 'くつした', blank: 'を', after: 'はいています。', accepted: ['を'], en: '(They are) wearing socks. (particle)' },
+      { before: '', blank: 'ネックレス', after: 'をしています。', accepted: ['ネックレス'], en: '(They are) wearing a necklace. (vocabulary: necklace)' },
+      { before: '', blank: 'スカーフ', after: 'をまいています。', accepted: ['スカーフ'], en: '(They are) wearing a scarf. (vocabulary: scarf)' }
+    ],
+    translateJp2En: [
+      { jp: 'ジャケットを着ています。', en: '(They are) wearing a jacket.' },
+      { jp: 'スカートをはいています。', en: '(They are) wearing a skirt.' },
+      { jp: 'ぼうしをかぶっています。', en: '(They are) wearing a hat.' },
+      { jp: 'ネクタイをしています。', en: '(They are) wearing a tie.' },
+      { jp: 'スカーフをまいています。', en: '(They are) wearing a scarf.' },
+      { jp: 'イヤリングをつけています。', en: '(They are) wearing earrings.' },
+      { jp: 'くつをはいています。', en: '(They are) wearing shoes.' },
+      { jp: 'コートを着ています。', en: '(They are) wearing a coat.' },
+      { jp: 'くつしたをはいています。', en: '(They are) wearing socks.' },
+      { jp: 'ネックレスをしています。', en: '(They are) wearing a necklace.' }
+    ],
+    translateEn2Jp: [
+      { jp: 'シャツを着ています。', en: '(They are) wearing a shirt.' },
+      { jp: 'ズボンをはいています。', en: '(They are) wearing trousers.' },
+      { jp: 'ぼうしをかぶっています。', en: '(They are) wearing a hat.' },
+      { jp: 'ピアスをつけています。', en: '(They are) wearing pierced earrings.' },
+      { jp: 'ドレスを着ています。', en: '(They are) wearing a dress.' },
+      { jp: 'ジーンズをはいています。', en: '(They are) wearing jeans.' },
+      { jp: 'スカーフをしています。', en: '(They are) wearing a scarf.' },
+      { jp: 'セーターを着ています。', en: '(They are) wearing a sweater.' },
+      { jp: 'ブーツをはいています。', en: '(They are) wearing boots.' },
+      { jp: 'ゆびわをしています。', en: '(They are) wearing a ring.' }
+    ],
+    freeWrite: [
+      { words: ['wearing', 'cardigan'], example: 'カーディガンを着ています。' },
+      { words: ['wearing', 'slippers'], example: 'スリッパをはいています。' },
+      { words: ['wearing', 'bracelet-style belt (belt)'], example: 'ベルトをしています。' }
+    ]
+  }
+];
+
+let grammarInitialized = false;
+let currentGrammarTopic = null;
+let gdArrangeIndex = 0, gdClozeIndex = 0;
+let gdArrangeAnswerChunks = [];
+
+function renderGrammarReference(){
+  document.getElementById('grammarQuestionsList').innerHTML = GRAMMAR_QUESTIONS.map(q => `
+    <div class="grammar-ref-item">
+      <div class="grammar-ref-jp jp">${q.jp}</div>
+      <div class="grammar-ref-en">${q.en}</div>
+    </div>
+  `).join('');
+  document.getElementById('grammarTiles').innerHTML = GRAMMAR_TOPICS.map(t => `
+    <button type="button" class="grammar-tile" onclick="openGrammarTopic('${t.id}')">
+      <span class="grammar-tile-icon">${t.icon}</span>
+      <span class="grammar-tile-title">${t.title}</span>
+      <span class="grammar-tile-short">${t.short}</span>
+    </button>
+  `).join('');
+}
+
+function ensureGrammarInit(){
+  if(grammarInitialized) return;
+  grammarInitialized = true;
+  renderGrammarReference();
+}
+
+function showGrammarHub(){
+  document.getElementById('grammarHub').hidden = false;
+  document.getElementById('grammarDetail').hidden = true;
+}
+
+// Renders an array of {text, type} tokens as colour-coded boxes, inserting a
+// space after every particle so students can visually parse the sentence.
+function renderGrammarTokens(tokens){
+  return tokens.map(t => {
+    const span = `<span class="gram-tok gram-tok-${t.type}">${t.text}</span>`;
+    return t.type === 'particle' ? span + ' ' : span;
+  }).join('');
+}
+
+function openGrammarTopic(id){
+  const topic = GRAMMAR_TOPICS.find(t => t.id === id);
+  if(!topic) return;
+  currentGrammarTopic = topic;
+  document.getElementById('grammarHub').hidden = true;
+  document.getElementById('grammarDetail').hidden = false;
+  window.scrollTo(0, 0);
+
+  document.getElementById('gdTitle').textContent = topic.icon + '  ' + topic.title;
+  document.getElementById('gdStructure').textContent = topic.short;
+  document.getElementById('gdLegendHouga').hidden = (topic.id !== 'tahoga');
+  document.getElementById('gdFrames').innerHTML = topic.frames.map(frame => `
+    <div class="gram-frame-row">${renderGrammarTokens(frame)}</div>
+  `).join('');
+  document.getElementById('gdExamples').innerHTML = topic.examples.map(ex => `
+    <div class="grammar-ref-item">
+      <div class="gram-example-row jp">${renderGrammarTokens(ex.tokens)}</div>
+      <div class="grammar-ref-en">${ex.en}</div>
+    </div>
+  `).join('');
+  const noteEl = document.getElementById('gdNote');
+  if(topic.note){ noteEl.hidden = false; noteEl.textContent = topic.note; }
+  else { noteEl.hidden = true; }
+
+  gdArrangeIndex = 0;
+  gdClozeIndex = 0;
+  gdArrangeRender();
+  gdClozeRender();
+  gdRenderRevealList('gdJp2EnList', topic.translateJp2En, 'jp2en');
+  gdRenderRevealList('gdEn2JpList', topic.translateEn2Jp, 'en2jp');
+  gdRenderFreeWrite(topic.freeWrite);
+}
+
+/* ─── 1. Arrange the words (tap-to-order) ─── */
+function gdArrangeRender(){
+  const topic = currentGrammarTopic;
+  const item = topic.arrange[gdArrangeIndex];
+  gdArrangeAnswerChunks = [];
+  document.getElementById('gdArrangeCounter').textContent = 'Sentence ' + (gdArrangeIndex + 1) + ' of ' + topic.arrange.length;
+  document.getElementById('gdArrangeHint').textContent = item.en;
+  document.getElementById('gdArrangeFeedback').textContent = '';
+  document.getElementById('gdArrangeFeedback').className = 'grammar-feedback';
+  document.getElementById('gdArrangeAnswer').innerHTML = '';
+  const bank = document.getElementById('gdArrangeBank');
+  bank.innerHTML = shuffleArr(item.chunks).map((chunk) => `
+    <button type="button" class="dnd-tile gram-tok gram-tok-${chunk.type} jp" data-chunk="${chunk.text}" onclick="gdArrangeTap(this)">${chunk.text}</button>
+  `).join('');
+}
+function gdArrangeTap(btn){
+  const parent = btn.parentElement;
+  const isBank = parent.id === 'gdArrangeBank';
+  if(isBank){
+    document.getElementById('gdArrangeAnswer').appendChild(btn);
+  } else {
+    document.getElementById('gdArrangeBank').appendChild(btn);
+  }
+}
+function gdArrangeCheck(){
+  const topic = currentGrammarTopic;
+  const item = topic.arrange[gdArrangeIndex];
+  const answerTiles = [...document.getElementById('gdArrangeAnswer').children];
+  const built = answerTiles.map(t => t.dataset.chunk).join('');
+  const correct = item.chunks.map(c => c.text).join('');
+  const fb = document.getElementById('gdArrangeFeedback');
+  if(built === correct){
+    fb.textContent = '\u2705 Correct! \u2014 ' + correct;
+    fb.className = 'grammar-feedback correct';
+  } else if(answerTiles.length < item.chunks.length){
+    fb.textContent = 'Keep going \u2014 tap all the tiles into the answer row first.';
+    fb.className = 'grammar-feedback';
+  } else {
+    fb.textContent = '\u274C Not quite \u2014 the correct order is: ' + correct;
+    fb.className = 'grammar-feedback incorrect';
+  }
+}
+function gdArrangeReset(){ gdArrangeRender(); }
+function gdArrangeNext(){
+  gdArrangeIndex = (gdArrangeIndex + 1) % currentGrammarTopic.arrange.length;
+  gdArrangeRender();
+}
+
+/* ─── 2. Fill in the blank ─── */
+function gdClozeRender(){
+  const topic = currentGrammarTopic;
+  const item = topic.cloze[gdClozeIndex];
+  document.getElementById('gdClozeCounter').textContent = 'Sentence ' + (gdClozeIndex + 1) + ' of ' + topic.cloze.length;
+  document.getElementById('gdClozeSentence').textContent = item.before + '\u3000___\u3000' + item.after;
+  document.getElementById('gdClozeHint').textContent = item.en;
+  document.getElementById('gdClozeInput').value = '';
+  document.getElementById('gdClozeInput').disabled = false;
+  document.getElementById('gdClozeFeedback').textContent = '';
+  document.getElementById('gdClozeFeedback').className = 'grammar-feedback';
+}
+function gdClozeCheck(){
+  const topic = currentGrammarTopic;
+  const item = topic.cloze[gdClozeIndex];
+  const raw = document.getElementById('gdClozeInput').value.trim();
+  const fb = document.getElementById('gdClozeFeedback');
+  if(item.accepted.includes(raw)){
+    fb.textContent = '\u2705 Correct! \u2014 ' + item.before + item.blank + item.after;
+    fb.className = 'grammar-feedback correct';
+  } else {
+    fb.textContent = '\u274C Not quite \u2014 the answer was "' + item.blank + '".';
+    fb.className = 'grammar-feedback incorrect';
+  }
+}
+function gdClozeNext(){
+  gdClozeIndex = (gdClozeIndex + 1) % currentGrammarTopic.cloze.length;
+  gdClozeRender();
+}
+
+/* ─── 3 & 4. Translation reveal lists ─── */
+function gdRenderRevealList(elId, bank, direction){
+  const wrap = document.getElementById(elId);
+  wrap.innerHTML = bank.map((item, i) => {
+    const promptText = direction === 'jp2en' ? item.jp : item.en;
+    const promptClass = direction === 'jp2en' ? 'jp' : '';
+    const answerText = direction === 'jp2en' ? item.en : item.jp;
+    const answerClass = direction === 'jp2en' ? '' : 'jp';
+    const rowId = elId + i;
+    return `
+      <div class="grammar-reveal-row">
+        <div class="grammar-reveal-prompt ${promptClass}">${i + 1}. ${promptText}</div>
+        <button type="button" class="link-btn" id="${rowId}-btn" onclick="gdToggleReveal('${rowId}')">Show answer</button>
+        <div class="grammar-reveal-answer ${answerClass}" id="${rowId}-answer" hidden>${answerText}</div>
+      </div>
+    `;
+  }).join('');
+}
+function gdToggleReveal(rowId){
+  const ansEl = document.getElementById(rowId + '-answer');
+  const btnEl = document.getElementById(rowId + '-btn');
+  const nowHidden = !ansEl.hidden;
+  ansEl.hidden = nowHidden;
+  btnEl.textContent = nowHidden ? 'Show answer' : 'Hide answer';
+}
+
+/* ─── 5. Free writing ─── */
+function gdRenderFreeWrite(prompts){
+  const wrap = document.getElementById('gdFreeWriteList');
+  wrap.innerHTML = prompts.map((p, i) => {
+    const rowId = 'gdFw' + i;
+    return `
+      <div class="grammar-freewrite-item">
+        <div class="grammar-freewrite-words">Words: ${p.words.join(', ')}</div>
+        <textarea class="grammar-freewrite-textarea jp" id="${rowId}-ta" placeholder="\u65E5\u672C\u8A9E\u3067\u66F8\u3044\u3066\u306D\uFF01"></textarea>
+        <button type="button" class="link-btn" onclick="gdToggleReveal('${rowId}')">Show example answer</button>
+        <div class="grammar-reveal-answer jp" id="${rowId}-answer" hidden>${p.example}</div>
+      </div>
+    `;
+  }).join('');
 }
 
 /* ══════════════════════ INIT ══════════════════════ */
