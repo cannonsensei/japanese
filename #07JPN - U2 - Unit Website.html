@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Year 7 Japanese — Unit 2: My Trip to the Police Box</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-dark:#041E42;
+  --navy:#041E42;
+  --navy-mid:#1a407a;
+  --navy-tint:#eef3fa;
+  --pink:#E13B82;
+  --pink-light:#fbe1ec;
+  --pink-hover:#b82f68;
+  --border-light:#c8d4e8;
+  --text-sec:#4d6a99;
+  --text-en:#445566;
+  --white:#ffffff;
+  --green:#1f8a4c;
+  --red:#c0392b;
+  --amber:#b8791f;
+}
+*{box-sizing:border-box;}
+[hidden]{display:none !important;}
+body{margin:0;font-family:'Montserrat',sans-serif;color:var(--text-en);background:var(--white);}
+.jp{font-family:'Noto Sans JP',sans-serif;}
+a{color:inherit;}
+header.site-header{background:var(--navy-dark);border-bottom:6px solid var(--pink);padding:28px 40px;}
+.header-inner{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;}
+.eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pink-light);margin:0 0 8px;}
+.site-title{color:#fff;font-weight:800;font-size:1.9rem;margin:0;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+.site-title .sub{font-size:1.05rem;font-weight:500;color:#cfe0f5;font-style:italic;}
+.site-subheading{color:#9db4d6;font-size:.85rem;margin-top:6px;}
+.badge{background:var(--pink);color:#fff;border-radius:20px;padding:8px 20px;font-weight:800;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;}
+.container{max-width:1180px;margin:0 auto;padding:32px 40px 80px;}
+nav.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;position:sticky;top:0;background:#fff;padding:14px 0;z-index:20;border-bottom:1px solid var(--border-light);}
+.tab-btn{background:#fff;border:2px solid var(--border-light);border-radius:10px;padding:10px 18px;font-family:inherit;font-weight:800;font-size:.82rem;cursor:pointer;color:var(--navy);transition:.15s;}
+.tab-btn:hover{border-color:var(--pink);}
+.tab-btn.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+.pool-select{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.pool-btn{background:#fff;border:2px solid var(--border-light);border-radius:10px;padding:8px 16px;font-family:inherit;font-weight:700;font-size:.78rem;cursor:pointer;color:var(--text-sec);}
+.pool-btn.active{background:var(--pink);border-color:var(--pink);color:#fff;}
+h2.section-title{font-size:1.55rem;font-weight:800;color:var(--navy);letter-spacing:-.01em;margin:0 0 6px;}
+p.section-desc{color:var(--text-sec);font-size:.85rem;margin:0 0 22px;max-width:760px;}
+.card{background:#fff;border:1.5px solid var(--border-light);border-radius:14px;padding:18px;transition:.15s;}
+.card:hover{box-shadow:0 4px 12px rgba(0,20,50,.08);border-color:var(--pink);}
+.btn{border-radius:9px;font-family:inherit;font-weight:800;font-size:.8rem;padding:10px 20px;cursor:pointer;border:2px solid var(--navy);background:var(--navy);color:#fff;}
+.btn.secondary{background:#fff;color:var(--navy);}
+.btn.pink{background:var(--pink);border-color:var(--pink);}
+.btn.pink.outline{background:#fff;color:var(--pink);}
+.btn:disabled{opacity:.4;cursor:not-allowed;}
+.grid{display:grid;gap:16px;}
+.grid.cols-3{grid-template-columns:repeat(3,1fr);}
+.grid.cols-2{grid-template-columns:repeat(2,1fr);}
+.grid.cols-1{grid-template-columns:1fr;}
+@media(max-width:600px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr;}.header-inner{flex-direction:column;align-items:flex-start;}}
+.role-subject{background:#D9D2ED;}
+.role-timeGeneral{background:#9FAE8F;color:#fff;}
+.role-timeSpecific{background:#D3E0C6;}
+.role-manner{background:#DDDDDD;}
+.role-place{background:#AFC3E3;}
+.role-object{background:#F0C9C6;}
+.role-adjective{background:#F7CFE1;}
+.role-verbStem{background:#F5D3A3;}
+.role-verbEnding{background:#D98A3D;color:#fff;}
+.role-particle{font-weight:800;background:none;}
+.token{padding:2px 5px;border-radius:4px;margin-right:1px;}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;font-size:.68rem;}
+.legend span{padding:3px 8px;border-radius:6px;font-weight:700;}
+.menu-card{background:#fff;border:2px solid var(--border-light);border-radius:16px;padding:24px;cursor:pointer;transition:.15s;text-align:left;}
+.menu-card:hover{border-color:var(--pink);box-shadow:0 6px 18px rgba(0,20,50,.1);transform:translateY(-2px);}
+.menu-card .icon{font-size:1.8rem;margin-bottom:10px;}
+.menu-card h3{margin:0 0 6px;color:var(--navy);font-size:1.05rem;}
+.menu-card p{margin:0;color:var(--text-sec);font-size:.8rem;}
+.menu-group-title{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--pink);margin:0 0 14px;}
+.back-btn{background:none;border:none;color:var(--navy);font-weight:800;font-size:.82rem;cursor:pointer;padding:8px 0;margin-bottom:12px;display:inline-flex;align-items:center;gap:6px;}
+.back-btn:hover{color:var(--pink);}
+.jp-word{cursor:pointer;}
+.jp-word:hover{text-decoration:underline;text-decoration-color:var(--pink);}
+.mora-row{display:flex;gap:10px;flex-wrap:wrap;}
+.mora-box{width:130px;height:130px;flex:0 0 130px;border:2px solid var(--border-light);border-radius:10px;touch-action:none;cursor:crosshair;background:#fff;}
+.inline-slot-select{
+  font-family:'Noto Sans JP',sans-serif;
+  font-size:1rem;
+  font-weight:700;
+  color:var(--navy);
+  background:var(--pink-light);
+  border:none;
+  border-bottom:2px dashed var(--pink);
+  border-radius:4px;
+  padding:1px 4px;
+  cursor:pointer;
+  margin:0 1px;
+}
+.inline-slot-select:hover{background:#fbd2e4;}
+[data-tooltip]{position:relative;}
+[data-tooltip]:hover::after{
+  content:attr(data-tooltip);
+  position:absolute;
+  left:50%;
+  bottom:calc(100% + 10px);
+  transform:translateX(-50%);
+  background:#fff;
+  color:var(--pink);
+  border:2px solid var(--pink);
+  border-radius:10px;
+  padding:6px 12px;
+  font-family:'Montserrat',sans-serif;
+  font-size:.72rem;
+  font-weight:700;
+  white-space:normal;
+  max-width:240px;
+  width:max-content;
+  text-align:center;
+  line-height:1.3;
+  box-shadow:0 4px 14px rgba(0,20,50,.18);
+  z-index:200;
+  pointer-events:none;
+}
+[data-tooltip]:hover::before{
+  content:'';
+  position:absolute;
+  left:50%;
+  bottom:calc(100% + 4px);
+  transform:translateX(-50%);
+  width:0;height:0;
+  border:6px solid transparent;
+  border-top-color:var(--pink);
+  z-index:200;
+  pointer-events:none;
+}
+input[type=text]{font-family:inherit;border:2px solid var(--border-light);border-radius:8px;padding:8px 10px;font-size:.95rem;}
+textarea{font-family:inherit;border:2px solid var(--border-light);border-radius:8px;padding:10px;width:100%;font-size:.9rem;resize:vertical;}
+table{border-collapse:collapse;width:100%;}
+th,td{border:1px solid var(--border-light);padding:8px 10px;font-size:.82rem;text-align:left;}
+th{background:var(--navy-tint);color:var(--navy);}
+.progress{height:8px;border-radius:6px;background:var(--border-light);overflow:hidden;}
+.progress > div{height:100%;background:var(--pink);}
+.small{font-size:.75rem;color:var(--text-sec);}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div>
+      <p class="eyebrow">St Aidan's Anglican Girls' School · Japanese</p>
+      <h1 class="site-title"><span class="jp">わたしの こうばんへの たび</span><span class="sub">My Trip to the Police Box — Companion Site</span></h1>
+      <div class="site-subheading">Year 7 Japanese · Unit 2</div>
+    </div>
+    <div class="badge">Year 7</div>
+  </div>
+</header>
+<div class="container">
+<nav class="tabs" id="mainTabs"></nav>
+<div id="app"></div>
+</div>
+<script id="siteData" type="application/json">{"vocabPools":{"numbers10":[{"jp":"一","kana":"いち","en":"One (1)","accept":["1","one"],"short":"1"},{"jp":"二","kana":"に","en":"Two (2)","accept":["2","two"],"short":"2"},{"jp":"三","kana":"さん","en":"Three (3)","accept":["3","three"],"short":"3"},{"jp":"四","kana":"よん","en":"Four (4)","alts":["し","よ"],"accept":["4","four"],"short":"4"},{"jp":"五","kana":"ご","en":"Five (5)","accept":["5","five"],"short":"5"},{"jp":"六","kana":"ろく","en":"Six (6)","accept":["6","six"],"short":"6"},{"jp":"七","kana":"なな","en":"Seven (7)","alts":["しち"],"accept":["7","seven"],"short":"7"},{"jp":"八","kana":"はち","en":"Eight (8)","alts":["はっ"],"accept":["8","eight"],"short":"8"},{"jp":"九","kana":"きゅう","en":"Nine (9)","alts":["く"],"accept":["9","nine"],"short":"9"},{"jp":"十","kana":"じゅう","en":"Ten (10)","alts":["じゅ"],"accept":["10","ten"],"short":"10"}],"numbers99":[{"jp":"十一","kana":"じゅういち","en":"Eleven (11)","accept":["11","eleven"],"short":"11"},{"jp":"十二","kana":"じゅうに","en":"Twelve (12)","accept":["12","twelve"],"short":"12"},{"jp":"十三","kana":"じゅうさん","en":"Thirteen (13)","accept":["13","thirteen"],"short":"13"},{"jp":"十四","kana":"じゅうよん","en":"Fourteen (14)","alts":["じゅうし"],"accept":["14","fourteen"],"short":"14"},{"jp":"十五","kana":"じゅうご","en":"Fifteen (15)","accept":["15","fifteen"],"short":"15"},{"jp":"十六","kana":"じゅうろく","en":"Sixteen (16)","accept":["16","sixteen"],"short":"16"},{"jp":"十七","kana":"じゅうなな","en":"Seventeen (17)","alts":["じゅうしち"],"accept":["17","seventeen"],"short":"17"},{"jp":"十八","kana":"じゅうはち","en":"Eighteen (18)","accept":["18","eighteen"],"short":"18"},{"jp":"十九","kana":"じゅうきゅう","en":"Nineteen (19)","alts":["じゅうく"],"accept":["19","nineteen"],"short":"19"},{"jp":"二十","kana":"にじゅう","en":"Twenty (20)","accept":["20","twenty"],"short":"20"},{"jp":"三十","kana":"さんじゅう","en":"Thirty (30)","accept":["30","thirty"],"short":"30"},{"jp":"四十","kana":"よんじゅう","en":"Forty (40)","alts":["しじゅう"],"accept":["40","forty"],"short":"40"},{"jp":"五十","kana":"ごじゅう","en":"Fifty (50)","accept":["50","fifty"],"short":"50"},{"jp":"六十","kana":"ろくじゅう","en":"Sixty (60)","accept":["60","sixty"],"short":"60"},{"jp":"七十","kana":"ななじゅう","en":"Seventy (70)","alts":["しちじゅう"],"accept":["70","seventy"],"short":"70"},{"jp":"八十","kana":"はちじゅう","en":"Eighty (80)","accept":["80","eighty"],"short":"80"},{"jp":"九十","kana":"きゅうじゅう","en":"Ninety (90)","alts":["くじゅう"],"accept":["90","ninety"],"short":"90"},{"jp":"二十一","kana":"にじゅういち","en":"Twenty-one (21)","accept":["21","twenty-one","twenty one"],"short":"21"},{"jp":"三十五","kana":"さんじゅうご","en":"Thirty-five (35)","accept":["35","thirty-five","thirty five"],"short":"35"},{"jp":"四十八","kana":"よんじゅうはち","en":"Forty-eight (48)","accept":["48","forty-eight","forty eight"],"short":"48"},{"jp":"五十九","kana":"ごじゅうきゅう","en":"Fifty-nine (59)","accept":["59","fifty-nine","fifty nine"],"short":"59"},{"jp":"六十七","kana":"ろくじゅうなな","en":"Sixty-seven (67)","accept":["67","sixty-seven","sixty seven"],"short":"67"},{"jp":"七十四","kana":"ななじゅうよん","en":"Seventy-four (74)","accept":["74","seventy-four","seventy four"],"short":"74"},{"jp":"八十六","kana":"はちじゅうろく","en":"Eighty-six (86)","accept":["86","eighty-six","eighty six"],"short":"86"},{"jp":"九十九","kana":"きゅうじゅうきゅう","en":"Ninety-nine (99)","accept":["99","ninety-nine","ninety nine"],"short":"99"}],"ages":[{"jp":"一才","kana":"いっさい","en":"1 year old","accept":["1","one","one year old"],"short":"1"},{"jp":"二才","kana":"にさい","en":"2 years old","accept":["2","two","two years old"],"short":"2"},{"jp":"三才","kana":"さんさい","en":"3 years old","accept":["3","three","three years old"],"short":"3"},{"jp":"四才","kana":"よんさい","en":"4 years old","accept":["4","four","four years old"],"short":"4"},{"jp":"五才","kana":"ごさい","en":"5 years old","accept":["5","five","five years old"],"short":"5"},{"jp":"六才","kana":"ろくさい","en":"6 years old","accept":["6","six","six years old"],"short":"6"},{"jp":"七才","kana":"ななさい","en":"7 years old","accept":["7","seven","seven years old"],"short":"7"},{"jp":"八才","kana":"はっさい","en":"8 years old","accept":["8","eight","eight years old"],"short":"8"},{"jp":"九才","kana":"きゅうさい","en":"9 years old","accept":["9","nine","nine years old"],"short":"9"},{"jp":"十才","kana":"じゅっさい","en":"10 years old","accept":["10","ten","ten years old"],"short":"10"},{"jp":"十一才","kana":"じゅういっさい","en":"11 years old","accept":["11","eleven","eleven years old"],"short":"11"},{"jp":"十二才","kana":"じゅうにさい","en":"12 years old","accept":["12","twelve","twelve years old"],"short":"12"},{"jp":"十三才","kana":"じゅうさんさい","en":"13 years old","accept":["13","thirteen","thirteen years old"],"short":"13"},{"jp":"十四才","kana":"じゅうよんさい","en":"14 years old","accept":["14","fourteen","fourteen years old"],"short":"14"},{"jp":"十五才","kana":"じゅうごさい","en":"15 years old","accept":["15","fifteen","fifteen years old"],"short":"15"},{"jp":"十六才","kana":"じゅうろくさい","en":"16 years old","accept":["16","sixteen","sixteen years old"],"short":"16"},{"jp":"十七才","kana":"じゅうななさい","en":"17 years old","accept":["17","seventeen","seventeen years old"],"short":"17"},{"jp":"十八才","kana":"じゅうはっさい","en":"18 years old","accept":["18","eighteen","eighteen years old"],"short":"18"},{"jp":"十九才","kana":"じゅうきゅうさい","en":"19 years old","accept":["19","nineteen","nineteen years old"],"short":"19"},{"jp":"二十才","kana":"はたち","en":"20 years old","accept":["20","twenty","twenty years old"],"short":"20"},{"jp":"二十一才","kana":"にじゅういっさい","en":"21 years old","accept":["21","twenty-one","twenty-one years old","twenty one years old"],"short":"21"},{"jp":"才","kana":"さい","en":"Years old (age counter)","accept":["years old","year old","years","age"]},{"jp":"何才","kana":"なんさい","en":"How old? (formal)","accept":["how old","how old?","how old are you","how old are you?"]},{"jp":"おいくつ","kana":null,"en":"How old? (polite)","accept":["how old","how old?","how old are you","how old are you?"]}],"family":[{"jp":"かぞく","kana":null,"en":"Family","accept":["family"]},{"jp":"私","kana":"わたし","en":"I / me"},{"jp":"はは","kana":null,"en":"Mum","accept":["mom","mother"]},{"jp":"ちち","kana":null,"en":"Dad","accept":["father"]},{"jp":"あね","kana":null,"en":"Older sister","accept":["big sister","elder sister","older sis"]},{"jp":"あに","kana":null,"en":"Older brother","accept":["big brother","elder brother","older bro"]},{"jp":"いもうと","kana":null,"en":"Little sister","accept":["younger sister","little sis"],"mnemonic":"Who is **immortal** and will always annoy you? **IMO**UTO — your little sister!"},{"jp":"おとうと","kana":null,"en":"Little brother","accept":["younger brother","little bro"]},{"jp":"あかちゃん","kana":null,"en":"Baby","mnemonic":"Who has really, really **red** cheeks? **AKA**CHAN — a baby! (aka = red)"},{"jp":"おじいさん","kana":null,"en":"Grandpa","accept":["grandfather"]},{"jp":"おばあさん","kana":null,"en":"Grandma","accept":["grandmother"]},{"jp":"だれ","kana":null,"en":"Who"}],"people":[{"jp":"一人","kana":"ひとり","en":"1 person","accept":["1","one","one person"],"short":"1"},{"jp":"二人","kana":"ふたり","en":"2 people","accept":["2","two","two people"],"short":"2"},{"jp":"三人","kana":"さんにん","en":"3 people","accept":["3","three","three people"],"short":"3"},{"jp":"四人","kana":"よにん","en":"4 people","accept":["4","four","four people"],"short":"4"},{"jp":"五人","kana":"ごにん","en":"5 people","accept":["5","five","five people"],"short":"5"},{"jp":"六人","kana":"ろくにん","en":"6 people","accept":["6","six","six people"],"short":"6"},{"jp":"七人","kana":"しちにん","en":"7 people","alts":["ななにん"],"accept":["7","seven","seven people"],"short":"7"},{"jp":"八人","kana":"はちにん","en":"8 people","accept":["8","eight","eight people"],"short":"8"},{"jp":"九人","kana":"きゅうにん","en":"9 people","alts":["くにん"],"accept":["9","nine","nine people"],"short":"9"},{"jp":"十人","kana":"じゅうにん","en":"10 people","accept":["10","ten","ten people"],"short":"10"},{"jp":"何人","kana":"なんにん","en":"How many people?","accept":["how many","how many people","how many people?","how many?"]}],"places":[{"jp":"どこ","kana":null,"en":"Where","accept":["where?"]},{"jp":"住んでいます","kana":"すんでいます","en":"Live (polite)","accept":["live","live in","to live","am living","live (polite)"]},{"jp":"日本","kana":"にほん","en":"Japan","note":"日 = sun and 本 = origin — Japan is the “land of the rising sun”."},{"jp":"中国","kana":"ちゅうごく","en":"China","note":"中 = middle and 国 = country — China is the “middle country”."},{"jp":"おーすとらりあ","kana":null,"en":"Australia","note":"Its standard spelling uses katakana: オーストラリア."},{"jp":"とうきょう","kana":null,"en":"Tokyo","note":"In kanji: 東京."},{"jp":"しゃんはい","kana":null,"en":"Shanghai","note":"In kanji: 上海."},{"jp":"しどにー","kana":null,"en":"Sydney","note":"Usually written in katakana: シドニー."},{"jp":"ぶりすべん","kana":null,"en":"Brisbane","note":"Usually written in katakana: ブリスベン."}],"suburbs":[{"jp":"じんだりー","kana":null,"en":"Jindalee"},{"jp":"けんもあ","kana":null,"en":"Kenmore"},{"jp":"ふぃぐ・とりー・ぽけっと","kana":null,"en":"Fig Tree Pocket"},{"jp":"あるじぇすたー","kana":null,"en":"Algester"},{"jp":"すとれっとん","kana":null,"en":"Stretton"},{"jp":"うぇすと・れーく","kana":null,"en":"Westlake","accept":["west lake"]},{"jp":"みるとん","kana":null,"en":"Milton"},{"jp":"ちぇるまー","kana":null,"en":"Chelmer"},{"jp":"しゃーうっど","kana":null,"en":"Sherwood"},{"jp":"とぅうぉん","kana":null,"en":"Toowong"},{"jp":"ぐれーすびる","kana":null,"en":"Graceville"},{"jp":"ふぉれすと・でーる","kana":null,"en":"Forestdale","accept":["forest dale"]},{"jp":"ちゃぺる・ひる","kana":null,"en":"Chapel Hill"},{"jp":"せぶんてぃーん・まいる・ろっくす","kana":null,"en":"Seventeen Mile Rocks","accept":["17 mile rocks"]},{"jp":"ふぉれすと・れーく","kana":null,"en":"Forest Lake"},{"jp":"ぷれんべーる","kana":null,"en":"Pullenvale","accept":["pullen vale"]},{"jp":"ぶるっくうぉーたー","kana":null,"en":"Brookwater"},{"jp":"いえろんが","kana":null,"en":"Yeronga"},{"jp":"からむべーる","kana":null,"en":"Calamvale"},{"jp":"もるーか","kana":null,"en":"Moorooka"},{"jp":"ばーどん","kana":null,"en":"Bardon"},{"jp":"もぎる","kana":null,"en":"Mogill"},{"jp":"ぱーきんそん","kana":null,"en":"Parkinson"},{"jp":"まうんと・ぐらばっと・いーすと","kana":null,"en":"Mount Gravatt East","accept":["mt gravatt east"]},{"jp":"さにーばん・くひるず","kana":null,"en":"Sunnybank Hills"},{"jp":"こーぬびあ","kana":null,"en":"Cornubia"},{"jp":"ろーちゅでーる","kana":null,"en":"Rochedale"}]},"poolNotes":{"numbers10":"Activity: make up a mnemonic story to help you remember how to count from 1 to 10 in Japanese. Type your story in the box on each card. Watch for the numbers that have more than one reading!","numbers99":"Build any number from 11 to 99 by saying the tens digit, then **じゅう**, then the ones digit — three parts in a row. The 20s, 30s and 40s all follow the same pattern.","ages":"The kanji 才 is read **SAI**. When you become as old as Mrs Cannon you **SAI** about your age! Watch out for the sound changes: 一才, 八才 and 十才 all squash together, and 二十才 is はたち.","family":"Activity: make up a mnemonic story for each family member. Type your story in the box on each card — two clues are already done for you.","people":"The kanji 人 is read **NIN**. We use it to count how many “ninnies” (people) there are in your family! 一人 and 二人 are special readings, and 四人 is よにん.","places":"Put the country first, join it to the place with **の**, then add **に** and **住んでいます**. Foreign place names are written in hiragana for now.","suburbs":"These are the Brisbane suburbs from the “Where do you live?” worksheet, written in hiragana. Which one is yours?"},"mnemonicInputPools":["numbers10","family"],"grammarGroups":[{"key":"numbers10","title":"Counting 1–10","roleLabels":{"object":"kanji","verbStem":"main reading","verbEnding":"other readings"},"tokens":[{"tokens":[{"t":"四","r":"object","s":"よん"},{"t":"＝","r":null},{"t":"よん","r":"verbStem"},{"t":"・","r":null},{"t":"し","r":"verbEnding"},{"t":"・","r":null},{"t":"よ","r":"verbEnding"}],"en":"Four — よん is the main reading. し and よ appear in some combinations (for example, 四人 is よにん).","say":"よん"},{"tokens":[{"t":"七","r":"object","s":"なな"},{"t":"＝","r":null},{"t":"なな","r":"verbStem"},{"t":"・","r":null},{"t":"しち","r":"verbEnding"}],"en":"Seven — なな is the main reading. しち appears in some combinations (for example, 七人 is しちにん, but 七才 is ななさい).","say":"なな"},{"tokens":[{"t":"八","r":"object","s":"はち"},{"t":"＝","r":null},{"t":"はち","r":"verbStem"},{"t":"・","r":null},{"t":"はっ","r":"verbEnding"}],"en":"Eight — はち is the main reading. はっ is used when it squashes into the next sound (for example, 八才 is はっさい).","say":"はち"},{"tokens":[{"t":"九","r":"object","s":"きゅう"},{"t":"＝","r":null},{"t":"きゅう","r":"verbStem"},{"t":"・","r":null},{"t":"く","r":"verbEnding"}],"en":"Nine — きゅう is the main reading. く is the other reading.","say":"きゅう"},{"tokens":[{"t":"十","r":"object","s":"じゅう"},{"t":"＝","r":null},{"t":"じゅう","r":"verbStem"},{"t":"・","r":null},{"t":"じゅ","r":"verbEnding"}],"en":"Ten — じゅう is the main reading. じゅ is used when it squashes into the next sound (for example, 十才 is じゅっさい).","say":"じゅう"}],"whyPrompt":"Look at 四, 七, 八, 九 and 十 — each has more than one reading. Why do you think it helps to learn the main reading first and meet the other readings later, when numbers join up with counters like 人 and 才?","drillsJtoE":[{"jp":"三","en":"3 (three)"},{"jp":"ろく","en":"6 (six)"},{"jp":"十","en":"10 (ten)"},{"jp":"五","en":"5 (five)"},{"jp":"きゅう","en":"9 (nine)"},{"jp":"二","en":"2 (two)"},{"jp":"はち","en":"8 (eight)"},{"jp":"七","en":"7 (seven)"},{"jp":"よん","en":"4 (four)"},{"jp":"一","en":"1 (one)"}],"drillsEtoJ":[{"jp":"七（なな・しち）","en":"7 (seven)"},{"jp":"四（よん・し・よ）","en":"4 (four)"},{"jp":"一（いち）","en":"1 (one)"},{"jp":"九（きゅう・く）","en":"9 (nine)"},{"jp":"二（に）","en":"2 (two)"},{"jp":"十（じゅう・じゅ）","en":"10 (ten)"},{"jp":"六（ろく）","en":"6 (six)"},{"jp":"八（はち・はっ）","en":"8 (eight)"},{"jp":"三（さん）","en":"3 (three)"},{"jp":"五（ご）","en":"5 (five)"}],"freeWritingPrompt":"Write the numbers 1 to 10 in kanji, then say them out loud in Japanese. Make up a mnemonic story for any number you find tricky.","freeWritingExample":"一、二、三、四、五、六、七、八、九、十（いち、に、さん、よん、ご、ろく、なな、はち、きゅう、じゅう）","clozeSet":[{"jpBefore":"いち、に、","blank":"さん","jpAfter":"、よん、ご","options":["さん","し","ろく"],"kind":"vocabulary","en":"Counting from 1 to 5 — what is missing?"},{"jpBefore":"一、二、","blank":"三","jpAfter":"、四、五","options":["三","四","六"],"kind":"vocabulary","en":"Counting from 1 to 5 in kanji — what is missing?"},{"jpBefore":"四 ＝ よん・","blank":"し","jpAfter":"・よ","options":["し","しち","く"],"kind":"grammar","en":"Four has three readings — which one is missing?","accept":["よ"]},{"jpBefore":"七 ＝ なな・","blank":"しち","jpAfter":"","options":["しち","し","よ"],"kind":"grammar","en":"Seven has two readings — which one is missing?"},{"jpBefore":"六、七、","blank":"八","jpAfter":"、九、十","options":["八","五","十"],"kind":"vocabulary","en":"Counting from 6 to 10 in kanji — what is missing?"}],"scrambleSet":[{"answer":"一二三四五","chunks":["一","二","三","四","五"],"en":"Put the kanji in counting order: 1, 2, 3, 4, 5"},{"answer":"六七八九十","chunks":["六","七","八","九","十"],"en":"Put the kanji in counting order: 6, 7, 8, 9, 10"},{"answer":"いちにさんよんご","chunks":["いち","に","さん","よん","ご"],"en":"Put the hiragana in counting order: 1, 2, 3, 4, 5"},{"answer":"ろくななはちきゅうじゅう","chunks":["ろく","なな","はち","きゅう","じゅう"],"en":"Put the hiragana in counting order: 6, 7, 8, 9, 10"},{"answer":"一三五七九","chunks":["一","三","五","七","九"],"en":"Put the odd numbers in order: 1, 3, 5, 7, 9"}]},{"key":"numbers99","title":"Numbers 11–99","roleLabels":{"place":"tens digit","adjective":"十 (ten)","object":"ones digit"},"tokens":[{"tokens":[{"t":"十","r":"adjective","s":"じゅう"},{"t":"三","r":"object","s":"さん"}],"en":"13 — じゅうさん (10 + 3). Under 20, there is no tens digit in front of 十.","say":"じゅうさん"},{"tokens":[{"t":"二","r":"place","s":"に"},{"t":"十","r":"adjective","s":"じゅう"}],"en":"20 — にじゅう (2 × 10). A multiple of ten has no ones digit.","say":"にじゅう"},{"tokens":[{"t":"三","r":"place","s":"さん"},{"t":"十","r":"adjective","s":"じゅう"},{"t":"五","r":"object","s":"ご"}],"en":"35 — さんじゅうご (3 × 10 + 5).","say":"さんじゅうご"},{"tokens":[{"t":"七","r":"place","s":"なな"},{"t":"十","r":"adjective","s":"じゅう"},{"t":"四","r":"object","s":"よん"}],"en":"74 — ななじゅうよん (7 × 10 + 4).","say":"ななじゅうよん"},{"tokens":[{"t":"九","r":"place","s":"きゅう"},{"t":"十","r":"adjective","s":"じゅう"},{"t":"九","r":"object","s":"きゅう"}],"en":"99 — きゅうじゅうきゅう (9 × 10 + 9).","say":"きゅうじゅうきゅう"}],"whyPrompt":"In English, 15 is “fifteen” but 35 is “thirty-five” — the pattern changes. Why do you think Japanese numbers like 十五 and 三十五 are easier to build once you know 1 to 10?","drillsJtoE":[{"jp":"十五","en":"15 (fifteen)"},{"jp":"にじゅうさん","en":"23 (twenty-three)"},{"jp":"四十","en":"40 (forty)"},{"jp":"三十六","en":"36 (thirty-six)"},{"jp":"ごじゅういち","en":"51 (fifty-one)"},{"jp":"六十八","en":"68 (sixty-eight)"},{"jp":"ななじゅうなな","en":"77 (seventy-seven)"},{"jp":"八十二","en":"82 (eighty-two)"},{"jp":"きゅうじゅう","en":"90 (ninety)"},{"jp":"九十九","en":"99 (ninety-nine)"}],"drillsEtoJ":[{"jp":"十四（じゅうよん）","en":"14 (fourteen)"},{"jp":"二十七（にじゅうなな）","en":"27 (twenty-seven)"},{"jp":"三十二（さんじゅうに）","en":"32 (thirty-two)"},{"jp":"四十五（よんじゅうご）","en":"45 (forty-five)"},{"jp":"五十三（ごじゅうさん）","en":"53 (fifty-three)"},{"jp":"六十（ろくじゅう）","en":"60 (sixty)"},{"jp":"七十一（ななじゅういち）","en":"71 (seventy-one)"},{"jp":"八十九（はちじゅうきゅう）","en":"89 (eighty-nine)"},{"jp":"九十四（きゅうじゅうよん）","en":"94 (ninety-four)"},{"jp":"九十九（きゅうじゅうきゅう）","en":"99 (ninety-nine)"}],"freeWritingPrompt":"Write five different numbers between 11 and 99 in kanji. Then read each one out loud in Japanese.","freeWritingExample":"二十一（にじゅういち）、三十五（さんじゅうご）、四十八（よんじゅうはち）、六十七（ろくじゅうなな）、九十九（きゅうじゅうきゅう）","clozeSet":[{"jpBefore":"さんじゅう","blank":"ご","jpAfter":"","options":["ご","ろく","はち"],"kind":"vocabulary","en":"35 (thirty-five)"},{"jpBefore":"","blank":"じゅう","jpAfter":"ろく","options":["じゅう","にじゅう","ろくじゅう"],"kind":"grammar","en":"16 (sixteen)"},{"jpBefore":"にじゅう","blank":"いち","jpAfter":"","options":["いち","に","じゅう"],"kind":"vocabulary","en":"21 (twenty-one)"},{"jpBefore":"四","blank":"十","jpAfter":"八","options":["十","一","二"],"kind":"grammar","en":"48 (forty-eight)"},{"jpBefore":"","blank":"ご","jpAfter":"じゅうなな","options":["ご","よん","ろく"],"kind":"vocabulary","en":"57 (fifty-seven)"}],"scrambleSet":[{"answer":"さんじゅうご","chunks":["さん","じゅう","ご"],"en":"Build 35 in hiragana"},{"answer":"よんじゅうはち","chunks":["よん","じゅう","はち"],"en":"Build 48 in hiragana"},{"answer":"きゅうじゅうきゅう","chunks":["きゅう","じゅう","きゅう"],"en":"Build 99 in hiragana"},{"answer":"七十四","chunks":["七","十","四"],"en":"Build 74 in kanji"},{"answer":"六十二","chunks":["六","十","二"],"en":"Build 62 in kanji"}]},{"key":"age","title":"Asking & Saying Your Age","roleLabels":{"subject":"subject","place":"number (何 = how many)","adjective":"counter 才 (years old)"},"tokens":[{"tokens":[{"t":"何","r":"place","s":"なん"},{"t":"才","r":"adjective","s":"さい"},{"t":"です","r":"verbEnding"},{"t":"か。","r":"particle"}],"en":"How old are you? (formal — e.g. teacher to student)","say":"なんさいですか。"},{"tokens":[{"t":"おいくつ","r":"place"},{"t":"です","r":"verbEnding"},{"t":"か。","r":"particle"}],"en":"How old are you? (polite / conversational)","say":"おいくつですか。"},{"tokens":[{"t":"わたし","r":"subject"},{"t":"は","r":"particle"},{"t":"十三","r":"place","s":"じゅうさん"},{"t":"才","r":"adjective","s":"さい"},{"t":"です。","r":"verbEnding"}],"en":"I am 13 years old.","say":"わたしはじゅうさんさいです。"},{"tokens":[{"t":"わたし","r":"subject"},{"t":"は","r":"particle"},{"t":"十五","r":"place","s":"じゅうご"},{"t":"才","r":"adjective","s":"さい"},{"t":"です。","r":"verbEnding"}],"en":"I am 15 years old.","say":"わたしはじゅうごさいです。"},{"tokens":[{"t":"わたし","r":"subject"},{"t":"は","r":"particle"},{"t":"十","r":"place","s":"じゅっ"},{"t":"才","r":"adjective","s":"さい"},{"t":"です。","r":"verbEnding"}],"en":"I am 10 years old. (十才 squashes together: じゅっさい)","say":"わたしはじゅっさいです。"}],"whyPrompt":"Why do you think は comes after わたし in the age sentence, and why does the number need 才 straight after it? What would the sentence be missing without 才?","drillsJtoE":[{"jp":"わたしは十三才です。","en":"I am 13 years old."},{"jp":"わたしは十一才です。","en":"I am 11 years old."},{"jp":"何才ですか。","en":"How old are you?"},{"jp":"わたしは八才です。","en":"I am 8 years old."},{"jp":"おいくつですか。","en":"How old are you? (polite)"},{"jp":"わたしは十八才です。","en":"I am 18 years old."},{"jp":"わたしは二十才です。","en":"I am 20 years old."},{"jp":"わたしは六才です。","en":"I am 6 years old."},{"jp":"わたしは十五才です。","en":"I am 15 years old."},{"jp":"わたしは十二才です。","en":"I am 12 years old."}],"drillsEtoJ":[{"jp":"わたしは十四才です。","en":"I am 14 years old."},{"jp":"何才ですか。","en":"How old are you? (formal)"},{"jp":"わたしは九才です。","en":"I am 9 years old."},{"jp":"わたしは十六才です。","en":"I am 16 years old."},{"jp":"おいくつですか。","en":"How old are you? (polite)"},{"jp":"わたしは十才です。","en":"I am 10 years old."},{"jp":"わたしは十七才です。","en":"I am 17 years old."},{"jp":"わたしは七才です。","en":"I am 7 years old."},{"jp":"わたしは十九才です。","en":"I am 19 years old."},{"jp":"わたしは二十一才です。","en":"I am 21 years old."}],"freeWritingPrompt":"Write one sentence saying how old you are. Then ask a classmate how old they are and write their answer as a sentence, using their name as the subject (their name は ... 才です).","freeWritingExample":"わたしは十三才です。","clozeSet":[{"jpBefore":"わたしは","blank":"十三","jpAfter":"才です。","options":["十三","十五","十九"],"kind":"vocabulary","en":"I am 13 years old."},{"jpBefore":"わたし","blank":"は","jpAfter":"十二才です。","options":["は","の","に"],"kind":"particle","en":"I am 12 years old."},{"jpBefore":"わたしは十四","blank":"才","jpAfter":"です。","options":["才","人","は"],"kind":"grammar","en":"I am 14 years old."},{"jpBefore":"","blank":"何","jpAfter":"才ですか。","options":["何","だれ","どこ"],"kind":"vocabulary","en":"How old are you? (formal)"},{"jpBefore":"","blank":"おいくつ","jpAfter":"ですか。","options":["おいくつ","どこ","だれ"],"kind":"vocabulary","en":"How old are you? (polite)"}],"scrambleSet":[{"answer":"わたしは十三才です。","chunks":["わたし","は","十三","才","です。"],"en":"I am 13 years old."},{"answer":"何才ですか。","chunks":["何","才","です","か。"],"en":"How old are you? (formal)"},{"answer":"わたしは十二才です。","chunks":["わたし","は","十二","才","です。"],"en":"I am 12 years old."},{"answer":"おいくつですか。","chunks":["おいくつ","です","か。"],"en":"How old are you? (polite)"},{"answer":"わたしは十五才です。","chunks":["わたし","は","十五","才","です。"],"en":"I am 15 years old."}]},{"key":"family","title":"Who Is in Your Family?","roleLabels":{"subject":"subject","adjective":"family member (answers だれ)"},"tokens":[{"tokens":[{"t":"かぞく","r":"subject"},{"t":"は","r":"particle"},{"t":"だれ","r":"adjective"},{"t":"です","r":"verbEnding"},{"t":"か。","r":"particle"}],"en":"Who is in your family?"},{"tokens":[{"t":"かぞく","r":"subject"},{"t":"は","r":"particle"},{"t":"はは","r":"adjective"},{"t":"と","r":"particle"},{"t":"ちち","r":"adjective"},{"t":"と","r":"particle"},{"t":"私","r":"adjective","s":"わたし"},{"t":"です。","r":"verbEnding"}],"en":"My family is Mum, Dad and me.","say":"かぞくはははとちちとわたしです。"},{"tokens":[{"t":"かぞく","r":"subject"},{"t":"は","r":"particle"},{"t":"あね","r":"adjective"},{"t":"と","r":"particle"},{"t":"いもうと","r":"adjective"},{"t":"と","r":"particle"},{"t":"私","r":"adjective","s":"わたし"},{"t":"です。","r":"verbEnding"}],"en":"My family is my older sister, my little sister and me.","say":"かぞくはあねといもうととわたしです。"},{"tokens":[{"t":"かぞく","r":"subject"},{"t":"は","r":"particle"},{"t":"あかちゃん","r":"adjective"},{"t":"と","r":"particle"},{"t":"あに","r":"adjective"},{"t":"と","r":"particle"},{"t":"私","r":"adjective","s":"わたし"},{"t":"です。","r":"verbEnding"}],"en":"My family is the baby, my older brother and me.","say":"かぞくはあかちゃんとあにとわたしです。"},{"tokens":[{"t":"かぞく","r":"subject"},{"t":"は","r":"particle"},{"t":"おじいさん","r":"adjective"},{"t":"と","r":"particle"},{"t":"おばあさん","r":"adjective"},{"t":"と","r":"particle"},{"t":"はは","r":"adjective"},{"t":"と","r":"particle"},{"t":"ちち","r":"adjective"},{"t":"と","r":"particle"},{"t":"私","r":"adjective","s":"わたし"},{"t":"です。","r":"verbEnding"}],"en":"My family is Grandpa, Grandma, Mum, Dad and me.","say":"かぞくはおじいさんとおばあさんとははとちちとわたしです。"}],"whyPrompt":"Why do you think と comes after every family member except the last one? What does と mean, and what would the sentence sound like if you put と after 私 too?","drillsJtoE":[{"jp":"かぞくは ははと 私です。","en":"My family is Mum and me."},{"jp":"かぞくは だれですか。","en":"Who is in your family?"},{"jp":"かぞくは ちちと ははと 私です。","en":"My family is Dad, Mum and me."},{"jp":"かぞくは あねと 私です。","en":"My family is my older sister and me."},{"jp":"かぞくは あにと 私です。","en":"My family is my older brother and me."},{"jp":"かぞくは いもうとと 私です。","en":"My family is my little sister and me."},{"jp":"かぞくは おとうとと 私です。","en":"My family is my little brother and me."},{"jp":"かぞくは あかちゃんと ははと ちちと 私です。","en":"My family is the baby, Mum, Dad and me."},{"jp":"かぞくは おじいさんと おばあさんと 私です。","en":"My family is Grandpa, Grandma and me."},{"jp":"かぞくは ははと ちちと あにと いもうとと 私です。","en":"My family is Mum, Dad, my older brother, my little sister and me."}],"drillsEtoJ":[{"jp":"かぞくは ちちと 私です。","en":"My family is Dad and me."},{"jp":"かぞくは ははと ちちと 私です。","en":"My family is Mum, Dad and me."},{"jp":"かぞくは あねと 私です。","en":"My family is my older sister and me."},{"jp":"かぞくは おとうとと 私です。","en":"My family is my little brother and me."},{"jp":"かぞくは おばあさんと 私です。","en":"My family is Grandma and me."},{"jp":"かぞくは あかちゃんと 私です。","en":"My family is the baby and me."},{"jp":"かぞくは ははと あねと 私です。","en":"My family is Mum, my older sister and me."},{"jp":"かぞくは ちちと おとうとと 私です。","en":"My family is Dad, my little brother and me."},{"jp":"かぞくは おじいさんと ははと 私です。","en":"My family is Grandpa, Mum and me."},{"jp":"かぞくは ははと ちちと あにと あねと 私です。","en":"My family is Mum, Dad, my older brother, my older sister and me."}],"freeWritingPrompt":"Write a sentence that says who is in your family (or an imaginary family). Put と after every member except the last — 私 goes right before です.","freeWritingExample":"かぞくは ははと ちちと あにと 私です。","clozeSet":[{"jpBefore":"かぞくは ","blank":"はは","jpAfter":"と 私です。","options":["はは","ちち","あに"],"kind":"vocabulary","en":"My family is Mum and me."},{"jpBefore":"かぞくは ","blank":"だれ","jpAfter":"ですか。","options":["だれ","何","どこ"],"kind":"vocabulary","en":"Who is in your family?"},{"jpBefore":"かぞくは ちちと ","blank":"私","jpAfter":"です。","options":["私","か","は"],"kind":"vocabulary","en":"My family is Dad and me."},{"jpBefore":"かぞく","blank":"は","jpAfter":" ははと ちちと 私です。","options":["は","と","の"],"kind":"particle","en":"My family is Mum, Dad and me."},{"jpBefore":"かぞくは いもうと","blank":"と","jpAfter":" おとうとと 私です。","options":["と","は","に"],"kind":"particle","en":"My family is my little sister, my little brother and me."}],"scrambleSet":[{"answer":"かぞくはははとちちと私です。","chunks":["かぞく","は","はは","と","ちち","と","私","です。"],"en":"My family is Mum, Dad and me."},{"answer":"かぞくはだれですか。","chunks":["かぞく","は","だれ","です","か。"],"en":"Who is in your family?"},{"answer":"かぞくはあねとあにと私です。","chunks":["かぞく","は","あね","と","あに","と","私","です。"],"en":"My family is my older sister, my older brother and me."},{"answer":"かぞくはおじいさんとおばあさんと私です。","chunks":["かぞく","は","おじいさん","と","おばあさん","と","私","です。"],"en":"My family is Grandpa, Grandma and me."},{"answer":"かぞくはいもうととおとうとと私です。","chunks":["かぞく","は","いもうと","と","おとうと","と","私","です。"],"en":"My family is my little sister, my little brother and me."}]},{"key":"people","title":"Counting People in Your Family","roleLabels":{"subject":"subject","place":"number (何 = how many)","adjective":"counter 人 (people)"},"tokens":[{"tokens":[{"t":"かぞく","r":"subject"},{"t":"は","r":"particle"},{"t":"何","r":"place","s":"なん"},{"t":"人","r":"adjective","s":"にん"},{"t":"です","r":"verbEnding"},{"t":"か。","r":"particle"}],"en":"How many people are in your family?","say":"かぞくはなんにんですか。"},{"tokens":[{"t":"かぞく","r":"subject"},{"t":"は","r":"particle"},{"t":"三","r":"place","s":"さん"},{"t":"人","r":"adjective","s":"にん"},{"t":"です。","r":"verbEnding"}],"en":"There are three people in my family.","say":"かぞくはさんにんです。"},{"tokens":[{"t":"かぞく","r":"subject"},{"t":"は","r":"particle"},{"t":"五","r":"place","s":"ご"},{"t":"人","r":"adjective","s":"にん"},{"t":"です。","r":"verbEnding"}],"en":"There are five people in my family.","say":"かぞくはごにんです。"},{"tokens":[{"t":"かぞく","r":"subject"},{"t":"は","r":"particle"},{"t":"四","r":"place","s":"よ"},{"t":"人","r":"adjective","s":"にん"},{"t":"です。","r":"verbEnding"}],"en":"There are four people in my family. (四人 is よにん, not よんにん.)","say":"かぞくはよにんです。"},{"tokens":[{"t":"かぞく","r":"subject"},{"t":"は","r":"particle"},{"t":"二人","r":"place","s":"ふたり"},{"t":"です。","r":"verbEnding"}],"en":"There are two people in my family. (二人 is ふたり — a special reading, just like 一人 is ひとり.)","say":"かぞくはふたりです。"}],"whyPrompt":"To turn the question into a statement we drop か and swap 何 for a number. Why do you think 人 stays in the answer? What would “かぞくは三です” be missing?","drillsJtoE":[{"jp":"かぞくは三人です。","en":"There are 3 people in my family."},{"jp":"かぞくは何人ですか。","en":"How many people are in your family?"},{"jp":"かぞくは五人です。","en":"There are 5 people in my family."},{"jp":"かぞくは四人です。","en":"There are 4 people in my family."},{"jp":"かぞくは二人です。","en":"There are 2 people in my family."},{"jp":"かぞくは六人です。","en":"There are 6 people in my family."},{"jp":"かぞくは七人です。","en":"There are 7 people in my family."},{"jp":"かぞくは九人です。","en":"There are 9 people in my family."},{"jp":"かぞくは八人です。","en":"There are 8 people in my family."},{"jp":"かぞくは十人です。","en":"There are 10 people in my family."}],"drillsEtoJ":[{"jp":"かぞくは一人です。","en":"There is 1 person in my family."},{"jp":"かぞくは三人です。","en":"There are 3 people in my family."},{"jp":"かぞくは四人です。","en":"There are 4 people in my family."},{"jp":"かぞくは五人です。","en":"There are 5 people in my family."},{"jp":"かぞくは六人です。","en":"There are 6 people in my family."},{"jp":"かぞくは七人です。","en":"There are 7 people in my family."},{"jp":"かぞくは八人です。","en":"There are 8 people in my family."},{"jp":"かぞくは九人です。","en":"There are 9 people in my family."},{"jp":"かぞくは十人です。","en":"There are 10 people in my family."},{"jp":"かぞくは何人ですか。","en":"How many people are in your family?"}],"freeWritingPrompt":"Write how many people are in your family: かぞくは＿＿＿です。 Then ask three classmates かぞくは何人ですか。 and write each answer as a full sentence.","freeWritingExample":"かぞくは五人です。","clozeSet":[{"jpBefore":"かぞくは","blank":"三","jpAfter":"人です。","options":["三","五","七"],"kind":"vocabulary","en":"There are three people in my family."},{"jpBefore":"かぞくは何","blank":"人","jpAfter":"ですか。","options":["人","才","は"],"kind":"grammar","en":"How many people are in your family?"},{"jpBefore":"かぞく","blank":"は","jpAfter":"五人です。","options":["は","の","と"],"kind":"particle","en":"There are five people in my family."},{"jpBefore":"かぞくは三人","blank":"です","jpAfter":"。","options":["です","か","は"],"kind":"grammar","en":"There are three people in my family."},{"jpBefore":"かぞくは","blank":"何","jpAfter":"人ですか。","options":["何","三","だれ"],"kind":"vocabulary","en":"How many people are in your family?"}],"scrambleSet":[{"answer":"かぞくは三人です。","chunks":["かぞく","は","三","人","です。"],"en":"There are three people in my family."},{"answer":"かぞくは何人ですか。","chunks":["かぞく","は","何","人","です","か。"],"en":"How many people are in your family?"},{"answer":"かぞくは五人です。","chunks":["かぞく","は","五","人","です。"],"en":"There are five people in my family."},{"answer":"かぞくは四人です。","chunks":["かぞく","は","四","人","です。"],"en":"There are four people in my family."},{"answer":"かぞくは六人です。","chunks":["かぞく","は","六","人","です。"],"en":"There are six people in my family."}]},{"key":"live","title":"Asking & Saying Where You Live","roleLabels":{"place":"place (どこ = where)"},"tokens":[{"tokens":[{"t":"どこ","r":"place"},{"t":"に","r":"particle"},{"t":"住んで","r":"verbStem","s":"すんで"},{"t":"います","r":"verbEnding"},{"t":"か。","r":"particle"}],"en":"Where do you live?","say":"どこにすんでいますか。"},{"tokens":[{"t":"とうきょう","r":"place"},{"t":"に","r":"particle"},{"t":"住んで","r":"verbStem","s":"すんで"},{"t":"います。","r":"verbEnding"}],"en":"I live in Tokyo.","say":"とうきょうにすんでいます。"},{"tokens":[{"t":"日本","r":"place","s":"にほん"},{"t":"の","r":"particle"},{"t":"とうきょう","r":"place"},{"t":"に","r":"particle"},{"t":"住んで","r":"verbStem","s":"すんで"},{"t":"います。","r":"verbEnding"}],"en":"I live in Tokyo, Japan.","say":"にほんのとうきょうにすんでいます。"},{"tokens":[{"t":"おーすとらりあ","r":"place"},{"t":"の","r":"particle"},{"t":"しどにー","r":"place"},{"t":"に","r":"particle"},{"t":"住んで","r":"verbStem","s":"すんで"},{"t":"います。","r":"verbEnding"}],"en":"I live in Sydney, Australia.","say":"おーすとらりあのしどにーにすんでいます。"},{"tokens":[{"t":"中国","r":"place","s":"ちゅうごく"},{"t":"の","r":"particle"},{"t":"しゃんはい","r":"place"},{"t":"に","r":"particle"},{"t":"住んで","r":"verbStem","s":"すんで"},{"t":"います。","r":"verbEnding"}],"en":"I live in Shanghai, China.","say":"ちゅうごくのしゃんはいにすんでいます。"},{"tokens":[{"t":"ぶりすべん","r":"place"},{"t":"の","r":"particle"},{"t":"じんだりー","r":"place"},{"t":"に","r":"particle"},{"t":"住んで","r":"verbStem","s":"すんで"},{"t":"います。","r":"verbEnding"}],"en":"I live in Jindalee, Brisbane. (English puts the smaller place first; Japanese starts with the bigger one.)","say":"ぶりすべんのじんだりーにすんでいます。"}],"whyPrompt":"The Japanese sentence goes 日本の とうきょう (Japan → Tokyo) but the English says “Tokyo, Japan”. What job does の do in the Japanese order, and why do you think に comes after the smaller place?","drillsJtoE":[{"jp":"とうきょうに住んでいます。","en":"I live in Tokyo."},{"jp":"日本のとうきょうに住んでいます。","en":"I live in Tokyo, Japan."},{"jp":"中国のしゃんはいに住んでいます。","en":"I live in Shanghai, China."},{"jp":"おーすとらりあのしどにーに住んでいます。","en":"I live in Sydney, Australia."},{"jp":"ぶりすべんのとぅうぉんに住んでいます。","en":"I live in Toowong, Brisbane."},{"jp":"ぶりすべんのしゃーうっどに住んでいます。","en":"I live in Sherwood, Brisbane."},{"jp":"ぶりすべんのちぇるまーに住んでいます。","en":"I live in Chelmer, Brisbane."},{"jp":"ぶりすべんのみるとんに住んでいます。","en":"I live in Milton, Brisbane."},{"jp":"ぶりすべんのけんもあに住んでいます。","en":"I live in Kenmore, Brisbane."},{"jp":"ぶりすべんのふぃぐ・とりー・ぽけっとに住んでいます。","en":"I live in Fig Tree Pocket, Brisbane."}],"drillsEtoJ":[{"jp":"おーすとらりあのぶりすべんに住んでいます。","en":"I live in Brisbane, Australia."},{"jp":"日本のとうきょうに住んでいます。","en":"I live in Tokyo, Japan."},{"jp":"おーすとらりあのしどにーに住んでいます。","en":"I live in Sydney, Australia."},{"jp":"中国のしゃんはいに住んでいます。","en":"I live in Shanghai, China."},{"jp":"ぶりすべんのじんだりーに住んでいます。","en":"I live in Jindalee, Brisbane."},{"jp":"ぶりすべんのぐれーすびるに住んでいます。","en":"I live in Graceville, Brisbane."},{"jp":"ぶりすべんのいえろんがに住んでいます。","en":"I live in Yeronga, Brisbane."},{"jp":"ぶりすべんのばーどんに住んでいます。","en":"I live in Bardon, Brisbane."},{"jp":"ぶりすべんのちゃぺる・ひるに住んでいます。","en":"I live in Chapel Hill, Brisbane."},{"jp":"どこに住んでいますか。","en":"Where do you live?"}],"freeWritingPrompt":"Write where you live: ぶりすべんの＿＿＿に住んでいます。 Then write a second sentence about a country and a city from this unit where you would like to live.","freeWritingExample":"ぶりすべんのじんだりーに住んでいます。 / 日本のとうきょうに住んでいます。","clozeSet":[{"jpBefore":"","blank":"どこ","jpAfter":"に住んでいますか。","options":["どこ","だれ","何"],"kind":"vocabulary","en":"Where do you live?"},{"jpBefore":"日本","blank":"の","jpAfter":"とうきょうに住んでいます。","options":["の","に","は"],"kind":"particle","en":"I live in Tokyo, Japan."},{"jpBefore":"日本のとうきょう","blank":"に","jpAfter":"住んでいます。","options":["に","の","と"],"kind":"particle","en":"I live in Tokyo, Japan."},{"jpBefore":"","blank":"中国","jpAfter":"のしゃんはいに住んでいます。","options":["中国","日本","おーすとらりあ"],"kind":"vocabulary","en":"I live in Shanghai, China."},{"jpBefore":"おーすとらりあのしどにーに","blank":"住んでいます","jpAfter":"。","options":["住んでいます","どこ","何人"],"kind":"grammar","en":"I live in Sydney, Australia."}],"scrambleSet":[{"answer":"どこに住んでいますか。","chunks":["どこ","に","住んで","います","か。"],"en":"Where do you live?"},{"answer":"とうきょうに住んでいます。","chunks":["とうきょう","に","住んで","います。"],"en":"I live in Tokyo."},{"answer":"日本のとうきょうに住んでいます。","chunks":["日本","の","とうきょう","に","住んで","います。"],"en":"I live in Tokyo, Japan."},{"answer":"おーすとらりあのぶりすべんに住んでいます。","chunks":["おーすとらりあ","の","ぶりすべん","に","住んで","います。"],"en":"I live in Brisbane, Australia."},{"answer":"中国のしゃんはいに住んでいます。","chunks":["中国","の","しゃんはい","に","住んで","います。"],"en":"I live in Shanghai, China."}]}],"allVocabForGames":[{"jp":"一","kana":"いち","en":"One (1)","accept":["1","one"],"short":"1"},{"jp":"二","kana":"に","en":"Two (2)","accept":["2","two"],"short":"2"},{"jp":"三","kana":"さん","en":"Three (3)","accept":["3","three"],"short":"3"},{"jp":"四","kana":"よん","en":"Four (4)","alts":["し","よ"],"accept":["4","four"],"short":"4"},{"jp":"五","kana":"ご","en":"Five (5)","accept":["5","five"],"short":"5"},{"jp":"六","kana":"ろく","en":"Six (6)","accept":["6","six"],"short":"6"},{"jp":"七","kana":"なな","en":"Seven (7)","alts":["しち"],"accept":["7","seven"],"short":"7"},{"jp":"八","kana":"はち","en":"Eight (8)","alts":["はっ"],"accept":["8","eight"],"short":"8"},{"jp":"九","kana":"きゅう","en":"Nine (9)","alts":["く"],"accept":["9","nine"],"short":"9"},{"jp":"十","kana":"じゅう","en":"Ten (10)","alts":["じゅ"],"accept":["10","ten"],"short":"10"},{"jp":"十一","kana":"じゅういち","en":"Eleven (11)","accept":["11","eleven"],"short":"11"},{"jp":"十二","kana":"じゅうに","en":"Twelve (12)","accept":["12","twelve"],"short":"12"},{"jp":"十三","kana":"じゅうさん","en":"Thirteen (13)","accept":["13","thirteen"],"short":"13"},{"jp":"十四","kana":"じゅうよん","en":"Fourteen (14)","alts":["じゅうし"],"accept":["14","fourteen"],"short":"14"},{"jp":"十五","kana":"じゅうご","en":"Fifteen (15)","accept":["15","fifteen"],"short":"15"},{"jp":"十六","kana":"じゅうろく","en":"Sixteen (16)","accept":["16","sixteen"],"short":"16"},{"jp":"十七","kana":"じゅうなな","en":"Seventeen (17)","alts":["じゅうしち"],"accept":["17","seventeen"],"short":"17"},{"jp":"十八","kana":"じゅうはち","en":"Eighteen (18)","accept":["18","eighteen"],"short":"18"},{"jp":"十九","kana":"じゅうきゅう","en":"Nineteen (19)","alts":["じゅうく"],"accept":["19","nineteen"],"short":"19"},{"jp":"二十","kana":"にじゅう","en":"Twenty (20)","accept":["20","twenty"],"short":"20"},{"jp":"三十","kana":"さんじゅう","en":"Thirty (30)","accept":["30","thirty"],"short":"30"},{"jp":"四十","kana":"よんじゅう","en":"Forty (40)","alts":["しじゅう"],"accept":["40","forty"],"short":"40"},{"jp":"五十","kana":"ごじゅう","en":"Fifty (50)","accept":["50","fifty"],"short":"50"},{"jp":"六十","kana":"ろくじゅう","en":"Sixty (60)","accept":["60","sixty"],"short":"60"},{"jp":"七十","kana":"ななじゅう","en":"Seventy (70)","alts":["しちじゅう"],"accept":["70","seventy"],"short":"70"},{"jp":"八十","kana":"はちじゅう","en":"Eighty (80)","accept":["80","eighty"],"short":"80"},{"jp":"九十","kana":"きゅうじゅう","en":"Ninety (90)","alts":["くじゅう"],"accept":["90","ninety"],"short":"90"},{"jp":"二十一","kana":"にじゅういち","en":"Twenty-one (21)","accept":["21","twenty-one","twenty one"],"short":"21"},{"jp":"三十五","kana":"さんじゅうご","en":"Thirty-five (35)","accept":["35","thirty-five","thirty five"],"short":"35"},{"jp":"四十八","kana":"よんじゅうはち","en":"Forty-eight (48)","accept":["48","forty-eight","forty eight"],"short":"48"},{"jp":"五十九","kana":"ごじゅうきゅう","en":"Fifty-nine (59)","accept":["59","fifty-nine","fifty nine"],"short":"59"},{"jp":"六十七","kana":"ろくじゅうなな","en":"Sixty-seven (67)","accept":["67","sixty-seven","sixty seven"],"short":"67"},{"jp":"七十四","kana":"ななじゅうよん","en":"Seventy-four (74)","accept":["74","seventy-four","seventy four"],"short":"74"},{"jp":"八十六","kana":"はちじゅうろく","en":"Eighty-six (86)","accept":["86","eighty-six","eighty six"],"short":"86"},{"jp":"九十九","kana":"きゅうじゅうきゅう","en":"Ninety-nine (99)","accept":["99","ninety-nine","ninety nine"],"short":"99"},{"jp":"一才","kana":"いっさい","en":"1 year old","accept":["1","one","one year old"],"short":"1"},{"jp":"二才","kana":"にさい","en":"2 years old","accept":["2","two","two years old"],"short":"2"},{"jp":"三才","kana":"さんさい","en":"3 years old","accept":["3","three","three years old"],"short":"3"},{"jp":"四才","kana":"よんさい","en":"4 years old","accept":["4","four","four years old"],"short":"4"},{"jp":"五才","kana":"ごさい","en":"5 years old","accept":["5","five","five years old"],"short":"5"},{"jp":"六才","kana":"ろくさい","en":"6 years old","accept":["6","six","six years old"],"short":"6"},{"jp":"七才","kana":"ななさい","en":"7 years old","accept":["7","seven","seven years old"],"short":"7"},{"jp":"八才","kana":"はっさい","en":"8 years old","accept":["8","eight","eight years old"],"short":"8"},{"jp":"九才","kana":"きゅうさい","en":"9 years old","accept":["9","nine","nine years old"],"short":"9"},{"jp":"十才","kana":"じゅっさい","en":"10 years old","accept":["10","ten","ten years old"],"short":"10"},{"jp":"十一才","kana":"じゅういっさい","en":"11 years old","accept":["11","eleven","eleven years old"],"short":"11"},{"jp":"十二才","kana":"じゅうにさい","en":"12 years old","accept":["12","twelve","twelve years old"],"short":"12"},{"jp":"十三才","kana":"じゅうさんさい","en":"13 years old","accept":["13","thirteen","thirteen years old"],"short":"13"},{"jp":"十四才","kana":"じゅうよんさい","en":"14 years old","accept":["14","fourteen","fourteen years old"],"short":"14"},{"jp":"十五才","kana":"じゅうごさい","en":"15 years old","accept":["15","fifteen","fifteen years old"],"short":"15"},{"jp":"十六才","kana":"じゅうろくさい","en":"16 years old","accept":["16","sixteen","sixteen years old"],"short":"16"},{"jp":"十七才","kana":"じゅうななさい","en":"17 years old","accept":["17","seventeen","seventeen years old"],"short":"17"},{"jp":"十八才","kana":"じゅうはっさい","en":"18 years old","accept":["18","eighteen","eighteen years old"],"short":"18"},{"jp":"十九才","kana":"じゅうきゅうさい","en":"19 years old","accept":["19","nineteen","nineteen years old"],"short":"19"},{"jp":"二十才","kana":"はたち","en":"20 years old","accept":["20","twenty","twenty years old"],"short":"20"},{"jp":"二十一才","kana":"にじゅういっさい","en":"21 years old","accept":["21","twenty-one","twenty-one years old","twenty one years old"],"short":"21"},{"jp":"才","kana":"さい","en":"Years old (age counter)","accept":["years old","year old","years","age"]},{"jp":"何才","kana":"なんさい","en":"How old? (formal)","accept":["how old","how old?","how old are you","how old are you?"]},{"jp":"おいくつ","kana":null,"en":"How old? (polite)","accept":["how old","how old?","how old are you","how old are you?"]},{"jp":"かぞく","kana":null,"en":"Family","accept":["family"]},{"jp":"私","kana":"わたし","en":"I / me"},{"jp":"はは","kana":null,"en":"Mum","accept":["mom","mother"]},{"jp":"ちち","kana":null,"en":"Dad","accept":["father"]},{"jp":"あね","kana":null,"en":"Older sister","accept":["big sister","elder sister","older sis"]},{"jp":"あに","kana":null,"en":"Older brother","accept":["big brother","elder brother","older bro"]},{"jp":"いもうと","kana":null,"en":"Little sister","accept":["younger sister","little sis"],"mnemonic":"Who is **immortal** and will always annoy you? **IMO**UTO — your little sister!"},{"jp":"おとうと","kana":null,"en":"Little brother","accept":["younger brother","little bro"]},{"jp":"あかちゃん","kana":null,"en":"Baby","mnemonic":"Who has really, really **red** cheeks? **AKA**CHAN — a baby! (aka = red)"},{"jp":"おじいさん","kana":null,"en":"Grandpa","accept":["grandfather"]},{"jp":"おばあさん","kana":null,"en":"Grandma","accept":["grandmother"]},{"jp":"だれ","kana":null,"en":"Who"},{"jp":"一人","kana":"ひとり","en":"1 person","accept":["1","one","one person"],"short":"1"},{"jp":"二人","kana":"ふたり","en":"2 people","accept":["2","two","two people"],"short":"2"},{"jp":"三人","kana":"さんにん","en":"3 people","accept":["3","three","three people"],"short":"3"},{"jp":"四人","kana":"よにん","en":"4 people","accept":["4","four","four people"],"short":"4"},{"jp":"五人","kana":"ごにん","en":"5 people","accept":["5","five","five people"],"short":"5"},{"jp":"六人","kana":"ろくにん","en":"6 people","accept":["6","six","six people"],"short":"6"},{"jp":"七人","kana":"しちにん","en":"7 people","alts":["ななにん"],"accept":["7","seven","seven people"],"short":"7"},{"jp":"八人","kana":"はちにん","en":"8 people","accept":["8","eight","eight people"],"short":"8"},{"jp":"九人","kana":"きゅうにん","en":"9 people","alts":["くにん"],"accept":["9","nine","nine people"],"short":"9"},{"jp":"十人","kana":"じゅうにん","en":"10 people","accept":["10","ten","ten people"],"short":"10"},{"jp":"何人","kana":"なんにん","en":"How many people?","accept":["how many","how many people","how many people?","how many?"]},{"jp":"どこ","kana":null,"en":"Where","accept":["where?"]},{"jp":"住んでいます","kana":"すんでいます","en":"Live (polite)","accept":["live","live in","to live","am living","live (polite)"]},{"jp":"日本","kana":"にほん","en":"Japan","note":"日 = sun and 本 = origin — Japan is the “land of the rising sun”."},{"jp":"中国","kana":"ちゅうごく","en":"China","note":"中 = middle and 国 = country — China is the “middle country”."},{"jp":"おーすとらりあ","kana":null,"en":"Australia","note":"Its standard spelling uses katakana: オーストラリア."},{"jp":"とうきょう","kana":null,"en":"Tokyo","note":"In kanji: 東京."},{"jp":"しゃんはい","kana":null,"en":"Shanghai","note":"In kanji: 上海."},{"jp":"しどにー","kana":null,"en":"Sydney","note":"Usually written in katakana: シドニー."},{"jp":"ぶりすべん","kana":null,"en":"Brisbane","note":"Usually written in katakana: ブリスベン."},{"jp":"じんだりー","kana":null,"en":"Jindalee"},{"jp":"けんもあ","kana":null,"en":"Kenmore"},{"jp":"ふぃぐ・とりー・ぽけっと","kana":null,"en":"Fig Tree Pocket"},{"jp":"あるじぇすたー","kana":null,"en":"Algester"},{"jp":"すとれっとん","kana":null,"en":"Stretton"},{"jp":"うぇすと・れーく","kana":null,"en":"Westlake","accept":["west lake"]},{"jp":"みるとん","kana":null,"en":"Milton"},{"jp":"ちぇるまー","kana":null,"en":"Chelmer"},{"jp":"しゃーうっど","kana":null,"en":"Sherwood"},{"jp":"とぅうぉん","kana":null,"en":"Toowong"},{"jp":"ぐれーすびる","kana":null,"en":"Graceville"},{"jp":"ふぉれすと・でーる","kana":null,"en":"Forestdale","accept":["forest dale"]},{"jp":"ちゃぺる・ひる","kana":null,"en":"Chapel Hill"},{"jp":"せぶんてぃーん・まいる・ろっくす","kana":null,"en":"Seventeen Mile Rocks","accept":["17 mile rocks"]},{"jp":"ふぉれすと・れーく","kana":null,"en":"Forest Lake"},{"jp":"ぷれんべーる","kana":null,"en":"Pullenvale","accept":["pullen vale"]},{"jp":"ぶるっくうぉーたー","kana":null,"en":"Brookwater"},{"jp":"いえろんが","kana":null,"en":"Yeronga"},{"jp":"からむべーる","kana":null,"en":"Calamvale"},{"jp":"もるーか","kana":null,"en":"Moorooka"},{"jp":"ばーどん","kana":null,"en":"Bardon"},{"jp":"もぎる","kana":null,"en":"Mogill"},{"jp":"ぱーきんそん","kana":null,"en":"Parkinson"},{"jp":"まうんと・ぐらばっと・いーすと","kana":null,"en":"Mount Gravatt East","accept":["mt gravatt east"]},{"jp":"さにーばん・くひるず","kana":null,"en":"Sunnybank Hills"},{"jp":"こーぬびあ","kana":null,"en":"Cornubia"},{"jp":"ろーちゅでーる","kana":null,"en":"Rochedale"}],"boardTemplates":{"numbers10":{"slots":[{"id":"s0","pool":"numbers10","default":0},{"id":"s1","pool":"numbers10","default":1},{"id":"s2","pool":"numbers10","default":2},{"id":"s3","pool":"numbers10","default":3},{"id":"s4","pool":"numbers10","default":4},{"id":"s5","pool":"numbers10","default":5},{"id":"s6","pool":"numbers10","default":6},{"id":"s7","pool":"numbers10","default":7},{"id":"s8","pool":"numbers10","default":8},{"id":"s9","pool":"numbers10","default":9}],"rows":[{"a":{"tpl":"かぞえましょう！","enTpl":"Let's count!"},"b":{"tpl":"はい！|{s0}|、|{s1}|。","enTpl":"Yes! {s0_short}, {s1_short}."}},{"a":{"tpl":"{s2}|、|{s3}|。","enTpl":"{s2_short}, {s3_short}."},"b":{"tpl":"{s4}|、|{s5}|。","enTpl":"{s4_short}, {s5_short}."}},{"a":{"tpl":"{s6}|、|{s7}|。","enTpl":"{s6_short}, {s7_short}."},"b":{"tpl":"{s8}|、|{s9}|！","enTpl":"{s8_short}, {s9_short}!"}},{"a":{"tpl":"一、三、五、七、九。","enTpl":"1, 3, 5, 7, 9.","say":"いち、さん、ご、なな、きゅう。"},"b":{"tpl":"二、四、六、八、十。","enTpl":"2, 4, 6, 8, 10.","say":"に、よん、ろく、はち、じゅう。"}},{"a":{"tpl":"十、九、八、七、六。","enTpl":"10, 9, 8, 7, 6.","say":"じゅう、きゅう、はち、なな、ろく。"},"b":{"tpl":"五、四、三、二、一！","enTpl":"5, 4, 3, 2, 1!","say":"ご、よん、さん、に、いち。"}}]},"numbers99":{"slots":[{"id":"s0","pool":"numbers99","default":0},{"id":"s1","pool":"numbers99","default":1},{"id":"s2","pool":"numbers99","default":2},{"id":"s3","pool":"numbers99","default":3},{"id":"s4","pool":"numbers99","default":4},{"id":"s5","pool":"numbers99","default":5},{"id":"s6","pool":"numbers99","default":6},{"id":"s7","pool":"numbers99","default":7},{"id":"s8","pool":"numbers99","default":8},{"id":"s9","pool":"numbers99","default":9},{"id":"s10","pool":"numbers99","default":10},{"id":"s11","pool":"numbers99","default":11},{"id":"s12","pool":"numbers99","default":12},{"id":"s13","pool":"numbers99","default":13},{"id":"s14","pool":"numbers99","default":14},{"id":"s15","pool":"numbers99","default":15},{"id":"s16","pool":"numbers99","default":16},{"id":"s17","pool":"numbers99","default":17},{"id":"s18","pool":"numbers99","default":18},{"id":"s19","pool":"numbers99","default":19},{"id":"s20","pool":"numbers99","default":20},{"id":"s21","pool":"numbers99","default":21},{"id":"s22","pool":"numbers99","default":22},{"id":"s23","pool":"numbers99","default":23},{"id":"s24","pool":"numbers99","default":24}],"rows":[{"a":{"tpl":"かぞえましょう！","enTpl":"Let's count!"},"b":{"tpl":"はい！|{s0}|、|{s1}|、|{s2}|。","enTpl":"Yes! {s0_short}, {s1_short}, {s2_short}."}},{"a":{"tpl":"{s3}|、|{s4}|、|{s5}|。","enTpl":"{s3_short}, {s4_short}, {s5_short}."},"b":{"tpl":"{s6}|、|{s7}|、|{s8}|。","enTpl":"{s6_short}, {s7_short}, {s8_short}."}},{"a":{"tpl":"{s9}|、|{s10}|、|{s11}|。","enTpl":"{s9_short}, {s10_short}, {s11_short}."},"b":{"tpl":"{s12}|、|{s13}|。","enTpl":"{s12_short}, {s13_short}."}},{"a":{"tpl":"{s14}|、|{s15}|、|{s16}|。","enTpl":"{s14_short}, {s15_short}, {s16_short}."},"b":{"tpl":"{s17}|、|{s18}|。","enTpl":"{s17_short}, {s18_short}."}},{"a":{"tpl":"{s19}|、|{s20}|、|{s21}|。","enTpl":"{s19_short}, {s20_short}, {s21_short}."},"b":{"tpl":"{s22}|、|{s23}|、|{s24}|！","enTpl":"{s22_short}, {s23_short}, {s24_short}!"}}]},"age":{"slots":[{"id":"a0","pool":"ages","default":12,"options":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},{"id":"a1","pool":"ages","default":11,"options":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},{"id":"a2","pool":"ages","default":14,"options":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},{"id":"a3","pool":"ages","default":8,"options":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},{"id":"a4","pool":"ages","default":15,"options":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]}],"rows":[{"a":{"tpl":"何才|です|か|。","enTpl":"How old are you?","say":"なんさいですか。"},"b":{"tpl":"わたし|は|{a0}|です|。","enTpl":"I am {a0_en}."}},{"a":{"tpl":"おいくつ|です|か|。","enTpl":"How old are you? (polite)"},"b":{"tpl":"わたし|は|{a1}|です|。","enTpl":"I am {a1_en}."}},{"a":{"tpl":"何才|です|か|。","enTpl":"How old are you?","say":"なんさいですか。"},"b":{"tpl":"わたし|は|{a2}|です|。","enTpl":"I am {a2_en}."}},{"a":{"tpl":"おいくつ|です|か|。","enTpl":"How old are you? (polite)"},"b":{"tpl":"わたし|は|{a3}|です|。","enTpl":"I am {a3_en}."}},{"a":{"tpl":"何才|です|か|。","enTpl":"How old are you?","say":"なんさいですか。"},"b":{"tpl":"わたし|は|{a4}|です|。","enTpl":"I am {a4_en}."}}]},"family":{"slots":[{"id":"f0","pool":"family","default":2,"options":[2,3,4,5,6,7,8,9,10]},{"id":"f1","pool":"family","default":3,"options":[2,3,4,5,6,7,8,9,10]},{"id":"f2","pool":"family","default":4,"options":[2,3,4,5,6,7,8,9,10]},{"id":"f3","pool":"family","default":6,"options":[2,3,4,5,6,7,8,9,10]},{"id":"f4","pool":"family","default":10,"options":[2,3,4,5,6,7,8,9,10]}],"rows":[{"a":{"tpl":"かぞく|は|だれ|です|か|。","enTpl":"Who is in your family?"},"b":{"tpl":"かぞく|は|{f0}|と|私|です|。","enTpl":"My family is {f0_en_lower} and me.","say":"かぞくは{f0}とわたしです。"}},{"a":{"tpl":"そうですか|。|かぞく|は|だれ|です|か|。","enTpl":"I see. Who is in your family?"},"b":{"tpl":"かぞく|は|{f0}|と|{f1}|と|私|です|。","enTpl":"My family is {f0_en_lower}, {f1_en_lower} and me.","say":"かぞくは{f0}と{f1}とわたしです。"}},{"a":{"tpl":"そうですか|。|かぞく|は|だれ|です|か|。","enTpl":"I see. Who is in your family?"},"b":{"tpl":"かぞく|は|{f0}|と|{f1}|と|{f2}|と|私|です|。","enTpl":"My family is {f0_en_lower}, {f1_en_lower}, {f2_en_lower} and me.","say":"かぞくは{f0}と{f1}と{f2}とわたしです。"}},{"a":{"tpl":"そうですか|。|かぞく|は|だれ|です|か|。","enTpl":"I see. Who is in your family?"},"b":{"tpl":"かぞく|は|{f0}|と|{f1}|と|{f2}|と|{f3}|と|私|です|。","enTpl":"My family is {f0_en_lower}, {f1_en_lower}, {f2_en_lower}, {f3_en_lower} and me.","say":"かぞくは{f0}と{f1}と{f2}と{f3}とわたしです。"}},{"a":{"tpl":"そうですか|。|かぞく|は|だれ|です|か|。","enTpl":"I see. Who is in your family?"},"b":{"tpl":"かぞく|は|{f0}|と|{f1}|と|{f2}|と|{f3}|と|{f4}|と|私|です|。","enTpl":"My family is {f0_en_lower}, {f1_en_lower}, {f2_en_lower}, {f3_en_lower}, {f4_en_lower} and me.","say":"かぞくは{f0}と{f1}と{f2}と{f3}と{f4}とわたしです。"}}]},"people":{"slots":[{"id":"p0","pool":"people","default":2,"options":[0,1,2,3,4,5,6,7,8,9]},{"id":"f0","pool":"family","default":2,"options":[2,3,4,5,6,7,8,9,10]},{"id":"f1","pool":"family","default":3,"options":[2,3,4,5,6,7,8,9,10]},{"id":"a0","pool":"ages","default":12,"options":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},{"id":"f2","pool":"family","default":6,"options":[4,5,6,7,9,10]},{"id":"a1","pool":"ages","default":8,"options":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},{"id":"f3","pool":"family","default":5,"options":[4,5,6,7,9,10]},{"id":"a2","pool":"ages","default":15,"options":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]}],"rows":[{"a":{"tpl":"かぞく|は|何人|です|か|。","enTpl":"How many people are in your family?","say":"かぞくはなんにんですか。"},"b":{"tpl":"かぞく|は|{p0}|です|。","enTpl":"My family has {p0_en}."}},{"a":{"tpl":"そうですか|。|かぞく|は|だれ|です|か|。","enTpl":"I see. Who is in your family?"},"b":{"tpl":"かぞく|は|{f0}|と|{f1}|と|私|です|。","enTpl":"My family is {f0_en_lower}, {f1_en_lower} and me.","say":"かぞくは{f0}と{f1}とわたしです。"}},{"a":{"tpl":"何才|です|か|。","enTpl":"How old are you?","say":"なんさいですか。"},"b":{"tpl":"わたし|は|{a0}|です|。","enTpl":"I am {a0_en}."}},{"a":{"tpl":"{f2}|は|何才|です|か|。","enTpl":"How old is your {f2_en_lower}?","say":"{f2}はなんさいですか。"},"b":{"tpl":"{f2}|は|{a1}|です|。","enTpl":"My {f2_en_lower} is {a1_en}."}},{"a":{"tpl":"そうですか|。|{f3}|は|何才|です|か|。","enTpl":"I see. How old is your {f3_en_lower}?","say":"そうですか。{f3}はなんさいですか。"},"b":{"tpl":"{f3}|は|{a2}|です|。","enTpl":"My {f3_en_lower} is {a2_en}."}}]},"live":{"slots":[{"id":"c0","pool":"places","default":2,"options":[2,3,4]},{"id":"t0","pool":"places","default":5,"options":[5,6,7,8]},{"id":"c1","pool":"places","default":3,"options":[2,3,4]},{"id":"t1","pool":"places","default":6,"options":[5,6,7,8]},{"id":"s0","pool":"suburbs","default":0},{"id":"a0","pool":"ages","default":12,"options":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},{"id":"p0","pool":"people","default":3,"options":[0,1,2,3,4,5,6,7,8,9]}],"rows":[{"a":{"tpl":"どこ|に|住んでいます|か|。","enTpl":"Where do you live?","say":"どこにすんでいますか。"},"b":{"tpl":"{c0}|の|{t0}|に|住んでいます|。","enTpl":"I live in {t0_en}, {c0_en}.","say":"{c0}の{t0}にすんでいます。"}},{"a":{"tpl":"そうですか|。|どこ|に|住んでいます|か|。","enTpl":"I see. Where do you live?","say":"そうですか。どこにすんでいますか。"},"b":{"tpl":"{c1}|の|{t1}|に|住んでいます|。","enTpl":"I live in {t1_en}, {c1_en}.","say":"{c1}の{t1}にすんでいます。"}},{"a":{"tpl":"どこ|に|住んでいます|か|。","enTpl":"Where do you live?","say":"どこにすんでいますか。"},"b":{"tpl":"ぶりすべん|の|{s0}|に|住んでいます|。","enTpl":"I live in {s0_en}, Brisbane.","say":"ぶりすべんの{s0}にすんでいます。"}},{"a":{"tpl":"何才|です|か|。","enTpl":"How old are you?","say":"なんさいですか。"},"b":{"tpl":"わたし|は|{a0}|です|。","enTpl":"I am {a0_en}."}},{"a":{"tpl":"かぞく|は|何人|です|か|。","enTpl":"How many people are in your family?","say":"かぞくはなんにんですか。"},"b":{"tpl":"かぞく|は|{p0}|です|。","enTpl":"My family has {p0_en}."}}]}}}</script>
+<script>
+const DATA = JSON.parse(document.getElementById('siteData').textContent);
+const POOL_LABELS = {"numbers10": "Numbers 1–10", "numbers99": "Numbers 11–99", "ages": "Age", "family": "Family", "people": "Counting People", "places": "Where You Live", "suburbs": "Brisbane Suburbs"};
+function shuffleArr(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+function speak(text){ try{ const u = new SpeechSynthesisUtterance(text); u.lang='ja-JP'; u.rate=0.8; speechSynthesis.cancel(); speechSynthesis.speak(u);}catch(e){} }
+</script>
+<script>
+// ===================== ROUTER =====================
+const MENU = [
+  {
+    title: "Build Knowledge",
+    items: [
+      { id: "vocab-landing", icon: "📚", label: "Vocabulary Mode", desc: "Learn each word: listen, check the meaning, and trace it in the practice boxes." },
+      { id: "grammar-landing", icon: "🧩", label: "Grammar Mode", desc: "Explanations, cloze, arrange-the-words, drills and free writing for every pattern." },
+    ],
+  },
+  {
+    title: "Consolidate & Play",
+    items: [
+      { id: "flashcards", icon: "🗂️", label: "Flashcard Mode", desc: "Flip and type: Japanese↔English, plus dedicated reading and listening modes." },
+      { id: "writing", icon: "✏️", label: "Writing Practice", desc: "See the English, write the Japanese from memory, then self-check." },
+      { id: "board", icon: "💬", label: "Talking Board", desc: "Practise real conversations and build your own script." },
+      { id: "matching", icon: "🧲", label: "Timed Matching", desc: "Drag matching Japanese/English tiles together against the clock." },
+      { id: "typhoon", icon: "🌀", label: "Typhoon Game", desc: "Open houses, translate, and dodge the score-wiping typhoons." },
+      { id: "asteroid", icon: "🚀", label: "Asteroid Typing", desc: "Type the romaji reading before each asteroid crosses the line." },
+    ],
+  },
+];
+
+let view = "menu";
+let vocabPool = "numbers10";
+let grammarIdx = 0;
+let grammarSubTab = "explain";
+
+function goHome() { view = "menu"; renderTabs(); renderApp(); }
+function goTo(id) {
+  if (id === "vocab-landing") view = "vocab-landing";
+  else if (id === "grammar-landing") view = "grammar-landing";
+  else view = id;
+  renderTabs(); renderApp();
+}
+
+function renderTabs() {
+  const nav = document.getElementById("mainTabs");
+  nav.innerHTML = "";
+  if (view === "menu") { nav.style.display = "none"; return; }
+  nav.style.display = "flex";
+  nav.appendChild(el("button", { class: "back-btn", text: "← Back to Menu", onclick: goHome }));
+}
+
+function renderApp() {
+  const app = document.getElementById("app");
+  app.innerHTML = "";
+  const router = {
+    menu: renderMenu,
+    "vocab-landing": renderVocabLanding,
+    "vocab-content": renderVocabContent,
+    "grammar-landing": renderGrammarLanding,
+    "grammar-content": renderGrammarContent,
+    writing: renderWriting, board: renderBoard, matching: renderMatching, typhoon: renderTyphoon, asteroid: renderAsteroid, flashcards: renderFlashcards,
+  };
+  router[view](app);
+}
+
+function el(tag, opts = {}, children = []) {
+  const e = document.createElement(tag);
+  Object.entries(opts).forEach(([k, v]) => {
+    if (k === "class") e.className = v;
+    else if (k === "text") e.textContent = v;
+    else if (k === "html") e.innerHTML = v;
+    else if (k.startsWith("on")) { if (typeof v === "function") e.addEventListener(k.slice(2), v); }
+    else if (v === false || v === null || v === undefined) { /* skip: no attribute */ }
+    else e.setAttribute(k, v);
+  });
+  children.forEach((c) => c && e.appendChild(c));
+  return e;
+}
+
+// ===================== MENU =====================
+function renderMenu(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "What would you like to do?" }));
+  app.appendChild(el("p", { class: "section-desc", text: "Choose a section below to get started." }));
+  MENU.forEach((section) => {
+    app.appendChild(el("div", { class: "menu-group-title", style: "margin-top:20px;", text: section.title }));
+    const grid = el("div", { class: "grid cols-3" });
+    section.items.forEach((item) => {
+      const card = el("div", { class: "menu-card", onclick: () => goTo(item.id) });
+      card.appendChild(el("div", { class: "icon", text: item.icon }));
+      card.appendChild(el("h3", { text: item.label }));
+      card.appendChild(el("p", { text: item.desc }));
+      grid.appendChild(card);
+    });
+    app.appendChild(grid);
+  });
+}
+
+// Simple hiragana -> romaji converter (covers the kana used in this unit)
+const ROMAJI_MAP = {
+  "あ":"a","い":"i","う":"u","え":"e","お":"o","か":"ka","き":"ki","く":"ku","け":"ke","こ":"ko",
+  "が":"ga","ぎ":"gi","ぐ":"gu","げ":"ge","ご":"go","さ":"sa","し":"shi","す":"su","せ":"se","そ":"so",
+  "ざ":"za","じ":"ji","ず":"zu","ぜ":"ze","ぞ":"zo","た":"ta","ち":"chi","つ":"tsu","て":"te","と":"to",
+  "だ":"da","ぢ":"ji","づ":"zu","で":"de","ど":"do","な":"na","に":"ni","ぬ":"nu","ね":"ne","の":"no",
+  "は":"ha","ひ":"hi","ふ":"fu","へ":"he","ほ":"ho","ば":"ba","び":"bi","ぶ":"bu","べ":"be","ぼ":"bo",
+  "ぱ":"pa","ぴ":"pi","ぷ":"pu","ぺ":"pe","ぽ":"po","ま":"ma","み":"mi","む":"mu","め":"me","も":"mo",
+  "や":"ya","ゆ":"yu","よ":"yo","ら":"ra","り":"ri","る":"ru","れ":"re","ろ":"ro","わ":"wa","を":"wo","ん":"n",
+  "ー":"-","、":",","。":".","っ":"", // handled specially
+  "きゃ":"kya","きゅ":"kyu","きょ":"kyo","しゃ":"sha","しゅ":"shu","しょ":"sho","ちゃ":"cha","ちゅ":"chu","ちょ":"cho",
+  "にゃ":"nya","にゅ":"nyu","にょ":"nyo","ひゃ":"hya","ひゅ":"hyu","ひょ":"hyo","みゃ":"mya","みゅ":"myu","みょ":"myo",
+  "りゃ":"rya","りゅ":"ryu","りょ":"ryo","ぎゃ":"gya","ぎゅ":"gyu","ぎょ":"gyo","じゃ":"ja","じゅ":"ju","じょ":"jo",
+  "びゃ":"bya","びゅ":"byu","びょ":"byo","ぴゃ":"pya","ぴゅ":"pyu","ぴょ":"pyo",
+};
+
+Object.assign(ROMAJI_MAP, {
+  "てぃ":"ti","でぃ":"di","とぅ":"tu","どぅ":"du","ふぁ":"fa","ふぃ":"fi","ふぇ":"fe","ふぉ":"fo",
+  "うぃ":"wi","うぇ":"we","うぉ":"wo","しぇ":"she","じぇ":"je","ちぇ":"che",
+});
+const SMALL_KANA = "ゃゅょぁぃぅぇぉ";
+// Katakana -> hiragana (the long-vowel mark ー is left alone) so katakana words convert too.
+function toHiragana(s) {
+  return Array.from(s || "").map((c) => { const cp = c.codePointAt(0); return (cp >= 0x30A1 && cp <= 0x30F6) ? String.fromCodePoint(cp - 0x60) : c; }).join("");
+}
+function kanaToRomaji(input) {
+  if (!input) return "";
+  const chars = Array.from(toHiragana(input).replace(/・/g, ""));
+  let out = "";
+  for (let i = 0; i < chars.length; i++) {
+    const c = chars[i];
+    const next = chars[i + 1];
+    if (c === "っ" && next) {
+      const nextRomaji = ROMAJI_MAP[chars[i + 1] + (chars[i + 2] || "")] || ROMAJI_MAP[next] || "";
+      out += nextRomaji.charAt(0);
+      continue;
+    }
+    const twoChar = c + (next || "");
+    if (next && ROMAJI_MAP[twoChar] && SMALL_KANA.includes(next)) {
+      out += ROMAJI_MAP[twoChar];
+      i++;
+      continue;
+    }
+    out += ROMAJI_MAP[c] !== undefined ? ROMAJI_MAP[c] : c;
+  }
+  return out;
+}
+// Display form: long-vowel mark becomes a doubled vowel (しどにー -> shidonii).
+function romajiDisplay(kana) { return kanaToRomaji(kana).replace(/([aiueo])-/g, "$1$1"); }
+function normRomaji(s) { return (s || "").toLowerCase().replace(/[\s'’\-・.]/g, ""); }
+// All accepted typed spellings: long vowels may be doubled or collapsed (chuugoku / chugoku, toukyou / tokyo).
+function romajiForms(kana) {
+  const base = kanaToRomaji(kana);
+  const set = new Set();
+  [base, base.replace(/-/g, ""), base.replace(/([aiueo])-/g, "$1$1")].forEach((f) => {
+    set.add(normRomaji(f));
+    set.add(normRomaji(f.replace(/ou/g, "o").replace(/oo/g, "o").replace(/uu/g, "u")));
+  });
+  return set;
+}
+function romajiMatches(value, kana, alts) {
+  const val = normRomaji(value);
+  if (!val) return false;
+  return [kana].concat(alts || []).some((k) => romajiForms(k).has(val));
+}
+function stripJp(s) { return (s || "").replace(/[\s\u3000・]/g, "").toLowerCase(); }
+// "Type Japanese or romaji": accepts the kanji/main form, the kana reading, any other reading, or romaji.
+function jpAnswerMatches(value, v) {
+  const val = stripJp(value);
+  if (!val) return false;
+  const forms = [v.jp, v.kana].concat(v.alts || []).filter(Boolean).map(stripJp);
+  if (forms.includes(val)) return true;
+  return romajiMatches(value, v.kana || v.jp, v.alts);
+}
+function mdBold(s) { return (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\*\*(.+?)\*\*/g, "<b>$1</b>"); }
+
+// Mora splitter — small kana (ゃゅょ) attach to the preceding character, matching the booklet's tracing grids.
+function splitMorae(reading) {
+  const smalls = new Set(["ゃ", "ゅ", "ょ", "ぁ", "ぃ", "ぅ", "ぇ", "ぉ", "ャ", "ュ", "ョ", "ァ", "ィ", "ゥ", "ェ", "ォ"]);
+  const chars = Array.from(reading || "").filter((ch) => ch !== "・" && ch.trim() !== "");
+  const morae = [];
+  for (const ch of chars) {
+    if (smalls.has(ch) && morae.length > 0) morae[morae.length - 1] += ch;
+    else morae.push(ch);
+  }
+  return morae;
+}
+
+function shuffle(a) { return shuffleArr(a); }
+
+// Some vocab items list more than one valid English meaning (e.g. "Clubs / Activities",
+// "Break / Morning Tea"). Typing any single one of them counts as correct everywhere we check English answers.
+function matchesAnyMeaning(input, v) {
+  // v is a vocab item (or a plain English string). Some items list more than one valid English meaning
+  // ("One (1)", "Mum" / "Mother"): typing any one of them, or any listed `accept` form, counts as correct.
+  const val = (input || "").trim().toLowerCase().replace(/\s+/g, " ");
+  if (!val) return false;
+  const raw = typeof v === "string" ? v : v.en;
+  const forms = new Set();
+  const add = (s) => { s = (s || "").trim().toLowerCase().replace(/\s+/g, " "); if (s) forms.add(s); };
+  raw.split("/").forEach((part) => {
+    add(part);
+    add(part.replace(/\([^)]*\)/g, ""));
+    const m = part.match(/\((\d+)\)/);
+    if (m) add(m[1]);
+  });
+  if (typeof v !== "string" && v.accept) v.accept.forEach(add);
+  return forms.has(val);
+}
+
+// ===================== VOCABULARY MODE (was Learn & Trace) =====================
+function renderVocabLanding(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "Vocabulary Mode" }));
+  app.appendChild(el("p", { class: "section-desc", text: "Choose a word list to study." }));
+  const grid = el("div", { class: "grid cols-3" });
+  Object.keys(DATA.vocabPools).forEach((k) => {
+    const card = el("div", { class: "menu-card", onclick: () => { vocabPool = k; view = "vocab-content"; renderApp(); } });
+    card.appendChild(el("div", { class: "icon", text: "🈂️" }));
+    card.appendChild(el("h3", { text: POOL_LABELS[k] }));
+    card.appendChild(el("p", { text: DATA.vocabPools[k].length + " words" }));
+    grid.appendChild(card);
+  });
+  app.appendChild(grid);
+}
+
+function renderVocabContent(app) {
+  app.appendChild(el("button", { class: "back-btn", style: "margin-bottom:4px;", text: "← Choose a different word list", onclick: () => { view = "vocab-landing"; renderApp(); } }));
+  app.appendChild(el("h2", { class: "section-title", text: "Vocabulary Mode — " + POOL_LABELS[vocabPool] }));
+  app.appendChild(el("p", { class: "section-desc", text: "Click a word to hear it, hover to see the meaning, and trace it in the boxes below." }));
+  const poolNav = el("div", { class: "pool-select" });
+  Object.keys(DATA.vocabPools).forEach((k) => {
+    poolNav.appendChild(el("button", { class: "pool-btn" + (k === vocabPool ? " active" : ""), text: POOL_LABELS[k], onclick: () => { vocabPool = k; renderApp(); } }));
+  });
+  app.appendChild(poolNav);
+  if (DATA.poolNotes && DATA.poolNotes[vocabPool]) {
+    app.appendChild(el("div", { class: "card", style: "margin-bottom:16px;background:var(--pink-light);max-width:760px;font-size:.85rem;", html: "💡 " + mdBold(DATA.poolNotes[vocabPool]) }));
+  }
+  const grid = el("div", { class: "grid cols-1" });
+  DATA.vocabPools[vocabPool].forEach((v) => grid.appendChild(traceCard(v, vocabPool)));
+  app.appendChild(grid);
+}
+
+function traceCard(v, poolKey) {
+  const word = v.jp;
+  const reading = (v.kana || v.jp).replace(/・/g, ""); // kana reading — used for TTS and shown under kanji
+  const morae = splitMorae(reading);
+  const card = el("div", { class: "card" });
+  const top = el("div", { style: "display:flex;justify-content:space-between;align-items:center;" });
+  top.appendChild(el("span", {
+    class: "jp jp-word", "data-tooltip": v.en, style: "font-size:1.5rem;font-weight:700;color:var(--navy);",
+    text: word, onclick: () => speak(reading),
+  }));
+  top.appendChild(el("button", { class: "btn secondary", style: "padding:6px 12px;", text: "🔊", onclick: () => speak(reading) }));
+  card.appendChild(top);
+  if (v.kana) card.appendChild(el("div", { class: "jp small", style: "margin:4px 0;color:var(--text-sec);", text: v.kana }));
+  card.appendChild(el("div", { class: "small", style: "margin-bottom:2px;letter-spacing:.08em;font-weight:700;color:var(--text-sec);", text: romajiDisplay(reading).toUpperCase() }));
+  if (v.alts && v.alts.length) {
+    const alt = el("div", { class: "small", style: "margin:2px 0 4px;" }, [document.createTextNode("Other readings: ")]);
+    v.alts.forEach((a, i) => {
+      if (i) alt.appendChild(document.createTextNode("・"));
+      alt.appendChild(el("span", { class: "jp jp-word", style: "font-weight:700;color:var(--navy);", text: a, onclick: () => speak(a) }));
+    });
+    card.appendChild(alt);
+  }
+  card.appendChild(el("div", { class: "small", style: "margin-bottom:8px;", text: "Meaning: " + v.en }));
+  if (v.note) card.appendChild(el("div", { class: "small", style: "margin:-2px 0 8px;color:var(--text-sec);", text: "ℹ️ " + v.note }));
+  if (v.mnemonic) card.appendChild(el("div", { class: "small", style: "margin:0 0 8px;padding:8px 10px;background:var(--pink-light);border-radius:8px;color:var(--navy);", html: "💡 " + mdBold(v.mnemonic) }));
+  if (DATA.mnemonicInputPools && DATA.mnemonicInputPools.includes(poolKey)) {
+    card.appendChild(el("input", { type: "text", placeholder: "💡 Write your own mnemonic story…", style: "width:100%;margin:0 0 10px;font-size:.82rem;" }));
+  }
+  const row = el("div", { class: "mora-row" });
+  card.appendChild(row);
+  const clearBtn = el("button", { class: "btn secondary", style: "margin-top:8px;padding:6px 14px;font-size:.7rem;", text: "Clear" });
+  card.appendChild(clearBtn);
+  const clearFns = [];
+  morae.forEach((mora) => {
+    const canvas = el("canvas", { class: "mora-box", width: "170", height: "170" });
+    row.appendChild(canvas);
+    setTimeout(() => {
+      const ctx = canvas.getContext("2d");
+      function drawGuide() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = "#eef1f6"; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(canvas.width / 2, 4); ctx.lineTo(canvas.width / 2, canvas.height - 4);
+        ctx.moveTo(4, canvas.height / 2); ctx.lineTo(canvas.width - 4, canvas.height / 2); ctx.stroke();
+        ctx.font = "88px 'Noto Sans JP'"; ctx.fillStyle = "rgba(4,30,66,0.18)";
+        ctx.textAlign = "center"; ctx.textBaseline = "middle";
+        ctx.fillText(mora, canvas.width / 2, canvas.height / 2 + 2);
+      }
+      drawGuide();
+      clearFns.push(drawGuide);
+      let drawing = false, last = null;
+      function pos(e) { const r = canvas.getBoundingClientRect(); return { x: (e.clientX - r.left) * (canvas.width / r.width), y: (e.clientY - r.top) * (canvas.height / r.height) }; }
+      canvas.addEventListener("pointerdown", (e) => { drawing = true; last = pos(e); });
+      canvas.addEventListener("pointermove", (e) => {
+        if (!drawing) return;
+        const p = pos(e);
+        ctx.strokeStyle = "#041E42"; ctx.lineWidth = 5; ctx.lineCap = "round";
+        ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke();
+        last = p;
+      });
+      window.addEventListener("pointerup", () => (drawing = false));
+    }, 0);
+  });
+  clearBtn.onclick = () => clearFns.forEach((f) => f());
+  return card;
+}
+
+// ===================== GRAMMAR MODE =====================
+function renderGrammarLanding(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "Grammar Mode" }));
+  app.appendChild(el("p", { class: "section-desc", text: "Choose a language pattern to practise." }));
+  const grid = el("div", { class: "grid cols-3" });
+  DATA.grammarGroups.forEach((g, i) => {
+    const card = el("div", { class: "menu-card", onclick: () => { grammarIdx = i; grammarSubTab = "explain"; view = "grammar-content"; renderApp(); } });
+    card.appendChild(el("div", { class: "icon", text: "🧩" }));
+    card.appendChild(el("h3", { text: g.title }));
+    card.appendChild(el("p", { text: "Explanation, cloze, arrange, drills & free writing" }));
+    grid.appendChild(card);
+  });
+  app.appendChild(grid);
+}
+
+function renderGrammarContent(app) {
+  app.appendChild(el("button", { class: "back-btn", style: "margin-bottom:4px;", text: "← Choose a different pattern", onclick: () => { view = "grammar-landing"; renderApp(); } }));
+  app.appendChild(el("h2", { class: "section-title", text: "Grammar Mode — " + DATA.grammarGroups[grammarIdx].title }));
+  app.appendChild(el("p", { class: "section-desc", text: "Work through the explanation, then practise with the activities below." }));
+  const group = DATA.grammarGroups[grammarIdx];
+  const body = el("div", {});
+  app.appendChild(body);
+  renderExplain(body, group);
+  body.appendChild(el("h3", { style: "color:var(--navy);font-size:1.15rem;margin:26px 0 10px;border-top:2px solid var(--border-light);padding-top:20px;", text: "Arrange the Words" }));
+  renderArrange(body, group);
+  body.appendChild(el("h3", { style: "color:var(--navy);font-size:1.15rem;margin:26px 0 10px;border-top:2px solid var(--border-light);padding-top:20px;", text: "Cloze" }));
+  renderCloze(body, group);
+  body.appendChild(el("h3", { style: "color:var(--navy);font-size:1.15rem;margin:26px 0 10px;border-top:2px solid var(--border-light);padding-top:20px;", text: "Translation Drills" }));
+  renderDrills(body, group);
+  body.appendChild(el("h3", { style: "color:var(--navy);font-size:1.15rem;margin:26px 0 10px;border-top:2px solid var(--border-light);padding-top:20px;", text: "Free Writing" }));
+  renderFree(body, group);
+}
+
+const ROLE_LABEL = { subject: "subject", timeGeneral: "time (general)", timeSpecific: "time (specific)", manner: "manner", place: "place", object: "object", adjective: "adjective", verbStem: "verb stem", verbEnding: "verb/element ending", particle: "particle" };
+function legendRow(group) {
+  // Shows only the colour roles used by this pattern; a pattern may relabel a role (e.g. "tens digit").
+  const l = el("div", { class: "legend" });
+  const used = new Set();
+  group.tokens.forEach((we) => we.tokens.forEach((t) => { if (t.r) used.add(t.r); }));
+  const labels = Object.assign({}, ROLE_LABEL, group.roleLabels || {});
+  Object.keys(ROLE_LABEL).forEach((k) => { if (used.has(k)) l.appendChild(el("span", { class: "role-" + k, text: labels[k] })); });
+  return l;
+}
+
+// Word-level hover glossary: vocabulary words (from the pools) plus common particles/predicate pieces.
+const PARTICLE_GLOSSARY = {
+  "は": "topic marker — ‘as for...’ (said “wa”)",
+  "の": "‘of’ — links the bigger place to the smaller place inside it (日本の とうきょう = Tokyo in Japan)",
+  "と": "and (links the members of a list)",
+  "に": "‘in / at’ — marks the place where you live",
+  "か": "question marker (like a spoken ‘?’)",
+  "か。": "question marker (like a spoken ‘?’)",
+  "です": "is / am / are",
+  "です。": "is / am / are",
+  "何": "what / how many",
+  "人": "person (counter for people, read NIN)",
+  "住んで": "live (verb stem)",
+  "います": "polite ‘am / are’ ending",
+  "います。": "polite ‘am / are’ ending",
+  "わたし": "I / me",
+  "かぞえましょう": "Let's count!",
+  "かぞえましょう！": "Let's count!",
+  "はい": "yes",
+  "そうですか": "I see / really?",
+  "そうですか。": "I see / really?",
+  "、": "pause (comma)"
+};
+let WORD_GLOSSARY = null;
+function getWordGlossary() {
+  if (WORD_GLOSSARY) return WORD_GLOSSARY;
+  WORD_GLOSSARY = { ...PARTICLE_GLOSSARY };
+  Object.values(DATA.vocabPools).forEach((pool) => pool.forEach((v) => { WORD_GLOSSARY[v.jp] = v.en; }));
+  return WORD_GLOSSARY;
+}
+function glossFor(text) {
+  const glossary = getWordGlossary();
+  if (glossary[text] !== undefined) return glossary[text];
+  const stripped = text.replace(/[。、]/g, "");
+  return glossary[stripped];
+}
+
+function tokenLine(tokens) {
+  const p = el("p", { class: "jp", style: "font-size:1.3rem;margin:6px 0;flex:1;" });
+  tokens.forEach((t) => {
+    const gloss = glossFor(t.t);
+    const span = el("span", { class: t.r ? "token role-" + t.r : "token", text: t.t });
+    if (gloss) span.setAttribute("data-tooltip", gloss);
+    span.style.cursor = "pointer";
+    span.addEventListener("click", (e) => { e.stopPropagation(); speak(t.s || t.t); });
+    p.appendChild(span);
+  });
+  return p;
+}
+const GRAMMAR_EXPLANATIONS = {
+  "numbers10": "How it's made: every number has one kanji and one main reading — use the main reading when you are simply counting. Five numbers (4, 7, 8, 9 and 10) have a second reading that shows up when the number joins with a counter such as 人 or 才, so watch for them as the unit goes on.",
+  "numbers99": "How it's made: say the tens digit, then じゅう, then the ones digit — three parts in a row. 十 on its own means 10, so the teens (11–19) skip the tens digit (十三 = じゅうさん). From 20 up the tens digit comes first (二十 = にじゅう, 三十五 = さんじゅうご). A multiple of ten has no ones digit.",
+  "age": "How it's made: start with the subject (わたし) and は, then the number, then the counter 才 (さい, “years old”), and finish with です. To ask, swap the number for 何 (何才ですか) or use おいくつ, the more polite and conversational way to ask. Careful — some numbers change sound before 才: 一才 = いっさい, 八才 = はっさい, 十才 = じゅっさい, and 二十才 is はたち.",
+  "family": "How it's made: to ask who is in your family, だれ (“who”) goes in the family member slot. To answer, drop か and replace だれ with your family members — join them with と (“and”). The last member goes straight into です, with no と after it.",
+  "people": "How it's made: to ask how many people are in your family, use 何人 (なんにん, “how many people”). To answer, drop か and replace 何 with a number — the counter 人 stays. 一人 (ひとり) and 二人 (ふたり) are special readings, and 四人 is よにん (not よんにん).",
+  "live": "How it's made: to ask, put どこ (“where”) before に and 住んでいますか. To answer, replace どこ with the place and drop か. To add a bigger place (a country or a city), put it first and join it to the smaller place with の — Japanese goes from big to small (日本の とうきょう), while English does the opposite (“Tokyo, Japan”). Treat 住んでいます as one chunk when you say it."
+};
+function renderExplain(body, group) {
+  const weKey = group.key.replace(/2$/, "");
+  body.appendChild(legendRow(group));
+  body.appendChild(el("p", { class: "small", style: "margin:-8px 0 10px;", text: "Click the 🔊 button to hear the whole sentence, or click any individual word to hear just that word. Hover for meanings." }));
+  const howCard = el("div", { class: "card", style: "margin-bottom:16px;background:var(--navy-tint);" });
+  howCard.appendChild(el("div", { class: "small", style: "font-weight:700;color:var(--navy);", text: GRAMMAR_EXPLANATIONS[weKey] || "" }));
+  body.appendChild(howCard);
+  group.tokens.forEach((we) => {
+    const card = el("div", { class: "card", style: "margin-bottom:14px;" });
+    const headRow = el("div", { style: "display:flex;justify-content:space-between;align-items:flex-start;gap:10px;" });
+    const line = tokenLine(we.tokens);
+    headRow.appendChild(line);
+    headRow.appendChild(el("button", { class: "btn secondary", style: "padding:5px 12px;font-size:.8rem;flex-shrink:0;", text: "🔊", onclick: () => speak(we.say || we.tokens.map((t) => t.s || t.t).join("")) }));
+    card.appendChild(headRow);
+    card.appendChild(el("div", { class: "small", text: we.en }));
+    body.appendChild(card);
+  });
+}
+function renderArrange(body, group) {
+  group.scrambleSet.forEach((cfg, idx) => {
+    const card = el("div", { class: "card", style: "margin-bottom:14px;" });
+    card.appendChild(el("div", { class: "small", style: "margin-bottom:10px;font-weight:700;", text: `${idx + 1}. Tap the tiles in order to rebuild the sentence: ` + cfg.en }));
+    const answerRow = el("div", { style: "min-height:50px;border:2px dashed var(--border-light);border-radius:8px;padding:8px;margin-bottom:14px;display:flex;gap:6px;flex-wrap:wrap;" });
+    const bankRow = el("div", { style: "display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;" });
+    let bank = shuffle(cfg.chunks);
+    let answer = [];
+    function redraw() {
+      bankRow.innerHTML = ""; answerRow.innerHTML = "";
+      bank.forEach((t, i) => {
+        bankRow.appendChild(el("button", { class: "btn secondary jp", style: "padding:8px 14px;font-size:1rem;", text: t, onclick: () => { answer.push(t); bank.splice(i, 1); redraw(); } }));
+      });
+      answer.forEach((t, i) => {
+        answerRow.appendChild(el("button", { class: "btn pink jp", style: "padding:8px 14px;font-size:1rem;", text: t, onclick: () => { bank.push(t); answer.splice(i, 1); redraw(); } }));
+      });
+    }
+    redraw();
+    card.appendChild(el("div", { class: "small", text: "Answer:" }));
+    card.appendChild(answerRow);
+    card.appendChild(el("div", { class: "small", text: "Tiles:" }));
+    card.appendChild(bankRow);
+    const result = el("div", { class: "small", style: "margin-top:10px;font-weight:700;" });
+    const checkBtn = el("button", { class: "btn pink", text: "Check", onclick: () => {
+      const built = answer.join("");
+      const correct = cfg.chunks.join("");
+      if (built === correct) { result.textContent = "✓ Correct!"; result.style.color = "var(--green)"; }
+      else { result.textContent = "✗ Not quite. Correct order: " + cfg.chunks.join(" "); result.style.color = "var(--red)"; }
+    } });
+    const resetBtn = el("button", { class: "btn secondary", text: "Shuffle Again", onclick: () => { bank = shuffle(cfg.chunks); answer = []; redraw(); result.textContent = ""; } });
+    card.appendChild(checkBtn); card.appendChild(document.createTextNode(" ")); card.appendChild(resetBtn);
+    card.appendChild(result);
+    body.appendChild(card);
+  });
+}
+const KIND_STYLE = {
+  vocabulary: { bg: "D9D2ED", label: "Vocabulary" },
+  particle: { bg: "F0C9C6", label: "Particle" },
+  grammar: { bg: "F7CFE1", label: "Grammar" },
+};
+function renderCloze(body, group) {
+  group.clozeSet.forEach((cfg, idx) => {
+    const card = el("div", { class: "card", style: "margin-bottom:14px;" });
+    const kindInfo = KIND_STYLE[cfg.kind] || null;
+    const head = el("div", { style: "display:flex;align-items:center;gap:8px;margin-bottom:6px;" });
+    head.appendChild(el("span", { class: "small", style: "font-weight:700;", text: `${idx + 1}.` }));
+    if (kindInfo) head.appendChild(el("span", { style: `background:#${kindInfo.bg};padding:2px 10px;border-radius:20px;font-size:.68rem;font-weight:700;color:var(--navy);`, text: kindInfo.label }));
+    card.appendChild(head);
+    const line = el("p", { class: "jp", style: "font-size:1.2rem;" });
+    line.appendChild(el("span", { text: cfg.jpBefore }));
+    const input = el("input", { type: "text", placeholder: "____", style: "width:120px;" });
+    line.appendChild(input);
+    line.appendChild(el("span", { text: cfg.jpAfter }));
+    card.appendChild(line);
+    card.appendChild(el("div", { style: "font-size:1.05rem;color:var(--navy);margin:4px 0 8px;", text: cfg.en }));
+    card.appendChild(el("div", { class: "small", style: "margin:8px 0;", text: "Word bank: " + shuffle(cfg.options).join(" / ") }));
+    const result = el("div", { class: "small", style: "font-weight:700;" });
+    card.appendChild(el("button", { class: "btn pink", text: "Check", onclick: () => {
+      const given = input.value.trim().replace(/\s+/g, "");
+      const ok = [cfg.blank].concat(cfg.accept || []).some((a) => a.replace(/\s+/g, "") === given);
+      if (ok) { result.textContent = "✓ Correct!"; result.style.color = "var(--green)"; }
+      else { result.textContent = "✗ Correct answer: " + cfg.blank; result.style.color = "var(--red)"; }
+    } }));
+    card.appendChild(result);
+    body.appendChild(card);
+  });
+}
+function renderDrills(body, group) {
+  [["Japanese → English", group.drillsJtoE, "jp"], ["English → Japanese", group.drillsEtoJ, "en"]].forEach(([label, list, promptKey]) => {
+    body.appendChild(el("h3", { style: "color:var(--navy);font-size:1rem;margin:18px 0 8px;", text: label }));
+    list.forEach((item, i) => {
+      const row = el("div", { class: "card", style: "display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding:12px 16px;" });
+      const promptSpan = el("span", { class: promptKey === "jp" ? "jp jp-word" : "", text: `${i + 1}. ${item[promptKey]}` });
+      if (promptKey === "jp") { promptSpan.onclick = () => speak(item.jp); }
+      row.appendChild(promptSpan);
+      const answerSpan = el("span", { class: promptKey === "jp" ? "" : "jp", style: "display:none;font-weight:700;color:var(--pink);", text: promptKey === "jp" ? item.en : item.jp });
+      const toggle = el("button", { class: "btn secondary", style: "padding:5px 12px;font-size:.7rem;", text: "Show answer", onclick: () => { answerSpan.style.display = answerSpan.style.display === "none" ? "inline" : "none"; } });
+      const right = el("span", {}); right.appendChild(answerSpan); right.appendChild(document.createTextNode(" ")); right.appendChild(toggle);
+      row.appendChild(right);
+      body.appendChild(row);
+    });
+  });
+}
+function renderFree(body, group) {
+  const card = el("div", { class: "card" });
+  card.appendChild(el("div", { style: "margin-bottom:10px;", text: group.freeWritingPrompt }));
+  card.appendChild(el("textarea", { rows: "3", placeholder: "Write your sentence here..." }));
+  const reveal = el("div", { class: "small jp", style: "display:none;margin-top:8px;color:var(--pink);font-weight:700;", text: group.freeWritingExample || (group.drillsJtoE[0] ? group.drillsJtoE[0].jp : "") });
+  card.appendChild(el("button", { class: "btn secondary", style: "margin-top:10px;", text: "Show example answer", onclick: () => { reveal.style.display = reveal.style.display === "none" ? "block" : "none"; } }));
+  card.appendChild(reveal);
+  body.appendChild(card);
+}
+// ===================== FLASHCARD MODE =====================
+let flashcardPool = "numbers10";
+let flashcardDirection = "jToE"; // "jToE" or "eToJ"
+let flashcardStudyMode = "reading"; // "reading" or "listening"
+let flashcardSession = null;
+
+function renderFlashcards(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "Flashcard Mode" }));
+  app.appendChild(el("p", { class: "section-desc", text: "Flip cards, listen, and type the answer to make it count." }));
+  if (!flashcardSession) { renderFlashcardSetup(app); return; }
+  renderFlashcardSession(app);
+}
+
+function renderFlashcardSetup(app) {
+  const card = el("div", { class: "card", style: "max-width:560px;" });
+
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Word list:" }));
+  const poolRow = el("div", { class: "pool-select" });
+  Object.keys(DATA.vocabPools).forEach((k) => {
+    poolRow.appendChild(el("button", { class: "pool-btn" + (k === flashcardPool ? " active" : ""), text: POOL_LABELS[k], onclick: () => { flashcardPool = k; renderApp(); } }));
+  });
+  card.appendChild(poolRow);
+
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin:16px 0 10px;", text: "Study mode:" }));
+  const studyRow = el("div", { style: "display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap;" });
+  [["reading", "Reading (no sound)"], ["listening", "Listening (sound only, J→E)"]].forEach(([id, label]) => {
+    studyRow.appendChild(el("button", { class: "pool-btn" + (flashcardStudyMode === id ? " active" : ""), text: label, onclick: () => { flashcardStudyMode = id; if (id === "listening") flashcardDirection = "jToE"; renderApp(); } }));
+  });
+  card.appendChild(studyRow);
+  card.appendChild(el("div", { class: "small", style: "margin-bottom:16px;", text: flashcardStudyMode === "listening" ? "The Japanese side is hidden — click 🔊 to hear it, click anywhere else on the card to flip and reveal it." : "The card shows plain text — click the card to flip it." }));
+
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Direction:" }));
+  const dirRow = el("div", { style: "display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;" });
+  [["jToE", "Japanese → English"], ["eToJ", "English → Japanese"]].forEach(([id, label]) => {
+    const disabled = flashcardStudyMode === "listening" && id === "eToJ";
+    dirRow.appendChild(el("button", { class: "pool-btn" + (flashcardDirection === id ? " active" : ""), text: label, disabled, onclick: () => { if (disabled) return; flashcardDirection = id; renderApp(); } }));
+  });
+  card.appendChild(dirRow);
+  card.appendChild(el("div", { class: "small", style: "margin-bottom:18px;", text: flashcardStudyMode === "listening" ? "Listening mode is always Japanese → English." : "For English → Japanese, typing either the Japanese word or its romaji counts as correct." }));
+
+  card.appendChild(el("button", { class: "btn pink", text: "Start", onclick: () => {
+    flashcardSession = { queue: shuffle(DATA.vocabPools[flashcardPool]), idx: 0, flipped: false, score: { correct: 0, total: 0 } };
+    renderApp();
+  } }));
+  app.appendChild(card);
+}
+
+function renderFlashcardSession(app) {
+  app.appendChild(el("button", { class: "back-btn", style: "margin-bottom:4px;", text: "← Change settings", onclick: () => { flashcardSession = null; renderApp(); } }));
+
+  const sess = flashcardSession;
+  if (sess.idx >= sess.queue.length) { sess.queue = shuffle(DATA.vocabPools[flashcardPool]); sess.idx = 0; }
+  const v = sess.queue[sess.idx];
+  const isListening = flashcardStudyMode === "listening";
+  const dir = flashcardDirection;
+
+  const info = el("div", { class: "small", style: "margin-bottom:10px;font-weight:700;", text: `Card ${sess.idx + 1} of ${sess.queue.length}   ·   Score: ${sess.score.correct} / ${sess.score.total}` });
+  app.appendChild(info);
+
+  const cardWrap = el("div", { style: "max-width:480px;" });
+  const flashcard = el("div", {
+    style: `position:relative;border:2px solid var(--border-light);border-radius:16px;padding:36px 24px;min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:${sess.flipped ? "var(--navy-tint)" : "#fff"};text-align:center;`,
+    onclick: () => { sess.flipped = !sess.flipped; renderApp(); },
+  });
+
+  if (!sess.flipped) {
+    if (dir === "jToE") {
+      if (isListening) {
+        flashcard.appendChild(el("button", { class: "btn pink", style: "font-size:1.3rem;padding:16px 28px;", text: "🔊 Listen", onclick: (e) => { e.stopPropagation(); speak(v.kana || v.jp); } }));
+      } else {
+        flashcard.appendChild(el("div", { class: "jp", style: "font-size:2rem;font-weight:800;color:var(--navy);", text: v.jp }));
+        if (v.kana) flashcard.appendChild(el("div", { class: "jp small", style: "margin-top:6px;color:var(--text-sec);", text: v.kana }));
+      }
+    } else {
+      flashcard.appendChild(el("div", { style: "font-size:1.7rem;font-weight:800;color:var(--navy);", text: v.en }));
+    }
+  } else {
+    if (dir === "jToE") {
+      flashcard.appendChild(el("div", { style: "font-size:1.7rem;font-weight:800;color:var(--pink);", text: v.en }));
+      flashcard.appendChild(el("div", { class: "jp", style: "margin-top:8px;font-size:1.1rem;color:var(--navy);", text: v.jp + (v.kana ? "　(" + v.kana + ")" : "") }));
+    } else {
+      flashcard.appendChild(el("div", { class: "jp", style: "font-size:2rem;font-weight:800;color:var(--pink);", text: v.jp }));
+      if (v.kana) flashcard.appendChild(el("div", { class: "jp small", style: "margin-top:6px;color:var(--text-sec);", text: v.kana }));
+    }
+    flashcard.appendChild(el("div", { class: "small", style: "margin-top:10px;", text: "(click to flip back)" }));
+  }
+  cardWrap.appendChild(flashcard);
+  app.appendChild(cardWrap);
+
+  const inputRow = el("div", { style: "display:flex;gap:8px;margin-top:16px;max-width:480px;" });
+  const input = el("input", { type: "text", placeholder: dir === "jToE" ? "Type the English meaning..." : "Type in Japanese or romaji...", style: "flex:1;" });
+  const checkBtn = el("button", { class: "btn pink", text: "Check" });
+  inputRow.appendChild(input); inputRow.appendChild(checkBtn);
+  app.appendChild(inputRow);
+
+  const result = el("div", { class: "small", style: "margin-top:10px;font-weight:700;" });
+  app.appendChild(result);
+
+  function isCorrect(value) {
+    const val = value.trim().toLowerCase();
+    if (!val) return false;
+    if (dir === "jToE") return matchesAnyMeaning(val, v);
+    return jpAnswerMatches(value, v);
+  }
+  function doCheck() {
+    sess.score.total++;
+    if (isCorrect(input.value)) {
+      sess.score.correct++;
+      result.textContent = "✓ Correct!";
+      result.style.color = "var(--green)";
+    } else {
+      const answer = dir === "jToE" ? v.en : `${v.jp}${v.kana ? " (" + kanaToRomaji(v.kana) + ")" : ""}`;
+      result.textContent = "✗ Correct answer: " + answer;
+      result.style.color = "var(--red)";
+    }
+    info.textContent = `Card ${sess.idx + 1} of ${sess.queue.length}   ·   Score: ${sess.score.correct} / ${sess.score.total}`;
+  }
+  checkBtn.onclick = doCheck;
+  input.addEventListener("keydown", (e) => { if (e.key === "Enter") doCheck(); });
+
+  const navRow = el("div", { style: "display:flex;gap:8px;margin-top:14px;" });
+  navRow.appendChild(el("button", { class: "btn secondary", text: "Next Card →", onclick: () => { sess.idx++; sess.flipped = false; renderApp(); } }));
+  app.appendChild(navRow);
+}
+
+// ===================== 3. WRITING PRACTICE =====================
+let writingPool = "numbers10";
+let writingQueue = [];
+let writingIdx = 0;
+let writingScore = { correct: 0, total: 0 };
+function ensureWritingQueue() {
+  if (writingQueue.length === 0) { writingQueue = shuffle(DATA.vocabPools[writingPool]); writingIdx = 0; }
+}
+function renderWriting(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "Writing Practice" }));
+  app.appendChild(el("p", { class: "section-desc", text: "See the English word, write the Japanese from memory in the sketchpad, then self-check." }));
+  const poolNav = el("div", { class: "pool-select" });
+  Object.keys(DATA.vocabPools).forEach((k) => {
+    poolNav.appendChild(el("button", { class: "pool-btn" + (k === writingPool ? " active" : ""), text: POOL_LABELS[k], onclick: () => { writingPool = k; writingQueue = []; renderApp(); } }));
+  });
+  app.appendChild(poolNav);
+  ensureWritingQueue();
+  const v = writingQueue[writingIdx];
+  const card = el("div", { class: "card", style: "max-width:480px;" });
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);font-size:1.3rem;margin-bottom:4px;", text: v.en }));
+  card.appendChild(el("div", { class: "small", style: "margin-bottom:10px;", text: `Word ${writingIdx + 1} of ${writingQueue.length} · Written correctly: ${writingScore.correct} / ${writingScore.total}` }));
+  const canvas = el("canvas", { width: "420", height: "220", style: "width:100%;border:2px solid var(--border-light);border-radius:8px;touch-action:none;cursor:crosshair;background:#fff;" });
+  card.appendChild(canvas);
+  const answerBox = el("div", { class: "small jp", style: "display:none;margin-top:10px;font-size:1.1rem;color:var(--pink);font-weight:700;", text: v.jp + (v.kana ? "　(" + v.kana + " · " + romajiDisplay(v.kana) + ")" : "") });
+  card.appendChild(answerBox);
+  const btnRow = el("div", { style: "display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;" });
+  const clearBtn = el("button", { class: "btn secondary", text: "Clear" });
+  const showBtn = el("button", { class: "btn secondary", text: "Show answer", onclick: () => { answerBox.style.display = "block"; needsPracticeBtn.disabled = false; nailedBtn.disabled = false; } });
+  const needsPracticeBtn = el("button", { class: "btn secondary", text: "Needs practice", disabled: "true", onclick: () => advance(false) });
+  const nailedBtn = el("button", { class: "btn pink", text: "Nailed it ✓", disabled: "true", onclick: () => advance(true) });
+  btnRow.appendChild(clearBtn); btnRow.appendChild(showBtn); btnRow.appendChild(needsPracticeBtn); btnRow.appendChild(nailedBtn);
+  card.appendChild(btnRow);
+  app.appendChild(card);
+  function advance(correct) {
+    writingScore.total++; if (correct) writingScore.correct++;
+    writingIdx++;
+    if (writingIdx >= writingQueue.length) { writingQueue = shuffle(DATA.vocabPools[writingPool]); writingIdx = 0; }
+    renderApp();
+  }
+  setTimeout(() => {
+    const ctx = canvas.getContext("2d");
+    function drawGuides() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = "#e3e8f0"; ctx.lineWidth = 1; ctx.strokeRect(4, 4, canvas.width - 8, canvas.height - 8);
+    }
+    drawGuides();
+    let drawing = false, last = null;
+    function pos(e) { const r = canvas.getBoundingClientRect(); return { x: (e.clientX - r.left) * (canvas.width / r.width), y: (e.clientY - r.top) * (canvas.height / r.height) }; }
+    canvas.addEventListener("pointerdown", (e) => { drawing = true; last = pos(e); });
+    canvas.addEventListener("pointermove", (e) => {
+      if (!drawing) return;
+      const p = pos(e);
+      ctx.strokeStyle = "#041E42"; ctx.lineWidth = 3; ctx.lineCap = "round";
+      ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke(); last = p;
+    });
+    window.addEventListener("pointerup", () => (drawing = false));
+    clearBtn.onclick = drawGuides;
+  }, 0);
+}
+
+// ===================== 4. TALKING BOARD =====================
+let boardStage = 0;
+let boardFilterStar = false;
+let scriptList = [];
+let boardSelections = {}; // key: `${stageIdx}:${slotId}` -> chosen vocab index
+
+function getSlotChoice(stageIdx, slot) {
+  const key = stageIdx + ":" + slot.id;
+  return boardSelections[key] !== undefined ? boardSelections[key] : slot.default;
+}
+function setSlotChoice(stageIdx, slotId, idx) {
+  boardSelections[stageIdx + ":" + slotId] = idx;
+}
+// Resolve a template string like "{s0}が好きですか。" using the current slot choices.
+function resolveTpl(str, slotValues, speakMode) {
+  // {id} = Japanese, {id_en} = English, {id_en_lower} = lower-case English, {id_short} = short English (e.g. a digit).
+  // speakMode swaps in the kana reading so text-to-speech says numbers and names correctly.
+  return str.replace(/\{(\w+?)(_en)?(_lower)?(_short)?\}/g, (match, id, enFlag, lowerFlag, shortFlag) => {
+    const v = slotValues[id];
+    if (!v) return match;
+    let out;
+    if (enFlag) out = v.en;
+    else if (shortFlag) out = v.short || v.en;
+    else out = speakMode ? (v.kana || v.jp) : v.jp;
+    if (lowerFlag) out = out.toLowerCase();
+    return out;
+  }).replace(/\|/g, "");
+}
+
+function renderBoard(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "Talking Board" }));
+  app.appendChild(el("p", { class: "section-desc", text: "Practise real conversations. Words with a dashed pink underline are dropdowns — change them to make the conversation your own, and the English updates automatically. Tap any other Japanese word to see its meaning, and build your own script with the + Script button." }));
+
+  const stageNav = el("div", { class: "pool-select" });
+  DATA.grammarGroups.forEach((g, i) => {
+    stageNav.appendChild(el("button", { class: "pool-btn" + (i === boardStage ? " active" : ""), text: g.title, onclick: () => { boardStage = i; renderApp(); } }));
+  });
+  app.appendChild(stageNav);
+
+  const filterRow = el("label", { class: "small", style: "display:flex;align-items:center;gap:8px;margin-bottom:14px;cursor:pointer;" });
+  const checkbox = el("input", { type: "checkbox" });
+  checkbox.checked = boardFilterStar;
+  checkbox.onchange = () => { boardFilterStar = checkbox.checked; renderApp(); };
+  filterRow.appendChild(checkbox); filterRow.appendChild(document.createTextNode("Show only ⭐ minimum-requirement lines"));
+  app.appendChild(filterRow);
+
+  const glossary = {};
+  Object.values(DATA.vocabPools).forEach((pool) => pool.forEach((v) => (glossary[v.jp] = v.en)));
+  glossary["かぞえましょう"] = "Let's count!"; glossary["そうですか"] = "I see / really?";
+
+  const group = DATA.grammarGroups[boardStage];
+  const template = DATA.boardTemplates[group.key];
+  const slotsById = {};
+  template.slots.forEach((s) => (slotsById[s.id] = s));
+
+  // Resolve current slot selections -> {slotId: {jp, en}}
+  const slotValues = {};
+  template.slots.forEach((slot) => {
+    const idx = getSlotChoice(boardStage, slot);
+    slotValues[slot.id] = DATA.vocabPools[slot.pool][idx];
+  });
+
+  template.rows.forEach((row, ri) => {
+    const isStar = ri === 0; // first exchange of each stage marked as minimum requirement
+    if (boardFilterStar && !isStar) return;
+    const card = el("div", { class: "card", style: "margin-bottom:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px;" });
+    [["A", row.a, "#F3ECFA"], ["B", row.b, "#FDECF3"]].forEach(([speakerLabel, rawLine, bg]) => {
+      const plainJp = resolveTpl(rawLine.tpl, slotValues);
+      const sayJp = resolveTpl(rawLine.say || rawLine.tpl, slotValues, true);
+      const en = resolveTpl(rawLine.enTpl, slotValues);
+      const cell = el("div", { style: `background:${bg};border-radius:8px;padding:10px 12px;` });
+      const head = el("div", { style: "display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;" });
+      head.appendChild(el("span", { class: "small", style: "font-weight:700;", text: "Speaker " + speakerLabel + (isStar ? " ⭐" : "") }));
+      const btnGroup = el("span", {});
+      btnGroup.appendChild(el("button", { class: "btn secondary", style: "padding:3px 8px;font-size:.65rem;margin-right:4px;", text: "🔊", onclick: () => speak(sayJp) }));
+      btnGroup.appendChild(el("button", { class: "btn pink outline", style: "padding:3px 8px;font-size:.65rem;", text: "+ Script", onclick: () => { scriptList.push({ jp: plainJp, en, say: sayJp }); renderScriptPanel(); } }));
+      head.appendChild(btnGroup);
+      cell.appendChild(head);
+      const jpLine = el("p", { class: "jp", style: "margin:2px 0;font-size:1rem;" });
+      renderInlineTemplatedJp(jpLine, rawLine.tpl, slotsById, slotValues, glossary);
+      cell.appendChild(jpLine);
+      cell.appendChild(el("div", { class: "small", text: en }));
+      card.appendChild(cell);
+    });
+    app.appendChild(card);
+  });
+
+  renderScriptPanel();
+}
+// Parses a template string like "そうですか。{s1}は？", rendering fixed text as glossed/tappable
+// spans and each {slotId} as an inline <select> dropdown the student can change in place.
+function renderInlineTemplatedJp(container, tplStr, slotsById, slotValues, glossary) {
+  const regex = /\{(\w+)\}/g;
+  let lastIndex = 0;
+  let match;
+  while ((match = regex.exec(tplStr))) {
+    const textBefore = tplStr.slice(lastIndex, match.index);
+    if (textBefore) appendGlossedText(container, textBefore, glossary);
+    const slot = slotsById[match[1]];
+    if (slot) {
+      const select = el("select", {
+        class: "jp inline-slot-select",
+        "data-tooltip": slotValues[slot.id].en,
+      });
+      (slot.options || DATA.vocabPools[slot.pool].map((_, i) => i)).forEach((i) => select.appendChild(el("option", { value: String(i), text: DATA.vocabPools[slot.pool][i].jp })));
+      select.value = String(getSlotChoice(boardStage, slot));
+      select.addEventListener("click", (e) => e.stopPropagation());
+      select.onchange = () => { setSlotChoice(boardStage, slot.id, Number(select.value)); renderApp(); };
+      container.appendChild(select);
+    } else {
+      container.appendChild(document.createTextNode(match[0]));
+    }
+    lastIndex = regex.lastIndex;
+  }
+  const rest = tplStr.slice(lastIndex);
+  if (rest) appendGlossedText(container, rest, glossary);
+}
+// Greedy longest-match tokeniser: wraps any known vocabulary word in a tappable span.
+function appendGlossedText(container, text, glossary) {
+  // "|" marks a word boundary in the board templates, so the greedy matcher never glues two words together
+  // (e.g. the topic は and the word はは). Each chunk is matched separately; the bars are never shown.
+  const keys = Object.keys(glossary).sort((a, b) => b.length - a.length);
+  text.split("|").forEach((part) => {
+    let i = 0;
+    while (i < part.length) {
+      let matched = null;
+      for (const k of keys) {
+        if (part.startsWith(k, i)) { matched = k; break; }
+      }
+      if (matched) {
+        container.appendChild(el("span", { style: "cursor:pointer;border-bottom:1.5px dotted var(--pink);", "data-tooltip": glossary[matched], onclick: (e) => { e.stopPropagation(); speak(matched); alertGloss(e.target, glossary[matched]); } , text: matched}));
+        i += matched.length;
+      } else {
+        container.appendChild(document.createTextNode(part[i]));
+        i += 1;
+      }
+    }
+  });
+}
+function alertGloss(target, meaning) {
+  const existing = document.getElementById("glossPop"); if (existing) existing.remove();
+  const pop = el("div", { id: "glossPop", style: "position:fixed;background:#fff;color:var(--pink);border:2px solid var(--pink);padding:6px 12px;border-radius:10px;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;box-shadow:0 4px 14px rgba(0,20,50,.18);z-index:200;" , text: meaning});
+  document.body.appendChild(pop);
+  const r = target.getBoundingClientRect();
+  pop.style.left = r.left + "px"; pop.style.top = (r.bottom + 6) + "px";
+  setTimeout(() => pop.remove(), 1800);
+}
+let scriptPanelMinimized = false;
+function renderScriptPanel() {
+  // Only ever shown while the student is on the Talking Board — scoping it inside #app
+  // means it's automatically removed the moment they navigate to another section.
+  if (view !== "board") return;
+  const appEl = document.getElementById("app");
+  if (!appEl) return;
+  let panel = document.getElementById("scriptPanel");
+  if (!panel) {
+    panel = el("div", { id: "scriptPanel", style: "position:fixed;right:16px;bottom:16px;width:280px;background:#fff;border:2px solid var(--border-light);border-radius:12px;padding:14px;box-shadow:0 6px 20px rgba(0,20,50,.15);z-index:50;" });
+    appEl.appendChild(panel);
+  }
+  panel.innerHTML = "";
+
+  const header = el("div", { style: "display:flex;justify-content:space-between;align-items:center;" + (scriptPanelMinimized ? "" : "margin-bottom:8px;") });
+  header.appendChild(el("div", { style: "font-weight:800;color:var(--navy);", text: "My Script (" + scriptList.length + ")" }));
+  header.appendChild(el("button", { class: "btn secondary", style: "padding:3px 9px;font-size:.7rem;", text: scriptPanelMinimized ? "▲ Expand" : "▼ Minimise", onclick: () => { scriptPanelMinimized = !scriptPanelMinimized; renderScriptPanel(); } }));
+  panel.appendChild(header);
+  if (scriptPanelMinimized) return;
+
+  const listWrap = el("div", { style: "max-height:260px;overflow:auto;" });
+  scriptList.forEach((l, i) => {
+    const row = el("div", { style: "display:flex;justify-content:space-between;align-items:flex-start;gap:6px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border-light);" });
+    const textCol = el("div", {});
+    textCol.appendChild(el("div", { class: "jp small", style: "font-weight:700;color:var(--navy);", text: l.jp }));
+    textCol.appendChild(el("div", { class: "small", text: l.en }));
+    row.appendChild(textCol);
+    row.appendChild(el("button", { class: "btn secondary", style: "padding:3px 8px;font-size:.68rem;flex-shrink:0;", text: "🔊", onclick: () => speak(l.say || l.jp) }));
+    listWrap.appendChild(row);
+  });
+  panel.appendChild(listWrap);
+
+  const btns = el("div", { style: "display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;" });
+  btns.appendChild(el("button", { class: "btn secondary", style: "padding:5px 10px;font-size:.68rem;", text: "▶ Play All", onclick: () => { let i = 0; function next() { if (i >= scriptList.length) return; speak(scriptList[i].say || scriptList[i].jp); i++; setTimeout(next, 1800); } next(); } }));
+  btns.appendChild(el("button", { class: "btn secondary", style: "padding:5px 10px;font-size:.68rem;", text: "Copy", onclick: () => { navigator.clipboard && navigator.clipboard.writeText(scriptList.map((l) => l.jp + " — " + l.en).join("\n")); } }));
+  btns.appendChild(el("button", { class: "btn secondary", style: "padding:5px 10px;font-size:.68rem;", text: "Clear", onclick: () => { scriptList = []; renderScriptPanel(); } }));
+  panel.appendChild(btns);
+}
+// ===================== 5. TIMED MATCHING =====================
+let matchPool = "numbers10";
+let matchState = null;
+let matchBest = null;
+const MATCH_MAX_PAIRS = 20; // very long lists (e.g. 27 suburbs) use a random 20 per game
+function renderMatching(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "Timed Matching" }));
+  app.appendChild(el("p", { class: "section-desc", text: "Drag each Japanese tile onto its matching English tile as fast as you can." }));
+  const poolNav = el("div", { class: "pool-select" });
+  Object.keys(DATA.vocabPools).forEach((k) => {
+    poolNav.appendChild(el("button", { class: "pool-btn" + (k === matchPool ? " active" : ""), text: POOL_LABELS[k], onclick: () => { matchPool = k; matchState = null; matchBest = null; renderApp(); } }));
+  });
+  app.appendChild(poolNav);
+
+  if (!matchState) {
+    const card = el("div", { class: "card", style: "max-width:520px;" }, [
+      el("div", { class: "small", style: "margin-bottom:14px;", text: (DATA.vocabPools[matchPool].length > MATCH_MAX_PAIRS ? `Ready to match ${MATCH_MAX_PAIRS} random words from the ${DATA.vocabPools[matchPool].length} in ${POOL_LABELS[matchPool]}? The timer starts as soon as you begin.` : `Ready to match all ${DATA.vocabPools[matchPool].length} words in ${POOL_LABELS[matchPool]}? The timer starts as soon as you begin.`) }),
+      el("button", { class: "btn pink", text: "Start Game", onclick: () => { startMatchGame(); renderApp(); } }),
+    ]);
+    app.appendChild(card);
+    return;
+  }
+
+  const info = el("div", { class: "small", style: "margin-bottom:10px;" });
+  app.appendChild(info);
+  const board = el("div", { style: "position:relative;width:100%;background:var(--navy-tint);border-radius:12px;overflow:hidden;" });
+  app.appendChild(board);
+  const restartBtn = el("button", { class: "btn pink", style: "margin-top:12px;", text: "Shuffle Board", onclick: () => { matchState = null; renderApp(); } });
+  app.appendChild(restartBtn);
+
+  const st = matchState;
+  board.style.height = st.boardHeight + "px";
+  function updateInfo() {
+    let timeStr = "—";
+    if (st.startTime) { const end = st.endTime || Date.now(); timeStr = ((end - st.startTime) / 1000).toFixed(1) + "s"; }
+    info.textContent = `Matched: ${st.matched} / ${st.total}   ·   Time: ${timeStr}   ·   Best: ${matchBest ? matchBest.toFixed(1) + "s" : "—"}`;
+  }
+  updateInfo();
+  let ticker = setInterval(() => { if (st.startTime && !st.endTime) updateInfo(); else clearInterval(ticker); }, 200);
+
+  st.tiles.forEach((t) => {
+    if (t.done) return;
+    const tileEl = el("div", {
+      class: t.type === "jp" ? "card jp" : "card",
+      style: `position:absolute;left:${t.x}%;top:${t.y}%;padding:8px 14px;cursor:grab;background:#fff;font-size:.85rem;white-space:nowrap;user-select:none;box-shadow:0 2px 6px rgba(0,0,0,.1);`,
+      text: t.text,
+    });
+    tileEl.dataset.id = t.id; tileEl.dataset.type = t.type;
+    board.appendChild(tileEl);
+    let dragging = false, offX = 0, offY = 0;
+    tileEl.addEventListener("pointerdown", (e) => {
+      dragging = true; tileEl.style.cursor = "grabbing"; tileEl.style.zIndex = 10;
+      if (!st.startTime) { st.startTime = Date.now(); updateInfo(); }
+      const r = board.getBoundingClientRect();
+      offX = e.clientX - tileEl.getBoundingClientRect().left; offY = e.clientY - tileEl.getBoundingClientRect().top;
+      tileEl.setPointerCapture(e.pointerId);
+    });
+    tileEl.addEventListener("pointermove", (e) => {
+      if (!dragging) return;
+      const r = board.getBoundingClientRect();
+      let nx = ((e.clientX - r.left - offX) / r.width) * 100;
+      let ny = ((e.clientY - r.top - offY) / r.height) * 100;
+      tileEl.style.left = nx + "%"; tileEl.style.top = ny + "%";
+    });
+    tileEl.addEventListener("pointerup", (e) => {
+      dragging = false; tileEl.style.cursor = "grab"; tileEl.style.zIndex = 1;
+      tileEl.style.pointerEvents = "none";
+      const under = document.elementFromPoint(e.clientX, e.clientY);
+      tileEl.style.pointerEvents = "";
+      if (under && under.dataset && under.dataset.id === String(t.id) && under.dataset.type !== t.type && under !== tileEl) {
+        tileEl.style.background = "#d9f5e3"; under.style.background = "#d9f5e3";
+        setTimeout(() => { tileEl.remove(); under.remove(); }, 250);
+        t.done = true;
+        const otherTile = st.tiles.find((x) => x.id === t.id && x.type !== t.type);
+        if (otherTile) otherTile.done = true;
+        st.matched++;
+        updateInfo();
+        if (st.matched >= st.total) {
+          st.endTime = Date.now();
+          const secs = (st.endTime - st.startTime) / 1000;
+          if (!matchBest || secs < matchBest) matchBest = secs;
+          updateInfo();
+        }
+      } else {
+        tileEl.style.transition = "left .2s, top .2s";
+        tileEl.style.left = t.x + "%"; tileEl.style.top = t.y + "%";
+        if (under) { under.style.background = "#fbdada"; setTimeout(() => (under.style.background = "#fff"), 300); }
+        setTimeout(() => (tileEl.style.transition = ""), 200);
+      }
+    });
+  });
+}
+
+function startMatchGame() {
+  const words = shuffle(DATA.vocabPools[matchPool]).slice(0, MATCH_MAX_PAIRS); // every word, up to the cap
+  const tiles = [];
+  words.forEach((w, i) => {
+    tiles.push({ id: i, type: "jp", text: w.jp });
+    tiles.push({ id: i, type: "en", text: w.en });
+  });
+  const shuffledTiles = shuffle(tiles);
+  // Jittered-grid layout: spreads tiles evenly (avoiding heavy overlap) while still looking scattered.
+  const cols = shuffledTiles.length > 16 ? 5 : 4;
+  const rows = Math.ceil(shuffledTiles.length / cols);
+  const cellW = 100 / cols;
+  const cellH = 100 / rows;
+  shuffledTiles.forEach((t, i) => {
+    const col = i % cols, row = Math.floor(i / cols);
+    t.x = col * cellW + 1 + Math.random() * Math.max(cellW - 16, 2);
+    t.x = Math.min(t.x, Math.max(100 - Math.min(45, (t.text.length * 15 + 36) / 11), 0));
+    t.y = row * cellH + 1 + Math.random() * Math.max(cellH - 12, 2);
+  });
+  const boardHeight = Math.max(420, rows * 78);
+  matchState = { tiles: shuffledTiles, matched: 0, total: words.length, startTime: Date.now(), endTime: null, boardHeight };
+}
+
+// ===================== 6. TYPHOON GAME =====================
+const TYPHOON_DIFFICULTY = {
+  easy: { label: "Easy", delayMin: 7000, delayMax: 13000, accuracy: 0.35 },
+  medium: { label: "Medium", delayMin: 5000, delayMax: 9000, accuracy: 0.55 },
+  hard: { label: "Hard", delayMin: 3500, delayMax: 6500, accuracy: 0.75 },
+  ultra: { label: "Ultra", delayMin: 2000, delayMax: 4000, accuracy: 0.92 }, // still floored well above instant — no faster than a quick Year 6 typist
+};
+let typhoonState = null;
+let typhoonSelectedPools = null;
+let typhoonDirection = "jToE";
+let typhoonMode = "pvc";
+let typhoonDifficulty = "medium";
+
+function buildHouses(numHouses) {
+  const houses = [];
+  for (let i = 0; i < numHouses; i++) {
+    const isTyphoon = i < Math.round(numHouses * 0.15);
+    houses.push({ id: i, isTyphoon, points: isTyphoon ? 0 : Math.floor(Math.random() * 16 + 5) * 10, revealed: false });
+  }
+  return shuffle(houses).map((h, i) => ({ ...h, id: i }));
+}
+function pickTyphoonWord(pool) { return pool[Math.floor(Math.random() * pool.length)]; }
+function checkTyphoonAnswer(word, direction, value) {
+  const v = value.trim().toLowerCase();
+  if (!v) return false;
+  if (direction === "jToE") return matchesAnyMeaning(v, word);
+  return jpAnswerMatches(value, word);
+}
+
+function renderTyphoon(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "Arcade — Typhoon Game" }));
+  app.appendChild(el("p", { class: "section-desc", text: "Answer first to earn a house — but watch out, some houses hide typhoons that wipe your score!" }));
+
+  if (!typhoonSelectedPools) {
+    typhoonSelectedPools = {};
+    Object.keys(DATA.vocabPools).forEach((k) => (typhoonSelectedPools[k] = true));
+  }
+
+  if (!typhoonState || !typhoonState.started) {
+    renderTyphoonSetup(app);
+    return;
+  }
+  renderTyphoonGame(app);
+}
+
+function renderTyphoonSetup(app) {
+  const card = el("div", { class: "card", style: "max-width:560px;" });
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Choose your word categories:" }));
+  const checkGrid = el("div", { style: "display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:18px;" });
+  Object.keys(DATA.vocabPools).forEach((k) => {
+    const label = el("label", { class: "small", style: "display:flex;align-items:center;gap:8px;cursor:pointer;" });
+    const cb = el("input", { type: "checkbox" });
+    cb.checked = typhoonSelectedPools[k];
+    cb.onchange = () => { typhoonSelectedPools[k] = cb.checked; };
+    label.appendChild(cb); label.appendChild(document.createTextNode(POOL_LABELS[k]));
+    checkGrid.appendChild(label);
+  });
+  card.appendChild(checkGrid);
+
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Direction:" }));
+  const dirRow = el("div", { style: "display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap;" });
+  [["jToE", "Japanese → English"], ["eToJ", "English → Japanese"]].forEach(([id, label]) => {
+    dirRow.appendChild(el("button", { class: "pool-btn" + (typhoonDirection === id ? " active" : ""), text: label, onclick: () => { typhoonDirection = id; renderApp(); } }));
+  });
+  card.appendChild(dirRow);
+  card.appendChild(el("div", { class: "small", style: "margin-bottom:18px;", text: typhoonDirection === "eToJ" ? "For English → Japanese, typing either the Japanese word or its romaji counts as correct." : " " }));
+
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Mode:" }));
+  const modeRow = el("div", { style: "display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;" });
+  [["pvc", "Player vs Computer"], ["pvp", "Player vs Player (pass-and-play)"]].forEach(([id, label]) => {
+    modeRow.appendChild(el("button", { class: "pool-btn" + (typhoonMode === id ? " active" : ""), text: label, onclick: () => { typhoonMode = id; renderApp(); } }));
+  });
+  card.appendChild(modeRow);
+
+  if (typhoonMode === "pvc") {
+    card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Computer difficulty:" }));
+    const diffRow = el("div", { style: "display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;" });
+    Object.keys(TYPHOON_DIFFICULTY).forEach((id) => {
+      diffRow.appendChild(el("button", { class: "pool-btn" + (typhoonDifficulty === id ? " active" : ""), text: TYPHOON_DIFFICULTY[id].label, onclick: () => { typhoonDifficulty = id; renderApp(); } }));
+    });
+    card.appendChild(diffRow);
+    card.appendChild(el("div", { class: "small", style: "margin-bottom:16px;", text: "Even on Ultra, the computer never answers faster than a quick Year 7 student — just more accurately." }));
+  } else {
+    card.appendChild(el("div", { class: "small", style: "margin-bottom:16px;", text: "Say the answer out loud — whoever says it first wins the round. Reveal the answer, mark who got it, then that player picks a house." }));
+  }
+
+  card.appendChild(el("button", { class: "btn pink", text: "Start Game", onclick: () => {
+    const pools = Object.keys(typhoonSelectedPools).filter((k) => typhoonSelectedPools[k]);
+    let wordPool = pools.flatMap((k) => DATA.vocabPools[k]);
+    if (wordPool.length === 0) wordPool = DATA.allVocabForGames;
+    typhoonState = {
+      started: true, mode: typhoonMode, direction: typhoonDirection, difficulty: typhoonDifficulty,
+      wordPool, houses: buildHouses(28), scores: { P1: 0, P2: 0 },
+      phase: "answering", currentWord: pickTyphoonWord(wordPool),
+      computerTimerId: null, computerStatus: "", pendingWinner: null, lastReveal: null, pendingInputValue: "",
+    };
+    renderApp();
+  } }));
+  app.appendChild(card);
+}
+
+function renderTyphoonGame(app) {
+  const st = typhoonState;
+
+  const scoreRow = el("div", { class: "small", style: "margin-bottom:14px;font-weight:700;" });
+  scoreRow.textContent = st.mode === "pvc" ? `You: ${st.scores.P1}   ·   Computer: ${st.scores.P2}` : `Player 1: ${st.scores.P1}   ·   Player 2: ${st.scores.P2}`;
+  app.appendChild(scoreRow);
+
+  if (st.phase === "gameover") {
+    const winner = st.scores.P1 === st.scores.P2 ? "It's a tie!" : st.scores.P1 > st.scores.P2 ? (st.mode === "pvc" ? "You win! 🎉" : "Player 1 wins! 🎉") : (st.mode === "pvc" ? "Computer wins!" : "Player 2 wins! 🎉");
+    app.appendChild(el("div", { class: "card", style: "font-weight:800;color:var(--navy);", text: winner }));
+    app.appendChild(el("button", { class: "btn pink", style: "margin-top:10px;", text: "Play Again", onclick: () => { typhoonState = null; renderApp(); } }));
+    return;
+  }
+
+  // ---- TOP: word + answer area ----
+  const topCard = el("div", { class: "card", style: "margin-bottom:20px;" });
+  app.appendChild(topCard);
+  renderTyphoonTopCard(topCard, st);
+
+  // ---- BELOW: house grid (bigger icons) ----
+  app.appendChild(el("div", { class: "small", style: "margin-bottom:8px;font-weight:700;", text: st.phase === "selecting-house" ? "🏠 Select a house to claim your reward:" : "House board:" }));
+  const grid = el("div", { style: "display:grid;grid-template-columns:repeat(6,1fr);gap:10px;" });
+  app.appendChild(grid);
+  st.houses.forEach((house) => {
+    const selectable = st.phase === "selecting-house" && !house.revealed;
+    const btn = el("button", {
+      class: "btn secondary",
+      style: `aspect-ratio:1;font-size:2.1rem;${house.revealed ? "background:" + (house.isTyphoon ? "#fbdada" : "#d9f5e3") + ";font-size:1.3rem;font-weight:800;" : ""}${selectable ? "border-color:var(--pink);box-shadow:0 0 0 3px rgba(225,59,130,.25);" : ""}`,
+      text: house.revealed ? (house.isTyphoon ? "🌀" : "+" + house.points) : "🏠",
+      disabled: !selectable,
+      onclick: selectable ? () => claimHouse(house) : null,
+    });
+    grid.appendChild(btn);
+  });
+
+  const endBtn = el("button", { class: "btn secondary", style: "margin-top:16px;", text: "End Game", onclick: () => { typhoonState.started = false; renderApp(); } });
+  app.appendChild(endBtn);
+}
+
+function winnerLabel(st, who) {
+  if (who === "computer") return "Computer";
+  if (st.mode === "pvc") return "You";
+  return who === "P1" ? "Player 1" : "Player 2";
+}
+
+function renderTyphoonTopCard(topCard, st) {
+  const word = st.currentWord;
+  const prompt = st.direction === "jToE" ? word.jp : word.en;
+
+  if (st.phase === "revealing") {
+    const r = st.lastReveal;
+    topCard.appendChild(el("div", { style: "font-size:1.2rem;font-weight:800;color:var(--navy);text-align:center;margin-bottom:14px;", text: r.isTyphoon ? `🌀 Typhoon! ${winnerLabel(st, r.winner)}'s score is wiped.` : `+${r.points} points for ${winnerLabel(st, r.winner)}!` }));
+    topCard.appendChild(el("button", { class: "btn pink", style: "display:block;margin:0 auto;", text: "Continue →", onclick: continueAfterReveal }));
+    return;
+  }
+
+  if (st.phase === "selecting-house") {
+    topCard.appendChild(el("div", { class: st.direction === "jToE" ? "jp" : "", style: "font-size:1.6rem;font-weight:800;color:var(--navy);text-align:center;margin-bottom:6px;", text: prompt }));
+    topCard.appendChild(el("div", { style: "text-align:center;font-weight:700;color:var(--green);", text: `✓ ${winnerLabel(st, st.pendingWinner)} got it! Select a house below.` }));
+    return;
+  }
+
+  if (st.phase === "pvp-judge") {
+    topCard.appendChild(el("div", { class: st.direction === "jToE" ? "jp" : "", style: "font-size:1.6rem;font-weight:800;color:var(--navy);text-align:center;margin-bottom:10px;", text: prompt }));
+    topCard.appendChild(el("div", { style: "text-align:center;margin-bottom:10px;" }, [
+      el("span", { class: "small", text: "Answer: " }),
+      el("span", { class: word.jp && st.direction === "eToJ" ? "jp" : "", style: "font-weight:800;color:var(--pink);", text: st.direction === "jToE" ? word.en : word.jp + (word.kana ? " (" + kanaToRomaji(word.kana) + ")" : "") }),
+    ]));
+    const btnRow = el("div", { style: "display:flex;gap:10px;justify-content:center;flex-wrap:wrap;" });
+    btnRow.appendChild(el("button", { class: "btn pink", text: "Player 1 got it ✓", onclick: () => { st.pendingWinner = "P1"; st.phase = "selecting-house"; renderApp(); } }));
+    btnRow.appendChild(el("button", { class: "btn pink", text: "Player 2 got it ✓", onclick: () => { st.pendingWinner = "P2"; st.phase = "selecting-house"; renderApp(); } }));
+    btnRow.appendChild(el("button", { class: "btn secondary", text: "Nobody — skip round", onclick: () => { nextTyphoonRound(st); renderApp(); } }));
+    topCard.appendChild(btnRow);
+    return;
+  }
+
+  // phase === "answering"
+  topCard.appendChild(el("div", { class: st.direction === "jToE" ? "jp" : "", style: "font-size:1.8rem;font-weight:800;color:var(--navy);text-align:center;margin-bottom:14px;", text: prompt }));
+
+  if (st.mode === "pvp") {
+    topCard.appendChild(el("div", { class: "small", style: "text-align:center;margin-bottom:12px;", text: "Say the answer out loud — first to say it correctly wins the round!" }));
+    const revealBtn = el("button", { class: "btn pink", style: "display:block;margin:0 auto;", text: "🔔 Reveal Answer", onclick: () => { st.phase = "pvp-judge"; renderApp(); } });
+    topCard.appendChild(revealBtn);
+    return;
+  }
+
+  // PvC: two side-by-side fields
+  const row = el("div", { style: "display:grid;grid-template-columns:1fr 1fr;gap:14px;" });
+  const youCol = el("div", {});
+  youCol.appendChild(el("div", { class: "small", style: "font-weight:700;margin-bottom:6px;", text: "Your answer" }));
+  const input = el("input", { type: "text", placeholder: st.direction === "jToE" ? "Type the English meaning..." : "Type in Japanese or romaji...", style: "width:100%;", autofocus: "true" });
+  if (st.pendingInputValue) { input.value = st.pendingInputValue; st.pendingInputValue = ""; }
+  const feedback = el("div", { class: "small", style: "margin-top:6px;min-height:18px;" });
+  youCol.appendChild(input);
+  youCol.appendChild(feedback);
+  row.appendChild(youCol);
+
+  const compCol = el("div", {});
+  compCol.appendChild(el("div", { class: "small", style: "font-weight:700;margin-bottom:6px;", text: "Computer" }));
+  compCol.appendChild(el("div", { class: "small", id: "typhoonComputerStatus", style: "padding:8px 0;", text: st.computerStatus || "🤔 thinking..." }));
+  row.appendChild(compCol);
+  topCard.appendChild(row);
+
+  function submit() {
+    if (checkTyphoonAnswer(st.currentWord, st.direction, input.value)) {
+      if (st.computerTimerId) { clearTimeout(st.computerTimerId); st.computerTimerId = null; }
+      st.pendingWinner = "P1";
+      st.phase = "selecting-house";
+      renderApp();
+    } else {
+      feedback.textContent = "✗ Not quite — try again!";
+      feedback.style.color = "var(--red)";
+      input.value = "";
+    }
+  }
+  input.addEventListener("keydown", (e) => { if (e.key === "Enter") submit(); });
+  const submitBtn = el("button", { class: "btn pink", style: "margin-top:8px;", text: "Submit", onclick: submit });
+  youCol.appendChild(submitBtn);
+
+  // Schedule the computer's single attempt for this round, once.
+  if (!st.computerTimerId) {
+    const conf = TYPHOON_DIFFICULTY[st.difficulty];
+    const delay = conf.delayMin + Math.random() * (conf.delayMax - conf.delayMin);
+    st.computerTimerId = setTimeout(() => {
+      if (typhoonState !== st || st.phase !== "answering") return; // round already resolved or game restarted
+      st.computerTimerId = null;
+      const correct = Math.random() < conf.accuracy;
+      if (correct) {
+        computerAutoPickHouse();
+      } else {
+        const wrongGuess = st.direction === "jToE" ? shuffle(st.wordPool.map((w) => w.en)).find((e) => e !== st.currentWord.en) : shuffle(st.wordPool.map((w) => w.jp)).find((j) => j !== st.currentWord.jp);
+        st.computerStatus = "✗ guessed: " + (wrongGuess || "...");
+        // Preserve whatever the student was mid-typing before we refresh the view.
+        const liveInput = document.querySelector("#app input[type=text]");
+        if (liveInput) st.pendingInputValue = liveInput.value;
+        renderApp();
+        setTimeout(() => { const li = document.querySelector("#app input[type=text]"); if (li) { li.focus(); li.setSelectionRange(li.value.length, li.value.length); } }, 0);
+      }
+    }, delay);
+  }
+}
+
+function revealHouse(house, winner) {
+  const st = typhoonState;
+  house.revealed = true;
+  if (house.isTyphoon) st.scores[winner] = 0;
+  else st.scores[winner] = (st.scores[winner] || 0) + house.points;
+  st.lastReveal = { isTyphoon: house.isTyphoon, points: house.points, winner };
+  st.phase = "revealing";
+  st.pendingWinner = null;
+  renderApp();
+}
+function claimHouse(house) {
+  revealHouse(house, typhoonState.pendingWinner);
+}
+function computerAutoPickHouse() {
+  const st = typhoonState;
+  const unclaimed = st.houses.filter((h) => !h.revealed);
+  const house = unclaimed[Math.floor(Math.random() * unclaimed.length)];
+  revealHouse(house, "computer");
+}
+function continueAfterReveal() {
+  const st = typhoonState;
+  if (st.houses.every((h) => h.revealed)) st.phase = "gameover";
+  else nextTyphoonRound(st);
+  renderApp();
+}
+function nextTyphoonRound(st) {
+  st.currentWord = pickTyphoonWord(st.wordPool);
+  st.phase = "answering";
+  st.computerTimerId = null;
+  st.computerStatus = "";
+  st.pendingWinner = null;
+}
+
+// ===================== 7. ASTEROID TYPING =====================
+const ASTEROID_LEVELS = [
+  { speed: 0.05, spawnChance: 0.008, label: "Level 1" },
+  { speed: 0.07, spawnChance: 0.011, label: "Level 2" },
+  { speed: 0.09, spawnChance: 0.014, label: "Level 3" },
+  { speed: 0.12, spawnChance: 0.018, label: "Level 4" },
+  { speed: 0.16, spawnChance: 0.022, label: "Level 5" },
+];
+let asteroidState = null;
+let asteroidSelectedPools = null;
+let asteroidStartLevel = 1;
+let asteroidMode = "romaji";
+function renderAsteroid(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "Arcade — Asteroid Typing" }));
+  app.appendChild(el("p", { class: "section-desc", text: "Type the reading (or meaning) of the highlighted (pink) asteroid before it crosses the danger line!" }));
+
+  if (!asteroidSelectedPools) {
+    asteroidSelectedPools = {};
+    Object.keys(DATA.vocabPools).forEach((k) => (asteroidSelectedPools[k] = true));
+  }
+
+  if (!asteroidState || !asteroidState.started) {
+    renderAsteroidSetup(app);
+    return;
+  }
+
+  const st = asteroidState;
+  const statsRow = el("div", { class: "small", style: "margin-bottom:8px;font-weight:700;" });
+  app.appendChild(statsRow);
+  const gameArea = el("div", { style: "position:relative;width:100%;height:480px;background:linear-gradient(#041E42,#1a407a);border-radius:12px;overflow:hidden;" });
+  app.appendChild(gameArea);
+  const dangerLine = el("div", { style: "position:absolute;bottom:66px;left:0;right:0;height:2px;background:#E13B82;" });
+  gameArea.appendChild(dangerLine);
+  const ship = el("div", { style: "position:absolute;bottom:32px;left:50%;font-size:1.8rem;transform:translateX(-50%);", text: "🚀" });
+  gameArea.appendChild(ship);
+
+  // Typing box and controls live inside the game field itself, as a control bar along the bottom.
+  const controlBar = el("div", { style: "position:absolute;left:0;right:0;bottom:0;background:rgba(4,30,66,0.85);padding:10px 12px;display:flex;gap:8px;align-items:center;" });
+  const input = el("input", { type: "text", placeholder: st.mode === "translation" ? "Type the English meaning..." : "Type romaji here...", autofocus: "true", style: "flex:1;" });
+  const pauseBtn = el("button", { class: "btn secondary", style: "flex-shrink:0;", text: st.paused ? "▶ Resume" : "⏸ Pause" });
+  const quitBtn = el("button", { class: "btn secondary", style: "flex-shrink:0;", text: "End Game", onclick: () => { asteroidState.started = false; asteroidState.running = false; renderApp(); } });
+  controlBar.appendChild(input); controlBar.appendChild(pauseBtn); controlBar.appendChild(quitBtn);
+  gameArea.appendChild(controlBar);
+
+  const levelConf = ASTEROID_LEVELS[st.level - 1];
+  function updateStats() { statsRow.textContent = `${levelConf.label}   ·   Lives: ${"❤️".repeat(Math.max(st.lives, 0))}   ·   Hits: ${st.hits}   ·   Mode: ${st.mode === "translation" ? "Translation" : "Romaji"}`; }
+  updateStats();
+
+  let raf = null;
+  function spawnAsteroid() {
+    const word = st.wordPool[Math.floor(Math.random() * st.wordPool.length)];
+    st.asteroids.push({ jp: word.jp, kana: word.kana || word.jp, en: word.en, alts: word.alts || [], accept: word.accept || [], x: Math.random() * 80 + 5, y: -5 });
+  }
+  function loop() {
+    if (!st.running) { finishGame(); return; }
+    if (st.paused) return; // resume() calls loop() again to restart the animation
+    const conf = ASTEROID_LEVELS[st.level - 1];
+    st.asteroids.forEach((a) => (a.y += conf.speed));
+    st.asteroids = st.asteroids.filter((a) => {
+      if (a.y >= 86) {
+        st.lives--; updateStats();
+        if (st.lives <= 0) { st.running = false; }
+        return false;
+      }
+      return true;
+    });
+    if (Math.random() < conf.spawnChance) spawnAsteroid();
+    draw();
+    raf = requestAnimationFrame(loop);
+  }
+  function targetAsteroid() { return st.asteroids.reduce((best, a) => (!best || a.y > best.y ? a : best), null); }
+  function draw() {
+    gameArea.querySelectorAll(".asteroid").forEach((e) => e.remove());
+    const target = targetAsteroid();
+    st.asteroids.forEach((a) => {
+      const isTarget = a === target;
+      const label = a.jp;
+      const d = el("div", { class: "asteroid jp", style: `position:absolute;left:${a.x}%;top:${a.y}%;max-width:140px;font-size:1.05rem;font-weight:800;color:${isTarget ? "#E13B82" : "#fff"};white-space:nowrap;`, text: label });
+      gameArea.appendChild(d);
+    });
+  }
+  function finishGame() {
+    updateStats();
+    const over = el("div", { style: "position:absolute;inset:0;background:rgba(4,30,66,0.85);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:1.3rem;gap:14px;", text: "Game Over — " + st.hits + " hits!" });
+    const again = el("button", { class: "btn pink", style: "font-size:.85rem;", text: "Back to Setup", onclick: () => { asteroidState.started = false; renderApp(); } });
+    over.appendChild(again);
+    gameArea.appendChild(over);
+  }
+  pauseBtn.onclick = () => {
+    st.paused = !st.paused;
+    if (!st.paused) { renderApp(); loop(); }
+    else renderApp();
+  };
+  input.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" || st.paused) return;
+    const target = targetAsteroid();
+    if (!target) return;
+    const correct = st.mode === "translation" ? matchesAnyMeaning(input.value, target) : romajiMatches(input.value, target.kana, target.alts);
+    if (correct) {
+      st.asteroids = st.asteroids.filter((a) => a !== target);
+      st.hits++;
+      if (st.hits % 8 === 0 && st.level < 5) st.level++;
+      updateStats(); draw();
+    }
+    input.value = "";
+  });
+  if (st.paused) {
+    input.disabled = true;
+    const pausedOverlay = el("div", { style: "position:absolute;inset:0;bottom:56px;background:rgba(4,30,66,0.6);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;", text: "⏸ Paused" });
+    gameArea.appendChild(pausedOverlay);
+  }
+  draw();
+  if (!st.paused) loop();
+}
+
+function renderAsteroidSetup(app) {
+  const card = el("div", { class: "card", style: "max-width:560px;" });
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Choose your word categories:" }));
+  const checkGrid = el("div", { style: "display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:18px;" });
+  Object.keys(DATA.vocabPools).forEach((k) => {
+    const label = el("label", { class: "small", style: "display:flex;align-items:center;gap:8px;cursor:pointer;" });
+    const cb = el("input", { type: "checkbox" });
+    cb.checked = asteroidSelectedPools[k];
+    cb.onchange = () => { asteroidSelectedPools[k] = cb.checked; };
+    label.appendChild(cb); label.appendChild(document.createTextNode(POOL_LABELS[k]));
+    checkGrid.appendChild(label);
+  });
+  card.appendChild(checkGrid);
+
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Starting level:" }));
+  const levelRow = el("div", { style: "display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;" });
+  ASTEROID_LEVELS.forEach((lvl, i) => {
+    levelRow.appendChild(el("button", { class: "pool-btn" + (asteroidStartLevel === i + 1 ? " active" : ""), text: String(i + 1), onclick: () => { asteroidStartLevel = i + 1; renderApp(); } }));
+  });
+  card.appendChild(levelRow);
+  card.appendChild(el("div", { class: "small", style: "margin-bottom:16px;", text: "Level 1 is slow and gentle; the game speeds up automatically as you get hits, up to Level 5. Starting higher skips the easier levels." }));
+
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Typing mode:" }));
+  const modeRow = el("div", { style: "display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap;" });
+  [["romaji", "Romaji Mode"], ["translation", "Translation Mode"]].forEach(([id, label]) => {
+    modeRow.appendChild(el("button", { class: "pool-btn" + (asteroidMode === id ? " active" : ""), text: label, onclick: () => { asteroidMode = id; renderApp(); } }));
+  });
+  card.appendChild(modeRow);
+  card.appendChild(el("div", { class: "small", style: "margin-bottom:20px;", text: asteroidMode === "translation" ? "You'll see the Japanese word and type its English meaning." : "You'll see the Japanese word and type its romaji reading." }));
+
+  const startBtn = el("button", { class: "btn pink", text: "Start Game", onclick: () => {
+    const pools = Object.keys(asteroidSelectedPools).filter((k) => asteroidSelectedPools[k]);
+    let wordPool = pools.flatMap((k) => DATA.vocabPools[k]);
+    if (wordPool.length === 0) wordPool = DATA.allVocabForGames;
+    asteroidState = { started: true, running: true, paused: false, level: asteroidStartLevel, mode: asteroidMode, asteroids: [], hits: 0, lives: 3, wordPool };
+    renderApp();
+  } });
+  card.appendChild(startBtn);
+  app.appendChild(card);
+}
+renderTabs(); renderApp();
+
+</script>
+</body>
+</html>
