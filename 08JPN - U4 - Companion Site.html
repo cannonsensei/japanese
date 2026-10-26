@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Year 8 Japanese — Unit 4: My School Week</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-dark:#041E42;
+  --navy:#041E42;
+  --navy-mid:#1a407a;
+  --navy-tint:#eef3fa;
+  --pink:#E13B82;
+  --pink-light:#fbe1ec;
+  --pink-hover:#b82f68;
+  --border-light:#c8d4e8;
+  --text-sec:#4d6a99;
+  --text-en:#445566;
+  --white:#ffffff;
+  --green:#1f8a4c;
+  --red:#c0392b;
+  --amber:#b8791f;
+}
+*{box-sizing:border-box;}
+[hidden]{display:none !important;}
+body{margin:0;font-family:'Montserrat',sans-serif;color:var(--text-en);background:var(--white);}
+.jp{font-family:'Noto Sans JP',sans-serif;}
+a{color:inherit;}
+header.site-header{background:var(--navy-dark);border-bottom:6px solid var(--pink);padding:28px 40px;}
+.header-inner{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;}
+.eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pink-light);margin:0 0 8px;}
+.site-title{color:#fff;font-weight:800;font-size:1.9rem;margin:0;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+.site-title .sub{font-size:1.05rem;font-weight:500;color:#cfe0f5;font-style:italic;}
+.site-subheading{color:#9db4d6;font-size:.85rem;margin-top:6px;}
+.badge{background:var(--pink);color:#fff;border-radius:20px;padding:8px 20px;font-weight:800;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;}
+.container{max-width:1180px;margin:0 auto;padding:32px 40px 80px;}
+nav.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;position:sticky;top:0;background:#fff;padding:14px 0;z-index:20;border-bottom:1px solid var(--border-light);}
+.tab-btn{background:#fff;border:2px solid var(--border-light);border-radius:10px;padding:10px 18px;font-family:inherit;font-weight:800;font-size:.82rem;cursor:pointer;color:var(--navy);transition:.15s;}
+.tab-btn:hover{border-color:var(--pink);}
+.tab-btn.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+.pool-select{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.pool-btn{background:#fff;border:2px solid var(--border-light);border-radius:10px;padding:8px 16px;font-family:inherit;font-weight:700;font-size:.78rem;cursor:pointer;color:var(--text-sec);}
+.pool-btn.active{background:var(--pink);border-color:var(--pink);color:#fff;}
+h2.section-title{font-size:1.55rem;font-weight:800;color:var(--navy);letter-spacing:-.01em;margin:0 0 6px;}
+p.section-desc{color:var(--text-sec);font-size:.85rem;margin:0 0 22px;max-width:760px;}
+.card{background:#fff;border:1.5px solid var(--border-light);border-radius:14px;padding:18px;transition:.15s;}
+.card:hover{box-shadow:0 4px 12px rgba(0,20,50,.08);border-color:var(--pink);}
+.btn{border-radius:9px;font-family:inherit;font-weight:800;font-size:.8rem;padding:10px 20px;cursor:pointer;border:2px solid var(--navy);background:var(--navy);color:#fff;}
+.btn.secondary{background:#fff;color:var(--navy);}
+.btn.pink{background:var(--pink);border-color:var(--pink);}
+.btn.pink.outline{background:#fff;color:var(--pink);}
+.btn:disabled{opacity:.4;cursor:not-allowed;}
+.grid{display:grid;gap:16px;}
+.grid.cols-3{grid-template-columns:repeat(3,1fr);}
+.grid.cols-2{grid-template-columns:repeat(2,1fr);}
+.grid.cols-1{grid-template-columns:1fr;}
+@media(max-width:600px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr;}.header-inner{flex-direction:column;align-items:flex-start;}}
+.role-subject{background:#D9D2ED;}
+.role-timeGeneral{background:#9FAE8F;color:#fff;}
+.role-timeSpecific{background:#D3E0C6;}
+.role-manner{background:#DDDDDD;}
+.role-place{background:#AFC3E3;}
+.role-object{background:#F0C9C6;}
+.role-adjective{background:#F7CFE1;}
+.role-verbStem{background:#F5D3A3;}
+.role-verbEnding{background:#D98A3D;color:#fff;}
+.role-particle{font-weight:800;background:none;}
+.role-suffix{background:#CDE7E3;}
+.token{padding:2px 5px;border-radius:4px;margin-right:1px;}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px;font-size:.68rem;}
+.legend span{padding:3px 8px;border-radius:6px;font-weight:700;}
+.menu-card{background:#fff;border:2px solid var(--border-light);border-radius:16px;padding:24px;cursor:pointer;transition:.15s;text-align:left;}
+.menu-card:hover{border-color:var(--pink);box-shadow:0 6px 18px rgba(0,20,50,.1);transform:translateY(-2px);}
+.menu-card .icon{font-size:1.8rem;margin-bottom:10px;}
+.menu-card h3{margin:0 0 6px;color:var(--navy);font-size:1.05rem;}
+.menu-card p{margin:0;color:var(--text-sec);font-size:.8rem;}
+.menu-group-title{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--pink);margin:0 0 14px;}
+.back-btn{background:none;border:none;color:var(--navy);font-weight:800;font-size:.82rem;cursor:pointer;padding:8px 0;margin-bottom:12px;display:inline-flex;align-items:center;gap:6px;}
+.back-btn:hover{color:var(--pink);}
+.jp-word{cursor:pointer;}
+.jp-word:hover{text-decoration:underline;text-decoration-color:var(--pink);}
+.mora-row{display:flex;gap:10px;flex-wrap:wrap;}
+.mora-box{width:130px;height:130px;flex:0 0 130px;border:2px solid var(--border-light);border-radius:10px;touch-action:none;cursor:crosshair;background:#fff;}
+.inline-slot-select{
+  font-family:'Noto Sans JP',sans-serif;
+  font-size:1rem;
+  font-weight:700;
+  color:var(--navy);
+  background:var(--pink-light);
+  border:none;
+  border-bottom:2px dashed var(--pink);
+  border-radius:4px;
+  padding:1px 4px;
+  cursor:pointer;
+  margin:0 1px;
+}
+.inline-slot-select:hover{background:#fbd2e4;}
+[data-tooltip]{position:relative;}
+[data-tooltip]:hover::after{
+  content:attr(data-tooltip);
+  position:absolute;
+  left:50%;
+  bottom:calc(100% + 10px);
+  transform:translateX(-50%);
+  background:#fff;
+  color:var(--pink);
+  border:2px solid var(--pink);
+  border-radius:10px;
+  padding:6px 12px;
+  font-family:'Montserrat',sans-serif;
+  font-size:.72rem;
+  font-weight:700;
+  white-space:normal;
+  max-width:240px;
+  width:max-content;
+  text-align:center;
+  line-height:1.3;
+  box-shadow:0 4px 14px rgba(0,20,50,.18);
+  z-index:200;
+  pointer-events:none;
+}
+[data-tooltip]:hover::before{
+  content:'';
+  position:absolute;
+  left:50%;
+  bottom:calc(100% + 4px);
+  transform:translateX(-50%);
+  width:0;height:0;
+  border:6px solid transparent;
+  border-top-color:var(--pink);
+  z-index:200;
+  pointer-events:none;
+}
+input[type=text]{font-family:inherit;border:2px solid var(--border-light);border-radius:8px;padding:8px 10px;font-size:.95rem;}
+textarea{font-family:inherit;border:2px solid var(--border-light);border-radius:8px;padding:10px;width:100%;font-size:.9rem;resize:vertical;}
+table{border-collapse:collapse;width:100%;}
+th,td{border:1px solid var(--border-light);padding:8px 10px;font-size:.82rem;text-align:left;}
+th{background:var(--navy-tint);color:var(--navy);}
+.progress{height:8px;border-radius:6px;background:var(--border-light);overflow:hidden;}
+.progress > div{height:100%;background:var(--pink);}
+.small{font-size:.75rem;color:var(--text-sec);}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div>
+      <p class="eyebrow">St Aidan's Anglican Girls' School · Japanese</p>
+      <h1 class="site-title"><span class="jp">私の学校の一週間</span><span class="sub">My School Week — Companion Site</span></h1>
+      <div class="site-subheading">Year 8 Japanese · Unit 4</div>
+    </div>
+    <div class="badge">Year 8</div>
+  </div>
+</header>
+<div class="container">
+<nav class="tabs" id="mainTabs"></nav>
+<div id="app"></div>
+</div>
+<script id="siteData" type="application/json">{"vocabPools":{"subjects":[{"jp":"にほんご","kana":null,"en":"Japanese"},{"jp":"こくご","kana":null,"en":"National Language"},{"jp":"えいご","kana":null,"en":"English"},{"jp":"すうがく","kana":null,"en":"Maths (High School)"},{"jp":"さんすう","kana":null,"en":"Maths (Junior School)"},{"jp":"ちり","kana":null,"en":"Geography"},{"jp":"りか","kana":null,"en":"Science"},{"jp":"たいいく","kana":null,"en":"P.E."},{"jp":"びじゅつ","kana":null,"en":"Art"},{"jp":"れきし","kana":null,"en":"History"},{"jp":"しゃかい","kana":null,"en":"HASS"},{"jp":"おんがく","kana":null,"en":"Music"},{"jp":"ドラマ","kana":null,"en":"Drama"},{"jp":"ぎじゅつかてい","kana":null,"en":"Tech"},{"jp":"しゅうきょう","kana":null,"en":"RVE"},{"jp":"ぜんこうしゅうかい","kana":null,"en":"Assembly"},{"jp":"ソー","kana":null,"en":"SOAR"},{"jp":"ぶかつ","kana":null,"en":"Clubs / Activities"},{"jp":"としょかん","kana":null,"en":"Library"},{"jp":"きゅうけい","kana":null,"en":"Break / Morning Tea"},{"jp":"ひるごはん","kana":null,"en":"Lunch"},{"jp":"あさのかい","kana":null,"en":"Pastoral Care Class"}],"adjectives":[{"jp":"たのしい","kana":null,"en":"Fun"},{"jp":"おもしろい","kana":null,"en":"Interesting"},{"jp":"つまらない","kana":null,"en":"Boring"},{"jp":"かんたん","kana":null,"en":"Easy / simple","na":true},{"jp":"むずかしい","kana":null,"en":"Difficult"},{"jp":"やさしい","kana":null,"en":"Kind"},{"jp":"きびしい","kana":null,"en":"Strict"},{"jp":"こわい","kana":null,"en":"Scary"},{"jp":"すごい","kana":null,"en":"Awesome"},{"jp":"しんせつ","kana":null,"en":"Helpful","na":true},{"jp":"げんき","kana":null,"en":"Energetic","na":true},{"jp":"たいへん","kana":null,"en":"Tough","na":true},{"jp":"わかりやすい","kana":null,"en":"Easy to understand"},{"jp":"たいせつ","kana":null,"en":"Important","na":true}],"periods":[{"jp":"一じかんめ","kana":"いちじかんめ","en":"Period 1"},{"jp":"二じかんめ","kana":"にじかんめ","en":"Period 2"},{"jp":"三じかんめ","kana":"さんじかんめ","en":"Period 3"},{"jp":"四じかんめ","kana":"よじかんめ","en":"Period 4"}],"days":[{"jp":"月よう日","kana":"げつようび","en":"Monday"},{"jp":"火よう日","kana":"かようび","en":"Tuesday"},{"jp":"水よう日","kana":"すいようび","en":"Wednesday"},{"jp":"木よう日","kana":"もくようび","en":"Thursday"},{"jp":"金よう日","kana":"きんようび","en":"Friday"},{"jp":"土よう日","kana":"どようび","en":"Saturday"},{"jp":"日よう日","kana":"にちようび","en":"Sunday"}],"yearLevels":[{"jp":"小学校一年生","kana":"しょうがっこういちねんせい","en":"Year 1"},{"jp":"小学校二年生","kana":"しょうがっこうにねんせい","en":"Year 2"},{"jp":"小学校三年生","kana":"しょうがっこうさんねんせい","en":"Year 3"},{"jp":"小学校四年生","kana":"しょうがっこうよねんせい","en":"Year 4"},{"jp":"小学校五年生","kana":"しょうがっこうごねんせい","en":"Year 5"},{"jp":"小学校六年生","kana":"しょうがっこうろくねんせい","en":"Year 6"},{"jp":"中学一年生","kana":"ちゅうがくいちねんせい","en":"Year 7"},{"jp":"中学二年生","kana":"ちゅうがくにねんせい","en":"Year 8"},{"jp":"中学三年生","kana":"ちゅうがくさんねんせい","en":"Year 9"},{"jp":"高校一年生","kana":"こうこういちねんせい","en":"Year 10"},{"jp":"高校二年生","kana":"こうこうにねんせい","en":"Year 11"},{"jp":"高校三年生","kana":"こうこうさんねんせい","en":"Year 12"},{"jp":"ことし","kana":null,"en":"This year"},{"jp":"らいねん","kana":null,"en":"Next year"}],"schoolNouns":[{"jp":"先生","kana":"せんせい","en":"Teacher"},{"jp":"学校","kana":"がっこう","en":"School"},{"jp":"べんきょう","kana":null,"en":"Studies"},{"jp":"しゅくだい","kana":null,"en":"Homework"},{"jp":"きょうしつ","kana":null,"en":"Classroom"},{"jp":"うんどう","kana":null,"en":"Sports"}],"schoolLevels":[{"jp":"小学校","kana":"しょうがっこう","en":"Primary school"},{"jp":"中学校","kana":"ちゅうがっこう","en":"Junior secondary school"},{"jp":"高校","kana":"こうこう","en":"Senior secondary school"},{"jp":"年生","kana":"ねんせい","en":"Year level"},{"jp":"女子校","kana":"じょしこう","en":"Girls' school"},{"jp":"名前","kana":"なまえ","en":"Name"}],"studyWords":[{"jp":"かもく","kana":null,"en":"School subject"},{"jp":"一番","kana":"いちばん","en":"Most / number one"},{"jp":"なぜかというと","kana":null,"en":"The reason is"},{"jp":"おもいます","kana":null,"en":"I think"},{"jp":"とても","kana":null,"en":"Very"},{"jp":"ほんとうに","kana":null,"en":"Really"},{"jp":"そして","kana":null,"en":"And / also"},{"jp":"でも","kana":null,"en":"But"},{"jp":"べんきょうしています","kana":null,"en":"Am studying"}],"sports":[{"jp":"ネットボール","kana":null,"en":"Netball"},{"jp":"バスケットボール","kana":null,"en":"Basketball"},{"jp":"タッチフットボール","kana":null,"en":"Touch football"},{"jp":"ボート","kana":null,"en":"Rowing"},{"jp":"オージーフットボール","kana":null,"en":"AFL"},{"jp":"じょうば","kana":null,"en":"Equestrian"},{"jp":"クロスカントリー","kana":null,"en":"Cross country"},{"jp":"すいえい","kana":null,"en":"Swimming"},{"jp":"テニス","kana":null,"en":"Tennis"},{"jp":"バレーボール","kana":null,"en":"Volleyball"},{"jp":"クリケット","kana":null,"en":"Cricket"},{"jp":"サッカー","kana":null,"en":"Soccer"}],"music":[{"jp":"すいそうがく","kana":null,"en":"Wind band"},{"jp":"がっしょう","kana":null,"en":"Choir"},{"jp":"げんがく","kana":null,"en":"Strings"},{"jp":"しつないがく","kana":null,"en":"Chamber music"}],"clubs":[{"jp":"ディベート","kana":null,"en":"Debating"},{"jp":"えんげき","kana":null,"en":"Theatre"},{"jp":"ボランティア","kana":null,"en":"Volunteering"},{"jp":"かがく","kana":null,"en":"Science"},{"jp":"ロボット","kana":null,"en":"Robotics"},{"jp":"てつがく","kana":null,"en":"Philosophy"},{"jp":"ぶたいぎじゅつ","kana":null,"en":"Tech crew"}],"clubWords":[{"jp":"部","kana":"ぶ","en":"Club / team"},{"jp":"はいっています","kana":null,"en":"Am a member of"},{"jp":"まいしゅう","kana":null,"en":"Every week"},{"jp":"あさ","kana":null,"en":"Morning (before school)"},{"jp":"ひるやすみ","kana":null,"en":"Lunchtime"},{"jp":"ほうかご","kana":null,"en":"After school"}],"letterWords":[{"jp":"てがみ","kana":null,"en":"Letter"},{"jp":"メール","kana":null,"en":"Email"},{"jp":"ペンパル","kana":null,"en":"Pen pal"},{"jp":"ひづけ","kana":null,"en":"Date"},{"jp":"じこしょうかい","kana":null,"en":"Self-introduction"},{"jp":"おへんじ","kana":null,"en":"Reply"},{"jp":"ついしん","kana":null,"en":"P.S."}],"letterPhrases":[{"jp":"はじめまして","kana":null,"en":"Nice to meet you"},{"jp":"おげんきですか","kana":null,"en":"How are you?"},{"jp":"わたしはげんきです","kana":null,"en":"I'm well"},{"jp":"おてがみありがとう","kana":null,"en":"Thank you for your letter"},{"jp":"おへんじをまっています","kana":null,"en":"I'm waiting for your reply"},{"jp":"よろしくおねがいします","kana":null,"en":"Best regards"},{"jp":"それではまた","kana":null,"en":"Until next time"},{"jp":"さようなら","kana":null,"en":"Goodbye"},{"jp":"さんへ","kana":null,"en":"To (name)"},{"jp":"より","kana":null,"en":"From (name)"}]},"grammarGroups":[{"key":"schoolName","title":"Talking About My School","tokens":[{"tokens":[{"t":"わたし","r":"subject"},{"t":"の","r":"particle"},{"t":"学校","r":"place"},{"t":"の","r":"particle"},{"t":"名前","r":"subject"},{"t":"は","r":"particle"},{"t":"セント・エイダンズ女子校","r":"place"},{"t":"です。","r":"verbEnding"}],"en":"My school's name is St Aidan's Girls' School."},{"tokens":[{"t":"わたし","r":"subject"},{"t":"の","r":"particle"},{"t":"学校","r":"place"},{"t":"は","r":"particle"},{"t":"女子校","r":"place"},{"t":"です。","r":"verbEnding"}],"en":"My school is a girls' school."},{"tokens":[{"t":"わたし","r":"subject"},{"t":"は","r":"particle"},{"t":"セント・エイダンズ女子校","r":"place"},{"t":"という","r":"particle"},{"t":"学校","r":"place"},{"t":"の","r":"particle"},{"t":"中学校","r":"place"},{"t":"二","r":"timeSpecific"},{"t":"年生","r":"suffix"},{"t":"です。","r":"verbEnding"}],"en":"I am in Year 8 at a school called St Aidan's Girls' School."},{"tokens":[{"t":"学校","r":"place"},{"t":"の","r":"particle"},{"t":"名前","r":"subject"},{"t":"は","r":"particle"},{"t":"なん","r":null},{"t":"ですか。","r":"verbEnding"}],"en":"What is the name of your school?"}],"whyPrompt":"In セント・エイダンズ女子校という学校, what do you think という does? Where would you put your school's name in your own sentence?","cloze":{"jpBefore":"わたしの学校の","blank":"名前","jpAfter":"はセント・エイダンズ女子校です。","options":["名前","先生","学校"],"en":"My school's name is St Aidan's Girls' School."},"scramble":{"answer":"わたしの学校の名前はセント・エイダンズ女子校です。","chunks":["わたし","の","学校","の","名前","は","セント・エイダンズ女子校","です。"],"en":"My school's name is St Aidan's Girls' School."},"drillsJtoE":[{"jp":"わたしの学校の名前はセント・エイダンズ女子校です。","en":"My school's name is St Aidan's Girls' School."},{"jp":"わたしの学校は女子校です。","en":"My school is a girls' school."},{"jp":"セント・エイダンズ女子校という学校です。","en":"It's a school called St Aidan's Girls' School."},{"jp":"わたしはセント・エイダンズ女子校という学校の中学校二年生です。","en":"I am in Year 8 at a school called St Aidan's Girls' School."},{"jp":"わたしは女子校の中学校二年生です。","en":"I am in Year 8 at a girls' school."},{"jp":"学校の名前はなんですか。","en":"What is the name of your school?"},{"jp":"わたしの学校はセント・エイダンズ女子校です。","en":"My school is St Aidan's Girls' School."},{"jp":"セント・エイダンズ女子校は女子校です。","en":"St Aidan's Girls' School is a girls' school."},{"jp":"わたしはセント・エイダンズ女子校の中学校二年生です。","en":"I am in Year 8 at St Aidan's Girls' School."},{"jp":"らいねん、セント・エイダンズ女子校の中学校三年生になります。","en":"Next year, I will be in Year 9 at St Aidan's Girls' School."}],"drillsEtoJ":[{"jp":"わたしの学校はセント・エイダンズ女子校です。","en":"My school is St Aidan's Girls' School."},{"jp":"セント・エイダンズ女子校という学校です。","en":"It's a school called St Aidan's Girls' School."},{"jp":"らいねん、セント・エイダンズ女子校の中学校三年生になります。","en":"Next year, I will be in Year 9 at St Aidan's Girls' School."},{"jp":"わたしの学校の名前はセント・エイダンズ女子校です。","en":"My school's name is St Aidan's Girls' School."},{"jp":"セント・エイダンズ女子校は女子校です。","en":"St Aidan's Girls' School is a girls' school."},{"jp":"わたしは女子校の中学校二年生です。","en":"I am in Year 8 at a girls' school."},{"jp":"わたしの学校は女子校です。","en":"My school is a girls' school."},{"jp":"わたしはセント・エイダンズ女子校の中学校二年生です。","en":"I am in Year 8 at St Aidan's Girls' School."},{"jp":"わたしはセント・エイダンズ女子校という学校の中学校二年生です。","en":"I am in Year 8 at a school called St Aidan's Girls' School."},{"jp":"学校の名前はなんですか。","en":"What is the name of your school?"}],"freeWritingPrompt":"Write two sentences: one giving the name of your school, and one saying which year level you are in at your school.","talkingBoard":[{"a":{"jp":"学校の名前はなんですか。","en":"What's the name of your school?"},"b":{"jp":"セント・エイダンズ女子校です。","en":"It's St Aidan's Girls' School."}},{"a":{"jp":"なん年生ですか。","en":"What year level are you in?"},"b":{"jp":"セント・エイダンズ女子校という学校の中学二年生です。","en":"I'm in Year 8 at a school called St Aidan's Girls' School."}},{"a":{"jp":"女子校ですか。","en":"Is it a girls' school?"},"b":{"jp":"はい、女子校です。","en":"Yes, it's a girls' school."}},{"a":{"jp":"らいねんは？","en":"What about next year?"},"b":{"jp":"らいねんもセント・エイダンズ女子校の中学三年生になります。","en":"Next year, I'll be in Year 9 at St Aidan's Girls' School too."}},{"a":{"jp":"いいですね。","en":"That's nice."},"b":{"jp":"ありがとう。","en":"Thank you."}}],"clozeSet":[{"jpBefore":"わたしの学校の","blank":"名前","jpAfter":"はセント・エイダンズ女子校です。","options":["名前","先生","学校"],"kind":"vocabulary","en":"My school's name is St Aidan's Girls' School."},{"jpBefore":"わたしの学校は","blank":"女子校","jpAfter":"です。","options":["女子校","小学校","高校"],"kind":"vocabulary","en":"My school is a girls' school."},{"jpBefore":"わたしはセント・エイダンズ女子校","blank":"という","jpAfter":"学校の中学校二年生です。","options":["という","の","は"],"kind":"grammar","en":"I am in Year 8 at a school called St Aidan's Girls' School."},{"jpBefore":"わたし","blank":"の","jpAfter":"学校の名前はセント・エイダンズ女子校です。","options":["の","は","が"],"kind":"particle","en":"My school's name is St Aidan's Girls' School."},{"jpBefore":"わたしはセント・エイダンズ女子校の","blank":"中学校","jpAfter":"二年生です。","options":["中学校","小学校","高校"],"kind":"vocabulary","en":"I am in Year 8 at St Aidan's Girls' School."}],"scrambleSet":[{"answer":"わたしの学校の名前はセント・エイダンズ女子校です。","chunks":["わたし","の","学校","の","名前","は","セント・エイダンズ女子校","です。"],"en":"My school's name is St Aidan's Girls' School."},{"answer":"わたしの学校は女子校です。","chunks":["わたし","の","学校","は","女子校","です。"],"en":"My school is a girls' school."},{"answer":"わたしはセント・エイダンズ女子校という学校の中学校二年生です。","chunks":["わたし","は","セント・エイダンズ女子校","という","学校","の","中学校","二","年生","です。"],"en":"I am in Year 8 at a school called St Aidan's Girls' School."},{"answer":"学校の名前はなんですか。","chunks":["学校","の","名前","は","なん","ですか。"],"en":"What is the name of your school?"},{"answer":"わたしはセント・エイダンズ女子校の中学校二年生です。","chunks":["わたし","は","セント・エイダンズ女子校","の","中学校","二","年生","です。"],"en":"I am in Year 8 at St Aidan's Girls' School."}],"notes":["Use 女子校 (じょしこう) for a girls' school. St Aidan's runs from Prep to Year 12, so 女子校 is more accurate than 女子高 (girls' high school)."]},{"key":"yearLevel","title":"Talking About Year Level","tokens":[{"tokens":[{"t":"わたし","r":"subject"},{"t":"は","r":"particle"},{"t":"中学二年生","r":"verbStem"},{"t":"です。","r":"verbEnding"}],"en":"I am in Year 8."},{"tokens":[{"t":"らいねん","r":"timeGeneral"},{"t":"、","r":null},{"t":"中学三年生","r":"verbStem"},{"t":"に","r":"particle"},{"t":"なります。","r":"verbEnding"}],"en":"Next year, I will be in Year 9."},{"tokens":[{"t":"わたし","r":"subject"},{"t":"は","r":"particle"},{"t":"小学校","r":"place"},{"t":"六","r":"timeSpecific"},{"t":"年生","r":"suffix"},{"t":"です。","r":"verbEnding"}],"en":"I am in Year 6 (primary school)."},{"tokens":[{"t":"わたし","r":"subject"},{"t":"は","r":"particle"},{"t":"中学校","r":"place"},{"t":"二","r":"timeSpecific"},{"t":"年生","r":"suffix"},{"t":"です。","r":"verbEnding"}],"en":"I am in Year 8 (junior secondary school)."},{"tokens":[{"t":"わたし","r":"subject"},{"t":"は","r":"particle"},{"t":"高校","r":"place"},{"t":"二","r":"timeSpecific"},{"t":"年生","r":"suffix"},{"t":"です。","r":"verbEnding"}],"en":"I am in Year 11 (senior secondary school)."},{"tokens":[{"t":"なん","r":null},{"t":"年生","r":"suffix"},{"t":"ですか。","r":"verbEnding"}],"en":"What year level are you in?"}],"whyPrompt":"になります means 'will become'. Why do you think らいねん (next year) needs a comma before this phrase, but ことし doesn't appear in either pattern?","cloze":{"jpBefore":"わたしは","blank":"中学二年生","jpAfter":"です。","options":["中学二年生","中学一年生","高校一年生"],"en":"I am in Year 8."},"scramble":{"answer":"らいねん、中学三年生になります。","chunks":["らいねん","、","中学三年生","に","なります。"],"en":"Next year, I will be in Year 9."},"drillsJtoE":[{"jp":"なん年生ですか。","en":"What year level are you in?"},{"jp":"わたしは中学校二年生です。","en":"I am in Year 8."},{"jp":"らいねん、中学校三年生になります。","en":"Next year, I will be in Year 9."},{"jp":"わたしは高校二年生です。","en":"I am in Year 11."},{"jp":"わたしは小学校一年生です。","en":"I am in Year 1."},{"jp":"らいねん、小学校二年生になります。","en":"Next year, I will be in Year 2."},{"jp":"わたしは小学校三年生です。","en":"I am in Year 3."},{"jp":"らいねん、小学校四年生になります。","en":"Next year, I will be in Year 4."},{"jp":"わたしは小学校五年生です。","en":"I am in Year 5."},{"jp":"らいねん、小学校六年生になります。","en":"Next year, I will be in Year 6."},{"jp":"わたしは中学一年生です。","en":"I am in Year 7."},{"jp":"らいねん、中学二年生になります。","en":"Next year, I will be in Year 8."},{"jp":"わたしは中学三年生です。","en":"I am in Year 9."},{"jp":"らいねん、高校一年生になります。","en":"Next year, I will be in Year 10."}],"drillsEtoJ":[{"jp":"らいねん、中学一年生になります。","en":"Next year, I will be in Year 7."},{"jp":"わたしは中学二年生です。","en":"I am in Year 8."},{"jp":"らいねん、中学三年生になります。","en":"Next year, I will be in Year 9."},{"jp":"わたしは高校一年生です。","en":"I am in Year 10."},{"jp":"らいねん、高校二年生になります。","en":"Next year, I will be in Year 11."},{"jp":"わたしは高校三年生です。","en":"I am in Year 12."},{"jp":"らいねん、小学校一年生になります。","en":"Next year, I will be in Year 1."},{"jp":"わたしは小学校二年生です。","en":"I am in Year 2."},{"jp":"らいねん、小学校三年生になります。","en":"Next year, I will be in Year 3."},{"jp":"わたしは小学校四年生です。","en":"I am in Year 4."},{"jp":"わたしは中学校一年生です。","en":"I am in Year 7."},{"jp":"なん年生ですか。","en":"What year level are you in?"},{"jp":"らいねん、高校一年生になります。","en":"Next year, I will be in Year 10."},{"jp":"わたしは小学校六年生です。","en":"I am in Year 6."}],"freeWritingPrompt":"Write two sentences: one about your year level now, one about next year.","talkingBoard":[{"a":{"jp":"なん年生ですか。","en":"What year level are you in?"},"b":{"jp":"中学二年生です。","en":"I'm in Year 8."}},{"a":{"jp":"らいねんは？","en":"What about next year?"},"b":{"jp":"中学三年生になります。","en":"I'll be in Year 9."}},{"a":{"jp":"たのしみですね！","en":"That's exciting!"},"b":{"jp":"はい、たのしみです。","en":"Yes, I'm looking forward to it."}},{"a":{"jp":"先生もいっしょですか。","en":"Will the teacher be with you too?"},"b":{"jp":"いいえ、先生はちがいます。","en":"No, the teacher is different."}},{"a":{"jp":"そうですか。","en":"I see."},"b":{"jp":"はい、そうです。","en":"Yes, that's right."}}],"clozeSet":[{"jpBefore":"わたしは","blank":"小学校一年生","jpAfter":"です。","options":["小学校一年生","高校二年生","中学一年生"],"kind":"vocabulary","en":"I am in Year 1."},{"jpBefore":"わたし","blank":"は","jpAfter":"小学校二年生です。","options":["の","は","が"],"kind":"particle","en":"I am in Year 2."},{"jpBefore":"らいねん、","blank":"小学校三年生","jpAfter":"になります。","options":["中学三年生","小学校三年生","中学二年生"],"kind":"vocabulary","en":"Next year, I will be in Year 3."},{"jpBefore":"らいねん、小学校四年生","blank":"に","jpAfter":"なります。","options":["へ","で","に"],"kind":"particle","en":"Next year, I will be in Year 4."},{"jpBefore":"わたしは小学校五年生","blank":"です","jpAfter":"。","options":["になります","です"],"kind":"grammar","en":"I am in Year 5."},{"jpBefore":"わたしは","blank":"中学校","jpAfter":"二年生です。","options":["中学校","小学校","高校"],"kind":"vocabulary","en":"I am in Year 8."},{"jpBefore":"わたしは中学校二","blank":"年生","jpAfter":"です。","options":["年生","年","生"],"kind":"vocabulary","en":"I am in Year 8."}],"scrambleSet":[{"answer":"わたしは小学校一年生です。","chunks":["わたし","は","小学校一年生","です。"],"en":"I am in Year 1."},{"answer":"わたしは小学校二年生です。","chunks":["わたし","は","小学校二年生","です。"],"en":"I am in Year 2."},{"answer":"らいねん、小学校三年生になります。","chunks":["らいねん","、","小学校三年生","に","なります。"],"en":"Next year, I will be in Year 3."},{"answer":"らいねん、小学校四年生になります。","chunks":["らいねん","、","小学校四年生","に","なります。"],"en":"Next year, I will be in Year 4."},{"answer":"わたしは小学校五年生です。","chunks":["わたし","は","小学校五年生","です。"],"en":"I am in Year 5."},{"answer":"わたしは中学校二年生です。","chunks":["わたし","は","中学校","二年生","です。"],"en":"I am in Year 8."},{"answer":"なん年生ですか。","chunks":["なん","年生","ですか。"],"en":"What year level are you in?"}],"notes":["You can build your year level from parts: school level (小学校 / 中学校 / 高校) + number + 年生. The 校 is often dropped, so 中学二年生 and 中学校二年生 both mean Year 8. Year 7–9 is 中学校 and Year 10–12 is 高校."]},{"key":"studying","title":"What I Study","tokens":[{"tokens":[{"t":"わたし","r":"subject"},{"t":"は","r":"particle"},{"t":"にほんご","r":"object"},{"t":"を","r":"particle"},{"t":"べんきょうしています。","r":"verbEnding"}],"en":"I am studying Japanese."},{"tokens":[{"t":"わたし","r":"subject"},{"t":"は","r":"particle"},{"t":"えいご","r":"object"},{"t":"と","r":"particle"},{"t":"すうがく","r":"object"},{"t":"を","r":"particle"},{"t":"べんきょうしています。","r":"verbEnding"}],"en":"I am studying English and Maths."},{"tokens":[{"t":"わたし","r":"subject"},{"t":"は","r":"particle"},{"t":"にほんご","r":"object"},{"t":"や","r":"particle"},{"t":"えいご","r":"object"},{"t":"など","r":"particle"},{"t":"を","r":"particle"},{"t":"べんきょうしています。","r":"verbEnding"}],"en":"I am studying Japanese, English and so on."},{"tokens":[{"t":"わたし","r":"subject"},{"t":"は","r":"particle"},{"t":"えいご","r":"object"},{"t":"、","r":null},{"t":"すうがく","r":"object"},{"t":"、","r":null},{"t":"りか","r":"object"},{"t":"、","r":null},{"t":"れきし","r":"object"},{"t":"、","r":null},{"t":"びじゅつ","r":"object"},{"t":"と","r":"particle"},{"t":"たいいく","r":"object"},{"t":"を","r":"particle"},{"t":"べんきょうしています。","r":"verbEnding"}],"en":"I am studying English, Maths, Science, History, Art and P.E."}],"whyPrompt":"In えいごとすうがくをべんきょうしています, と joins two subjects. How is や…など different, and what do you think など adds?","cloze":{"jpBefore":"わたしはにほんご","blank":"を","jpAfter":"べんきょうしています。","options":["を","が","は"],"en":"I am studying Japanese."},"scramble":{"answer":"わたしはにほんごをべんきょうしています。","chunks":["わたし","は","にほんご","を","べんきょうしています。"],"en":"I am studying Japanese."},"drillsJtoE":[{"jp":"わたしはにほんごをべんきょうしています。","en":"I am studying Japanese."},{"jp":"わたしはえいごとすうがくをべんきょうしています。","en":"I am studying English and Maths."},{"jp":"わたしはにほんごやえいごなどをべんきょうしています。","en":"I am studying Japanese, English and so on."},{"jp":"わたしはりかやすうがくなどをべんきょうしています。","en":"I am studying Science, Maths and so on."},{"jp":"わたしはれきしやちりやしゅうきょうなどをべんきょうしています。","en":"I am studying History, Geography, RVE and so on."},{"jp":"わたしはえいご、すうがく、りか、れきし、びじゅつとたいいくをべんきょうしています。","en":"I am studying English, Maths, Science, History, Art and P.E."},{"jp":"わたしはにほんご、おんがく、ドラマ、ぎじゅつかていとしゅうきょうをべんきょうしています。","en":"I am studying Japanese, Music, Drama, Tech and RVE."},{"jp":"わたしはドラマやおんがくなどをべんきょうしています。","en":"I am studying Drama, Music and so on."},{"jp":"わたしはびじゅつやドラマなどをべんきょうしています。","en":"I am studying Art, Drama and so on."},{"jp":"わたしはえいご、すうがく、りか、しゃかい、にほんご、たいいくとびじゅつをべんきょうしています。","en":"I am studying English, Maths, Science, HASS, Japanese, P.E. and Art."}],"drillsEtoJ":[{"jp":"わたしはりかやすうがくなどをべんきょうしています。","en":"I am studying Science, Maths and so on."},{"jp":"わたしはにほんごをべんきょうしています。","en":"I am studying Japanese."},{"jp":"わたしはえいご、すうがく、りか、れきし、びじゅつとたいいくをべんきょうしています。","en":"I am studying English, Maths, Science, History, Art and P.E."},{"jp":"わたしはえいごとすうがくをべんきょうしています。","en":"I am studying English and Maths."},{"jp":"わたしはドラマやおんがくなどをべんきょうしています。","en":"I am studying Drama, Music and so on."},{"jp":"わたしはにほんごやえいごなどをべんきょうしています。","en":"I am studying Japanese, English and so on."},{"jp":"わたしはにほんご、おんがく、ドラマ、ぎじゅつかていとしゅうきょうをべんきょうしています。","en":"I am studying Japanese, Music, Drama, Tech and RVE."},{"jp":"わたしはれきしやちりやしゅうきょうなどをべんきょうしています。","en":"I am studying History, Geography, RVE and so on."},{"jp":"わたしはえいご、すうがく、りか、しゃかい、にほんご、たいいくとびじゅつをべんきょうしています。","en":"I am studying English, Maths, Science, HASS, Japanese, P.E. and Art."},{"jp":"わたしはびじゅつやドラマなどをべんきょうしています。","en":"I am studying Art, Drama and so on."}],"freeWritingPrompt":"Write one sentence listing the subjects you study this year, using や…など or a list.","talkingBoard":[{"a":{"jp":"なにをべんきょうしていますか。","en":"What are you studying?"},"b":{"jp":"えいごとすうがくをべんきょうしています。","en":"I'm studying English and Maths (High School)."}},{"a":{"jp":"ほかには？","en":"Anything else?"},"b":{"jp":"りかやドラマなどをべんきょうしています。","en":"I'm studying Science, Drama and so on."}},{"a":{"jp":"ドラマもべんきょうしていますか。","en":"Are you studying Drama too?"},"b":{"jp":"はい、ドラマもべんきょうしています。","en":"Yes, I'm studying Drama too."}},{"a":{"jp":"たいへんですね！","en":"That's tough!"},"b":{"jp":"そうですね。","en":"It sure is."}},{"a":{"jp":"いそがしいですね！","en":"That's busy!"},"b":{"jp":"はい、いそがしいです。","en":"Yes, I'm busy."}}],"clozeSet":[{"jpBefore":"わたしはにほんご","blank":"を","jpAfter":"べんきょうしています。","options":["を","が","は"],"kind":"particle","en":"I am studying Japanese."},{"jpBefore":"わたしはえいご","blank":"と","jpAfter":"すうがくをべんきょうしています。","options":["と","が","で"],"kind":"particle","en":"I am studying English and Maths."},{"jpBefore":"わたしはにほんごやえいご","blank":"など","jpAfter":"をべんきょうしています。","options":["など","や","と"],"kind":"grammar","en":"I am studying Japanese, English and so on."},{"jpBefore":"わたしはりか","blank":"や","jpAfter":"すうがくなどをべんきょうしています。","options":["や","と","が"],"kind":"particle","en":"I am studying Science, Maths and so on."},{"jpBefore":"わたしは","blank":"ドラマ","jpAfter":"やおんがくなどをべんきょうしています。","options":["ドラマ","たいいく","びじゅつ"],"kind":"vocabulary","en":"I am studying Drama, Music and so on."}],"scrambleSet":[{"answer":"わたしはにほんごをべんきょうしています。","chunks":["わたし","は","にほんご","を","べんきょうしています。"],"en":"I am studying Japanese."},{"answer":"わたしはえいごとすうがくをべんきょうしています。","chunks":["わたし","は","えいご","と","すうがく","を","べんきょうしています。"],"en":"I am studying English and Maths."},{"answer":"わたしはにほんごやえいごなどをべんきょうしています。","chunks":["わたし","は","にほんご","や","えいご","など","を","べんきょうしています。"],"en":"I am studying Japanese, English and so on."},{"answer":"わたしはりかやすうがくなどをべんきょうしています。","chunks":["わたし","は","りか","や","すうがく","など","を","べんきょうしています。"],"en":"I am studying Science, Maths and so on."},{"answer":"わたしはドラマやおんがくなどをべんきょうしています。","chunks":["わたし","は","ドラマ","や","おんがく","など","を","べんきょうしています。"],"en":"I am studying Drama, Music and so on."}],"notes":["べんきょうしています literally means ‘am studying’. Use it for the subjects you are studying at school at the moment. You don’t need to work out how it’s built yet; just learn it as one chunk.","Ways to list subjects: と joins two (えいごとすうがく), や … など means ‘… and so on’ (にほんごやえいごなど), or make a list with 、 and put と before the last subject."]},{"key":"likesDislikes","title":"Expressing Likes & Dislikes","tokens":[{"tokens":[{"t":"にほんご","r":"subject"},{"t":"が","r":"particle"},{"t":"大好き","r":"verbStem"},{"t":"です。","r":"verbEnding"}],"en":"I love Japanese."},{"tokens":[{"t":"りか","r":"subject"},{"t":"が","r":"particle"},{"t":"好き","r":"verbStem"},{"t":"です。","r":"verbEnding"}],"en":"I like Science."},{"tokens":[{"t":"すうがく","r":"subject"},{"t":"が","r":"particle"},{"t":"好きじゃない","r":"verbStem"},{"t":"です。","r":"verbEnding"}],"en":"I don't like Maths."},{"tokens":[{"t":"たいいく","r":"subject"},{"t":"は","r":"particle"},{"t":"ちょっと。。。","r":null}],"en":"P.E. is a little... (not keen)."},{"tokens":[{"t":"一番","r":"manner"},{"t":"好きな","r":"adjective"},{"t":"かもく","r":"subject"},{"t":"は","r":"particle"},{"t":"えいご","r":"subject"},{"t":"です。","r":"verbEnding"}],"en":"My favourite subject is English."},{"tokens":[{"t":"一番","r":"manner"},{"t":"好きな","r":"adjective"},{"t":"先生","r":"subject"},{"t":"は","r":"particle"},{"t":"りか","r":"subject"},{"t":"の","r":"particle"},{"t":"先生","r":"subject"},{"t":"です。","r":"verbEnding"}],"en":"My favourite teacher is the Science teacher."}],"whyPrompt":"Why do you think が is used with 大好き／好き／好きじゃない, but は is used with ちょっと。。。? What is each sentence really drawing attention to?","cloze":{"jpBefore":"にほんごが","blank":"大好き","jpAfter":"です。","options":["大好き","好き","好きじゃない"],"en":"I love Japanese."},"scramble":{"answer":"こくごが好きです。","chunks":["こくご","が","好き","です。"],"en":"I like National Language."},"drillsJtoE":[{"jp":"にほんごが大好きです。","en":"I love Japanese."},{"jp":"こくごが好きです。","en":"I like National Language."},{"jp":"えいごが好きじゃないです。","en":"I don't like English."},{"jp":"すうがくはちょっと。。。","en":"Maths (High School) is a little..."},{"jp":"さんすうが大好きです。","en":"I love Maths (Junior School)."},{"jp":"ちりが好きです。","en":"I like Geography."},{"jp":"りかが好きじゃないです。","en":"I don't like Science."},{"jp":"たいいくはちょっと。。。","en":"P.E. is a little..."},{"jp":"びじゅつが大好きです。","en":"I love Art."},{"jp":"れきしが好きです。","en":"I like History."},{"jp":"一番好きなかもくはえいごです。","en":"My favourite subject is English."},{"jp":"一番好きなかもくはにほんごです。","en":"My favourite subject is Japanese."},{"jp":"一番好きな先生はりかの先生です。","en":"My favourite teacher is the Science teacher."},{"jp":"一番好きなかもくはドラマです。","en":"My favourite subject is Drama."}],"drillsEtoJ":[{"jp":"たいいくが大好きです。","en":"I love P.E.."},{"jp":"びじゅつが好きです。","en":"I like Art."},{"jp":"れきしが好きじゃないです。","en":"I don't like History."},{"jp":"しゃかいはちょっと。。。","en":"HASS is a little..."},{"jp":"おんがくが大好きです。","en":"I love Music."},{"jp":"ぎじゅつかていが好きです。","en":"I like Tech."},{"jp":"しゅうきょうが好きじゃないです。","en":"I don't like RVE."},{"jp":"ぜんこうしゅうかいはちょっと。。。","en":"Assembly is a little..."},{"jp":"そーが大好きです。","en":"I love SOAR."},{"jp":"ぶかつが好きです。","en":"I like Clubs / Activities."},{"jp":"一番好きなかもくはびじゅつです。","en":"My favourite subject is Art."},{"jp":"一番好きなかもくはドラマです。","en":"My favourite subject is Drama."},{"jp":"一番好きな先生はすうがくの先生です。","en":"My favourite teacher is the Maths teacher."},{"jp":"一番好きなかもくはおんがくです。","en":"My favourite subject is Music."}],"freeWritingPrompt":"Write two of your own sentences about school subjects you love, like, or aren't keen on, then one sentence about your favourite subject or teacher.","talkingBoard":[{"a":{"jp":"にほんごが好きですか。","en":"Do you like Japanese?"},"b":{"jp":"はい、大好きです。","en":"Yes, I love it."}},{"a":{"jp":"そうですか。じゃあ、こくごは？","en":"Really? Then what about National Language?"},"b":{"jp":"こくごも好きです。","en":"I like National Language too."}},{"a":{"jp":"えいごはどうですか。","en":"What about English?"},"b":{"jp":"うーん、ちょっと。。。","en":"Hmm, not really..."}},{"a":{"jp":"そうですか。すうがくが好きじゃないですか。","en":"I see. Do you dislike Maths (High School)?"},"b":{"jp":"はい、好きじゃないです。","en":"Yes, I don't like it."}},{"a":{"jp":"わかりました！","en":"Got it!"},"b":{"jp":"はい、そうです。","en":"Yes, that's right."}},{"a":{"jp":"一番好きなかもくはなんですか。","en":"What's your favourite subject?"},"b":{"jp":"えいごです。","en":"It's English."}},{"a":{"jp":"一番好きな先生は？","en":"And your favourite teacher?"},"b":{"jp":"えいごの先生です。","en":"The English teacher."}}],"clozeSet":[{"jpBefore":"","blank":"にほんご","jpAfter":"が大好きです。","options":["おんがく","にほんご","れきし"],"kind":"vocabulary","en":"I love Japanese."},{"jpBefore":"こくご","blank":"が","jpAfter":"好きです。","options":["を","が","は"],"kind":"particle","en":"I like National Language."},{"jpBefore":"えいごが","blank":"好きじゃない","jpAfter":"です。","options":["大好き","好きじゃない","好き"],"kind":"grammar","en":"I don't like English."},{"jpBefore":"すうがく","blank":"は","jpAfter":"ちょっと。。。","options":["は","が","を"],"kind":"particle","en":"Maths (High School) is a little..."},{"jpBefore":"","blank":"さんすう","jpAfter":"が大好きです。","options":["あさのかい","ぶかつ","さんすう"],"kind":"vocabulary","en":"I love Maths (Junior School)."},{"jpBefore":"","blank":"一番","jpAfter":"好きなかもくはえいごです。","options":["一番","とても","ほんとうに"],"kind":"vocabulary","en":"My favourite subject is English."},{"jpBefore":"一番好き","blank":"な","jpAfter":"かもくはえいごです。","options":["な","の","が"],"kind":"grammar","en":"My favourite subject is English."}],"scrambleSet":[{"answer":"にほんごが大好きです。","chunks":["にほんご","が","大好き","です。"],"en":"I love Japanese."},{"answer":"こくごが好きです。","chunks":["こくご","が","好き","です。"],"en":"I like National Language."},{"answer":"えいごが好きじゃないです。","chunks":["えいご","が","好きじゃない","です。"],"en":"I don't like English."},{"answer":"すうがくはちょっと。。。","chunks":["すうがく","は","ちょっと。。。"],"en":"Maths (High School) is a little..."},{"answer":"さんすうが大好きです。","chunks":["さんすう","が","大好き","です。"],"en":"I love Maths (Junior School)."},{"answer":"一番好きなかもくはえいごです。","chunks":["一番","好きな","かもく","は","えいご","です。"],"en":"My favourite subject is English."},{"answer":"一番好きな先生はりかの先生です。","chunks":["一番","好きな","先生","は","りか","の","先生","です。"],"en":"My favourite teacher is the Science teacher."}]},{"key":"adjective","title":"Describing School Subjects","tokens":[{"tokens":[{"t":"にほんご","r":"subject"},{"t":"は","r":"particle"},{"t":"たのしい","r":"adjective"},{"t":"です。","r":"verbEnding"}],"en":"Japanese is fun."}],"whyPrompt":"Why does the adjective come after は and before です, rather than directly attached to the subject?","cloze":{"jpBefore":"にほんごは","blank":"たのしい","jpAfter":"です。","options":["たのしい","おもしろい","つまらない"],"en":"Japanese is fun."},"scramble":{"answer":"こくごはおもしろいです。","chunks":["こくご","は","おもしろい","です。"],"en":"National Language is interesting."},"drillsJtoE":[{"jp":"にほんごはたのしいです。","en":"Japanese is fun."},{"jp":"こくごはおもしろいです。","en":"National Language is interesting."},{"jp":"えいごはつまらないです。","en":"English is boring."},{"jp":"すうがくはかんたんです。","en":"Maths (High School) is easy / simple."},{"jp":"さんすうはむずかしいです。","en":"Maths (Junior School) is difficult."},{"jp":"ちりはやさしいです。","en":"Geography is kind."},{"jp":"りかはきびしいです。","en":"Science is strict."},{"jp":"たいいくはこわいです。","en":"P.E. is scary."},{"jp":"びじゅつはすごいです。","en":"Art is awesome."},{"jp":"れきしはたのしいです。","en":"History is fun."}],"drillsEtoJ":[{"jp":"ちりはかんたんです。","en":"Geography is easy / simple."},{"jp":"りかはむずかしいです。","en":"Science is difficult."},{"jp":"たいいくはやさしいです。","en":"P.E. is kind."},{"jp":"びじゅつはきびしいです。","en":"Art is strict."},{"jp":"れきしはこわいです。","en":"History is scary."},{"jp":"しゃかいはすごいです。","en":"HASS is awesome."},{"jp":"おんがくはたのしいです。","en":"Music is fun."},{"jp":"ぎじゅつかていはおもしろいです。","en":"Tech is interesting."},{"jp":"しゅうきょうはつまらないです。","en":"RVE is boring."},{"jp":"ぜんこうしゅうかいはかんたんです。","en":"Assembly is easy / simple."}],"freeWritingPrompt":"Write three sentences describing school subjects using different adjectives.","talkingBoard":[{"a":{"jp":"にほんごはどうですか。","en":"What's Japanese like?"},"b":{"jp":"たのしいです。","en":"It's fun."}},{"a":{"jp":"いいですね。こくごは？","en":"Nice! What about National Language?"},"b":{"jp":"むずかしいです。","en":"It's difficult."}},{"a":{"jp":"ほんとうですか。えいごは？","en":"Really? What about English?"},"b":{"jp":"つまらないです。","en":"It's boring."}},{"a":{"jp":"わたしもつまらないとおもいます。","en":"I think so too."},"b":{"jp":"そうですね。","en":"That's right."}},{"a":{"jp":"すうがくはすきですか。","en":"Do you like Maths (High School)?"},"b":{"jp":"はい、すごいですから。","en":"Yes, because it's awesome."}}],"clozeSet":[{"jpBefore":"","blank":"にほんご","jpAfter":"はおもしろいです。","options":["にほんご","こくご","れきし"],"kind":"vocabulary","en":"Japanese is interesting."},{"jpBefore":"こくご","blank":"は","jpAfter":"かんたんです。","options":["の","は","が"],"kind":"particle","en":"National Language is easy / simple."},{"jpBefore":"えいごは","blank":"やさしい","jpAfter":"です。","options":["やさしい","きびしい","こわい"],"kind":"grammar","en":"English is kind."},{"jpBefore":"すうがく","blank":"は","jpAfter":"こわいです。","options":["の","が","は"],"kind":"particle","en":"Maths (High School) is scary."},{"jpBefore":"","blank":"さんすう","jpAfter":"はたのしいです。","options":["りか","しゅうきょう","さんすう"],"kind":"vocabulary","en":"Maths (Junior School) is fun."}],"scrambleSet":[{"answer":"にほんごはおもしろいです。","chunks":["にほんご","は","おもしろい","です。"],"en":"Japanese is interesting."},{"answer":"こくごはかんたんです。","chunks":["こくご","は","かんたん","です。"],"en":"National Language is easy / simple."},{"answer":"えいごはやさしいです。","chunks":["えいご","は","やさしい","です。"],"en":"English is kind."},{"answer":"すうがくはこわいです。","chunks":["すうがく","は","こわい","です。"],"en":"Maths (High School) is scary."},{"answer":"さんすうはたのしいです。","chunks":["さんすう","は","たのしい","です。"],"en":"Maths (Junior School) is fun."}]},{"key":"opinions","title":"Giving Opinions","tokens":[{"tokens":[{"t":"にほんご","r":"subject"},{"t":"は","r":"particle"},{"t":"たのしい","r":"adjective"},{"t":"と","r":"particle"},{"t":"おもいます。","r":"verbEnding"}],"en":"I think Japanese is fun."},{"tokens":[{"t":"しゅくだい","r":"subject"},{"t":"は","r":"particle"},{"t":"たいへん","r":"adjective"},{"t":"だ","r":"verbStem"},{"t":"と","r":"particle"},{"t":"おもいます。","r":"verbEnding"}],"en":"I think homework is tough."},{"tokens":[{"t":"先生","r":"subject"},{"t":"は","r":"particle"},{"t":"しんせつ","r":"adjective"},{"t":"だ","r":"verbStem"},{"t":"と","r":"particle"},{"t":"おもいます。","r":"verbEnding"}],"en":"I think the teacher is helpful."},{"tokens":[{"t":"ドラマ","r":"subject"},{"t":"は","r":"particle"},{"t":"とても","r":"manner"},{"t":"たのしい","r":"adjective"},{"t":"と","r":"particle"},{"t":"おもいます。","r":"verbEnding"}],"en":"I think Drama is very fun."},{"tokens":[{"t":"りか","r":"subject"},{"t":"は","r":"particle"},{"t":"むずかしい","r":"adjective"},{"t":"です。","r":"verbEnding"},{"t":"でも","r":"manner"},{"t":"、","r":null},{"t":"おもしろい","r":"adjective"},{"t":"と","r":"particle"},{"t":"おもいます。","r":"verbEnding"}],"en":"Science is difficult, but I think it's interesting."}],"whyPrompt":"Compare たのしいとおもいます and かんたんだとおもいます. What does だ do, and why do you think な-adjectives need it before と?","cloze":{"jpBefore":"にほんごはたのしい","blank":"と","jpAfter":"おもいます。","options":["と","が","を"],"en":"I think Japanese is fun."},"scramble":{"answer":"にほんごはたのしいとおもいます。","chunks":["にほんご","は","たのしい","と","おもいます。"],"en":"I think Japanese is fun."},"drillsJtoE":[{"jp":"にほんごはたのしいとおもいます。","en":"I think Japanese is fun."},{"jp":"すうがくはむずかしいとおもいます。","en":"I think Maths is difficult."},{"jp":"えいごはおもしろいとおもいます。","en":"I think English is interesting."},{"jp":"しゅくだいはたいへんだとおもいます。","en":"I think homework is tough."},{"jp":"びじゅつはかんたんだとおもいます。","en":"I think Art is easy."},{"jp":"先生はしんせつだとおもいます。","en":"I think the teacher is helpful."},{"jp":"先生はやさしいとおもいます。","en":"I think the teacher is kind."},{"jp":"ドラマはとてもたのしいとおもいます。","en":"I think Drama is very fun."},{"jp":"学校はほんとうにたのしいとおもいます。","en":"I think school is really fun."},{"jp":"としょかんはたいせつだとおもいます。","en":"I think the library is important."}],"drillsEtoJ":[{"jp":"びじゅつはかんたんだとおもいます。","en":"I think Art is easy."},{"jp":"すうがくはむずかしいとおもいます。","en":"I think Maths is difficult."},{"jp":"学校はほんとうにたのしいとおもいます。","en":"I think school is really fun."},{"jp":"にほんごはたのしいとおもいます。","en":"I think Japanese is fun."},{"jp":"先生はやさしいとおもいます。","en":"I think the teacher is kind."},{"jp":"しゅくだいはたいへんだとおもいます。","en":"I think homework is tough."},{"jp":"としょかんはたいせつだとおもいます。","en":"I think the library is important."},{"jp":"えいごはおもしろいとおもいます。","en":"I think English is interesting."},{"jp":"ドラマはとてもたのしいとおもいます。","en":"I think Drama is very fun."},{"jp":"先生はしんせつだとおもいます。","en":"I think the teacher is helpful."}],"freeWritingPrompt":"Write two sentences giving your opinion: one about a school subject and one about a teacher.","talkingBoard":[{"a":{"jp":"にほんごはどうですか。","en":"What's Japanese like?"},"b":{"jp":"たのしいとおもいます。","en":"I think it's fun."}},{"a":{"jp":"すうがくは？","en":"What about Maths (High School)?"},"b":{"jp":"むずかしいとおもいます。","en":"I think it's difficult."}},{"a":{"jp":"先生は？","en":"And the teacher?"},"b":{"jp":"しんせつだとおもいます。","en":"I think the teacher is helpful."}},{"a":{"jp":"わたしもたのしいとおもいます。","en":"I think so too."},"b":{"jp":"そうですね。","en":"That's right."}},{"a":{"jp":"そうですか。","en":"I see."},"b":{"jp":"はい、そうです。","en":"Yes, that's right."}}],"clozeSet":[{"jpBefore":"にほんごはたのしい","blank":"と","jpAfter":"おもいます。","options":["と","が","を"],"kind":"particle","en":"I think Japanese is fun."},{"jpBefore":"しゅくだいはたいへん","blank":"だ","jpAfter":"とおもいます。","options":["だ","です","の"],"kind":"grammar","en":"I think homework is tough."},{"jpBefore":"すうがくは","blank":"むずかしい","jpAfter":"とおもいます。","options":["むずかしい","かんたん","げんき"],"kind":"vocabulary","en":"I think Maths is difficult."},{"jpBefore":"","blank":"ドラマ","jpAfter":"はとてもたのしいとおもいます。","options":["ドラマ","としょかん","しゅくだい"],"kind":"vocabulary","en":"I think Drama is very fun."},{"jpBefore":"ドラマは","blank":"とても","jpAfter":"たのしいとおもいます。","options":["とても","でも","そして"],"kind":"vocabulary","en":"I think Drama is very fun."}],"scrambleSet":[{"answer":"にほんごはたのしいとおもいます。","chunks":["にほんご","は","たのしい","と","おもいます。"],"en":"I think Japanese is fun."},{"answer":"しゅくだいはたいへんだとおもいます。","chunks":["しゅくだい","は","たいへん","だ","と","おもいます。"],"en":"I think homework is tough."},{"answer":"先生はしんせつだとおもいます。","chunks":["先生","は","しんせつ","だ","と","おもいます。"],"en":"I think the teacher is helpful."},{"answer":"ドラマはとてもたのしいとおもいます。","chunks":["ドラマ","は","とても","たのしい","と","おもいます。"],"en":"I think Drama is very fun."},{"answer":"としょかんはたいせつだとおもいます。","chunks":["としょかん","は","たいせつ","だ","と","おもいます。"],"en":"I think the library is important."}],"notes":["い-adjectives go straight before と (たのしいとおもいます). な-adjectives need だ first (たいへんだとおもいます).","とても (very) and ほんとうに (really) go just before the adjective. Use でも (but) and そして (and) to link your ideas."]},{"key":"reasons","title":"Giving Reasons","tokens":[{"tokens":[{"t":"にほんご","r":"subject"},{"t":"が","r":"particle"},{"t":"好き","r":"verbStem"},{"t":"です。","r":"verbEnding"},{"t":"なぜかというと","r":"manner"},{"t":"、","r":null},{"t":"たのしい","r":"adjective"},{"t":"から","r":"particle"},{"t":"です。","r":"verbEnding"}],"en":"I like Japanese. The reason is that it's fun."},{"tokens":[{"t":"すうがく","r":"subject"},{"t":"が","r":"particle"},{"t":"好きじゃない","r":"verbStem"},{"t":"です。","r":"verbEnding"},{"t":"なぜかというと","r":"manner"},{"t":"、","r":null},{"t":"むずかしい","r":"adjective"},{"t":"から","r":"particle"},{"t":"です。","r":"verbEnding"}],"en":"I don't like Maths. The reason is that it's difficult."},{"tokens":[{"t":"えいご","r":"subject"},{"t":"が","r":"particle"},{"t":"大好き","r":"verbStem"},{"t":"です。","r":"verbEnding"},{"t":"なぜかというと","r":"manner"},{"t":"、","r":null},{"t":"先生","r":"subject"},{"t":"は","r":"particle"},{"t":"やさしい","r":"adjective"},{"t":"から","r":"particle"},{"t":"です。","r":"verbEnding"}],"en":"I love English. The reason is that the teacher is kind."},{"tokens":[{"t":"先生","r":"subject"},{"t":"が","r":"particle"},{"t":"好き","r":"verbStem"},{"t":"です。","r":"verbEnding"},{"t":"なぜかというと","r":"manner"},{"t":"、","r":null},{"t":"しんせつ","r":"adjective"},{"t":"だ","r":"verbStem"},{"t":"から","r":"particle"},{"t":"です。","r":"verbEnding"}],"en":"I like the teacher. The reason is that they are helpful."},{"tokens":[{"t":"りか","r":"subject"},{"t":"は","r":"particle"},{"t":"ちょっと。。。","r":null},{"t":"なぜかというと","r":"manner"},{"t":"、","r":null},{"t":"先生","r":"subject"},{"t":"は","r":"particle"},{"t":"きびしい","r":"adjective"},{"t":"から","r":"particle"},{"t":"です。","r":"verbEnding"}],"en":"Science is a little... The reason is that the teacher is strict."},{"tokens":[{"t":"びじゅつ","r":"subject"},{"t":"が","r":"particle"},{"t":"好き","r":"verbStem"},{"t":"です。","r":"verbEnding"},{"t":"なぜかというと","r":"manner"},{"t":"、","r":null},{"t":"かんたん","r":"adjective"},{"t":"だ","r":"verbStem"},{"t":"から","r":"particle"},{"t":"です。","r":"verbEnding"}],"en":"I like Art. The reason is that it's easy."}],"whyPrompt":"Compare たのしいからです and しんせつだからです. What extra letter appears with しんせつ, and why do you think な-adjectives need it?","cloze":{"jpBefore":"なぜかというと、たのしい","blank":"から","jpAfter":"です。","options":["から","が","は"],"en":"The reason is that it's fun."},"scramble":{"answer":"なぜかというと、たのしいからです。","chunks":["なぜかというと","、","たのしい","から","です。"],"en":"The reason is that it's fun."},"drillsJtoE":[{"jp":"なぜかというと、たのしいからです。","en":"The reason is that it's fun."},{"jp":"なぜかというと、おもしろいからです。","en":"The reason is that it's interesting."},{"jp":"なぜかというと、むずかしいからです。","en":"The reason is that it's difficult."},{"jp":"なぜかというと、つまらないからです。","en":"The reason is that it's boring."},{"jp":"なぜかというと、先生はやさしいからです。","en":"The reason is that the teacher is kind."},{"jp":"なぜかというと、先生はきびしいからです。","en":"The reason is that the teacher is strict."},{"jp":"なぜかというと、かんたんだからです。","en":"The reason is that it's easy."},{"jp":"なぜかというと、先生はしんせつだからです。","en":"The reason is that the teacher is helpful."},{"jp":"なぜかというと、先生はげんきだからです。","en":"The reason is that the teacher is energetic."},{"jp":"なぜかというと、先生はわかりやすいからです。","en":"The reason is that the teacher is easy to understand."}],"drillsEtoJ":[{"jp":"なぜかというと、先生はきびしいからです。","en":"The reason is that the teacher is strict."},{"jp":"なぜかというと、むずかしいからです。","en":"The reason is that it's difficult."},{"jp":"なぜかというと、先生はげんきだからです。","en":"The reason is that the teacher is energetic."},{"jp":"なぜかというと、たのしいからです。","en":"The reason is that it's fun."},{"jp":"なぜかというと、先生はわかりやすいからです。","en":"The reason is that the teacher is easy to understand."},{"jp":"なぜかというと、つまらないからです。","en":"The reason is that it's boring."},{"jp":"なぜかというと、かんたんだからです。","en":"The reason is that it's easy."},{"jp":"なぜかというと、おもしろいからです。","en":"The reason is that it's interesting."},{"jp":"なぜかというと、先生はしんせつだからです。","en":"The reason is that the teacher is helpful."},{"jp":"なぜかというと、先生はやさしいからです。","en":"The reason is that the teacher is kind."}],"freeWritingPrompt":"Write two sentences: say what you like or don't like, then give your reason with なぜかというと.","talkingBoard":[{"a":{"jp":"にほんごが好きですか。","en":"Do you like Japanese?"},"b":{"jp":"はい、好きです。","en":"Yes, I like it."}},{"a":{"jp":"どうしてですか。","en":"Why?"},"b":{"jp":"なぜかというと、たのしいからです。","en":"The reason is that it's fun."}},{"a":{"jp":"すうがくはどうですか。","en":"What about Maths (High School)?"},"b":{"jp":"うーん、ちょっと。。。","en":"Hmm, not really..."}},{"a":{"jp":"どうしてですか。","en":"Why?"},"b":{"jp":"なぜかというと、先生はきびしいからです。","en":"The reason is that the teacher is strict."}},{"a":{"jp":"そうですか。","en":"I see."},"b":{"jp":"はい、そうです。","en":"Yes, that's right."}}],"clozeSet":[{"jpBefore":"なぜかというと、たのしい","blank":"から","jpAfter":"です。","options":["から","が","は"],"kind":"particle","en":"The reason is that it's fun."},{"jpBefore":"なぜかというと、かんたん","blank":"だ","jpAfter":"からです。","options":["だ","です","の"],"kind":"grammar","en":"The reason is that it's easy."},{"jpBefore":"なぜかというと、先生は","blank":"やさしい","jpAfter":"からです。","options":["やさしい","しんせつ","げんき"],"kind":"vocabulary","en":"The reason is that the teacher is kind."},{"jpBefore":"なぜかというと、先生は","blank":"しんせつ","jpAfter":"だからです。","options":["しんせつ","やさしい","きびしい"],"kind":"vocabulary","en":"The reason is that the teacher is helpful."},{"jpBefore":"","blank":"なぜかというと","jpAfter":"、むずかしいからです。","options":["なぜかというと","でも","そして"],"kind":"vocabulary","en":"The reason is that it's difficult."}],"scrambleSet":[{"answer":"なぜかというと、たのしいからです。","chunks":["なぜかというと","、","たのしい","から","です。"],"en":"The reason is that it's fun."},{"answer":"なぜかというと、先生はやさしいからです。","chunks":["なぜかというと","、","先生","は","やさしい","から","です。"],"en":"The reason is that the teacher is kind."},{"answer":"なぜかというと、かんたんだからです。","chunks":["なぜかというと","、","かんたん","だ","から","です。"],"en":"The reason is that it's easy."},{"answer":"なぜかというと、先生はしんせつだからです。","chunks":["なぜかというと","、","先生","は","しんせつ","だ","から","です。"],"en":"The reason is that the teacher is helpful."},{"answer":"なぜかというと、先生はわかりやすいからです。","chunks":["なぜかというと","、","先生","は","わかりやすい","から","です。"],"en":"The reason is that the teacher is easy to understand."}],"notes":["い-adjectives go straight before から (たのしいからです). な-adjectives need だ first (しんせつだからです). Spot the difference!","な-adjectives so far: かんたん, しんせつ, げんき, たいへん, たいせつ. All the others (たのしい, おもしろい, つまらない, むずかしい, やさしい, きびしい, こわい, すごい, わかりやすい) are い-adjectives."]},{"key":"abilities","title":"Expressing Abilities","tokens":[{"tokens":[{"t":"えいご","r":"subject"},{"t":"が","r":"particle"},{"t":"とくい","r":"verbStem"},{"t":"です。","r":"verbEnding"}],"en":"I am good at English."},{"tokens":[{"t":"すうがく","r":"subject"},{"t":"が","r":"particle"},{"t":"にがて","r":"verbStem"},{"t":"です。","r":"verbEnding"}],"en":"I am bad at Maths."},{"tokens":[{"t":"おんがく","r":"subject"},{"t":"が","r":"particle"},{"t":"でき","r":"verbStem"},{"t":"ます。","r":"verbEnding"}],"en":"I can do Music."},{"tokens":[{"t":"びじゅつ","r":"subject"},{"t":"が","r":"particle"},{"t":"でき","r":"verbStem"},{"t":"ません。","r":"verbEnding"}],"en":"I cannot do Art."}],"whyPrompt":"できます／できません uses ます-form like a regular verb, while とくい／にがて don't. Why might that difference matter when you build a sentence?","cloze":{"jpBefore":"にほんごが","blank":"とくい","jpAfter":"です。","options":["とくい","にがて"],"en":"I am good at Japanese."},"scramble":{"answer":"こくごができます。","chunks":["こくご","が","でき","ます。"],"en":"I can do National Language."},"drillsJtoE":[{"jp":"にほんごがとくいです。","en":"I am good at Japanese."},{"jp":"こくごがにがてです。","en":"I am bad at National Language."},{"jp":"えいごができます。","en":"I can do English."},{"jp":"すうがくができません。","en":"I cannot do Maths (High School)."},{"jp":"さんすうがとくいです。","en":"I am good at Maths (Junior School)."},{"jp":"ちりがにがてです。","en":"I am bad at Geography."},{"jp":"りかができます。","en":"I can do Science."},{"jp":"たいいくができません。","en":"I cannot do P.E.."},{"jp":"びじゅつがとくいです。","en":"I am good at Art."},{"jp":"れきしがにがてです。","en":"I am bad at History."}],"drillsEtoJ":[{"jp":"れきしがとくいです。","en":"I am good at History."},{"jp":"しゃかいがにがてです。","en":"I am bad at HASS."},{"jp":"おんがくができます。","en":"I can do Music."},{"jp":"ぎじゅつかていができません。","en":"I cannot do Tech."},{"jp":"しゅうきょうがとくいです。","en":"I am good at RVE."},{"jp":"ぜんこうしゅうかいがにがてです。","en":"I am bad at Assembly."},{"jp":"そーができます。","en":"I can do SOAR."},{"jp":"ぶかつができません。","en":"I cannot do Clubs / Activities."},{"jp":"としょかんがとくいです。","en":"I am good at Library."},{"jp":"きゅうけいがにがてです。","en":"I am bad at Break / Morning Tea."}],"freeWritingPrompt":"Write two sentences about subjects you are good at and bad at.","talkingBoard":[{"a":{"jp":"にほんごがとくいですか。","en":"Are you good at Japanese?"},"b":{"jp":"はい、とくいです。","en":"Yes, I'm good at it."}},{"a":{"jp":"すごいですね！こくごはどうですか。","en":"Amazing! What about National Language?"},"b":{"jp":"こくごができます。","en":"I can do National Language."}},{"a":{"jp":"えいごはできますか。","en":"Can you do English?"},"b":{"jp":"いいえ、できません。","en":"No, I can't."}},{"a":{"jp":"にがてですか。","en":"Are you bad at it?"},"b":{"jp":"はい、にがてです。","en":"Yes, I'm bad at it."}},{"a":{"jp":"だいじょうぶですよ。","en":"That's okay!"},"b":{"jp":"ありがとう。","en":"Thanks."}}],"clozeSet":[{"jpBefore":"","blank":"えいご","jpAfter":"がとくいです。","options":["あさのかい","ぎじゅつかてい","えいご"],"kind":"vocabulary","en":"I am good at English."},{"jpBefore":"すうがく","blank":"が","jpAfter":"にがてです。","options":["が","は","を"],"kind":"particle","en":"I am bad at Maths (High School)."},{"jpBefore":"さんすうが","blank":"できます","jpAfter":"。","options":["できます","にがて","とくい","できません"],"kind":"grammar","en":"I can do Maths (Junior School)."},{"jpBefore":"ちり","blank":"が","jpAfter":"できません。","options":["は","を","が"],"kind":"particle","en":"I cannot do Geography."},{"jpBefore":"","blank":"りか","jpAfter":"がとくいです。","options":["りか","にほんご","しゃかい"],"kind":"vocabulary","en":"I am good at Science."}],"scrambleSet":[{"answer":"えいごがとくいです。","chunks":["えいご","が","とくい","です。"],"en":"I am good at English."},{"answer":"すうがくがにがてです。","chunks":["すうがく","が","にがて","です。"],"en":"I am bad at Maths (High School)."},{"answer":"さんすうができます。","chunks":["さんすう","が","できます。"],"en":"I can do Maths (Junior School)."},{"answer":"ちりができません。","chunks":["ちり","が","できません。"],"en":"I cannot do Geography."},{"answer":"りかがとくいです。","chunks":["りか","が","とくい","です。"],"en":"I am good at Science."}]},{"key":"timetable","title":"Talking About Your Timetable","tokens":[{"tokens":[{"t":"一じかんめ","r":"timeSpecific"},{"t":"は","r":"particle"},{"t":"えいご","r":"subject"},{"t":"です。","r":"verbEnding"}],"en":"Period 1 is English."},{"tokens":[{"t":"月よう日","r":"timeGeneral"},{"t":"の","r":"particle"},{"t":"一じかんめ","r":"timeSpecific"},{"t":"は","r":"particle"},{"t":"にほんご","r":"subject"},{"t":"です。","r":"verbEnding"}],"en":"Monday's Period 1 is Japanese."},{"tokens":[{"t":"にほんご","r":"subject"},{"t":"は","r":"particle"},{"t":"月よう日","r":"timeGeneral"},{"t":"の","r":"particle"},{"t":"一じかんめ","r":"timeSpecific"},{"t":"です。","r":"verbEnding"}],"en":"Japanese is Monday's Period 1."},{"tokens":[{"t":"すうがく","r":"subject"},{"t":"は","r":"particle"},{"t":"月よう日","r":"timeGeneral"},{"t":"の","r":"particle"},{"t":"二じかんめ","r":"timeSpecific"},{"t":"と","r":"particle"},{"t":"水よう日","r":"timeGeneral"},{"t":"の","r":"particle"},{"t":"三じかんめ","r":"timeSpecific"},{"t":"です。","r":"verbEnding"}],"en":"Maths is Period 2 on Monday and Period 3 on Wednesday."}],"whyPrompt":"In the last pattern, と links two day-and-period phrases. What do you think と means, and where else have you seen it used to join words?","cloze":{"jpBefore":"一じかんめは","blank":"えいご","jpAfter":"です。","options":["えいご","すうがく","たいいく"],"en":"Period 1 is English."},"scramble":{"answer":"一じかんめはにほんごです。","chunks":["一じかんめ","は","にほんご","です。"],"en":"Period 1 is Japanese."},"drillsJtoE":[{"jp":"一じかんめはにほんごです。","en":"Period 1 is Japanese."},{"jp":"火よう日の二じかんめはこくごです。","en":"Period 2 on Tuesday is National Language."},{"jp":"えいごは水よう日の三じかんめです。","en":"English is Period 3 on Wednesday."},{"jp":"すうがくは木よう日の四じかんめと土よう日の一じかんめです。","en":"Maths (High School) is Period 4 on Thursday and Period 1 on Saturday."},{"jp":"一じかんめはさんすうです。","en":"Period 1 is Maths (Junior School)."},{"jp":"土よう日の二じかんめはちりです。","en":"Period 2 on Saturday is Geography."},{"jp":"りかは日よう日の三じかんめです。","en":"Science is Period 3 on Sunday."},{"jp":"たいいくは月よう日の四じかんめと水よう日の一じかんめです。","en":"P.E. is Period 4 on Monday and Period 1 on Wednesday."},{"jp":"一じかんめはびじゅつです。","en":"Period 1 is Art."},{"jp":"水よう日の二じかんめはれきしです。","en":"Period 2 on Wednesday is History."}],"drillsEtoJ":[{"jp":"びじゅつは木よう日の二じかんめです。","en":"Art is Period 2 on Thursday."},{"jp":"れきしは金よう日の三じかんめと日よう日の四じかんめです。","en":"History is Period 3 on Friday and Period 4 on Sunday."},{"jp":"四じかんめはしゃかいです。","en":"Period 4 is HASS."},{"jp":"日よう日の一じかんめはおんがくです。","en":"Period 1 on Sunday is Music."},{"jp":"ぎじゅつかていは月よう日の二じかんめです。","en":"Tech is Period 2 on Monday."},{"jp":"しゅうきょうは火よう日の三じかんめと木よう日の四じかんめです。","en":"RVE is Period 3 on Tuesday and Period 4 on Thursday."},{"jp":"四じかんめはぜんこうしゅうかいです。","en":"Period 4 is Assembly."},{"jp":"木よう日の一じかんめはそーです。","en":"Period 1 on Thursday is SOAR."},{"jp":"ぶかつは金よう日の二じかんめです。","en":"Clubs / Activities is Period 2 on Friday."},{"jp":"としょかんは土よう日の三じかんめと月よう日の四じかんめです。","en":"Library is Period 3 on Saturday and Period 4 on Monday."}],"freeWritingPrompt":"Write three sentences describing your own real timetable.","talkingBoard":[{"a":{"jp":"月よう日の一じかんめはなんですか。","en":"What is Period 1 on Monday?"},"b":{"jp":"にほんごです。","en":"It's Japanese."}},{"a":{"jp":"二じかんめは？","en":"What about Period 2?"},"b":{"jp":"すうがくです。","en":"It's Maths."}},{"a":{"jp":"すうがくはいつですか。","en":"When is Maths?"},"b":{"jp":"月よう日の二じかんめと水よう日の三じかんめです。","en":"Period 2 on Monday and Period 3 on Wednesday."}},{"a":{"jp":"たいいくはいつですか。","en":"When is P.E.?"},"b":{"jp":"木よう日の三じかんめです。","en":"Period 3 on Thursday."}},{"a":{"jp":"いそがしいですね！","en":"That's a busy timetable!"},"b":{"jp":"そうですね。","en":"It sure is."}}],"clozeSet":[{"jpBefore":"一じかんめは","blank":"にほんご","jpAfter":"です。","options":["にほんご","しゃかい","ぜんこうしゅうかい"],"kind":"vocabulary","en":"Period 1 is Japanese."},{"jpBefore":"","blank":"火よう日","jpAfter":"の二じかんめはすうがくです。","options":["木よう日","火よう日","土よう日"],"kind":"vocabulary","en":"Period 2 on Tuesday is Maths (High School)."},{"jpBefore":"水よう日","blank":"の","jpAfter":"三じかんめはりかです。","options":["は","が","の"],"kind":"particle","en":"Science is Period 3 on Wednesday."},{"jpBefore":"れきしは木よう日の","blank":"四じかんめ","jpAfter":"です。","options":["三じかんめ","四じかんめ","二じかんめ"],"kind":"vocabulary","en":"History is Period 4 on Thursday."},{"jpBefore":"ぎじゅつかていは金よう日の一じかんめ","blank":"と","jpAfter":"月よう日の二じかんめです。","options":["は","の","と"],"kind":"particle","en":"Tech is Period 1 on Friday and Period 2 on Monday."}],"scrambleSet":[{"answer":"一じかんめはにほんごです。","chunks":["一じかんめ","は","にほんご","です。"],"en":"Period 1 is Japanese."},{"answer":"火よう日の二じかんめはすうがくです。","chunks":["火よう日","の","二じかんめ","は","すうがく","です。"],"en":"Period 2 on Tuesday is Maths (High School)."},{"answer":"水よう日の三じかんめはりかです。","chunks":["水よう日","の","三じかんめ","は","りか","です。"],"en":"Science is Period 3 on Wednesday."},{"answer":"れきしは木よう日の四じかんめです。","chunks":["れきし","は","木よう日","の","四じかんめ","です。"],"en":"History is Period 4 on Thursday."},{"answer":"ぎじゅつかていは金よう日の一じかんめと月よう日の二じかんめです。","chunks":["ぎじゅつかてい","は","金よう日","の","一じかんめ","と","月よう日","の","二じかんめ","です。"],"en":"Tech is Period 1 on Friday and Period 2 on Monday."}]},{"key":"likesDislikes2","title":"Likes & Dislikes (School Nouns)","tokens":[{"tokens":[{"t":"にほんご","r":"subject"},{"t":"が","r":"particle"},{"t":"大好き","r":"verbStem"},{"t":"です。","r":"verbEnding"}],"en":"I love Japanese."},{"tokens":[{"t":"りか","r":"subject"},{"t":"が","r":"particle"},{"t":"好き","r":"verbStem"},{"t":"です。","r":"verbEnding"}],"en":"I like Science."},{"tokens":[{"t":"すうがく","r":"subject"},{"t":"が","r":"particle"},{"t":"好きじゃない","r":"verbStem"},{"t":"です。","r":"verbEnding"}],"en":"I don't like Maths."},{"tokens":[{"t":"たいいく","r":"subject"},{"t":"は","r":"particle"},{"t":"ちょっと。。。","r":null}],"en":"P.E. is a little... (not keen)."}],"whyPrompt":"Why do you think が is used with 大好き／好き／好きじゃない, but は is used with ちょっと。。。? What is each sentence really drawing attention to?","cloze":{"jpBefore":"先生が","blank":"大好き","jpAfter":"です。","options":["大好き","好き","好きじゃない"],"en":"I love Teacher."},"scramble":{"answer":"学校が好きです。","chunks":["学校","が","好き","です。"],"en":"I like School."},"drillsJtoE":[{"jp":"先生が大好きです。","en":"I love Teacher."},{"jp":"学校が好きです。","en":"I like School."},{"jp":"べんきょうが好きじゃないです。","en":"I don't like Studies."},{"jp":"しゅくだいはちょっと。。。","en":"Homework is a little..."},{"jp":"きょうしつが大好きです。","en":"I love Classroom."},{"jp":"うんどうが好きです。","en":"I like Sports."},{"jp":"先生が好きじゃないです。","en":"I don't like Teacher."},{"jp":"学校はちょっと。。。","en":"School is a little..."},{"jp":"べんきょうが大好きです。","en":"I love Studies."},{"jp":"しゅくだいが好きです。","en":"I like Homework."}],"drillsEtoJ":[{"jp":"うんどうが大好きです。","en":"I love Sports."},{"jp":"先生が好きです。","en":"I like Teacher."},{"jp":"学校が好きじゃないです。","en":"I don't like School."},{"jp":"べんきょうはちょっと。。。","en":"Studies is a little..."},{"jp":"しゅくだいが大好きです。","en":"I love Homework."},{"jp":"きょうしつが好きです。","en":"I like Classroom."},{"jp":"うんどうが好きじゃないです。","en":"I don't like Sports."},{"jp":"先生はちょっと。。。","en":"Teacher is a little..."},{"jp":"学校が大好きです。","en":"I love School."},{"jp":"べんきょうが好きです。","en":"I like Studies."}],"freeWritingPrompt":"Write two of your own sentences about school nouns you love, like, or aren't keen on.","talkingBoard":[{"a":{"jp":"先生が好きですか。","en":"Do you like Teacher?"},"b":{"jp":"はい、大好きです。","en":"Yes, I love it."}},{"a":{"jp":"そうですか。じゃあ、学校は？","en":"Really? Then what about School?"},"b":{"jp":"学校も好きです。","en":"I like School too."}},{"a":{"jp":"べんきょうはどうですか。","en":"What about Studies?"},"b":{"jp":"うーん、ちょっと。。。","en":"Hmm, not really..."}},{"a":{"jp":"そうですか。しゅくだいが好きじゃないですか。","en":"I see. Do you dislike Homework?"},"b":{"jp":"はい、好きじゃないです。","en":"Yes, I don't like it."}},{"a":{"jp":"わかりました！","en":"Got it!"},"b":{"jp":"はい、そうです。","en":"Yes, that's right."}}],"clozeSet":[{"jpBefore":"","blank":"先生","jpAfter":"が大好きです。","options":["べんきょう","学校","先生"],"kind":"vocabulary","en":"I love Teacher."},{"jpBefore":"学校","blank":"が","jpAfter":"好きです。","options":["を","が","は"],"kind":"particle","en":"I like School."},{"jpBefore":"べんきょうが","blank":"好きじゃない","jpAfter":"です。","options":["好きじゃない","大好き","好き"],"kind":"grammar","en":"I don't like Studies."},{"jpBefore":"しゅくだい","blank":"は","jpAfter":"ちょっと。。。","options":["が","は","を"],"kind":"particle","en":"Homework is a little..."},{"jpBefore":"","blank":"きょうしつ","jpAfter":"が大好きです。","options":["きょうしつ","学校","先生"],"kind":"vocabulary","en":"I love Classroom."}],"scrambleSet":[{"answer":"先生が大好きです。","chunks":["先生","が","大好き","です。"],"en":"I love Teacher."},{"answer":"学校が好きです。","chunks":["学校","が","好き","です。"],"en":"I like School."},{"answer":"べんきょうが好きじゃないです。","chunks":["べんきょう","が","好きじゃない","です。"],"en":"I don't like Studies."},{"answer":"しゅくだいはちょっと。。。","chunks":["しゅくだい","は","ちょっと。。。"],"en":"Homework is a little..."},{"answer":"きょうしつが大好きです。","chunks":["きょうしつ","が","大好き","です。"],"en":"I love Classroom."}]},{"key":"adjective2","title":"Describing School Life (School Nouns)","tokens":[{"tokens":[{"t":"にほんご","r":"subject"},{"t":"は","r":"particle"},{"t":"たのしい","r":"adjective"},{"t":"です。","r":"verbEnding"}],"en":"Japanese is fun."}],"whyPrompt":"Why does the adjective come after は and before です, rather than directly attached to the subject?","cloze":{"jpBefore":"先生は","blank":"たのしい","jpAfter":"です。","options":["たのしい","おもしろい","つまらない"],"en":"Teacher is fun."},"scramble":{"answer":"学校はおもしろいです。","chunks":["学校","は","おもしろい","です。"],"en":"School is interesting."},"drillsJtoE":[{"jp":"先生はたのしいです。","en":"Teacher is fun."},{"jp":"学校はおもしろいです。","en":"School is interesting."},{"jp":"べんきょうはつまらないです。","en":"Studies is boring."},{"jp":"しゅくだいはかんたんです。","en":"Homework is easy / simple."},{"jp":"きょうしつはむずかしいです。","en":"Classroom is difficult."},{"jp":"うんどうはやさしいです。","en":"Sports is kind."},{"jp":"先生はきびしいです。","en":"Teacher is strict."},{"jp":"学校はこわいです。","en":"School is scary."},{"jp":"べんきょうはすごいです。","en":"Studies is awesome."},{"jp":"しゅくだいはたのしいです。","en":"Homework is fun."}],"drillsEtoJ":[{"jp":"うんどうはかんたんです。","en":"Sports is easy / simple."},{"jp":"先生はむずかしいです。","en":"Teacher is difficult."},{"jp":"学校はやさしいです。","en":"School is kind."},{"jp":"べんきょうはきびしいです。","en":"Studies is strict."},{"jp":"しゅくだいはこわいです。","en":"Homework is scary."},{"jp":"きょうしつはすごいです。","en":"Classroom is awesome."},{"jp":"うんどうはたのしいです。","en":"Sports is fun."},{"jp":"先生はおもしろいです。","en":"Teacher is interesting."},{"jp":"学校はつまらないです。","en":"School is boring."},{"jp":"べんきょうはかんたんです。","en":"Studies is easy / simple."}],"freeWritingPrompt":"Write three sentences describing school life using different adjectives.","talkingBoard":[{"a":{"jp":"先生はどうですか。","en":"What's Teacher like?"},"b":{"jp":"たのしいです。","en":"It's fun."}},{"a":{"jp":"いいですね。学校は？","en":"Nice! What about School?"},"b":{"jp":"むずかしいです。","en":"It's difficult."}},{"a":{"jp":"ほんとうですか。べんきょうは？","en":"Really? What about Studies?"},"b":{"jp":"つまらないです。","en":"It's boring."}},{"a":{"jp":"わたしもつまらないとおもいます。","en":"I think so too."},"b":{"jp":"そうですね。","en":"That's right."}},{"a":{"jp":"しゅくだいはすきですか。","en":"Do you like Homework?"},"b":{"jp":"はい、すごいですから。","en":"Yes, because it's awesome."}}],"clozeSet":[{"jpBefore":"","blank":"先生","jpAfter":"はおもしろいです。","options":["先生","学校","うんどう"],"kind":"vocabulary","en":"Teacher is interesting."},{"jpBefore":"学校","blank":"は","jpAfter":"かんたんです。","options":["が","の","は"],"kind":"particle","en":"School is easy / simple."},{"jpBefore":"べんきょうは","blank":"やさしい","jpAfter":"です。","options":["こわい","むずかしい","やさしい"],"kind":"grammar","en":"Studies is kind."},{"jpBefore":"しゅくだい","blank":"は","jpAfter":"こわいです。","options":["が","は","の"],"kind":"particle","en":"Homework is scary."},{"jpBefore":"","blank":"きょうしつ","jpAfter":"はたのしいです。","options":["べんきょう","きょうしつ","うんどう"],"kind":"vocabulary","en":"Classroom is fun."}],"scrambleSet":[{"answer":"先生はおもしろいです。","chunks":["先生","は","おもしろい","です。"],"en":"Teacher is interesting."},{"answer":"学校はかんたんです。","chunks":["学校","は","かんたん","です。"],"en":"School is easy / simple."},{"answer":"べんきょうはやさしいです。","chunks":["べんきょう","は","やさしい","です。"],"en":"Studies is kind."},{"answer":"しゅくだいはこわいです。","chunks":["しゅくだい","は","こわい","です。"],"en":"Homework is scary."},{"answer":"きょうしつはたのしいです。","chunks":["きょうしつ","は","たのしい","です。"],"en":"Classroom is fun."}]},{"key":"coCurricular","title":"Clubs, Teams & Activities","tokens":[{"tokens":[{"t":"わたし","r":"subject"},{"t":"は","r":"particle"},{"t":"ネットボール","r":"subject"},{"t":"部","r":"suffix"},{"t":"に","r":"particle"},{"t":"はいっています。","r":"verbEnding"}],"en":"I am in the Netball team."},{"tokens":[{"t":"わたし","r":"subject"},{"t":"は","r":"particle"},{"t":"えんげき","r":"subject"},{"t":"部","r":"suffix"},{"t":"と","r":"particle"},{"t":"がっしょう","r":"subject"},{"t":"部","r":"suffix"},{"t":"に","r":"particle"},{"t":"はいっています。","r":"verbEnding"}],"en":"I am in the Theatre club and the Choir."},{"tokens":[{"t":"ネットボール","r":"subject"},{"t":"部","r":"suffix"},{"t":"は","r":"particle"},{"t":"火よう日","r":"timeGeneral"},{"t":"の","r":"particle"},{"t":"ほうかご","r":"timeSpecific"},{"t":"です。","r":"verbEnding"}],"en":"Netball is on Tuesday after school."},{"tokens":[{"t":"がっしょう","r":"subject"},{"t":"部","r":"suffix"},{"t":"は","r":"particle"},{"t":"まいしゅう","r":"timeGeneral"},{"t":"金よう日","r":"timeGeneral"},{"t":"の","r":"particle"},{"t":"ひるやすみ","r":"timeSpecific"},{"t":"です。","r":"verbEnding"}],"en":"Choir is every Friday at lunchtime."},{"tokens":[{"t":"なに","r":null},{"t":"部","r":"suffix"},{"t":"に","r":"particle"},{"t":"はいっていますか。","r":"verbEnding"}],"en":"Which club or team are you in?"},{"tokens":[{"t":"ネットボール","r":"subject"},{"t":"部","r":"suffix"},{"t":"は","r":"particle"},{"t":"いつ","r":null},{"t":"ですか。","r":"verbEnding"}],"en":"When is Netball?"}],"whyPrompt":"In ネットボール部にはいっています, に shows where you belong. Why do you think は is used in ネットボール部は火よう日のほうかごです, and what is that sentence really about?","cloze":{"jpBefore":"わたしはネットボール","blank":"部","jpAfter":"にはいっています。","options":["部","校","生"],"en":"I am in the Netball team."},"scramble":{"answer":"わたしはネットボール部にはいっています。","chunks":["わたし","は","ネットボール","部","に","はいっています。"],"en":"I am in the Netball team."},"drillsJtoE":[{"jp":"わたしはネットボール部にはいっています。","en":"I am in the Netball team."},{"jp":"わたしはディベート部にはいっています。","en":"I am in the Debating club."},{"jp":"わたしはすいそうがく部にはいっています。","en":"I am in the Wind band."},{"jp":"わたしはえんげき部とがっしょう部にはいっています。","en":"I am in the Theatre club and the Choir."},{"jp":"ネットボール部は火よう日のほうかごです。","en":"Netball is on Tuesday after school."},{"jp":"ディベート部は木よう日のひるやすみです。","en":"Debating is on Thursday at lunchtime."},{"jp":"すいそうがく部は水よう日のあさです。","en":"Wind band is on Wednesday morning."},{"jp":"がっしょう部はまいしゅう金よう日のひるやすみです。","en":"Choir is every Friday at lunchtime."},{"jp":"なに部にはいっていますか。","en":"Which club or team are you in?"},{"jp":"ネットボール部はいつですか。","en":"When is Netball?"}],"drillsEtoJ":[{"jp":"なに部にはいっていますか。","en":"Which club or team are you in?"},{"jp":"ネットボール部は火よう日のほうかごです。","en":"Netball is on Tuesday after school."},{"jp":"わたしはネットボール部にはいっています。","en":"I am in the Netball team."},{"jp":"ネットボール部はいつですか。","en":"When is Netball?"},{"jp":"わたしはすいそうがく部にはいっています。","en":"I am in the Wind band."},{"jp":"すいそうがく部は水よう日のあさです。","en":"Wind band is on Wednesday morning."},{"jp":"わたしはディベート部にはいっています。","en":"I am in the Debating club."},{"jp":"がっしょう部はまいしゅう金よう日のひるやすみです。","en":"Choir is every Friday at lunchtime."},{"jp":"わたしはえんげき部とがっしょう部にはいっています。","en":"I am in the Theatre club and the Choir."},{"jp":"ディベート部は木よう日のひるやすみです。","en":"Debating is on Thursday at lunchtime."}],"freeWritingPrompt":"Write two sentences: one about a club, team or ensemble you are in (or would like to join), and one about when it happens.","talkingBoard":[{"a":{"jp":"なに部にはいっていますか。","en":"Which club or team are you in?"},"b":{"jp":"ネットボール部にはいっています。","en":"I'm in the Netball team."}},{"a":{"jp":"ネットボール部はいつですか。","en":"When is Netball?"},"b":{"jp":"まいしゅう火よう日のほうかごです。","en":"Every Tuesday, after school."}},{"a":{"jp":"すいそうがく部にもはいっていますか。","en":"Are you in Wind band too?"},"b":{"jp":"はい、すいそうがく部にもはいっています。","en":"Yes, I'm in Wind band too."}},{"a":{"jp":"ディベート部はいつですか。","en":"When is Debating?"},"b":{"jp":"木よう日のひるやすみです。","en":"On Thursday, lunchtime."}},{"a":{"jp":"いそがしいですね！","en":"That's busy!"},"b":{"jp":"そうですね。","en":"It sure is."}}],"clozeSet":[{"jpBefore":"わたしはネットボール","blank":"部","jpAfter":"にはいっています。","options":["部","校","生"],"kind":"vocabulary","en":"I am in the Netball team."},{"jpBefore":"わたしはディベート部","blank":"に","jpAfter":"はいっています。","options":["に","を","が"],"kind":"particle","en":"I am in the Debating club."},{"jpBefore":"ネットボール部は火よう日","blank":"の","jpAfter":"ほうかごです。","options":["の","は","と"],"kind":"particle","en":"Netball is on Tuesday after school."},{"jpBefore":"ディベート部は木よう日の","blank":"ひるやすみ","jpAfter":"です。","options":["ひるやすみ","ほうかご","あさ"],"kind":"vocabulary","en":"Debating is on Thursday at lunchtime."},{"jpBefore":"なに部に","blank":"はいっていますか","jpAfter":"。","options":["はいっていますか","はいっています","べんきょうしています"],"kind":"grammar","en":"Which club or team are you in?"}],"scrambleSet":[{"answer":"わたしはネットボール部にはいっています。","chunks":["わたし","は","ネットボール","部","に","はいっています。"],"en":"I am in the Netball team."},{"answer":"わたしはディベート部にはいっています。","chunks":["わたし","は","ディベート","部","に","はいっています。"],"en":"I am in the Debating club."},{"answer":"ネットボール部は火よう日のほうかごです。","chunks":["ネットボール","部","は","火よう日","の","ほうかご","です。"],"en":"Netball is on Tuesday after school."},{"answer":"ディベート部は木よう日のひるやすみです。","chunks":["ディベート","部","は","木よう日","の","ひるやすみ","です。"],"en":"Debating is on Thursday at lunchtime."},{"answer":"なに部にはいっていますか。","chunks":["なに","部","に","はいっていますか。"],"en":"Which club or team are you in?"}],"notes":["はいっています literally means ‘am in’ or ‘am a member of’. Use it for clubs and teams you belong to now, and learn it as one chunk.","部 (ぶ) means a school club or team: ネットボール部 is ‘the netball team’ and えんげき部 is ‘the theatre (drama) club’. The sports, music groups and clubs in the vocabulary lists are real St Aidan's Senior School activities."]},{"key":"letters","title":"Writing a Letter","tokens":[{"tokens":[{"t":"ゆい","r":"subject"},{"t":"さん","r":"suffix"},{"t":"へ","r":"particle"}],"en":"To Yui"},{"tokens":[{"t":"はじめまして。","r":null},{"t":"わたし","r":"subject"},{"t":"は","r":"particle"},{"t":"エマ","r":"subject"},{"t":"です。","r":"verbEnding"}],"en":"Nice to meet you. I'm Emma."},{"tokens":[{"t":"わたし","r":"subject"},{"t":"は","r":"particle"},{"t":"げんき","r":"adjective"},{"t":"です。","r":"verbEnding"}],"en":"I'm well."},{"tokens":[{"t":"おてがみ","r":"object"},{"t":"、","r":null},{"t":"ありがとう。","r":null}],"en":"Thank you for your letter."},{"tokens":[{"t":"おへんじ","r":"object"},{"t":"を","r":"particle"},{"t":"まっています。","r":"verbEnding"}],"en":"I'm waiting for your reply."},{"tokens":[{"t":"それでは","r":"manner"},{"t":"、","r":null},{"t":"また。","r":"manner"}],"en":"Until next time."},{"tokens":[{"t":"エマ","r":"subject"},{"t":"より","r":"particle"}],"en":"From Emma"}],"whyPrompt":"In ゆいさんへ and エマより, what do へ and より each do? Where does each one go in a letter?","cloze":{"jpBefore":"","blank":"ゆい","jpAfter":"さんへ","options":["ゆい","エマ","先生"],"en":"To Yui"},"scramble":{"answer":"ゆいさんへ","chunks":["ゆい","さん","へ"],"en":"To Yui"},"drillsJtoE":[{"jp":"ゆいさんへ","en":"To Yui"},{"jp":"はじめまして。わたしはエマです。","en":"Nice to meet you. I'm Emma."},{"jp":"おげんきですか。","en":"How are you?"},{"jp":"わたしはげんきです。","en":"I'm well."},{"jp":"おてがみ、ありがとう。","en":"Thank you for your letter."},{"jp":"おへんじをまっています。","en":"I'm waiting for your reply."},{"jp":"よろしくおねがいします。","en":"Best regards."},{"jp":"それでは、また。","en":"Until next time."},{"jp":"エマより","en":"From Emma"},{"jp":"さようなら。","en":"Goodbye."}],"drillsEtoJ":[{"jp":"それでは、また。","en":"Until next time."},{"jp":"おげんきですか。","en":"How are you?"},{"jp":"さようなら。","en":"Goodbye."},{"jp":"ゆいさんへ","en":"To Yui"},{"jp":"よろしくおねがいします。","en":"Best regards."},{"jp":"おてがみ、ありがとう。","en":"Thank you for your letter."},{"jp":"エマより","en":"From Emma"},{"jp":"わたしはげんきです。","en":"I'm well."},{"jp":"おへんじをまっています。","en":"I'm waiting for your reply."},{"jp":"はじめまして。わたしはエマです。","en":"Nice to meet you. I'm Emma."}],"freeWritingPrompt":"Write a short letter to a pen pal: the date, who it's to, a greeting, who you are, one thing about your school week, a closing line and your sign-off.","talkingBoard":[{"a":{"jp":"はじめまして。わたしはゆいです。","en":"Nice to meet you. I'm Yui."},"b":{"jp":"はじめまして。わたしはエマです。","en":"Nice to meet you. I'm Emma."}},{"a":{"jp":"おげんきですか。","en":"How are you?"},"b":{"jp":"わたしはげんきです。","en":"I'm well."}},{"a":{"jp":"にほんごは好きですか。","en":"Do you like Japanese?"},"b":{"jp":"はい、にほんごが好きです。なぜかというと、たのしいからです。","en":"Yes, I like Japanese. The reason is that it's fun."}},{"a":{"jp":"おてがみ、ありがとう。おへんじをまっています。","en":"Thank you for your letter. I'm waiting for your reply."},"b":{"jp":"それでは、また。エマより","en":"Until next time. From Emma."}},{"a":{"jp":"さようなら。","en":"Goodbye."},"b":{"jp":"さようなら。","en":"Goodbye."}}],"clozeSet":[{"jpBefore":"","blank":"ゆい","jpAfter":"さんへ","options":["ゆい","エマ","先生"],"kind":"vocabulary","en":"To Yui"},{"jpBefore":"ゆいさん","blank":"へ","jpAfter":"","options":["へ","より","は"],"kind":"particle","en":"To Yui"},{"jpBefore":"エマ","blank":"より","jpAfter":"","options":["より","へ","は"],"kind":"particle","en":"From Emma"},{"jpBefore":"おへんじを","blank":"まっています","jpAfter":"。","options":["まっています","べんきょうしています","はいっています"],"kind":"grammar","en":"I'm waiting for your reply."},{"jpBefore":"","blank":"はじめまして","jpAfter":"。わたしはエマです。","options":["はじめまして","さようなら","おげんきですか"],"kind":"vocabulary","en":"Nice to meet you. I'm Emma."}],"scrambleSet":[{"answer":"ゆいさんへ","chunks":["ゆい","さん","へ"],"en":"To Yui"},{"answer":"はじめまして。わたしはエマです。","chunks":["はじめまして。","わたし","は","エマ","です。"],"en":"Nice to meet you. I'm Emma."},{"answer":"わたしはげんきです。","chunks":["わたし","は","げんき","です。"],"en":"I'm well."},{"answer":"おてがみ、ありがとう。","chunks":["おてがみ","、","ありがとう。"],"en":"Thank you for your letter."},{"answer":"おへんじをまっています。","chunks":["おへんじ","を","まっています。"],"en":"I'm waiting for your reply."}],"notes":["Order of a friendly letter: date at the top, who it's to (name + さん + へ), a greeting, who you are, your news, a closing line, and last of all your sign-off (your name + より).","まっています literally means ‘am waiting’. Learn おへんじをまっています (‘I’m waiting for your reply’) as one chunk."],"layout":[{"label":"Date (top)","jp":"11月2日","en":"Write the month and day in numbers at the top of the letter."},{"label":"Who it's to","jp":"ゆいさんへ","en":"To Yui (name + さん + へ)."},{"label":"Greeting","jp":"はじめまして。おげんきですか。","en":"Nice to meet you. How are you?"},{"label":"Introduction","jp":"わたしはエマです。わたしはセント・エイダンズ女子校という学校の中学校二年生です。","en":"I'm Emma. I'm in Year 8 at a school called St Aidan's Girls' School."},{"label":"Your news","jp":"わたしはえいごとすうがくをべんきょうしています。にほんごが好きです。なぜかというと、たのしいからです。わたしはネットボール部にはいっています。","en":"I'm studying English and Maths. I like Japanese. The reason is that it's fun. I'm in the Netball team."},{"label":"Closing line","jp":"おてがみ、ありがとう。おへんじをまっています。よろしくおねがいします。","en":"Thank you for your letter. I'm waiting for your reply. Best regards."},{"label":"Sign-off","jp":"それでは、また。エマより","en":"Until next time. From Emma."}]}],"allVocabForGames":[{"jp":"にほんご","kana":null,"en":"Japanese"},{"jp":"こくご","kana":null,"en":"National Language"},{"jp":"えいご","kana":null,"en":"English"},{"jp":"すうがく","kana":null,"en":"Maths (High School)"},{"jp":"さんすう","kana":null,"en":"Maths (Junior School)"},{"jp":"ちり","kana":null,"en":"Geography"},{"jp":"りか","kana":null,"en":"Science"},{"jp":"たいいく","kana":null,"en":"P.E."},{"jp":"びじゅつ","kana":null,"en":"Art"},{"jp":"れきし","kana":null,"en":"History"},{"jp":"しゃかい","kana":null,"en":"HASS"},{"jp":"おんがく","kana":null,"en":"Music"},{"jp":"ドラマ","kana":null,"en":"Drama"},{"jp":"ぎじゅつかてい","kana":null,"en":"Tech"},{"jp":"しゅうきょう","kana":null,"en":"RVE"},{"jp":"ぜんこうしゅうかい","kana":null,"en":"Assembly"},{"jp":"ソー","kana":null,"en":"SOAR"},{"jp":"ぶかつ","kana":null,"en":"Clubs / Activities"},{"jp":"としょかん","kana":null,"en":"Library"},{"jp":"きゅうけい","kana":null,"en":"Break / Morning Tea"},{"jp":"ひるごはん","kana":null,"en":"Lunch"},{"jp":"あさのかい","kana":null,"en":"Pastoral Care Class"},{"jp":"たのしい","kana":null,"en":"Fun"},{"jp":"おもしろい","kana":null,"en":"Interesting"},{"jp":"つまらない","kana":null,"en":"Boring"},{"jp":"かんたん","kana":null,"en":"Easy / simple"},{"jp":"むずかしい","kana":null,"en":"Difficult"},{"jp":"やさしい","kana":null,"en":"Kind"},{"jp":"きびしい","kana":null,"en":"Strict"},{"jp":"こわい","kana":null,"en":"Scary"},{"jp":"すごい","kana":null,"en":"Awesome"},{"jp":"しんせつ","kana":null,"en":"Helpful"},{"jp":"げんき","kana":null,"en":"Energetic"},{"jp":"たいへん","kana":null,"en":"Tough"},{"jp":"わかりやすい","kana":null,"en":"Easy to understand"},{"jp":"たいせつ","kana":null,"en":"Important"},{"jp":"一じかんめ","kana":"いちじかんめ","en":"Period 1"},{"jp":"二じかんめ","kana":"にじかんめ","en":"Period 2"},{"jp":"三じかんめ","kana":"さんじかんめ","en":"Period 3"},{"jp":"四じかんめ","kana":"よじかんめ","en":"Period 4"},{"jp":"月よう日","kana":"げつようび","en":"Monday"},{"jp":"火よう日","kana":"かようび","en":"Tuesday"},{"jp":"水よう日","kana":"すいようび","en":"Wednesday"},{"jp":"木よう日","kana":"もくようび","en":"Thursday"},{"jp":"金よう日","kana":"きんようび","en":"Friday"},{"jp":"土よう日","kana":"どようび","en":"Saturday"},{"jp":"日よう日","kana":"にちようび","en":"Sunday"},{"jp":"小学校一年生","kana":"しょうがっこういちねんせい","en":"Year 1"},{"jp":"小学校二年生","kana":"しょうがっこうにねんせい","en":"Year 2"},{"jp":"小学校三年生","kana":"しょうがっこうさんねんせい","en":"Year 3"},{"jp":"小学校四年生","kana":"しょうがっこうよねんせい","en":"Year 4"},{"jp":"小学校五年生","kana":"しょうがっこうごねんせい","en":"Year 5"},{"jp":"小学校六年生","kana":"しょうがっこうろくねんせい","en":"Year 6"},{"jp":"中学一年生","kana":"ちゅうがくいちねんせい","en":"Year 7"},{"jp":"中学二年生","kana":"ちゅうがくにねんせい","en":"Year 8"},{"jp":"中学三年生","kana":"ちゅうがくさんねんせい","en":"Year 9"},{"jp":"高校一年生","kana":"こうこういちねんせい","en":"Year 10"},{"jp":"高校二年生","kana":"こうこうにねんせい","en":"Year 11"},{"jp":"高校三年生","kana":"こうこうさんねんせい","en":"Year 12"},{"jp":"ことし","kana":null,"en":"This year"},{"jp":"らいねん","kana":null,"en":"Next year"},{"jp":"先生","kana":"せんせい","en":"Teacher"},{"jp":"学校","kana":"がっこう","en":"School"},{"jp":"べんきょう","kana":null,"en":"Studies"},{"jp":"しゅくだい","kana":null,"en":"Homework"},{"jp":"きょうしつ","kana":null,"en":"Classroom"},{"jp":"うんどう","kana":null,"en":"Sports"},{"jp":"小学校","kana":"しょうがっこう","en":"Primary school"},{"jp":"中学校","kana":"ちゅうがっこう","en":"Junior secondary school"},{"jp":"高校","kana":"こうこう","en":"Senior secondary school"},{"jp":"年生","kana":"ねんせい","en":"Year level"},{"jp":"女子校","kana":"じょしこう","en":"Girls' school"},{"jp":"名前","kana":"なまえ","en":"Name"},{"jp":"かもく","kana":null,"en":"School subject"},{"jp":"一番","kana":"いちばん","en":"Most / number one"},{"jp":"なぜかというと","kana":null,"en":"The reason is"},{"jp":"おもいます","kana":null,"en":"I think"},{"jp":"とても","kana":null,"en":"Very"},{"jp":"ほんとうに","kana":null,"en":"Really"},{"jp":"そして","kana":null,"en":"And / also"},{"jp":"でも","kana":null,"en":"But"},{"jp":"べんきょうしています","kana":null,"en":"Am studying"},{"jp":"ネットボール","kana":null,"en":"Netball"},{"jp":"バスケットボール","kana":null,"en":"Basketball"},{"jp":"タッチフットボール","kana":null,"en":"Touch football"},{"jp":"ボート","kana":null,"en":"Rowing"},{"jp":"オージーフットボール","kana":null,"en":"AFL"},{"jp":"じょうば","kana":null,"en":"Equestrian"},{"jp":"クロスカントリー","kana":null,"en":"Cross country"},{"jp":"すいえい","kana":null,"en":"Swimming"},{"jp":"テニス","kana":null,"en":"Tennis"},{"jp":"バレーボール","kana":null,"en":"Volleyball"},{"jp":"クリケット","kana":null,"en":"Cricket"},{"jp":"サッカー","kana":null,"en":"Soccer"},{"jp":"すいそうがく","kana":null,"en":"Wind band"},{"jp":"がっしょう","kana":null,"en":"Choir"},{"jp":"げんがく","kana":null,"en":"Strings"},{"jp":"しつないがく","kana":null,"en":"Chamber music"},{"jp":"ディベート","kana":null,"en":"Debating"},{"jp":"えんげき","kana":null,"en":"Theatre"},{"jp":"ボランティア","kana":null,"en":"Volunteering"},{"jp":"かがく","kana":null,"en":"Science"},{"jp":"ロボット","kana":null,"en":"Robotics"},{"jp":"てつがく","kana":null,"en":"Philosophy"},{"jp":"ぶたいぎじゅつ","kana":null,"en":"Tech crew"},{"jp":"部","kana":"ぶ","en":"Club / team"},{"jp":"はいっています","kana":null,"en":"Am a member of"},{"jp":"まいしゅう","kana":null,"en":"Every week"},{"jp":"あさ","kana":null,"en":"Morning (before school)"},{"jp":"ひるやすみ","kana":null,"en":"Lunchtime"},{"jp":"ほうかご","kana":null,"en":"After school"},{"jp":"てがみ","kana":null,"en":"Letter"},{"jp":"メール","kana":null,"en":"Email"},{"jp":"ペンパル","kana":null,"en":"Pen pal"},{"jp":"ひづけ","kana":null,"en":"Date"},{"jp":"じこしょうかい","kana":null,"en":"Self-introduction"},{"jp":"おへんじ","kana":null,"en":"Reply"},{"jp":"ついしん","kana":null,"en":"P.S."},{"jp":"はじめまして","kana":null,"en":"Nice to meet you"},{"jp":"おげんきですか","kana":null,"en":"How are you?"},{"jp":"わたしはげんきです","kana":null,"en":"I'm well"},{"jp":"おてがみありがとう","kana":null,"en":"Thank you for your letter"},{"jp":"おへんじをまっています","kana":null,"en":"I'm waiting for your reply"},{"jp":"よろしくおねがいします","kana":null,"en":"Best regards"},{"jp":"それではまた","kana":null,"en":"Until next time"},{"jp":"さようなら","kana":null,"en":"Goodbye"},{"jp":"さんへ","kana":null,"en":"To (name)"},{"jp":"より","kana":null,"en":"From (name)"}],"boardTemplates":{"likesDislikes":{"slots":[{"id":"s0","pool":"subjects","default":0},{"id":"s1","pool":"subjects","default":1},{"id":"s2","pool":"subjects","default":2},{"id":"s3","pool":"subjects","default":3},{"id":"s4","pool":"subjects","default":2}],"rows":[{"a":{"tpl":"{s0}が好きですか。","enTpl":"Do you like {s0_en}?"},"b":{"tpl":"はい、大好きです。","enTpl":"Yes, I love it."}},{"a":{"tpl":"そうですか。じゃあ、{s1}は？","enTpl":"Really? Then what about {s1_en}?"},"b":{"tpl":"{s1}も好きです。","enTpl":"I like {s1_en} too."}},{"a":{"tpl":"{s2}はどうですか。","enTpl":"What about {s2_en}?"},"b":{"tpl":"うーん、ちょっと。。。","enTpl":"Hmm, not really..."}},{"a":{"tpl":"そうですか。{s3}が好きじゃないですか。","enTpl":"I see. Do you dislike {s3_en}?"},"b":{"tpl":"はい、好きじゃないです。","enTpl":"Yes, I don't like it."}},{"a":{"tpl":"わかりました！","enTpl":"Got it!"},"b":{"tpl":"はい、そうです。","enTpl":"Yes, that's right."}},{"a":{"tpl":"一番好きなかもくはなんですか。","enTpl":"What's your favourite subject?"},"b":{"tpl":"{s4}です。","enTpl":"It's {s4_en}."}},{"a":{"tpl":"一番好きな先生は？","enTpl":"And your favourite teacher?"},"b":{"tpl":"{s4}の先生です。","enTpl":"The {s4_en} teacher."}}]},"abilities":{"slots":[{"id":"s0","pool":"subjects","default":0},{"id":"s1","pool":"subjects","default":1},{"id":"s2","pool":"subjects","default":2}],"rows":[{"a":{"tpl":"{s0}がとくいですか。","enTpl":"Are you good at {s0_en}?"},"b":{"tpl":"はい、とくいです。","enTpl":"Yes, I'm good at it."}},{"a":{"tpl":"すごいですね！{s1}はどうですか。","enTpl":"Amazing! What about {s1_en}?"},"b":{"tpl":"{s1}ができます。","enTpl":"I can do {s1_en}."}},{"a":{"tpl":"{s2}はできますか。","enTpl":"Can you do {s2_en}?"},"b":{"tpl":"いいえ、できません。","enTpl":"No, I can't."}},{"a":{"tpl":"にがてですか。","enTpl":"Are you bad at it?"},"b":{"tpl":"はい、にがてです。","enTpl":"Yes, I'm bad at it."}},{"a":{"tpl":"だいじょうぶですよ。","enTpl":"That's okay!"},"b":{"tpl":"ありがとう。","enTpl":"Thanks."}}]},"adjective":{"slots":[{"id":"subj0","pool":"subjects","default":0},{"id":"subj1","pool":"subjects","default":1},{"id":"subj2","pool":"subjects","default":2},{"id":"subj3","pool":"subjects","default":3},{"id":"adjA","pool":"adjectives","default":0},{"id":"adjB","pool":"adjectives","default":4},{"id":"adjC","pool":"adjectives","default":2},{"id":"adjD","pool":"adjectives","default":8}],"rows":[{"a":{"tpl":"{subj0}はどうですか。","enTpl":"What's {subj0_en} like?"},"b":{"tpl":"{adjA}です。","enTpl":"It's {adjA_en_lower}."}},{"a":{"tpl":"いいですね。{subj1}は？","enTpl":"Nice! What about {subj1_en}?"},"b":{"tpl":"{adjB}です。","enTpl":"It's {adjB_en_lower}."}},{"a":{"tpl":"ほんとうですか。{subj2}は？","enTpl":"Really? What about {subj2_en}?"},"b":{"tpl":"{adjC}です。","enTpl":"It's {adjC_en_lower}."}},{"a":{"tpl":"わたしも{adjC_da}とおもいます。","enTpl":"I think so too."},"b":{"tpl":"そうですね。","enTpl":"That's right."}},{"a":{"tpl":"{subj3}はすきですか。","enTpl":"Do you like {subj3_en}?"},"b":{"tpl":"はい、{adjD}ですから。","enTpl":"Yes, because it's {adjD_en_lower}."}}]},"timetable":{"slots":[{"id":"sa","pool":"subjects","default":0},{"id":"sb","pool":"subjects","default":4},{"id":"sc","pool":"subjects","default":7}],"rows":[{"a":{"tpl":"月よう日の一じかんめはなんですか。","enTpl":"What is Period 1 on Monday?"},"b":{"tpl":"{sa}です。","enTpl":"It's {sa_en}."}},{"a":{"tpl":"二じかんめは？","enTpl":"What about Period 2?"},"b":{"tpl":"{sb}です。","enTpl":"It's {sb_en}."}},{"a":{"tpl":"{sb}はいつですか。","enTpl":"When is {sb_en}?"},"b":{"tpl":"月よう日の二じかんめと水よう日の三じかんめです。","enTpl":"Period 2 on Monday and Period 3 on Wednesday."}},{"a":{"tpl":"{sc}はいつですか。","enTpl":"When is {sc_en}?"},"b":{"tpl":"木よう日の三じかんめです。","enTpl":"Period 3 on Thursday."}},{"a":{"tpl":"いそがしいですね！","enTpl":"That's a busy timetable!"},"b":{"tpl":"そうですね。","enTpl":"It sure is."}}]},"yearLevel":{"slots":[{"id":"lvl0","pool":"yearLevels","default":7},{"id":"lvl1","pool":"yearLevels","default":8}],"rows":[{"a":{"tpl":"なん年生ですか。","enTpl":"What year level are you in?"},"b":{"tpl":"{lvl0}です。","enTpl":"I'm in {lvl0_en}."}},{"a":{"tpl":"らいねんは？","enTpl":"What about next year?"},"b":{"tpl":"{lvl1}になります。","enTpl":"I'll be in {lvl1_en}."}},{"a":{"tpl":"たのしみですね！","enTpl":"That's exciting!"},"b":{"tpl":"はい、たのしみです。","enTpl":"Yes, I'm looking forward to it."}},{"a":{"tpl":"先生もいっしょですか。","enTpl":"Will the teacher be with you too?"},"b":{"tpl":"いいえ、先生はちがいます。","enTpl":"No, the teacher is different."}},{"a":{"tpl":"そうですか。","enTpl":"I see."},"b":{"tpl":"はい、そうです。","enTpl":"Yes, that's right."}}]},"likesDislikes2":{"slots":[{"id":"s0","pool":"schoolNouns","default":0},{"id":"s1","pool":"schoolNouns","default":1},{"id":"s2","pool":"schoolNouns","default":2},{"id":"s3","pool":"schoolNouns","default":3}],"rows":[{"a":{"tpl":"{s0}が好きですか。","enTpl":"Do you like {s0_en}?"},"b":{"tpl":"はい、大好きです。","enTpl":"Yes, I love it."}},{"a":{"tpl":"そうですか。じゃあ、{s1}は？","enTpl":"Really? Then what about {s1_en}?"},"b":{"tpl":"{s1}も好きです。","enTpl":"I like {s1_en} too."}},{"a":{"tpl":"{s2}はどうですか。","enTpl":"What about {s2_en}?"},"b":{"tpl":"うーん、ちょっと。。。","enTpl":"Hmm, not really..."}},{"a":{"tpl":"そうですか。{s3}が好きじゃないですか。","enTpl":"I see. Do you dislike {s3_en}?"},"b":{"tpl":"はい、好きじゃないです。","enTpl":"Yes, I don't like it."}},{"a":{"tpl":"わかりました！","enTpl":"Got it!"},"b":{"tpl":"はい、そうです。","enTpl":"Yes, that's right."}}]},"adjective2":{"slots":[{"id":"subj0","pool":"schoolNouns","default":0},{"id":"subj1","pool":"schoolNouns","default":1},{"id":"subj2","pool":"schoolNouns","default":2},{"id":"subj3","pool":"schoolNouns","default":3},{"id":"adjA","pool":"adjectives","default":0},{"id":"adjB","pool":"adjectives","default":4},{"id":"adjC","pool":"adjectives","default":2},{"id":"adjD","pool":"adjectives","default":8}],"rows":[{"a":{"tpl":"{subj0}はどうですか。","enTpl":"What's {subj0_en} like?"},"b":{"tpl":"{adjA}です。","enTpl":"It's {adjA_en_lower}."}},{"a":{"tpl":"いいですね。{subj1}は？","enTpl":"Nice! What about {subj1_en}?"},"b":{"tpl":"{adjB}です。","enTpl":"It's {adjB_en_lower}."}},{"a":{"tpl":"ほんとうですか。{subj2}は？","enTpl":"Really? What about {subj2_en}?"},"b":{"tpl":"{adjC}です。","enTpl":"It's {adjC_en_lower}."}},{"a":{"tpl":"わたしも{adjC_da}とおもいます。","enTpl":"I think so too."},"b":{"tpl":"そうですね。","enTpl":"That's right."}},{"a":{"tpl":"{subj3}はすきですか。","enTpl":"Do you like {subj3_en}?"},"b":{"tpl":"はい、{adjD}ですから。","enTpl":"Yes, because it's {adjD_en_lower}."}}]},"schoolName":{"slots":[{"id":"lvl0","pool":"yearLevels","default":7},{"id":"lvl1","pool":"yearLevels","default":8}],"rows":[{"a":{"tpl":"学校の名前はなんですか。","enTpl":"What's the name of your school?"},"b":{"tpl":"セント・エイダンズ女子校です。","enTpl":"It's St Aidan's Girls' School."}},{"a":{"tpl":"なん年生ですか。","enTpl":"What year level are you in?"},"b":{"tpl":"セント・エイダンズ女子校という学校の{lvl0}です。","enTpl":"I'm in {lvl0_en} at a school called St Aidan's Girls' School."}},{"a":{"tpl":"女子校ですか。","enTpl":"Is it a girls' school?"},"b":{"tpl":"はい、女子校です。","enTpl":"Yes, it's a girls' school."}},{"a":{"tpl":"らいねんは？","enTpl":"What about next year?"},"b":{"tpl":"らいねんもセント・エイダンズ女子校の{lvl1}になります。","enTpl":"Next year, I'll be in {lvl1_en} at St Aidan's Girls' School too."}},{"a":{"tpl":"いいですね。","enTpl":"That's nice."},"b":{"tpl":"ありがとう。","enTpl":"Thank you."}}]},"studying":{"slots":[{"id":"s0","pool":"subjects","default":2},{"id":"s1","pool":"subjects","default":3},{"id":"s2","pool":"subjects","default":6},{"id":"s3","pool":"subjects","default":12}],"rows":[{"a":{"tpl":"なにをべんきょうしていますか。","enTpl":"What are you studying?"},"b":{"tpl":"{s0}と{s1}をべんきょうしています。","enTpl":"I'm studying {s0_en} and {s1_en}."}},{"a":{"tpl":"ほかには？","enTpl":"Anything else?"},"b":{"tpl":"{s2}や{s3}などをべんきょうしています。","enTpl":"I'm studying {s2_en}, {s3_en} and so on."}},{"a":{"tpl":"{s3}もべんきょうしていますか。","enTpl":"Are you studying {s3_en} too?"},"b":{"tpl":"はい、{s3}もべんきょうしています。","enTpl":"Yes, I'm studying {s3_en} too."}},{"a":{"tpl":"たいへんですね！","enTpl":"That's tough!"},"b":{"tpl":"そうですね。","enTpl":"It sure is."}},{"a":{"tpl":"いそがしいですね！","enTpl":"That's busy!"},"b":{"tpl":"はい、いそがしいです。","enTpl":"Yes, I'm busy."}}]},"reasons":{"slots":[{"id":"s0","pool":"subjects","default":0},{"id":"s1","pool":"subjects","default":3},{"id":"adjA","pool":"adjectives","default":0},{"id":"adjB","pool":"adjectives","default":6}],"rows":[{"a":{"tpl":"{s0}が好きですか。","enTpl":"Do you like {s0_en}?"},"b":{"tpl":"はい、好きです。","enTpl":"Yes, I like it."}},{"a":{"tpl":"どうしてですか。","enTpl":"Why?"},"b":{"tpl":"なぜかというと、{adjA_da}からです。","enTpl":"The reason is that it's {adjA_en_lower}."}},{"a":{"tpl":"{s1}はどうですか。","enTpl":"What about {s1_en}?"},"b":{"tpl":"うーん、ちょっと。。。","enTpl":"Hmm, not really..."}},{"a":{"tpl":"どうしてですか。","enTpl":"Why?"},"b":{"tpl":"なぜかというと、先生は{adjB_da}からです。","enTpl":"The reason is that the teacher is {adjB_en_lower}."}},{"a":{"tpl":"そうですか。","enTpl":"I see."},"b":{"tpl":"はい、そうです。","enTpl":"Yes, that's right."}}]},"opinions":{"slots":[{"id":"subj0","pool":"subjects","default":0},{"id":"adjA","pool":"adjectives","default":0},{"id":"subj1","pool":"subjects","default":3},{"id":"adjB","pool":"adjectives","default":4},{"id":"adjC","pool":"adjectives","default":9}],"rows":[{"a":{"tpl":"{subj0}はどうですか。","enTpl":"What's {subj0_en} like?"},"b":{"tpl":"{adjA_da}とおもいます。","enTpl":"I think it's {adjA_en_lower}."}},{"a":{"tpl":"{subj1}は？","enTpl":"What about {subj1_en}?"},"b":{"tpl":"{adjB_da}とおもいます。","enTpl":"I think it's {adjB_en_lower}."}},{"a":{"tpl":"先生は？","enTpl":"And the teacher?"},"b":{"tpl":"{adjC_da}とおもいます。","enTpl":"I think the teacher is {adjC_en_lower}."}},{"a":{"tpl":"わたしも{adjA_da}とおもいます。","enTpl":"I think so too."},"b":{"tpl":"そうですね。","enTpl":"That's right."}},{"a":{"tpl":"そうですか。","enTpl":"I see."},"b":{"tpl":"はい、そうです。","enTpl":"Yes, that's right."}}]},"coCurricular":{"slots":[{"id":"sportA","pool":"sports","default":0},{"id":"clubA","pool":"clubs","default":0},{"id":"musicA","pool":"music","default":0},{"id":"dayA","pool":"days","default":1},{"id":"timeA","pool":"clubWords","default":5,"only":[3,4,5]},{"id":"dayB","pool":"days","default":3},{"id":"timeB","pool":"clubWords","default":4,"only":[3,4,5]}],"rows":[{"a":{"tpl":"なに部にはいっていますか。","enTpl":"Which club or team are you in?"},"b":{"tpl":"{sportA}部にはいっています。","enTpl":"I'm in the {sportA_en} team."}},{"a":{"tpl":"{sportA}部はいつですか。","enTpl":"When is {sportA_en}?"},"b":{"tpl":"まいしゅう{dayA}の{timeA}です。","enTpl":"Every {dayA_en}, {timeA_en_lower}."}},{"a":{"tpl":"{musicA}部にもはいっていますか。","enTpl":"Are you in {musicA_en} too?"},"b":{"tpl":"はい、{musicA}部にもはいっています。","enTpl":"Yes, I'm in {musicA_en} too."}},{"a":{"tpl":"{clubA}部はいつですか。","enTpl":"When is {clubA_en}?"},"b":{"tpl":"{dayB}の{timeB}です。","enTpl":"On {dayB_en}, {timeB_en_lower}."}},{"a":{"tpl":"いそがしいですね！","enTpl":"That's busy!"},"b":{"tpl":"そうですね。","enTpl":"It sure is."}}]},"letters":{"slots":[{"id":"subj0","pool":"subjects","default":0},{"id":"adjA","pool":"adjectives","default":0}],"rows":[{"a":{"tpl":"はじめまして。わたしはゆいです。","enTpl":"Nice to meet you. I'm Yui."},"b":{"tpl":"はじめまして。わたしはエマです。","enTpl":"Nice to meet you. I'm Emma."}},{"a":{"tpl":"おげんきですか。","enTpl":"How are you?"},"b":{"tpl":"わたしはげんきです。","enTpl":"I'm well."}},{"a":{"tpl":"{subj0}は好きですか。","enTpl":"Do you like {subj0_en}?"},"b":{"tpl":"はい、{subj0}が好きです。なぜかというと、{adjA_da}からです。","enTpl":"Yes, I like {subj0_en}. The reason is that it's {adjA_en_lower}."}},{"a":{"tpl":"おてがみ、ありがとう。おへんじをまっています。","enTpl":"Thank you for your letter. I'm waiting for your reply."},"b":{"tpl":"それでは、また。エマより","enTpl":"Until next time. From Emma."}},{"a":{"tpl":"さようなら。","enTpl":"Goodbye."},"b":{"tpl":"さようなら。","enTpl":"Goodbye."}}]}}}</script>
+<script>
+const DATA = JSON.parse(document.getElementById('siteData').textContent);
+const POOL_LABELS = { subjects:"School Subjects", adjectives:"Adjectives", periods:"Timetable Periods", days:"Days of the Week", yearLevels:"Year Level", schoolNouns:"School Nouns" };
+Object.assign(POOL_LABELS, {"schoolLevels": "School Levels & Name", "studyWords": "Studying & Opinions", "sports": "Sports", "music": "Music Groups", "clubs": "Clubs & Societies", "clubWords": "Club Words & Times", "letterWords": "Letter Words", "letterPhrases": "Letter Phrases"});
+function shuffleArr(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+function speak(text){ try{ const u = new SpeechSynthesisUtterance(text); u.lang='ja-JP'; u.rate=0.8; speechSynthesis.cancel(); speechSynthesis.speak(u);}catch(e){} }
+</script>
+<script>
+// ===================== ROUTER =====================
+const MENU = [
+  {
+    title: "Build Knowledge",
+    items: [
+      { id: "vocab-landing", icon: "📚", label: "Vocabulary Mode", desc: "Learn each word: listen, check the meaning, and trace it in the practice boxes." },
+      { id: "grammar-landing", icon: "🧩", label: "Grammar Mode", desc: "Explanations, cloze, arrange-the-words, drills and free writing for every pattern." },
+    ],
+  },
+  {
+    title: "Consolidate & Play",
+    items: [
+      { id: "flashcards", icon: "🗂️", label: "Flashcard Mode", desc: "Flip and type: Japanese↔English, plus dedicated reading and listening modes." },
+      { id: "writing", icon: "✏️", label: "Writing Practice", desc: "See the English, write the Japanese from memory, then self-check." },
+      { id: "board", icon: "💬", label: "Talking Board", desc: "Practise real conversations and build your own script." },
+      { id: "matching", icon: "🧲", label: "Timed Matching", desc: "Drag matching Japanese/English tiles together against the clock." },
+      { id: "typhoon", icon: "🌀", label: "Typhoon Game", desc: "Open houses, translate, and dodge the score-wiping typhoons." },
+      { id: "asteroid", icon: "🚀", label: "Asteroid Typing", desc: "Type the romaji reading before each asteroid crosses the line." },
+    ],
+  },
+];
+
+let view = "menu";
+let vocabPool = "subjects";
+let grammarIdx = 0;
+let grammarSubTab = "explain";
+
+function goHome() { view = "menu"; renderTabs(); renderApp(); }
+function goTo(id) {
+  if (id === "vocab-landing") view = "vocab-landing";
+  else if (id === "grammar-landing") view = "grammar-landing";
+  else view = id;
+  renderTabs(); renderApp();
+}
+
+function renderTabs() {
+  const nav = document.getElementById("mainTabs");
+  nav.innerHTML = "";
+  if (view === "menu") { nav.style.display = "none"; return; }
+  nav.style.display = "flex";
+  nav.appendChild(el("button", { class: "back-btn", text: "← Back to Menu", onclick: goHome }));
+}
+
+function renderApp() {
+  const app = document.getElementById("app");
+  app.innerHTML = "";
+  const router = {
+    menu: renderMenu,
+    "vocab-landing": renderVocabLanding,
+    "vocab-content": renderVocabContent,
+    "grammar-landing": renderGrammarLanding,
+    "grammar-content": renderGrammarContent,
+    writing: renderWriting, board: renderBoard, matching: renderMatching, typhoon: renderTyphoon, asteroid: renderAsteroid, flashcards: renderFlashcards,
+  };
+  router[view](app);
+}
+
+function el(tag, opts = {}, children = []) {
+  const e = document.createElement(tag);
+  Object.entries(opts).forEach(([k, v]) => {
+    if (k === "class") e.className = v;
+    else if (k === "text") e.textContent = v;
+    else if (k === "html") e.innerHTML = v;
+    else if (k.startsWith("on")) { if (typeof v === "function") e.addEventListener(k.slice(2), v); }
+    else if (v === false || v === null || v === undefined) { /* skip: no attribute */ }
+    else e.setAttribute(k, v);
+  });
+  children.forEach((c) => c && e.appendChild(c));
+  return e;
+}
+
+// ===================== MENU =====================
+function renderMenu(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "What would you like to do?" }));
+  app.appendChild(el("p", { class: "section-desc", text: "Choose a section below to get started." }));
+  MENU.forEach((section) => {
+    app.appendChild(el("div", { class: "menu-group-title", style: "margin-top:20px;", text: section.title }));
+    const grid = el("div", { class: "grid cols-3" });
+    section.items.forEach((item) => {
+      const card = el("div", { class: "menu-card", onclick: () => goTo(item.id) });
+      card.appendChild(el("div", { class: "icon", text: item.icon }));
+      card.appendChild(el("h3", { text: item.label }));
+      card.appendChild(el("p", { text: item.desc }));
+      grid.appendChild(card);
+    });
+    app.appendChild(grid);
+  });
+}
+
+// Simple hiragana -> romaji converter (covers the kana used in this unit)
+const ROMAJI_MAP = {
+  "あ":"a","い":"i","う":"u","え":"e","お":"o","か":"ka","き":"ki","く":"ku","け":"ke","こ":"ko",
+  "が":"ga","ぎ":"gi","ぐ":"gu","げ":"ge","ご":"go","さ":"sa","し":"shi","す":"su","せ":"se","そ":"so",
+  "ざ":"za","じ":"ji","ず":"zu","ぜ":"ze","ぞ":"zo","た":"ta","ち":"chi","つ":"tsu","て":"te","と":"to",
+  "だ":"da","ぢ":"ji","づ":"zu","で":"de","ど":"do","な":"na","に":"ni","ぬ":"nu","ね":"ne","の":"no",
+  "は":"ha","ひ":"hi","ふ":"fu","へ":"he","ほ":"ho","ば":"ba","び":"bi","ぶ":"bu","べ":"be","ぼ":"bo",
+  "ぱ":"pa","ぴ":"pi","ぷ":"pu","ぺ":"pe","ぽ":"po","ま":"ma","み":"mi","む":"mu","め":"me","も":"mo",
+  "や":"ya","ゆ":"yu","よ":"yo","ら":"ra","り":"ri","る":"ru","れ":"re","ろ":"ro","わ":"wa","を":"wo","ん":"n",
+  "ー":"-","、":",","。":".","っ":"", // handled specially
+  "きゃ":"kya","きゅ":"kyu","きょ":"kyo","しゃ":"sha","しゅ":"shu","しょ":"sho","ちゃ":"cha","ちゅ":"chu","ちょ":"cho",
+  "にゃ":"nya","にゅ":"nyu","にょ":"nyo","ひゃ":"hya","ひゅ":"hyu","ひょ":"hyo","みゃ":"mya","みゅ":"myu","みょ":"myo",
+  "りゃ":"rya","りゅ":"ryu","りょ":"ryo","ぎゃ":"gya","ぎゅ":"gyu","ぎょ":"gyo","じゃ":"ja","じゅ":"ju","じょ":"jo",
+  "びゃ":"bya","びゅ":"byu","びょ":"byo","ぴゃ":"pya","ぴゅ":"pyu","ぴょ":"pyo",
+  "てぃ":"ti","でぃ":"di","ふぁ":"fa","ふぃ":"fi","ふぇ":"fe","ふぉ":"fo","うぃ":"wi","うぇ":"we","うぉ":"wo","ちぇ":"che","しぇ":"she","じぇ":"je",
+};
+function kanaToRomaji(input) {
+  if (!input) return "";
+  // katakana is read exactly like hiragana, so convert it first (the middle dot is silent)
+  input = input.replace(/[\u30A1-\u30F6]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60)).replace(/・/g, "");
+  const chars = Array.from(input);
+  let out = "";
+  for (let i = 0; i < chars.length; i++) {
+    const c = chars[i];
+    const next = chars[i + 1];
+    if (c === "っ" && next) {
+      const nextRomaji = ROMAJI_MAP[next] || ROMAJI_MAP[chars[i + 1] + (chars[i + 2] || "")] || "";
+      out += nextRomaji.startsWith("ch") ? "t" : nextRomaji.charAt(0);
+      continue;
+    }
+    const twoChar = c + (next || "");
+    if (ROMAJI_MAP[twoChar] && "ゃゅょぁぃぅぇぉ".includes(next)) {
+      out += ROMAJI_MAP[twoChar];
+      i++;
+      continue;
+    }
+    out += ROMAJI_MAP[c] !== undefined ? ROMAJI_MAP[c] : c;
+  }
+  return out;
+}
+
+// Accepts the typed romaji whether the long vowel is typed with a hyphen (so-), doubled (soo) or dropped (so),
+// and either "tch" or "cch" for a small っ before ち.
+function romajiMatches(input, kanaStr) {
+  const val = (input || "").trim().toLowerCase();
+  if (!val) return false;
+  const base = kanaToRomaji(kanaStr).trim().toLowerCase();
+  const variants = new Set([base, base.replace(/([aiueo])-/g, "$1$1"), base.replace(/-/g, "")]);
+  [...variants].forEach((x) => variants.add(x.replace(/tch/g, "cch")));
+  return variants.has(val);
+}
+
+// Mora splitter — small kana (ゃゅょ) attach to the preceding character, matching the booklet's tracing grids.
+function splitMorae(reading) {
+  const smalls = new Set(["ゃ", "ゅ", "ょ", "ャ", "ュ", "ョ", "ぁ", "ぃ", "ぅ", "ぇ", "ぉ", "ァ", "ィ", "ゥ", "ェ", "ォ"]);
+  const chars = Array.from(reading || "");
+  const morae = [];
+  for (const ch of chars) {
+    if (smalls.has(ch) && morae.length > 0) morae[morae.length - 1] += ch;
+    else morae.push(ch);
+  }
+  return morae;
+}
+
+function shuffle(a) { return shuffleArr(a); }
+
+// Some vocab items list more than one valid English meaning (e.g. "Clubs / Activities",
+// "Break / Morning Tea"). Typing any single one of them counts as correct everywhere we check English answers.
+function matchesAnyMeaning(input, correctEn) {
+  const val = (input || "").trim().toLowerCase();
+  if (!val) return false;
+  const alternatives = correctEn.split("/").map((s) => s.trim().toLowerCase());
+  return alternatives.includes(val);
+}
+
+// ===================== VOCABULARY MODE (was Learn & Trace) =====================
+function renderVocabLanding(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "Vocabulary Mode" }));
+  app.appendChild(el("p", { class: "section-desc", text: "Choose a word list to study." }));
+  const grid = el("div", { class: "grid cols-3" });
+  Object.keys(DATA.vocabPools).forEach((k) => {
+    const card = el("div", { class: "menu-card", onclick: () => { vocabPool = k; view = "vocab-content"; renderApp(); } });
+    card.appendChild(el("div", { class: "icon", text: "🈂️" }));
+    card.appendChild(el("h3", { text: POOL_LABELS[k] }));
+    card.appendChild(el("p", { text: DATA.vocabPools[k].length + " words" }));
+    grid.appendChild(card);
+  });
+  app.appendChild(grid);
+}
+
+function renderVocabContent(app) {
+  app.appendChild(el("button", { class: "back-btn", style: "margin-bottom:4px;", text: "← Choose a different word list", onclick: () => { view = "vocab-landing"; renderApp(); } }));
+  app.appendChild(el("h2", { class: "section-title", text: "Vocabulary Mode — " + POOL_LABELS[vocabPool] }));
+  app.appendChild(el("p", { class: "section-desc", text: "Click a word to hear it, hover to see the meaning, and trace it in the boxes below." }));
+  const poolNav = el("div", { class: "pool-select" });
+  Object.keys(DATA.vocabPools).forEach((k) => {
+    poolNav.appendChild(el("button", { class: "pool-btn" + (k === vocabPool ? " active" : ""), text: POOL_LABELS[k], onclick: () => { vocabPool = k; renderApp(); } }));
+  });
+  app.appendChild(poolNav);
+  const grid = el("div", { class: "grid cols-1" });
+  DATA.vocabPools[vocabPool].forEach((v) => grid.appendChild(traceCard(v)));
+  app.appendChild(grid);
+}
+
+function traceCard(v) {
+  const word = v.jp;
+  const reading = v.kana || v.jp; // kana reading — used for TTS and shown under kanji
+  const morae = splitMorae(reading);
+  const card = el("div", { class: "card" });
+  const top = el("div", { style: "display:flex;justify-content:space-between;align-items:center;" });
+  top.appendChild(el("span", {
+    class: "jp jp-word", "data-tooltip": v.en, style: "font-size:1.5rem;font-weight:700;color:var(--navy);",
+    text: word, onclick: () => speak(reading),
+  }));
+  top.appendChild(el("button", { class: "btn secondary", style: "padding:6px 12px;", text: "🔊", onclick: () => speak(reading) }));
+  card.appendChild(top);
+  if (v.kana) card.appendChild(el("div", { class: "jp small", style: "margin:4px 0;color:var(--text-sec);", text: v.kana }));
+  card.appendChild(el("div", { class: "small", style: "margin-bottom:8px;", text: "Meaning: " + v.en }));
+  const row = el("div", { class: "mora-row" });
+  card.appendChild(row);
+  const clearBtn = el("button", { class: "btn secondary", style: "margin-top:8px;padding:6px 14px;font-size:.7rem;", text: "Clear" });
+  card.appendChild(clearBtn);
+  const clearFns = [];
+  morae.forEach((mora) => {
+    const canvas = el("canvas", { class: "mora-box", width: "170", height: "170" });
+    row.appendChild(canvas);
+    setTimeout(() => {
+      const ctx = canvas.getContext("2d");
+      function drawGuide() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = "#eef1f6"; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(canvas.width / 2, 4); ctx.lineTo(canvas.width / 2, canvas.height - 4);
+        ctx.moveTo(4, canvas.height / 2); ctx.lineTo(canvas.width - 4, canvas.height / 2); ctx.stroke();
+        ctx.font = "88px 'Noto Sans JP'"; ctx.fillStyle = "rgba(4,30,66,0.18)";
+        ctx.textAlign = "center"; ctx.textBaseline = "middle";
+        ctx.fillText(mora, canvas.width / 2, canvas.height / 2 + 2);
+      }
+      drawGuide();
+      clearFns.push(drawGuide);
+      let drawing = false, last = null;
+      function pos(e) { const r = canvas.getBoundingClientRect(); return { x: (e.clientX - r.left) * (canvas.width / r.width), y: (e.clientY - r.top) * (canvas.height / r.height) }; }
+      canvas.addEventListener("pointerdown", (e) => { drawing = true; last = pos(e); });
+      canvas.addEventListener("pointermove", (e) => {
+        if (!drawing) return;
+        const p = pos(e);
+        ctx.strokeStyle = "#041E42"; ctx.lineWidth = 5; ctx.lineCap = "round";
+        ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke();
+        last = p;
+      });
+      window.addEventListener("pointerup", () => (drawing = false));
+    }, 0);
+  });
+  clearBtn.onclick = () => clearFns.forEach((f) => f());
+  return card;
+}
+
+// ===================== GRAMMAR MODE =====================
+function renderGrammarLanding(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "Grammar Mode" }));
+  app.appendChild(el("p", { class: "section-desc", text: "Choose a language pattern to practise." }));
+  const grid = el("div", { class: "grid cols-3" });
+  DATA.grammarGroups.forEach((g, i) => {
+    const card = el("div", { class: "menu-card", onclick: () => { grammarIdx = i; grammarSubTab = "explain"; view = "grammar-content"; renderApp(); } });
+    card.appendChild(el("div", { class: "icon", text: "🧩" }));
+    card.appendChild(el("h3", { text: g.title }));
+    card.appendChild(el("p", { text: "Explanation, cloze, arrange, drills & free writing" }));
+    grid.appendChild(card);
+  });
+  app.appendChild(grid);
+}
+
+function renderGrammarContent(app) {
+  app.appendChild(el("button", { class: "back-btn", style: "margin-bottom:4px;", text: "← Choose a different pattern", onclick: () => { view = "grammar-landing"; renderApp(); } }));
+  app.appendChild(el("h2", { class: "section-title", text: "Grammar Mode — " + DATA.grammarGroups[grammarIdx].title }));
+  app.appendChild(el("p", { class: "section-desc", text: "Work through the explanation, then practise with the activities below." }));
+  const group = DATA.grammarGroups[grammarIdx];
+  const body = el("div", {});
+  app.appendChild(body);
+  renderExplain(body, group);
+  body.appendChild(el("h3", { style: "color:var(--navy);font-size:1.15rem;margin:26px 0 10px;border-top:2px solid var(--border-light);padding-top:20px;", text: "Arrange the Words" }));
+  renderArrange(body, group);
+  body.appendChild(el("h3", { style: "color:var(--navy);font-size:1.15rem;margin:26px 0 10px;border-top:2px solid var(--border-light);padding-top:20px;", text: "Cloze" }));
+  renderCloze(body, group);
+  body.appendChild(el("h3", { style: "color:var(--navy);font-size:1.15rem;margin:26px 0 10px;border-top:2px solid var(--border-light);padding-top:20px;", text: "Translation Drills" }));
+  renderDrills(body, group);
+  body.appendChild(el("h3", { style: "color:var(--navy);font-size:1.15rem;margin:26px 0 10px;border-top:2px solid var(--border-light);padding-top:20px;", text: "Free Writing" }));
+  renderFree(body, group);
+}
+
+const ROLE_LABEL_BASE = { subject: "subject", timeGeneral: "time (general)", timeSpecific: "time (specific)", manner: "manner", place: "place", object: "object", adjective: "adjective", verbStem: "verb stem", verbEnding: "verb/element ending", particle: "particle" };
+const ROLE_LABEL = { ...ROLE_LABEL_BASE, suffix: "suffix" };
+function legendRow(group) {
+  const l = el("div", { class: "legend" });
+  const used = new Set();
+  ((group && group.tokens) || []).forEach((we) => we.tokens.forEach((t) => { if (t.r) used.add(t.r); }));
+  Object.entries(ROLE_LABEL).forEach(([k, v]) => {
+    if (k === "suffix" && !used.has("suffix")) return; // only show the suffix colour where it is used
+    l.appendChild(el("span", { class: "role-" + k, text: v }));
+  });
+  return l;
+}
+
+// Word-level hover glossary: vocabulary words (from the pools) plus common particles/predicate pieces.
+const PARTICLE_GLOSSARY = {
+  "が": "marks the thing being liked, disliked, or described (subject marker)",
+  "は": "topic marker — ‘as for...’",
+  "の": "possessive / connecting particle (‘s or ‘of’)",
+  "と": "and (links two items)",
+  "に": "marks the target of a change (‘into’)",
+  "、": "pause (comma)",
+  "大好き": "love",
+  "好き": "like",
+  "好きじゃない": "don't like",
+  "ちょっと": "a little... (softener for 'not really')",
+  "ちょっと。。。": "a little... (softener for 'not really')",
+  "とくい": "good at",
+  "にがて": "bad at",
+  "でき": "can do (verb stem)",
+  "できます": "can do",
+  "できません": "cannot do",
+  "ます": "polite verb ending",
+  "ません": "polite negative verb ending",
+  "です": "is / am / are",
+  "です。": "is / am / are",
+  "なります": "will become",
+  "なります。": "will become",
+  "わたし": "I / me",
+  "らいねん": "next year",
+};
+Object.assign(PARTICLE_GLOSSARY, {"に": "marks the target — where you belong or what you become (‘in’, ‘into’)", "から": "because (gives the reason)", "だ": "is — needed after a な-adjective before と or から", "や": "and (one of several things)", "など": "and so on / etc.", "を": "marks what you study (the object)", "へ": "to (marks who the letter is for)", "より": "from (marks who the letter is from)", "という": "called / named", "さん": "Mr / Ms (polite ending for a name)", "なん": "what", "なに": "what", "いつ": "when", "どうして": "why", "ですか": "is it…? (question ending)", "はいっていますか": "are you a member of…?", "おもいます": "I think", "ゆい": "Yui (the pen pal)", "エマ": "Emma (the letter writer)", "セント・エイダンズ女子校": "St Aidan's Girls' School", "好きな": "favourite / liked (好き + な before a noun)"});
+let WORD_GLOSSARY = null;
+function getWordGlossary() {
+  if (WORD_GLOSSARY) return WORD_GLOSSARY;
+  WORD_GLOSSARY = { ...PARTICLE_GLOSSARY };
+  Object.values(DATA.vocabPools).forEach((pool) => pool.forEach((v) => { WORD_GLOSSARY[v.jp] = v.en; }));
+  return WORD_GLOSSARY;
+}
+function glossFor(text) {
+  const glossary = getWordGlossary();
+  if (glossary[text] !== undefined) return glossary[text];
+  const stripped = text.replace(/[。、]/g, "");
+  return glossary[stripped];
+}
+
+function tokenLine(tokens) {
+  const p = el("p", { class: "jp", style: "font-size:1.3rem;margin:6px 0;flex:1;" });
+  tokens.forEach((t) => {
+    const gloss = glossFor(t.t);
+    const span = el("span", { class: t.r ? "token role-" + t.r : "token", text: t.t });
+    if (gloss) span.setAttribute("data-tooltip", gloss);
+    span.style.cursor = "pointer";
+    span.addEventListener("click", (e) => { e.stopPropagation(); speak(t.t); });
+    p.appendChild(span);
+  });
+  return p;
+}
+const GRAMMAR_EXPLANATIONS = {
+  likesDislikes: "How it's made: put the thing you like or dislike first, mark it with が (or は for the softer ちょっと。。。), then add the like/dislike expression, finishing with です for a complete polite sentence.",
+  abilities: "How it's made: put the subject you're good or bad at first, mark it with が, then add とくい／にがて + です, or the verb できます／できません on its own (no extra です needed, since できます／できません are already complete verbs).",
+  adjective: "How it's made: put the subject first, mark it with は (since you're making a general comment about it), then add the adjective, finishing with です.",
+  timetable: "How it's made: period, day (linked to the period with の) and subject are rearranged around は so you can ask or answer starting from any of the three. と links two day+period phrases together in the last pattern.",
+  yearLevel: "How it's made: the first pattern states your current year level with は...です. The second uses a time word, a comma, then に + なります (‘will become’) to talk about the future.",
+};
+Object.assign(GRAMMAR_EXPLANATIONS, {"likesDislikes": "How it's made: put the thing you like or dislike first, mark it with が (or は for the softer ちょっと。。。), then add the like/dislike expression, finishing with です for a complete polite sentence. To name your favourite, start with 一番好きな (‘most liked’) + かもく (subject) or 先生 (teacher) + は, then give the answer + です. 好き is a な-adjective, so it needs な before a noun.", "yearLevel": "How it's made: the first pattern states your current year level with は...です. You can build the year level from parts: school level (小学校 / 中学校 / 高校) + number + 年生. The next pattern uses a time word, a comma, then に + なります (‘will become’) to talk about the future, and なん年生ですか asks ‘what year level are you in?’", "schoolName": "How it's made: give your school's name with 学校の名前は…です, or say what kind of school it is with 女子校. To link the name to your year level, use the school's name + という (‘called’) + 学校の + year level + です.", "studying": "How it's made: say わたしは, list your subjects, mark them with を, and finish with べんきょうしています. Use と for two subjects, や … など for ‘… and so on’, or a list with 、 and と before the last subject.", "reasons": "How it's made: say what you like or don't like, then give the reason with なぜかというと、 + the adjective + からです. い-adjectives go straight before から; な-adjectives (かんたん, しんせつ, げんき, たいへん, たいせつ) need だ first. To talk about the teacher, add 先生は before the adjective.", "opinions": "How it's made: put the topic first with は, then the adjective, then と + おもいます (‘I think that…’). い-adjectives go straight before と; な-adjectives need だ first (たいへんだとおもいます). Add とても or ほんとうに before the adjective to make it stronger.", "coCurricular": "How it's made: say the activity + 部 + にはいっています for ‘I'm in…’. To say when it happens, start with the activity + 部は, then the day + の + the time (ほうかご, ひるやすみ or あさ), or use まいしゅう + the day for ‘every week’. Join two activities with と.", "letters": "How it's made: a friendly letter follows a set order: date, who it's to (name + さん + へ), greeting, introduction, your news, a closing line, and a sign-off (your name + より). The sentences below are the building blocks; tap any line to hear it."});
+function renderExplain(body, group) {
+  const weKey = group.key.replace(/2$/, "");
+  body.appendChild(legendRow(group));
+  body.appendChild(el("p", { class: "small", style: "margin:-8px 0 10px;", text: "Click the 🔊 button to hear the whole sentence, or click any individual word to hear just that word. Hover for meanings." }));
+  const howCard = el("div", { class: "card", style: "margin-bottom:16px;background:var(--navy-tint);" });
+  howCard.appendChild(el("div", { class: "small", style: "font-weight:700;color:var(--navy);", text: GRAMMAR_EXPLANATIONS[weKey] || "" }));
+  body.appendChild(howCard);
+  (group.notes || []).forEach((n) => {
+    const nc = el("div", { class: "card", style: "margin-bottom:12px;background:var(--pink-light);border-color:var(--pink);" });
+    nc.appendChild(el("div", { class: "small", style: "color:var(--navy);font-weight:600;line-height:1.5;", text: n }));
+    body.appendChild(nc);
+  });
+  if (group.layout) {
+    const lc = el("div", { class: "card", style: "margin-bottom:16px;" });
+    lc.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:6px;", text: "Letter layout, from top to bottom" }));
+    group.layout.forEach((item, i) => {
+      const r = el("div", { style: "display:grid;grid-template-columns:minmax(110px,150px) 1fr auto;gap:10px;align-items:start;padding:10px 0;" + (i ? "border-top:1px solid var(--border-light);" : "") });
+      r.appendChild(el("div", { style: "font-size:.72rem;font-weight:800;color:var(--navy);background:var(--navy-tint);border-radius:6px;padding:4px 8px;", text: (i + 1) + ". " + item.label }));
+      const mid = el("div", {});
+      mid.appendChild(el("div", { class: "jp jp-word", style: "font-size:1.05rem;margin-bottom:2px;", text: item.jp, onclick: () => speak(item.jp) }));
+      mid.appendChild(el("div", { class: "small", text: item.en }));
+      r.appendChild(mid);
+      r.appendChild(el("button", { class: "btn secondary", style: "padding:4px 10px;font-size:.75rem;", text: "🔊", onclick: () => speak(item.jp) }));
+      lc.appendChild(r);
+    });
+    body.appendChild(lc);
+  }
+  group.tokens.forEach((we) => {
+    const card = el("div", { class: "card", style: "margin-bottom:14px;" });
+    const headRow = el("div", { style: "display:flex;justify-content:space-between;align-items:flex-start;gap:10px;" });
+    const line = tokenLine(we.tokens);
+    headRow.appendChild(line);
+    headRow.appendChild(el("button", { class: "btn secondary", style: "padding:5px 12px;font-size:.8rem;flex-shrink:0;", text: "🔊", onclick: () => speak(we.tokens.map((t) => t.t).join("")) }));
+    card.appendChild(headRow);
+    card.appendChild(el("div", { class: "small", text: we.en }));
+    body.appendChild(card);
+  });
+}
+function renderArrange(body, group) {
+  group.scrambleSet.forEach((cfg, idx) => {
+    const card = el("div", { class: "card", style: "margin-bottom:14px;" });
+    card.appendChild(el("div", { class: "small", style: "margin-bottom:10px;font-weight:700;", text: `${idx + 1}. Tap the tiles in order to rebuild the sentence: ` + cfg.en }));
+    const answerRow = el("div", { style: "min-height:50px;border:2px dashed var(--border-light);border-radius:8px;padding:8px;margin-bottom:14px;display:flex;gap:6px;flex-wrap:wrap;" });
+    const bankRow = el("div", { style: "display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;" });
+    let bank = shuffle(cfg.chunks);
+    let answer = [];
+    function redraw() {
+      bankRow.innerHTML = ""; answerRow.innerHTML = "";
+      bank.forEach((t, i) => {
+        bankRow.appendChild(el("button", { class: "btn secondary jp", style: "padding:8px 14px;font-size:1rem;", text: t, onclick: () => { answer.push(t); bank.splice(i, 1); redraw(); } }));
+      });
+      answer.forEach((t, i) => {
+        answerRow.appendChild(el("button", { class: "btn pink jp", style: "padding:8px 14px;font-size:1rem;", text: t, onclick: () => { bank.push(t); answer.splice(i, 1); redraw(); } }));
+      });
+    }
+    redraw();
+    card.appendChild(el("div", { class: "small", text: "Answer:" }));
+    card.appendChild(answerRow);
+    card.appendChild(el("div", { class: "small", text: "Tiles:" }));
+    card.appendChild(bankRow);
+    const result = el("div", { class: "small", style: "margin-top:10px;font-weight:700;" });
+    const checkBtn = el("button", { class: "btn pink", text: "Check", onclick: () => {
+      const built = answer.join("");
+      const correct = cfg.chunks.join("");
+      if (built === correct) { result.textContent = "✓ Correct!"; result.style.color = "var(--green)"; }
+      else { result.textContent = "✗ Not quite. Correct order: " + cfg.chunks.join(" "); result.style.color = "var(--red)"; }
+    } });
+    const resetBtn = el("button", { class: "btn secondary", text: "Shuffle Again", onclick: () => { bank = shuffle(cfg.chunks); answer = []; redraw(); result.textContent = ""; } });
+    card.appendChild(checkBtn); card.appendChild(document.createTextNode(" ")); card.appendChild(resetBtn);
+    card.appendChild(result);
+    body.appendChild(card);
+  });
+}
+const KIND_STYLE = {
+  vocabulary: { bg: "D9D2ED", label: "Vocabulary" },
+  particle: { bg: "F0C9C6", label: "Particle" },
+  grammar: { bg: "F7CFE1", label: "Grammar" },
+};
+function renderCloze(body, group) {
+  group.clozeSet.forEach((cfg, idx) => {
+    const card = el("div", { class: "card", style: "margin-bottom:14px;" });
+    const kindInfo = KIND_STYLE[cfg.kind] || null;
+    const head = el("div", { style: "display:flex;align-items:center;gap:8px;margin-bottom:6px;" });
+    head.appendChild(el("span", { class: "small", style: "font-weight:700;", text: `${idx + 1}.` }));
+    if (kindInfo) head.appendChild(el("span", { style: `background:${kindInfo.bg};padding:2px 10px;border-radius:20px;font-size:.68rem;font-weight:700;color:var(--navy);`, text: kindInfo.label }));
+    card.appendChild(head);
+    const line = el("p", { class: "jp", style: "font-size:1.2rem;" });
+    line.appendChild(el("span", { text: cfg.jpBefore }));
+    const input = el("input", { type: "text", placeholder: "____", style: "width:120px;" });
+    line.appendChild(input);
+    line.appendChild(el("span", { text: cfg.jpAfter }));
+    card.appendChild(line);
+    card.appendChild(el("div", { style: "font-size:1.05rem;color:var(--navy);margin:4px 0 8px;", text: cfg.en }));
+    card.appendChild(el("div", { class: "small", style: "margin:8px 0;", text: "Word bank: " + shuffle(cfg.options).join(" / ") }));
+    const result = el("div", { class: "small", style: "font-weight:700;" });
+    card.appendChild(el("button", { class: "btn pink", text: "Check", onclick: () => {
+      if (input.value.trim() === cfg.blank) { result.textContent = "✓ Correct!"; result.style.color = "var(--green)"; }
+      else { result.textContent = "✗ Correct answer: " + cfg.blank; result.style.color = "var(--red)"; }
+    } }));
+    card.appendChild(result);
+    body.appendChild(card);
+  });
+}
+function renderDrills(body, group) {
+  [["Japanese → English", group.drillsJtoE, "jp"], ["English → Japanese", group.drillsEtoJ, "en"]].forEach(([label, list, promptKey]) => {
+    body.appendChild(el("h3", { style: "color:var(--navy);font-size:1rem;margin:18px 0 8px;", text: label }));
+    list.forEach((item, i) => {
+      const row = el("div", { class: "card", style: "display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding:12px 16px;" });
+      const promptSpan = el("span", { class: promptKey === "jp" ? "jp jp-word" : "", text: `${i + 1}. ${item[promptKey]}` });
+      if (promptKey === "jp") { promptSpan.onclick = () => speak(item.jp); }
+      row.appendChild(promptSpan);
+      const answerSpan = el("span", { class: promptKey === "jp" ? "" : "jp", style: "display:none;font-weight:700;color:var(--pink);", text: promptKey === "jp" ? item.en : item.jp });
+      const toggle = el("button", { class: "btn secondary", style: "padding:5px 12px;font-size:.7rem;", text: "Show answer", onclick: () => { answerSpan.style.display = answerSpan.style.display === "none" ? "inline" : "none"; } });
+      const right = el("span", {}); right.appendChild(answerSpan); right.appendChild(document.createTextNode(" ")); right.appendChild(toggle);
+      row.appendChild(right);
+      body.appendChild(row);
+    });
+  });
+}
+function renderFree(body, group) {
+  const card = el("div", { class: "card" });
+  card.appendChild(el("div", { style: "margin-bottom:10px;", text: group.freeWritingPrompt }));
+  card.appendChild(el("textarea", { rows: "3", placeholder: "Write your sentence here..." }));
+  const reveal = el("div", { class: "small jp", style: "display:none;margin-top:8px;color:var(--pink);font-weight:700;", text: group.drillsJtoE[0] ? group.drillsJtoE[0].jp : "" });
+  card.appendChild(el("button", { class: "btn secondary", style: "margin-top:10px;", text: "Show example answer", onclick: () => { reveal.style.display = reveal.style.display === "none" ? "block" : "none"; } }));
+  card.appendChild(reveal);
+  body.appendChild(card);
+}
+// ===================== FLASHCARD MODE =====================
+let flashcardPool = "subjects";
+let flashcardDirection = "jToE"; // "jToE" or "eToJ"
+let flashcardStudyMode = "reading"; // "reading" or "listening"
+let flashcardSession = null;
+
+function renderFlashcards(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "Flashcard Mode" }));
+  app.appendChild(el("p", { class: "section-desc", text: "Flip cards, listen, and type the answer to make it count." }));
+  if (!flashcardSession) { renderFlashcardSetup(app); return; }
+  renderFlashcardSession(app);
+}
+
+function renderFlashcardSetup(app) {
+  const card = el("div", { class: "card", style: "max-width:560px;" });
+
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Word list:" }));
+  const poolRow = el("div", { class: "pool-select" });
+  Object.keys(DATA.vocabPools).forEach((k) => {
+    poolRow.appendChild(el("button", { class: "pool-btn" + (k === flashcardPool ? " active" : ""), text: POOL_LABELS[k], onclick: () => { flashcardPool = k; renderApp(); } }));
+  });
+  card.appendChild(poolRow);
+
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin:16px 0 10px;", text: "Study mode:" }));
+  const studyRow = el("div", { style: "display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap;" });
+  [["reading", "Reading (no sound)"], ["listening", "Listening (sound only, J→E)"]].forEach(([id, label]) => {
+    studyRow.appendChild(el("button", { class: "pool-btn" + (flashcardStudyMode === id ? " active" : ""), text: label, onclick: () => { flashcardStudyMode = id; if (id === "listening") flashcardDirection = "jToE"; renderApp(); } }));
+  });
+  card.appendChild(studyRow);
+  card.appendChild(el("div", { class: "small", style: "margin-bottom:16px;", text: flashcardStudyMode === "listening" ? "The Japanese side is hidden — click 🔊 to hear it, click anywhere else on the card to flip and reveal it." : "The card shows plain text — click the card to flip it." }));
+
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Direction:" }));
+  const dirRow = el("div", { style: "display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;" });
+  [["jToE", "Japanese → English"], ["eToJ", "English → Japanese"]].forEach(([id, label]) => {
+    const disabled = flashcardStudyMode === "listening" && id === "eToJ";
+    dirRow.appendChild(el("button", { class: "pool-btn" + (flashcardDirection === id ? " active" : ""), text: label, disabled, onclick: () => { if (disabled) return; flashcardDirection = id; renderApp(); } }));
+  });
+  card.appendChild(dirRow);
+  card.appendChild(el("div", { class: "small", style: "margin-bottom:18px;", text: flashcardStudyMode === "listening" ? "Listening mode is always Japanese → English." : "For English → Japanese, typing either the Japanese word or its romaji counts as correct." }));
+
+  card.appendChild(el("button", { class: "btn pink", text: "Start", onclick: () => {
+    flashcardSession = { queue: shuffle(DATA.vocabPools[flashcardPool]), idx: 0, flipped: false, score: { correct: 0, total: 0 } };
+    renderApp();
+  } }));
+  app.appendChild(card);
+}
+
+function renderFlashcardSession(app) {
+  app.appendChild(el("button", { class: "back-btn", style: "margin-bottom:4px;", text: "← Change settings", onclick: () => { flashcardSession = null; renderApp(); } }));
+
+  const sess = flashcardSession;
+  if (sess.idx >= sess.queue.length) { sess.queue = shuffle(DATA.vocabPools[flashcardPool]); sess.idx = 0; }
+  const v = sess.queue[sess.idx];
+  const isListening = flashcardStudyMode === "listening";
+  const dir = flashcardDirection;
+
+  const info = el("div", { class: "small", style: "margin-bottom:10px;font-weight:700;", text: `Card ${sess.idx + 1} of ${sess.queue.length}   ·   Score: ${sess.score.correct} / ${sess.score.total}` });
+  app.appendChild(info);
+
+  const cardWrap = el("div", { style: "max-width:480px;" });
+  const flashcard = el("div", {
+    style: `position:relative;border:2px solid var(--border-light);border-radius:16px;padding:36px 24px;min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:${sess.flipped ? "var(--navy-tint)" : "#fff"};text-align:center;`,
+    onclick: () => { sess.flipped = !sess.flipped; renderApp(); },
+  });
+
+  if (!sess.flipped) {
+    if (dir === "jToE") {
+      if (isListening) {
+        flashcard.appendChild(el("button", { class: "btn pink", style: "font-size:1.3rem;padding:16px 28px;", text: "🔊 Listen", onclick: (e) => { e.stopPropagation(); speak(v.kana || v.jp); } }));
+      } else {
+        flashcard.appendChild(el("div", { class: "jp", style: "font-size:2rem;font-weight:800;color:var(--navy);", text: v.jp }));
+        if (v.kana) flashcard.appendChild(el("div", { class: "jp small", style: "margin-top:6px;color:var(--text-sec);", text: v.kana }));
+      }
+    } else {
+      flashcard.appendChild(el("div", { style: "font-size:1.7rem;font-weight:800;color:var(--navy);", text: v.en }));
+    }
+  } else {
+    if (dir === "jToE") {
+      flashcard.appendChild(el("div", { style: "font-size:1.7rem;font-weight:800;color:var(--pink);", text: v.en }));
+      flashcard.appendChild(el("div", { class: "jp", style: "margin-top:8px;font-size:1.1rem;color:var(--navy);", text: v.jp + (v.kana ? "　(" + v.kana + ")" : "") }));
+    } else {
+      flashcard.appendChild(el("div", { class: "jp", style: "font-size:2rem;font-weight:800;color:var(--pink);", text: v.jp }));
+      if (v.kana) flashcard.appendChild(el("div", { class: "jp small", style: "margin-top:6px;color:var(--text-sec);", text: v.kana }));
+    }
+    flashcard.appendChild(el("div", { class: "small", style: "margin-top:10px;", text: "(click to flip back)" }));
+  }
+  cardWrap.appendChild(flashcard);
+  app.appendChild(cardWrap);
+
+  const inputRow = el("div", { style: "display:flex;gap:8px;margin-top:16px;max-width:480px;" });
+  const input = el("input", { type: "text", placeholder: dir === "jToE" ? "Type the English meaning..." : "Type in Japanese or romaji...", style: "flex:1;" });
+  const checkBtn = el("button", { class: "btn pink", text: "Check" });
+  inputRow.appendChild(input); inputRow.appendChild(checkBtn);
+  app.appendChild(inputRow);
+
+  const result = el("div", { class: "small", style: "margin-top:10px;font-weight:700;" });
+  app.appendChild(result);
+
+  function isCorrect(value) {
+    const val = value.trim().toLowerCase();
+    if (!val) return false;
+    if (dir === "jToE") return matchesAnyMeaning(val, v.en);
+    const jpForm = v.jp.trim().toLowerCase();
+    return val === jpForm || romajiMatches(val, v.kana || v.jp);
+  }
+  function doCheck() {
+    sess.score.total++;
+    if (isCorrect(input.value)) {
+      sess.score.correct++;
+      result.textContent = "✓ Correct!";
+      result.style.color = "var(--green)";
+    } else {
+      const answer = dir === "jToE" ? v.en : `${v.jp}${v.kana ? " (" + kanaToRomaji(v.kana) + ")" : ""}`;
+      result.textContent = "✗ Correct answer: " + answer;
+      result.style.color = "var(--red)";
+    }
+    info.textContent = `Card ${sess.idx + 1} of ${sess.queue.length}   ·   Score: ${sess.score.correct} / ${sess.score.total}`;
+  }
+  checkBtn.onclick = doCheck;
+  input.addEventListener("keydown", (e) => { if (e.key === "Enter") doCheck(); });
+
+  const navRow = el("div", { style: "display:flex;gap:8px;margin-top:14px;" });
+  navRow.appendChild(el("button", { class: "btn secondary", text: "Next Card →", onclick: () => { sess.idx++; sess.flipped = false; renderApp(); } }));
+  app.appendChild(navRow);
+}
+
+// ===================== 3. WRITING PRACTICE =====================
+let writingPool = "subjects";
+let writingQueue = [];
+let writingIdx = 0;
+let writingScore = { correct: 0, total: 0 };
+function ensureWritingQueue() {
+  if (writingQueue.length === 0) { writingQueue = shuffle(DATA.vocabPools[writingPool]); writingIdx = 0; }
+}
+function renderWriting(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "Writing Practice" }));
+  app.appendChild(el("p", { class: "section-desc", text: "See the English word, write the Japanese from memory in the sketchpad, then self-check." }));
+  const poolNav = el("div", { class: "pool-select" });
+  Object.keys(DATA.vocabPools).forEach((k) => {
+    poolNav.appendChild(el("button", { class: "pool-btn" + (k === writingPool ? " active" : ""), text: POOL_LABELS[k], onclick: () => { writingPool = k; writingQueue = []; renderApp(); } }));
+  });
+  app.appendChild(poolNav);
+  ensureWritingQueue();
+  const v = writingQueue[writingIdx];
+  const card = el("div", { class: "card", style: "max-width:480px;" });
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);font-size:1.3rem;margin-bottom:4px;", text: v.en }));
+  card.appendChild(el("div", { class: "small", style: "margin-bottom:10px;", text: `Word ${writingIdx + 1} of ${writingQueue.length} · Written correctly: ${writingScore.correct} / ${writingScore.total}` }));
+  const canvas = el("canvas", { width: "420", height: "220", style: "width:100%;border:2px solid var(--border-light);border-radius:8px;touch-action:none;cursor:crosshair;background:#fff;" });
+  card.appendChild(canvas);
+  const answerBox = el("div", { class: "small jp", style: "display:none;margin-top:10px;font-size:1.1rem;color:var(--pink);font-weight:700;", text: v.jp + (v.kana ? "　(" + kanaToRomaji(v.kana) + ")" : "") });
+  card.appendChild(answerBox);
+  const btnRow = el("div", { style: "display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;" });
+  const clearBtn = el("button", { class: "btn secondary", text: "Clear" });
+  const showBtn = el("button", { class: "btn secondary", text: "Show answer", onclick: () => { answerBox.style.display = "block"; needsPracticeBtn.disabled = false; nailedBtn.disabled = false; } });
+  const needsPracticeBtn = el("button", { class: "btn secondary", text: "Needs practice", disabled: "true", onclick: () => advance(false) });
+  const nailedBtn = el("button", { class: "btn pink", text: "Nailed it ✓", disabled: "true", onclick: () => advance(true) });
+  btnRow.appendChild(clearBtn); btnRow.appendChild(showBtn); btnRow.appendChild(needsPracticeBtn); btnRow.appendChild(nailedBtn);
+  card.appendChild(btnRow);
+  app.appendChild(card);
+  function advance(correct) {
+    writingScore.total++; if (correct) writingScore.correct++;
+    writingIdx++;
+    if (writingIdx >= writingQueue.length) { writingQueue = shuffle(DATA.vocabPools[writingPool]); writingIdx = 0; }
+    renderApp();
+  }
+  setTimeout(() => {
+    const ctx = canvas.getContext("2d");
+    function drawGuides() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = "#e3e8f0"; ctx.lineWidth = 1; ctx.strokeRect(4, 4, canvas.width - 8, canvas.height - 8);
+    }
+    drawGuides();
+    let drawing = false, last = null;
+    function pos(e) { const r = canvas.getBoundingClientRect(); return { x: (e.clientX - r.left) * (canvas.width / r.width), y: (e.clientY - r.top) * (canvas.height / r.height) }; }
+    canvas.addEventListener("pointerdown", (e) => { drawing = true; last = pos(e); });
+    canvas.addEventListener("pointermove", (e) => {
+      if (!drawing) return;
+      const p = pos(e);
+      ctx.strokeStyle = "#041E42"; ctx.lineWidth = 3; ctx.lineCap = "round";
+      ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke(); last = p;
+    });
+    window.addEventListener("pointerup", () => (drawing = false));
+    clearBtn.onclick = drawGuides;
+  }, 0);
+}
+
+// ===================== 4. TALKING BOARD =====================
+let boardStage = 0;
+let boardFilterStar = false;
+let scriptList = [];
+let boardSelections = {}; // key: `${stageIdx}:${slotId}` -> chosen vocab index
+
+function getSlotChoice(stageIdx, slot) {
+  const key = stageIdx + ":" + slot.id;
+  return boardSelections[key] !== undefined ? boardSelections[key] : slot.default;
+}
+function setSlotChoice(stageIdx, slotId, idx) {
+  boardSelections[stageIdx + ":" + slotId] = idx;
+}
+// Resolve a template string like "{s0}が好きですか。" using the current slot choices.
+function resolveTpl(str, slotValues) {
+  return str.replace(/\{(\w+?)(_en)?(_lower)?(_da)?\}/g, (match, id, enFlag, lowerFlag, daFlag) => {
+    const v = slotValues[id];
+    if (!v) return match;
+    let out = enFlag ? v.en : v.jp;
+    if (lowerFlag) out = out.toLowerCase();
+    if (daFlag && v.na) out += "だ"; // な-adjectives need だ before と / から
+    return out;
+  });
+}
+
+function renderBoard(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "Talking Board" }));
+  app.appendChild(el("p", { class: "section-desc", text: "Practise real conversations. Words with a dashed pink underline are dropdowns — change them to make the conversation your own, and the English updates automatically. Tap any other Japanese word to see its meaning, and build your own script with the + Script button." }));
+
+  const stageNav = el("div", { class: "pool-select" });
+  DATA.grammarGroups.forEach((g, i) => {
+    stageNav.appendChild(el("button", { class: "pool-btn" + (i === boardStage ? " active" : ""), text: g.title, onclick: () => { boardStage = i; renderApp(); } }));
+  });
+  app.appendChild(stageNav);
+
+  const filterRow = el("label", { class: "small", style: "display:flex;align-items:center;gap:8px;margin-bottom:14px;cursor:pointer;" });
+  const checkbox = el("input", { type: "checkbox" });
+  checkbox.checked = boardFilterStar;
+  checkbox.onchange = () => { boardFilterStar = checkbox.checked; renderApp(); };
+  filterRow.appendChild(checkbox); filterRow.appendChild(document.createTextNode("Show only ⭐ minimum-requirement lines"));
+  app.appendChild(filterRow);
+
+  const glossary = {};
+  Object.values(DATA.vocabPools).forEach((pool) => pool.forEach((v) => (glossary[v.jp] = v.en)));
+
+  const group = DATA.grammarGroups[boardStage];
+  const template = DATA.boardTemplates[group.key];
+  const slotsById = {};
+  template.slots.forEach((s) => (slotsById[s.id] = s));
+
+  // Resolve current slot selections -> {slotId: {jp, en}}
+  const slotValues = {};
+  template.slots.forEach((slot) => {
+    const idx = getSlotChoice(boardStage, slot);
+    slotValues[slot.id] = DATA.vocabPools[slot.pool][idx];
+  });
+
+  template.rows.forEach((row, ri) => {
+    const isStar = ri === 0; // first exchange of each stage marked as minimum requirement
+    if (boardFilterStar && !isStar) return;
+    const card = el("div", { class: "card", style: "margin-bottom:12px;display:grid;grid-template-columns:1fr 1fr;gap:10px;" });
+    [["A", row.a, "#F3ECFA"], ["B", row.b, "#FDECF3"]].forEach(([speakerLabel, rawLine, bg]) => {
+      const plainJp = resolveTpl(rawLine.tpl, slotValues);
+      const en = resolveTpl(rawLine.enTpl, slotValues);
+      const cell = el("div", { style: `background:${bg};border-radius:8px;padding:10px 12px;` });
+      const head = el("div", { style: "display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;" });
+      head.appendChild(el("span", { class: "small", style: "font-weight:700;", text: "Speaker " + speakerLabel + (isStar ? " ⭐" : "") }));
+      const btnGroup = el("span", {});
+      btnGroup.appendChild(el("button", { class: "btn secondary", style: "padding:3px 8px;font-size:.65rem;margin-right:4px;", text: "🔊", onclick: () => speak(plainJp) }));
+      btnGroup.appendChild(el("button", { class: "btn pink outline", style: "padding:3px 8px;font-size:.65rem;", text: "+ Script", onclick: () => { scriptList.push({ jp: plainJp, en }); renderScriptPanel(); } }));
+      head.appendChild(btnGroup);
+      cell.appendChild(head);
+      const jpLine = el("p", { class: "jp", style: "margin:2px 0;font-size:1rem;" });
+      renderInlineTemplatedJp(jpLine, rawLine.tpl, slotsById, slotValues, glossary);
+      cell.appendChild(jpLine);
+      cell.appendChild(el("div", { class: "small", text: en }));
+      card.appendChild(cell);
+    });
+    app.appendChild(card);
+  });
+
+  renderScriptPanel();
+}
+// Parses a template string like "そうですか。{s1}は？", rendering fixed text as glossed/tappable
+// spans and each {slotId} as an inline <select> dropdown the student can change in place.
+function renderInlineTemplatedJp(container, tplStr, slotsById, slotValues, glossary) {
+  const regex = /\{(\w+?)(_da)?\}/g;
+  let lastIndex = 0;
+  let match;
+  while ((match = regex.exec(tplStr))) {
+    const textBefore = tplStr.slice(lastIndex, match.index);
+    if (textBefore) appendGlossedText(container, textBefore, glossary);
+    const slot = slotsById[match[1]];
+    if (slot) {
+      const select = el("select", {
+        class: "jp inline-slot-select",
+        "data-tooltip": slotValues[slot.id].en,
+      });
+      DATA.vocabPools[slot.pool].forEach((v, i) => { if (!slot.only || slot.only.includes(i)) select.appendChild(el("option", { value: String(i), text: v.jp })); });
+      select.value = String(getSlotChoice(boardStage, slot));
+      select.addEventListener("click", (e) => e.stopPropagation());
+      select.onchange = () => { setSlotChoice(boardStage, slot.id, Number(select.value)); renderApp(); };
+      container.appendChild(select);
+      if (match[2] && slotValues[slot.id].na) container.appendChild(document.createTextNode("だ"));
+    } else {
+      container.appendChild(document.createTextNode(match[0]));
+    }
+    lastIndex = regex.lastIndex;
+  }
+  const rest = tplStr.slice(lastIndex);
+  if (rest) appendGlossedText(container, rest, glossary);
+}
+// Greedy longest-match tokeniser: wraps any known vocabulary word in a tappable span.
+function appendGlossedText(container, text, glossary) {
+  const keys = Object.keys(glossary).sort((a, b) => b.length - a.length);
+  let i = 0;
+  while (i < text.length) {
+    let matched = null;
+    for (const k of keys) {
+      if (text.startsWith(k, i)) { matched = k; break; }
+    }
+    if (matched) {
+      container.appendChild(el("span", { style: "cursor:pointer;border-bottom:1.5px dotted var(--pink);", "data-tooltip": glossary[matched], onclick: (e) => { e.stopPropagation(); speak(matched); alertGloss(e.target, glossary[matched]); } , text: matched}));
+      i += matched.length;
+    } else {
+      container.appendChild(document.createTextNode(text[i]));
+      i += 1;
+    }
+  }
+}
+function alertGloss(target, meaning) {
+  const existing = document.getElementById("glossPop"); if (existing) existing.remove();
+  const pop = el("div", { id: "glossPop", style: "position:fixed;background:#fff;color:var(--pink);border:2px solid var(--pink);padding:6px 12px;border-radius:10px;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;box-shadow:0 4px 14px rgba(0,20,50,.18);z-index:200;" , text: meaning});
+  document.body.appendChild(pop);
+  const r = target.getBoundingClientRect();
+  pop.style.left = r.left + "px"; pop.style.top = (r.bottom + 6) + "px";
+  setTimeout(() => pop.remove(), 1800);
+}
+let scriptPanelMinimized = false;
+function renderScriptPanel() {
+  // Only ever shown while the student is on the Talking Board — scoping it inside #app
+  // means it's automatically removed the moment they navigate to another section.
+  if (view !== "board") return;
+  const appEl = document.getElementById("app");
+  if (!appEl) return;
+  let panel = document.getElementById("scriptPanel");
+  if (!panel) {
+    panel = el("div", { id: "scriptPanel", style: "position:fixed;right:16px;bottom:16px;width:280px;background:#fff;border:2px solid var(--border-light);border-radius:12px;padding:14px;box-shadow:0 6px 20px rgba(0,20,50,.15);z-index:50;" });
+    appEl.appendChild(panel);
+  }
+  panel.innerHTML = "";
+
+  const header = el("div", { style: "display:flex;justify-content:space-between;align-items:center;" + (scriptPanelMinimized ? "" : "margin-bottom:8px;") });
+  header.appendChild(el("div", { style: "font-weight:800;color:var(--navy);", text: "My Script (" + scriptList.length + ")" }));
+  header.appendChild(el("button", { class: "btn secondary", style: "padding:3px 9px;font-size:.7rem;", text: scriptPanelMinimized ? "▲ Expand" : "▼ Minimise", onclick: () => { scriptPanelMinimized = !scriptPanelMinimized; renderScriptPanel(); } }));
+  panel.appendChild(header);
+  if (scriptPanelMinimized) return;
+
+  const listWrap = el("div", { style: "max-height:260px;overflow:auto;" });
+  scriptList.forEach((l, i) => {
+    const row = el("div", { style: "display:flex;justify-content:space-between;align-items:flex-start;gap:6px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border-light);" });
+    const textCol = el("div", {});
+    textCol.appendChild(el("div", { class: "jp small", style: "font-weight:700;color:var(--navy);", text: l.jp }));
+    textCol.appendChild(el("div", { class: "small", text: l.en }));
+    row.appendChild(textCol);
+    row.appendChild(el("button", { class: "btn secondary", style: "padding:3px 8px;font-size:.68rem;flex-shrink:0;", text: "🔊", onclick: () => speak(l.jp) }));
+    listWrap.appendChild(row);
+  });
+  panel.appendChild(listWrap);
+
+  const btns = el("div", { style: "display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;" });
+  btns.appendChild(el("button", { class: "btn secondary", style: "padding:5px 10px;font-size:.68rem;", text: "▶ Play All", onclick: () => { let i = 0; function next() { if (i >= scriptList.length) return; speak(scriptList[i].jp); i++; setTimeout(next, 1800); } next(); } }));
+  btns.appendChild(el("button", { class: "btn secondary", style: "padding:5px 10px;font-size:.68rem;", text: "Copy", onclick: () => { navigator.clipboard && navigator.clipboard.writeText(scriptList.map((l) => l.jp + " — " + l.en).join("\n")); } }));
+  btns.appendChild(el("button", { class: "btn secondary", style: "padding:5px 10px;font-size:.68rem;", text: "Clear", onclick: () => { scriptList = []; renderScriptPanel(); } }));
+  panel.appendChild(btns);
+}
+// ===================== 5. TIMED MATCHING =====================
+let matchPool = "subjects";
+let matchState = null;
+let matchBest = null;
+function renderMatching(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "Timed Matching" }));
+  app.appendChild(el("p", { class: "section-desc", text: "Drag each Japanese tile onto its matching English tile as fast as you can." }));
+  const poolNav = el("div", { class: "pool-select" });
+  Object.keys(DATA.vocabPools).forEach((k) => {
+    poolNav.appendChild(el("button", { class: "pool-btn" + (k === matchPool ? " active" : ""), text: POOL_LABELS[k], onclick: () => { matchPool = k; matchState = null; matchBest = null; renderApp(); } }));
+  });
+  app.appendChild(poolNav);
+
+  if (!matchState) {
+    const card = el("div", { class: "card", style: "max-width:520px;" }, [
+      el("div", { class: "small", style: "margin-bottom:14px;", text: `Ready to match all ${DATA.vocabPools[matchPool].length} words in ${POOL_LABELS[matchPool]}? The timer starts as soon as you begin.` }),
+      el("button", { class: "btn pink", text: "Start Game", onclick: () => { startMatchGame(); renderApp(); } }),
+    ]);
+    app.appendChild(card);
+    return;
+  }
+
+  const info = el("div", { class: "small", style: "margin-bottom:10px;" });
+  app.appendChild(info);
+  const board = el("div", { style: "position:relative;width:100%;background:var(--navy-tint);border-radius:12px;overflow:hidden;" });
+  app.appendChild(board);
+  const restartBtn = el("button", { class: "btn pink", style: "margin-top:12px;", text: "Shuffle Board", onclick: () => { matchState = null; renderApp(); } });
+  app.appendChild(restartBtn);
+
+  const st = matchState;
+  board.style.height = st.boardHeight + "px";
+  function updateInfo() {
+    let timeStr = "—";
+    if (st.startTime) { const end = st.endTime || Date.now(); timeStr = ((end - st.startTime) / 1000).toFixed(1) + "s"; }
+    info.textContent = `Matched: ${st.matched} / ${st.total}   ·   Time: ${timeStr}   ·   Best: ${matchBest ? matchBest.toFixed(1) + "s" : "—"}`;
+  }
+  updateInfo();
+  let ticker = setInterval(() => { if (st.startTime && !st.endTime) updateInfo(); else clearInterval(ticker); }, 200);
+
+  st.tiles.forEach((t) => {
+    if (t.done) return;
+    const tileEl = el("div", {
+      class: t.type === "jp" ? "card jp" : "card",
+      style: `position:absolute;left:${t.x}%;top:${t.y}%;padding:8px 14px;cursor:grab;background:#fff;font-size:.85rem;white-space:nowrap;user-select:none;box-shadow:0 2px 6px rgba(0,0,0,.1);`,
+      text: t.text,
+    });
+    tileEl.dataset.id = t.id; tileEl.dataset.type = t.type;
+    board.appendChild(tileEl);
+    let dragging = false, offX = 0, offY = 0;
+    tileEl.addEventListener("pointerdown", (e) => {
+      dragging = true; tileEl.style.cursor = "grabbing"; tileEl.style.zIndex = 10;
+      if (!st.startTime) { st.startTime = Date.now(); updateInfo(); }
+      const r = board.getBoundingClientRect();
+      offX = e.clientX - tileEl.getBoundingClientRect().left; offY = e.clientY - tileEl.getBoundingClientRect().top;
+      tileEl.setPointerCapture(e.pointerId);
+    });
+    tileEl.addEventListener("pointermove", (e) => {
+      if (!dragging) return;
+      const r = board.getBoundingClientRect();
+      let nx = ((e.clientX - r.left - offX) / r.width) * 100;
+      let ny = ((e.clientY - r.top - offY) / r.height) * 100;
+      tileEl.style.left = nx + "%"; tileEl.style.top = ny + "%";
+    });
+    tileEl.addEventListener("pointerup", (e) => {
+      dragging = false; tileEl.style.cursor = "grab"; tileEl.style.zIndex = 1;
+      tileEl.style.pointerEvents = "none";
+      const under = document.elementFromPoint(e.clientX, e.clientY);
+      tileEl.style.pointerEvents = "";
+      if (under && under.dataset && under.dataset.id === String(t.id) && under.dataset.type !== t.type && under !== tileEl) {
+        tileEl.style.background = "#d9f5e3"; under.style.background = "#d9f5e3";
+        setTimeout(() => { tileEl.remove(); under.remove(); }, 250);
+        t.done = true;
+        const otherTile = st.tiles.find((x) => x.id === t.id && x.type !== t.type);
+        if (otherTile) otherTile.done = true;
+        st.matched++;
+        updateInfo();
+        if (st.matched >= st.total) {
+          st.endTime = Date.now();
+          const secs = (st.endTime - st.startTime) / 1000;
+          if (!matchBest || secs < matchBest) matchBest = secs;
+          updateInfo();
+        }
+      } else {
+        tileEl.style.transition = "left .2s, top .2s";
+        tileEl.style.left = t.x + "%"; tileEl.style.top = t.y + "%";
+        if (under) { under.style.background = "#fbdada"; setTimeout(() => (under.style.background = "#fff"), 300); }
+        setTimeout(() => (tileEl.style.transition = ""), 200);
+      }
+    });
+  });
+}
+
+function startMatchGame() {
+  const words = shuffle(DATA.vocabPools[matchPool]); // use every word in the category
+  const tiles = [];
+  words.forEach((w, i) => {
+    tiles.push({ id: i, type: "jp", text: w.jp });
+    tiles.push({ id: i, type: "en", text: w.en });
+  });
+  const shuffledTiles = shuffle(tiles);
+  // Jittered-grid layout: spreads tiles evenly (avoiding heavy overlap) while still looking scattered.
+  const cols = shuffledTiles.length > 16 ? 5 : 4;
+  const rows = Math.ceil(shuffledTiles.length / cols);
+  const cellW = 100 / cols;
+  const cellH = 100 / rows;
+  shuffledTiles.forEach((t, i) => {
+    const col = i % cols, row = Math.floor(i / cols);
+    t.x = col * cellW + 1 + Math.random() * Math.max(cellW - 16, 2);
+    t.y = row * cellH + 1 + Math.random() * Math.max(cellH - 12, 2);
+  });
+  const boardHeight = Math.max(420, rows * 78);
+  matchState = { tiles: shuffledTiles, matched: 0, total: words.length, startTime: Date.now(), endTime: null, boardHeight };
+}
+
+// ===================== 6. TYPHOON GAME =====================
+const TYPHOON_DIFFICULTY = {
+  easy: { label: "Easy", delayMin: 7000, delayMax: 13000, accuracy: 0.35 },
+  medium: { label: "Medium", delayMin: 5000, delayMax: 9000, accuracy: 0.55 },
+  hard: { label: "Hard", delayMin: 3500, delayMax: 6500, accuracy: 0.75 },
+  ultra: { label: "Ultra", delayMin: 2000, delayMax: 4000, accuracy: 0.92 }, // still floored well above instant — no faster than a quick Year 8 typist
+};
+let typhoonState = null;
+let typhoonSelectedPools = null;
+let typhoonDirection = "jToE";
+let typhoonMode = "pvc";
+let typhoonDifficulty = "medium";
+
+function buildHouses(numHouses) {
+  const houses = [];
+  for (let i = 0; i < numHouses; i++) {
+    const isTyphoon = i < Math.round(numHouses * 0.15);
+    houses.push({ id: i, isTyphoon, points: isTyphoon ? 0 : Math.floor(Math.random() * 16 + 5) * 10, revealed: false });
+  }
+  return shuffle(houses).map((h, i) => ({ ...h, id: i }));
+}
+function pickTyphoonWord(pool) { return pool[Math.floor(Math.random() * pool.length)]; }
+function checkTyphoonAnswer(word, direction, value) {
+  const v = value.trim().toLowerCase();
+  if (!v) return false;
+  if (direction === "jToE") return matchesAnyMeaning(v, word.en);
+  const jpForm = word.jp.trim().toLowerCase();
+  return v === jpForm || romajiMatches(v, word.kana || word.jp);
+}
+
+function renderTyphoon(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "Arcade — Typhoon Game" }));
+  app.appendChild(el("p", { class: "section-desc", text: "Answer first to earn a house — but watch out, some houses hide typhoons that wipe your score!" }));
+
+  if (!typhoonSelectedPools) {
+    typhoonSelectedPools = {};
+    Object.keys(DATA.vocabPools).forEach((k) => (typhoonSelectedPools[k] = true));
+  }
+
+  if (!typhoonState || !typhoonState.started) {
+    renderTyphoonSetup(app);
+    return;
+  }
+  renderTyphoonGame(app);
+}
+
+function renderTyphoonSetup(app) {
+  const card = el("div", { class: "card", style: "max-width:560px;" });
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Choose your word categories:" }));
+  const checkGrid = el("div", { style: "display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:18px;" });
+  Object.keys(DATA.vocabPools).forEach((k) => {
+    const label = el("label", { class: "small", style: "display:flex;align-items:center;gap:8px;cursor:pointer;" });
+    const cb = el("input", { type: "checkbox" });
+    cb.checked = typhoonSelectedPools[k];
+    cb.onchange = () => { typhoonSelectedPools[k] = cb.checked; };
+    label.appendChild(cb); label.appendChild(document.createTextNode(POOL_LABELS[k]));
+    checkGrid.appendChild(label);
+  });
+  card.appendChild(checkGrid);
+
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Direction:" }));
+  const dirRow = el("div", { style: "display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap;" });
+  [["jToE", "Japanese → English"], ["eToJ", "English → Japanese"]].forEach(([id, label]) => {
+    dirRow.appendChild(el("button", { class: "pool-btn" + (typhoonDirection === id ? " active" : ""), text: label, onclick: () => { typhoonDirection = id; renderApp(); } }));
+  });
+  card.appendChild(dirRow);
+  card.appendChild(el("div", { class: "small", style: "margin-bottom:18px;", text: typhoonDirection === "eToJ" ? "For English → Japanese, typing either the Japanese word or its romaji counts as correct." : " " }));
+
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Mode:" }));
+  const modeRow = el("div", { style: "display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;" });
+  [["pvc", "Player vs Computer"], ["pvp", "Player vs Player (pass-and-play)"]].forEach(([id, label]) => {
+    modeRow.appendChild(el("button", { class: "pool-btn" + (typhoonMode === id ? " active" : ""), text: label, onclick: () => { typhoonMode = id; renderApp(); } }));
+  });
+  card.appendChild(modeRow);
+
+  if (typhoonMode === "pvc") {
+    card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Computer difficulty:" }));
+    const diffRow = el("div", { style: "display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;" });
+    Object.keys(TYPHOON_DIFFICULTY).forEach((id) => {
+      diffRow.appendChild(el("button", { class: "pool-btn" + (typhoonDifficulty === id ? " active" : ""), text: TYPHOON_DIFFICULTY[id].label, onclick: () => { typhoonDifficulty = id; renderApp(); } }));
+    });
+    card.appendChild(diffRow);
+    card.appendChild(el("div", { class: "small", style: "margin-bottom:16px;", text: "Even on Ultra, the computer never answers faster than a quick Year 8 student — just more accurately." }));
+  } else {
+    card.appendChild(el("div", { class: "small", style: "margin-bottom:16px;", text: "Say the answer out loud — whoever says it first wins the round. Reveal the answer, mark who got it, then that player picks a house." }));
+  }
+
+  card.appendChild(el("button", { class: "btn pink", text: "Start Game", onclick: () => {
+    const pools = Object.keys(typhoonSelectedPools).filter((k) => typhoonSelectedPools[k]);
+    let wordPool = pools.flatMap((k) => DATA.vocabPools[k]);
+    if (wordPool.length === 0) wordPool = DATA.allVocabForGames;
+    typhoonState = {
+      started: true, mode: typhoonMode, direction: typhoonDirection, difficulty: typhoonDifficulty,
+      wordPool, houses: buildHouses(28), scores: { P1: 0, P2: 0 },
+      phase: "answering", currentWord: pickTyphoonWord(wordPool),
+      computerTimerId: null, computerStatus: "", pendingWinner: null, lastReveal: null, pendingInputValue: "",
+    };
+    renderApp();
+  } }));
+  app.appendChild(card);
+}
+
+function renderTyphoonGame(app) {
+  const st = typhoonState;
+
+  const scoreRow = el("div", { class: "small", style: "margin-bottom:14px;font-weight:700;" });
+  scoreRow.textContent = st.mode === "pvc" ? `You: ${st.scores.P1}   ·   Computer: ${st.scores.P2}` : `Player 1: ${st.scores.P1}   ·   Player 2: ${st.scores.P2}`;
+  app.appendChild(scoreRow);
+
+  if (st.phase === "gameover") {
+    const winner = st.scores.P1 === st.scores.P2 ? "It's a tie!" : st.scores.P1 > st.scores.P2 ? (st.mode === "pvc" ? "You win! 🎉" : "Player 1 wins! 🎉") : (st.mode === "pvc" ? "Computer wins!" : "Player 2 wins! 🎉");
+    app.appendChild(el("div", { class: "card", style: "font-weight:800;color:var(--navy);", text: winner }));
+    app.appendChild(el("button", { class: "btn pink", style: "margin-top:10px;", text: "Play Again", onclick: () => { typhoonState = null; renderApp(); } }));
+    return;
+  }
+
+  // ---- TOP: word + answer area ----
+  const topCard = el("div", { class: "card", style: "margin-bottom:20px;" });
+  app.appendChild(topCard);
+  renderTyphoonTopCard(topCard, st);
+
+  // ---- BELOW: house grid (bigger icons) ----
+  app.appendChild(el("div", { class: "small", style: "margin-bottom:8px;font-weight:700;", text: st.phase === "selecting-house" ? "🏠 Select a house to claim your reward:" : "House board:" }));
+  const grid = el("div", { style: "display:grid;grid-template-columns:repeat(6,1fr);gap:10px;" });
+  app.appendChild(grid);
+  st.houses.forEach((house) => {
+    const selectable = st.phase === "selecting-house" && !house.revealed;
+    const btn = el("button", {
+      class: "btn secondary",
+      style: `aspect-ratio:1;font-size:2.1rem;${house.revealed ? "background:" + (house.isTyphoon ? "#fbdada" : "#d9f5e3") + ";font-size:1.3rem;font-weight:800;" : ""}${selectable ? "border-color:var(--pink);box-shadow:0 0 0 3px rgba(225,59,130,.25);" : ""}`,
+      text: house.revealed ? (house.isTyphoon ? "🌀" : "+" + house.points) : "🏠",
+      disabled: !selectable,
+      onclick: selectable ? () => claimHouse(house) : null,
+    });
+    grid.appendChild(btn);
+  });
+
+  const endBtn = el("button", { class: "btn secondary", style: "margin-top:16px;", text: "End Game", onclick: () => { typhoonState.started = false; renderApp(); } });
+  app.appendChild(endBtn);
+}
+
+function winnerLabel(st, who) {
+  if (who === "computer") return "Computer";
+  if (st.mode === "pvc") return "You";
+  return who === "P1" ? "Player 1" : "Player 2";
+}
+
+function renderTyphoonTopCard(topCard, st) {
+  const word = st.currentWord;
+  const prompt = st.direction === "jToE" ? word.jp : word.en;
+
+  if (st.phase === "revealing") {
+    const r = st.lastReveal;
+    topCard.appendChild(el("div", { style: "font-size:1.2rem;font-weight:800;color:var(--navy);text-align:center;margin-bottom:14px;", text: r.isTyphoon ? `🌀 Typhoon! ${winnerLabel(st, r.winner)}'s score is wiped.` : `+${r.points} points for ${winnerLabel(st, r.winner)}!` }));
+    topCard.appendChild(el("button", { class: "btn pink", style: "display:block;margin:0 auto;", text: "Continue →", onclick: continueAfterReveal }));
+    return;
+  }
+
+  if (st.phase === "selecting-house") {
+    topCard.appendChild(el("div", { class: st.direction === "jToE" ? "jp" : "", style: "font-size:1.6rem;font-weight:800;color:var(--navy);text-align:center;margin-bottom:6px;", text: prompt }));
+    topCard.appendChild(el("div", { style: "text-align:center;font-weight:700;color:var(--green);", text: `✓ ${winnerLabel(st, st.pendingWinner)} got it! Select a house below.` }));
+    return;
+  }
+
+  if (st.phase === "pvp-judge") {
+    topCard.appendChild(el("div", { class: st.direction === "jToE" ? "jp" : "", style: "font-size:1.6rem;font-weight:800;color:var(--navy);text-align:center;margin-bottom:10px;", text: prompt }));
+    topCard.appendChild(el("div", { style: "text-align:center;margin-bottom:10px;" }, [
+      el("span", { class: "small", text: "Answer: " }),
+      el("span", { class: word.jp && st.direction === "eToJ" ? "jp" : "", style: "font-weight:800;color:var(--pink);", text: st.direction === "jToE" ? word.en : word.jp + (word.kana ? " (" + kanaToRomaji(word.kana) + ")" : "") }),
+    ]));
+    const btnRow = el("div", { style: "display:flex;gap:10px;justify-content:center;flex-wrap:wrap;" });
+    btnRow.appendChild(el("button", { class: "btn pink", text: "Player 1 got it ✓", onclick: () => { st.pendingWinner = "P1"; st.phase = "selecting-house"; renderApp(); } }));
+    btnRow.appendChild(el("button", { class: "btn pink", text: "Player 2 got it ✓", onclick: () => { st.pendingWinner = "P2"; st.phase = "selecting-house"; renderApp(); } }));
+    btnRow.appendChild(el("button", { class: "btn secondary", text: "Nobody — skip round", onclick: () => { nextTyphoonRound(st); renderApp(); } }));
+    topCard.appendChild(btnRow);
+    return;
+  }
+
+  // phase === "answering"
+  topCard.appendChild(el("div", { class: st.direction === "jToE" ? "jp" : "", style: "font-size:1.8rem;font-weight:800;color:var(--navy);text-align:center;margin-bottom:14px;", text: prompt }));
+
+  if (st.mode === "pvp") {
+    topCard.appendChild(el("div", { class: "small", style: "text-align:center;margin-bottom:12px;", text: "Say the answer out loud — first to say it correctly wins the round!" }));
+    const revealBtn = el("button", { class: "btn pink", style: "display:block;margin:0 auto;", text: "🔔 Reveal Answer", onclick: () => { st.phase = "pvp-judge"; renderApp(); } });
+    topCard.appendChild(revealBtn);
+    return;
+  }
+
+  // PvC: two side-by-side fields
+  const row = el("div", { style: "display:grid;grid-template-columns:1fr 1fr;gap:14px;" });
+  const youCol = el("div", {});
+  youCol.appendChild(el("div", { class: "small", style: "font-weight:700;margin-bottom:6px;", text: "Your answer" }));
+  const input = el("input", { type: "text", placeholder: st.direction === "jToE" ? "Type the English meaning..." : "Type in Japanese or romaji...", style: "width:100%;", autofocus: "true" });
+  if (st.pendingInputValue) { input.value = st.pendingInputValue; st.pendingInputValue = ""; }
+  const feedback = el("div", { class: "small", style: "margin-top:6px;min-height:18px;" });
+  youCol.appendChild(input);
+  youCol.appendChild(feedback);
+  row.appendChild(youCol);
+
+  const compCol = el("div", {});
+  compCol.appendChild(el("div", { class: "small", style: "font-weight:700;margin-bottom:6px;", text: "Computer" }));
+  compCol.appendChild(el("div", { class: "small", id: "typhoonComputerStatus", style: "padding:8px 0;", text: st.computerStatus || "🤔 thinking..." }));
+  row.appendChild(compCol);
+  topCard.appendChild(row);
+
+  function submit() {
+    if (checkTyphoonAnswer(st.currentWord, st.direction, input.value)) {
+      if (st.computerTimerId) { clearTimeout(st.computerTimerId); st.computerTimerId = null; }
+      st.pendingWinner = "P1";
+      st.phase = "selecting-house";
+      renderApp();
+    } else {
+      feedback.textContent = "✗ Not quite — try again!";
+      feedback.style.color = "var(--red)";
+      input.value = "";
+    }
+  }
+  input.addEventListener("keydown", (e) => { if (e.key === "Enter") submit(); });
+  const submitBtn = el("button", { class: "btn pink", style: "margin-top:8px;", text: "Submit", onclick: submit });
+  youCol.appendChild(submitBtn);
+
+  // Schedule the computer's single attempt for this round, once.
+  if (!st.computerTimerId) {
+    const conf = TYPHOON_DIFFICULTY[st.difficulty];
+    const delay = conf.delayMin + Math.random() * (conf.delayMax - conf.delayMin);
+    st.computerTimerId = setTimeout(() => {
+      if (typhoonState !== st || st.phase !== "answering") return; // round already resolved or game restarted
+      st.computerTimerId = null;
+      const correct = Math.random() < conf.accuracy;
+      if (correct) {
+        computerAutoPickHouse();
+      } else {
+        const wrongGuess = st.direction === "jToE" ? shuffle(st.wordPool.map((w) => w.en)).find((e) => e !== st.currentWord.en) : shuffle(st.wordPool.map((w) => w.jp)).find((j) => j !== st.currentWord.jp);
+        st.computerStatus = "✗ guessed: " + (wrongGuess || "...");
+        // Preserve whatever the student was mid-typing before we refresh the view.
+        const liveInput = document.querySelector("#app input[type=text]");
+        if (liveInput) st.pendingInputValue = liveInput.value;
+        renderApp();
+        setTimeout(() => { const li = document.querySelector("#app input[type=text]"); if (li) { li.focus(); li.setSelectionRange(li.value.length, li.value.length); } }, 0);
+      }
+    }, delay);
+  }
+}
+
+function revealHouse(house, winner) {
+  const st = typhoonState;
+  house.revealed = true;
+  if (house.isTyphoon) st.scores[winner] = 0;
+  else st.scores[winner] = (st.scores[winner] || 0) + house.points;
+  st.lastReveal = { isTyphoon: house.isTyphoon, points: house.points, winner };
+  st.phase = "revealing";
+  st.pendingWinner = null;
+  renderApp();
+}
+function claimHouse(house) {
+  revealHouse(house, typhoonState.pendingWinner);
+}
+function computerAutoPickHouse() {
+  const st = typhoonState;
+  const unclaimed = st.houses.filter((h) => !h.revealed);
+  const house = unclaimed[Math.floor(Math.random() * unclaimed.length)];
+  revealHouse(house, "computer");
+}
+function continueAfterReveal() {
+  const st = typhoonState;
+  if (st.houses.every((h) => h.revealed)) st.phase = "gameover";
+  else nextTyphoonRound(st);
+  renderApp();
+}
+function nextTyphoonRound(st) {
+  st.currentWord = pickTyphoonWord(st.wordPool);
+  st.phase = "answering";
+  st.computerTimerId = null;
+  st.computerStatus = "";
+  st.pendingWinner = null;
+}
+
+// ===================== 7. ASTEROID TYPING =====================
+const ASTEROID_LEVELS = [
+  { speed: 0.05, spawnChance: 0.008, label: "Level 1" },
+  { speed: 0.07, spawnChance: 0.011, label: "Level 2" },
+  { speed: 0.09, spawnChance: 0.014, label: "Level 3" },
+  { speed: 0.12, spawnChance: 0.018, label: "Level 4" },
+  { speed: 0.16, spawnChance: 0.022, label: "Level 5" },
+];
+let asteroidState = null;
+let asteroidSelectedPools = null;
+let asteroidStartLevel = 1;
+let asteroidMode = "romaji";
+function renderAsteroid(app) {
+  app.appendChild(el("h2", { class: "section-title", text: "Arcade — Asteroid Typing" }));
+  app.appendChild(el("p", { class: "section-desc", text: "Type the reading (or meaning) of the highlighted (pink) asteroid before it crosses the danger line!" }));
+
+  if (!asteroidSelectedPools) {
+    asteroidSelectedPools = {};
+    Object.keys(DATA.vocabPools).forEach((k) => (asteroidSelectedPools[k] = true));
+  }
+
+  if (!asteroidState || !asteroidState.started) {
+    renderAsteroidSetup(app);
+    return;
+  }
+
+  const st = asteroidState;
+  const statsRow = el("div", { class: "small", style: "margin-bottom:8px;font-weight:700;" });
+  app.appendChild(statsRow);
+  const gameArea = el("div", { style: "position:relative;width:100%;height:480px;background:linear-gradient(#041E42,#1a407a);border-radius:12px;overflow:hidden;" });
+  app.appendChild(gameArea);
+  const dangerLine = el("div", { style: "position:absolute;bottom:66px;left:0;right:0;height:2px;background:#E13B82;" });
+  gameArea.appendChild(dangerLine);
+  const ship = el("div", { style: "position:absolute;bottom:32px;left:50%;font-size:1.8rem;transform:translateX(-50%);", text: "🚀" });
+  gameArea.appendChild(ship);
+
+  // Typing box and controls live inside the game field itself, as a control bar along the bottom.
+  const controlBar = el("div", { style: "position:absolute;left:0;right:0;bottom:0;background:rgba(4,30,66,0.85);padding:10px 12px;display:flex;gap:8px;align-items:center;" });
+  const input = el("input", { type: "text", placeholder: st.mode === "translation" ? "Type the English meaning..." : "Type romaji here...", autofocus: "true", style: "flex:1;" });
+  const pauseBtn = el("button", { class: "btn secondary", style: "flex-shrink:0;", text: st.paused ? "▶ Resume" : "⏸ Pause" });
+  const quitBtn = el("button", { class: "btn secondary", style: "flex-shrink:0;", text: "End Game", onclick: () => { asteroidState.started = false; asteroidState.running = false; renderApp(); } });
+  controlBar.appendChild(input); controlBar.appendChild(pauseBtn); controlBar.appendChild(quitBtn);
+  gameArea.appendChild(controlBar);
+
+  const levelConf = ASTEROID_LEVELS[st.level - 1];
+  function updateStats() { statsRow.textContent = `${levelConf.label}   ·   Lives: ${"❤️".repeat(Math.max(st.lives, 0))}   ·   Hits: ${st.hits}   ·   Mode: ${st.mode === "translation" ? "Translation" : "Romaji"}`; }
+  updateStats();
+
+  let raf = null;
+  function spawnAsteroid() {
+    const word = st.wordPool[Math.floor(Math.random() * st.wordPool.length)];
+    st.asteroids.push({ jp: word.jp, kana: word.kana || word.jp, en: word.en, x: Math.random() * 80 + 5, y: -5 });
+  }
+  function loop() {
+    if (!st.running) { finishGame(); return; }
+    if (st.paused) return; // resume() calls loop() again to restart the animation
+    const conf = ASTEROID_LEVELS[st.level - 1];
+    st.asteroids.forEach((a) => (a.y += conf.speed));
+    st.asteroids = st.asteroids.filter((a) => {
+      if (a.y >= 86) {
+        st.lives--; updateStats();
+        if (st.lives <= 0) { st.running = false; }
+        return false;
+      }
+      return true;
+    });
+    if (Math.random() < conf.spawnChance) spawnAsteroid();
+    draw();
+    raf = requestAnimationFrame(loop);
+  }
+  function targetAsteroid() { return st.asteroids.reduce((best, a) => (!best || a.y > best.y ? a : best), null); }
+  function draw() {
+    gameArea.querySelectorAll(".asteroid").forEach((e) => e.remove());
+    const target = targetAsteroid();
+    st.asteroids.forEach((a) => {
+      const isTarget = a === target;
+      const label = a.jp;
+      const d = el("div", { class: "asteroid jp", style: `position:absolute;left:${a.x}%;top:${a.y}%;max-width:140px;font-size:1.05rem;font-weight:800;color:${isTarget ? "#E13B82" : "#fff"};white-space:nowrap;`, text: label });
+      gameArea.appendChild(d);
+    });
+  }
+  function finishGame() {
+    updateStats();
+    const over = el("div", { style: "position:absolute;inset:0;background:rgba(4,30,66,0.85);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:1.3rem;gap:14px;", text: "Game Over — " + st.hits + " hits!" });
+    const again = el("button", { class: "btn pink", style: "font-size:.85rem;", text: "Back to Setup", onclick: () => { asteroidState.started = false; renderApp(); } });
+    over.appendChild(again);
+    gameArea.appendChild(over);
+  }
+  pauseBtn.onclick = () => {
+    st.paused = !st.paused;
+    if (!st.paused) { renderApp(); loop(); }
+    else renderApp();
+  };
+  input.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" || st.paused) return;
+    const target = targetAsteroid();
+    if (!target) return;
+    const correct = st.mode === "translation" ? matchesAnyMeaning(input.value, target.en) : romajiMatches(input.value, target.kana);
+    if (correct) {
+      st.asteroids = st.asteroids.filter((a) => a !== target);
+      st.hits++;
+      if (st.hits % 8 === 0 && st.level < 5) st.level++;
+      updateStats(); draw();
+    }
+    input.value = "";
+  });
+  if (st.paused) {
+    input.disabled = true;
+    const pausedOverlay = el("div", { style: "position:absolute;inset:0;bottom:56px;background:rgba(4,30,66,0.6);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;", text: "⏸ Paused" });
+    gameArea.appendChild(pausedOverlay);
+  }
+  draw();
+  if (!st.paused) loop();
+}
+
+function renderAsteroidSetup(app) {
+  const card = el("div", { class: "card", style: "max-width:560px;" });
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Choose your word categories:" }));
+  const checkGrid = el("div", { style: "display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:18px;" });
+  Object.keys(DATA.vocabPools).forEach((k) => {
+    const label = el("label", { class: "small", style: "display:flex;align-items:center;gap:8px;cursor:pointer;" });
+    const cb = el("input", { type: "checkbox" });
+    cb.checked = asteroidSelectedPools[k];
+    cb.onchange = () => { asteroidSelectedPools[k] = cb.checked; };
+    label.appendChild(cb); label.appendChild(document.createTextNode(POOL_LABELS[k]));
+    checkGrid.appendChild(label);
+  });
+  card.appendChild(checkGrid);
+
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Starting level:" }));
+  const levelRow = el("div", { style: "display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;" });
+  ASTEROID_LEVELS.forEach((lvl, i) => {
+    levelRow.appendChild(el("button", { class: "pool-btn" + (asteroidStartLevel === i + 1 ? " active" : ""), text: String(i + 1), onclick: () => { asteroidStartLevel = i + 1; renderApp(); } }));
+  });
+  card.appendChild(levelRow);
+  card.appendChild(el("div", { class: "small", style: "margin-bottom:16px;", text: "Level 1 is slow and gentle; the game speeds up automatically as you get hits, up to Level 5. Starting higher skips the easier levels." }));
+
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Typing mode:" }));
+  const modeRow = el("div", { style: "display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap;" });
+  [["romaji", "Romaji Mode"], ["translation", "Translation Mode"]].forEach(([id, label]) => {
+    modeRow.appendChild(el("button", { class: "pool-btn" + (asteroidMode === id ? " active" : ""), text: label, onclick: () => { asteroidMode = id; renderApp(); } }));
+  });
+  card.appendChild(modeRow);
+  card.appendChild(el("div", { class: "small", style: "margin-bottom:20px;", text: asteroidMode === "translation" ? "You'll see the Japanese word and type its English meaning." : "You'll see the Japanese word and type its romaji reading." }));
+
+  const startBtn = el("button", { class: "btn pink", text: "Start Game", onclick: () => {
+    const pools = Object.keys(asteroidSelectedPools).filter((k) => asteroidSelectedPools[k]);
+    let wordPool = pools.flatMap((k) => DATA.vocabPools[k]);
+    if (wordPool.length === 0) wordPool = DATA.allVocabForGames;
+    asteroidState = { started: true, running: true, paused: false, level: asteroidStartLevel, mode: asteroidMode, asteroids: [], hits: 0, lives: 3, wordPool };
+    renderApp();
+  } });
+  card.appendChild(startBtn);
+  app.appendChild(card);
+}
+renderTabs(); renderApp();
+
+</script>
+</body>
+</html>
