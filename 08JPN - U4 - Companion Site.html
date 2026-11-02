@@ -113,6 +113,9 @@ body.no-colours .tile[class*="role-"]{background:#fff !important;color:var(--nav
 .free-feedback .fb.alt{border-left-color:var(--amber);}
 .bank-sec summary{cursor:pointer;font-weight:700;color:var(--navy);margin:12px 0 8px;font-size:.92rem;}
 .bank-tiles{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px;}
+.btn[disabled]{opacity:.45;cursor:not-allowed;}
+ruby{ruby-position:over;}
+rt{font-size:.5em;font-weight:500;letter-spacing:0;line-height:1;}
 .card-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;}
 @media(max-width:900px){.card-row{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:600px){.card-row{grid-template-columns:1fr;}}
@@ -292,6 +295,31 @@ function renderApp() {
   router[view](app);
 }
 
+// Furigana: readings for every kanji word used in the rules, sentence frames, examples and vocabulary cards.
+const FURIGANA = {"私": [["私", "わたし"]], "学校": [["学校", "がっこう"]], "小学校": [["小学校", "しょうがっこう"]], "中学校": [["中学校", "ちゅうがっこう"]], "高校": [["高校", "こうこう"]], "女子校": [["女子校", "じょしこう"]], "中学": [["中学", "ちゅうがく"]], "小学": [["小学", "しょうがく"]], "校": [["校", "こう"]], "名前": [["名前", "なまえ"]], "先生": [["先生", "せんせい"]], "年生": [["年生", "ねんせい"]], "一番": [["一番", "いちばん"]], "好き": [["好", "す"], ["き", null]], "大好き": [["大好", "だいす"], ["き", null]], "部": [["部", "ぶ"]], "月よう日": [["月", "げつ"], ["よう", null], ["日", "び"]], "火よう日": [["火", "か"], ["よう", null], ["日", "び"]], "水よう日": [["水", "すい"], ["よう", null], ["日", "び"]], "木よう日": [["木", "もく"], ["よう", null], ["日", "び"]], "金よう日": [["金", "きん"], ["よう", null], ["日", "び"]], "土よう日": [["土", "ど"], ["よう", null], ["日", "び"]], "日よう日": [["日", "にち"], ["よう", null], ["日", "び"]], "11月2日": [["11月", "じゅういちがつ"], ["2日", "ふつか"]], "一": [["一", "いち"]], "二": [["二", "に"]], "三": [["三", "さん"]], "四": [["四", "よ"]], "五": [["五", "ご"]], "六": [["六", "ろく"]]};
+const FURI_KEYS = Object.keys(FURIGANA).sort((a, b) => b.length - a.length);
+function appendFurigana(parent, text) {
+  let plain = "";
+  const flush = () => { if (plain) { parent.appendChild(document.createTextNode(plain)); plain = ""; } };
+  let i = 0;
+  while (i < text.length) {
+    const key = FURI_KEYS.find((k) => text.startsWith(k, i));
+    if (!key) { plain += text[i]; i++; continue; }
+    flush();
+    FURIGANA[key].forEach(([base, reading]) => {
+      if (!reading) { parent.appendChild(document.createTextNode(base)); return; }
+      const ruby = document.createElement("ruby");
+      ruby.appendChild(document.createTextNode(base));
+      const rt = document.createElement("rt");
+      rt.textContent = reading;
+      ruby.appendChild(rt);
+      parent.appendChild(ruby);
+    });
+    i += key.length;
+  }
+  flush();
+}
+function setFurigana(e, text) { e.textContent = ""; appendFurigana(e, text); return e; }
 function el(tag, opts = {}, children = []) {
   const e = document.createElement(tag);
   Object.entries(opts).forEach(([k, v]) => {
@@ -474,13 +502,13 @@ function traceCard(v) {
   const morae = splitMorae(reading);
   const card = el("div", { class: "card" });
   const top = el("div", { style: "display:flex;justify-content:space-between;align-items:center;" });
-  top.appendChild(el("span", {
+  top.appendChild(setFurigana(el("span", {
     class: "jp jp-word", "data-tooltip": v.en, style: "font-size:1.5rem;font-weight:700;color:var(--navy);",
-    text: word, onclick: () => speak(reading),
-  }));
+    onclick: () => speak(reading),
+  }), word));
   top.appendChild(el("button", { class: "btn secondary", style: "padding:6px 12px;", text: "🔊", onclick: () => speak(reading) }));
   card.appendChild(top);
-  if (v.kana) card.appendChild(el("div", { class: "jp small", style: "margin:4px 0;color:var(--text-sec);", text: v.kana }));
+  if (v.kana && !/[\u4e00-\u9fff]/.test(word)) card.appendChild(el("div", { class: "jp small", style: "margin:4px 0;color:var(--text-sec);", text: v.kana })); // kanji words show their reading as furigana instead
   card.appendChild(el("div", { class: "small", style: "margin-bottom:8px;", text: "Meaning: " + v.en }));
   const row = el("div", { class: "mora-row" });
   card.appendChild(row);
@@ -636,8 +664,8 @@ function frameLine(dsl, cls) {
   dsl.split("|").forEach((part) => {
     const k = part.lastIndexOf("/");
     const text = part.slice(0, k), role = part.slice(k + 1);
-    if (!role || role === "-") p.appendChild(document.createTextNode(text));
-    else p.appendChild(el("span", { class: "token role-" + role, text }));
+    if (!role || role === "-") appendFurigana(p, text);
+    else p.appendChild(setFurigana(el("span", { class: "token role-" + role }), text));
   });
   return p;
 }
@@ -645,7 +673,7 @@ function tokenLine(tokens) {
   const p = el("p", { class: "jp", style: "font-size:1.2rem;line-height:2.3;margin:2px 0 8px;flex:1;" });
   tokens.forEach((t) => {
     const gloss = glossFor(t.t);
-    const span = el("span", { class: t.r ? "token role-" + t.r : "token", text: t.t });
+    const span = setFurigana(el("span", { class: t.r ? "token role-" + t.r : "token" }), t.t);
     if (gloss) span.setAttribute("data-tooltip", gloss);
     span.style.cursor = "pointer";
     span.addEventListener("click", (e) => { e.stopPropagation(); speak(t.t); });
@@ -687,13 +715,13 @@ function renderExplain(body, group) {
   if (steps.length) {
     rulesCard.appendChild(el("h4", { class: "rules-h", text: "How it works" }));
     const ol = el("ol", { class: "rules-list" });
-    steps.forEach((t) => ol.appendChild(el("li", { text: t })));
+    steps.forEach((t) => ol.appendChild(setFurigana(el("li", {}), t)));
     rulesCard.appendChild(ol);
   }
   if ((group.notes || []).length) {
     rulesCard.appendChild(el("h4", { class: "rules-h", text: "Remember" }));
     const ul = el("ul", { class: "rules-list tips" });
-    group.notes.forEach((t) => ul.appendChild(el("li", { text: t })));
+    group.notes.forEach((t) => ul.appendChild(setFurigana(el("li", {}), t)));
     rulesCard.appendChild(ul);
   }
   rulesCol.appendChild(rulesCard);
@@ -718,7 +746,7 @@ function renderExplain(body, group) {
       const r = el("div", { style: "display:grid;grid-template-columns:minmax(110px,150px) 1fr auto;gap:10px;align-items:start;padding:10px 0;" + (i ? "border-top:1px solid var(--border-light);" : "") });
       r.appendChild(el("div", { style: "font-size:.72rem;font-weight:800;color:var(--navy);background:var(--navy-tint);border-radius:6px;padding:4px 8px;", text: (i + 1) + ". " + item.label }));
       const mid = el("div", {});
-      mid.appendChild(el("div", { class: "jp jp-word", style: "font-size:1.05rem;margin-bottom:2px;", text: item.jp, onclick: () => speak(item.jp) }));
+      mid.appendChild(setFurigana(el("div", { class: "jp jp-word", style: "font-size:1.05rem;margin-bottom:2px;", onclick: () => speak(item.jp) }), item.jp));
       mid.appendChild(el("div", { class: "small", text: item.en }));
       r.appendChild(mid);
       r.appendChild(el("button", { class: "btn secondary", style: "padding:4px 10px;font-size:.75rem;", text: "🔊", onclick: () => speak(item.jp) }));
@@ -1128,11 +1156,39 @@ function renderFree(body, group) {
 }
 
 // ===================== FLASHCARD MODE =====================
-let flashcardPool = "subjects";
+let flashcardPools = []; // word lists chosen for flashcards: starts with none selected
 let flashcardDirection = "jToE"; // "jToE" or "eToJ"
 let flashcardStudyMode = "reading"; // "reading" or "listening"
 let flashcardSession = null;
 
+// Every word from the chosen lists, without doubling up a word that appears in more than one list.
+function flashcardWords(keys) {
+  const seen = new Set();
+  const out = [];
+  keys.forEach((k) => (DATA.vocabPools[k] || []).forEach((v) => {
+    const id = v.jp + "|" + v.en;
+    if (!seen.has(id)) { seen.add(id); out.push(v); }
+  }));
+  return out;
+}
+// The shared "choose one or more word lists" picker (used by Timed Matching and Asteroid Typing).
+function listPicker(selected, onChange, unit) {
+  const wrap = el("div", {});
+  wrap.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:4px;", text: "Word lists:" }));
+  wrap.appendChild(el("div", { class: "small", style: "margin-bottom:10px;", text: "Choose one or more lists." }));
+  const row = el("div", { class: "pool-select" });
+  Object.keys(DATA.vocabPools).forEach((k) => {
+    const on = selected.includes(k);
+    row.appendChild(el("button", { class: "pool-btn" + (on ? " active" : ""), "aria-pressed": on ? "true" : "false", text: (on ? "✓ " : "") + POOL_LABELS[k], onclick: () => onChange(on ? selected.filter((x) => x !== k) : [...selected, k]) }));
+  });
+  wrap.appendChild(row);
+  const pickRow = el("div", { style: "display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px;" });
+  pickRow.appendChild(el("button", { class: "pool-btn", text: "Select all", onclick: () => onChange(Object.keys(DATA.vocabPools)) }));
+  pickRow.appendChild(el("button", { class: "pool-btn", text: "Clear", onclick: () => onChange([]) }));
+  pickRow.appendChild(el("span", { class: "small", style: "font-weight:700;", text: selected.length ? flashcardWords(selected).length + " " + unit + " from " + selected.length + " list" + (selected.length > 1 ? "s" : "") : "No lists selected yet" }));
+  wrap.appendChild(pickRow);
+  return wrap;
+}
 function renderFlashcards(app) {
   app.appendChild(el("h2", { class: "section-title", text: "Flashcard Mode" }));
   app.appendChild(el("p", { class: "section-desc", text: "Flip cards, listen, and type the answer to make it count." }));
@@ -1143,12 +1199,22 @@ function renderFlashcards(app) {
 function renderFlashcardSetup(app) {
   const card = el("div", { class: "card", style: "max-width:560px;" });
 
-  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Word list:" }));
+  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:4px;", text: "Word lists:" }));
+  card.appendChild(el("div", { class: "small", style: "margin-bottom:10px;", text: "Choose one or more lists." }));
   const poolRow = el("div", { class: "pool-select" });
   Object.keys(DATA.vocabPools).forEach((k) => {
-    poolRow.appendChild(el("button", { class: "pool-btn" + (k === flashcardPool ? " active" : ""), text: POOL_LABELS[k], onclick: () => { flashcardPool = k; renderApp(); } }));
+    const on = flashcardPools.includes(k);
+    poolRow.appendChild(el("button", { class: "pool-btn" + (on ? " active" : ""), "aria-pressed": on ? "true" : "false", text: (on ? "✓ " : "") + POOL_LABELS[k], onclick: () => {
+      flashcardPools = on ? flashcardPools.filter((x) => x !== k) : [...flashcardPools, k];
+      renderApp();
+    } }));
   });
   card.appendChild(poolRow);
+  const pickRow = el("div", { style: "display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px;" });
+  pickRow.appendChild(el("button", { class: "pool-btn", text: "Select all", onclick: () => { flashcardPools = Object.keys(DATA.vocabPools); renderApp(); } }));
+  pickRow.appendChild(el("button", { class: "pool-btn", text: "Clear", onclick: () => { flashcardPools = []; renderApp(); } }));
+  pickRow.appendChild(el("span", { class: "small", style: "font-weight:700;", text: flashcardPools.length ? flashcardWords(flashcardPools).length + " cards from " + flashcardPools.length + " list" + (flashcardPools.length > 1 ? "s" : "") : "No lists selected yet" }));
+  card.appendChild(pickRow);
 
   card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin:16px 0 10px;", text: "Study mode:" }));
   const studyRow = el("div", { style: "display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap;" });
@@ -1167,10 +1233,13 @@ function renderFlashcardSetup(app) {
   card.appendChild(dirRow);
   card.appendChild(el("div", { class: "small", style: "margin-bottom:18px;", text: flashcardStudyMode === "listening" ? "Listening mode is always Japanese → English." : "For English → Japanese, typing either the Japanese word or its romaji counts as correct." }));
 
-  card.appendChild(el("button", { class: "btn pink", text: "Start", onclick: () => {
-    flashcardSession = { queue: shuffle(DATA.vocabPools[flashcardPool]), idx: 0, flipped: false, score: { correct: 0, total: 0 } };
+  const noneChosen = flashcardPools.length === 0;
+  card.appendChild(el("button", { class: "btn pink", id: "flashcardStart", disabled: noneChosen, text: "Start", onclick: () => {
+    if (!flashcardPools.length) return;
+    flashcardSession = { pools: [...flashcardPools], queue: shuffle(flashcardWords(flashcardPools)), idx: 0, flipped: false, score: { correct: 0, total: 0 } };
     renderApp();
   } }));
+  if (noneChosen) card.appendChild(el("div", { class: "small", style: "margin-top:8px;", text: "Choose at least one word list to start." }));
   app.appendChild(card);
 }
 
@@ -1178,7 +1247,7 @@ function renderFlashcardSession(app) {
   app.appendChild(el("button", { class: "back-btn", style: "margin-bottom:4px;", text: "← Change settings", onclick: () => { flashcardSession = null; renderApp(); } }));
 
   const sess = flashcardSession;
-  if (sess.idx >= sess.queue.length) { sess.queue = shuffle(DATA.vocabPools[flashcardPool]); sess.idx = 0; sess.round = (sess.round || 0) + 1; }
+  if (sess.idx >= sess.queue.length) { sess.queue = shuffle(flashcardWords(sess.pools)); sess.idx = 0; sess.round = (sess.round || 0) + 1; }
   const v = sess.queue[sess.idx];
   const cardKey = (sess.round || 0) + ":" + sess.idx; // one score per card, however many times Enter / Check is pressed
   const isListening = flashcardStudyMode === "listening";
@@ -1265,21 +1334,36 @@ function renderFlashcardSession(app) {
 }
 
 // ===================== 3. WRITING PRACTICE =====================
-let writingPool = "subjects";
+let writingPools = []; // word lists chosen for writing practice: starts with none selected
 let writingQueue = [];
 let writingIdx = 0;
 let writingScore = { correct: 0, total: 0 };
 function ensureWritingQueue() {
-  if (writingQueue.length === 0) { writingQueue = shuffle(DATA.vocabPools[writingPool]); writingIdx = 0; }
+  if (writingQueue.length === 0) { writingQueue = shuffle(flashcardWords(writingPools)); writingIdx = 0; }
 }
 function renderWriting(app) {
   app.appendChild(el("h2", { class: "section-title", text: "Writing Practice" }));
   app.appendChild(el("p", { class: "section-desc", text: "See the English word, write the Japanese from memory in the sketchpad, then self-check." }));
+  const picker = el("div", { class: "card", style: "max-width:720px;margin-bottom:16px;" });
+  picker.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:4px;", text: "Word lists:" }));
+  picker.appendChild(el("div", { class: "small", style: "margin-bottom:10px;", text: "Choose one or more lists." }));
   const poolNav = el("div", { class: "pool-select" });
+  const changeLists = (keys) => { writingPools = keys; writingQueue = []; writingIdx = 0; renderApp(); };
   Object.keys(DATA.vocabPools).forEach((k) => {
-    poolNav.appendChild(el("button", { class: "pool-btn" + (k === writingPool ? " active" : ""), text: POOL_LABELS[k], onclick: () => { writingPool = k; writingQueue = []; renderApp(); } }));
+    const on = writingPools.includes(k);
+    poolNav.appendChild(el("button", { class: "pool-btn" + (on ? " active" : ""), "aria-pressed": on ? "true" : "false", text: (on ? "✓ " : "") + POOL_LABELS[k], onclick: () => changeLists(on ? writingPools.filter((x) => x !== k) : [...writingPools, k]) }));
   });
-  app.appendChild(poolNav);
+  picker.appendChild(poolNav);
+  const pickRow = el("div", { style: "display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px;" });
+  pickRow.appendChild(el("button", { class: "pool-btn", text: "Select all", onclick: () => changeLists(Object.keys(DATA.vocabPools)) }));
+  pickRow.appendChild(el("button", { class: "pool-btn", text: "Clear", onclick: () => changeLists([]) }));
+  pickRow.appendChild(el("span", { class: "small", style: "font-weight:700;", text: writingPools.length ? flashcardWords(writingPools).length + " words from " + writingPools.length + " list" + (writingPools.length > 1 ? "s" : "") : "No lists selected yet" }));
+  picker.appendChild(pickRow);
+  app.appendChild(picker);
+  if (!writingPools.length) {
+    app.appendChild(el("div", { class: "small", style: "font-weight:700;", text: "Choose at least one word list to start practising." }));
+    return;
+  }
   ensureWritingQueue();
   const v = writingQueue[writingIdx];
   const card = el("div", { class: "card", style: "max-width:480px;" });
@@ -1300,7 +1384,7 @@ function renderWriting(app) {
   function advance(correct) {
     writingScore.total++; if (correct) writingScore.correct++;
     writingIdx++;
-    if (writingIdx >= writingQueue.length) { writingQueue = shuffle(DATA.vocabPools[writingPool]); writingIdx = 0; }
+    if (writingIdx >= writingQueue.length) { writingQueue = shuffle(flashcardWords(writingPools)); writingIdx = 0; }
     renderApp();
   }
   setTimeout(() => {
@@ -1501,21 +1585,24 @@ function renderScriptPanel() {
   panel.appendChild(btns);
 }
 // ===================== 5. TIMED MATCHING =====================
-let matchPool = "subjects";
+let matchPools = []; // word lists chosen for timed matching: starts with none selected
+const MATCH_MAX = 24; // words per game (a single list is never cut: the biggest has 22)
 let matchState = null;
 let matchBest = null;
 function renderMatching(app) {
   app.appendChild(el("h2", { class: "section-title", text: "Timed Matching" }));
   app.appendChild(el("p", { class: "section-desc", text: "Drag each Japanese tile onto its matching English tile as fast as you can." }));
-  const poolNav = el("div", { class: "pool-select" });
-  Object.keys(DATA.vocabPools).forEach((k) => {
-    poolNav.appendChild(el("button", { class: "pool-btn" + (k === matchPool ? " active" : ""), text: POOL_LABELS[k], onclick: () => { matchPool = k; matchState = null; matchBest = null; renderApp(); } }));
-  });
-  app.appendChild(poolNav);
-
   if (!matchState) {
+    const picker = el("div", { class: "card", style: "max-width:720px;margin-bottom:16px;" });
+    picker.appendChild(listPicker(matchPools, (keys) => { matchPools = keys; matchState = null; matchBest = null; renderApp(); }, "words"));
+    app.appendChild(picker);
+    if (!matchPools.length) {
+      app.appendChild(el("div", { class: "small", style: "font-weight:700;", text: "Choose at least one word list to start the game." }));
+      return;
+    }
+    const total = flashcardWords(matchPools).length;
     const card = el("div", { class: "card", style: "max-width:520px;" }, [
-      el("div", { class: "small", style: "margin-bottom:14px;", text: `Ready to match all ${DATA.vocabPools[matchPool].length} words in ${POOL_LABELS[matchPool]}? The timer starts as soon as you begin.` }),
+      el("div", { class: "small", style: "margin-bottom:14px;", text: (total > MATCH_MAX ? `Each game uses ${MATCH_MAX} of the ${total} words in your lists, picked at random.` : `Ready to match all ${total} words in your ${matchPools.length > 1 ? "lists" : "list"}?`) + " The timer starts as soon as you begin." }),
       el("button", { class: "btn pink", text: "Start Game", onclick: () => { startMatchGame(); renderApp(); } }),
     ]);
     app.appendChild(card);
@@ -1593,7 +1680,7 @@ function renderMatching(app) {
 }
 
 function startMatchGame() {
-  const words = shuffle(DATA.vocabPools[matchPool]); // use every word in the category
+  const words = shuffle(flashcardWords(matchPools)).slice(0, MATCH_MAX); // every word in the chosen lists (up to MATCH_MAX, picked at random)
   const tiles = [];
   words.forEach((w, i) => {
     tiles.push({ id: i, type: "jp", text: w.jp });
@@ -1622,7 +1709,7 @@ const TYPHOON_DIFFICULTY = {
   ultra: { label: "Ultra", delayMin: 2000, delayMax: 4000, accuracy: 0.92 }, // still floored well above instant — no faster than a quick Year 8 typist
 };
 let typhoonState = null;
-let typhoonSelectedPools = null;
+let typhoonPools = []; // word lists chosen for the typhoon game: starts with none selected
 let typhoonDirection = "jToE";
 let typhoonMode = "pvc";
 let typhoonDifficulty = "medium";
@@ -1648,11 +1735,6 @@ function renderTyphoon(app) {
   app.appendChild(el("h2", { class: "section-title", text: "Arcade — Typhoon Game" }));
   app.appendChild(el("p", { class: "section-desc", text: "Answer first to earn a house — but watch out, some houses hide typhoons that wipe your score!" }));
 
-  if (!typhoonSelectedPools) {
-    typhoonSelectedPools = {};
-    Object.keys(DATA.vocabPools).forEach((k) => (typhoonSelectedPools[k] = true));
-  }
-
   if (!typhoonState || !typhoonState.started) {
     renderTyphoonSetup(app);
     return;
@@ -1662,17 +1744,8 @@ function renderTyphoon(app) {
 
 function renderTyphoonSetup(app) {
   const card = el("div", { class: "card", style: "max-width:560px;" });
-  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Choose your word categories:" }));
-  const checkGrid = el("div", { style: "display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:18px;" });
-  Object.keys(DATA.vocabPools).forEach((k) => {
-    const label = el("label", { class: "small", style: "display:flex;align-items:center;gap:8px;cursor:pointer;" });
-    const cb = el("input", { type: "checkbox" });
-    cb.checked = typhoonSelectedPools[k];
-    cb.onchange = () => { typhoonSelectedPools[k] = cb.checked; };
-    label.appendChild(cb); label.appendChild(document.createTextNode(POOL_LABELS[k]));
-    checkGrid.appendChild(label);
-  });
-  card.appendChild(checkGrid);
+  card.appendChild(listPicker(typhoonPools, (keys) => { typhoonPools = keys; renderApp(); }, "words"));
+  card.appendChild(el("div", { style: "height:18px;" }));
 
   card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Direction:" }));
   const dirRow = el("div", { style: "display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap;" });
@@ -1701,10 +1774,10 @@ function renderTyphoonSetup(app) {
     card.appendChild(el("div", { class: "small", style: "margin-bottom:16px;", text: "Say the answer out loud — whoever says it first wins the round. Reveal the answer, mark who got it, then that player picks a house." }));
   }
 
-  card.appendChild(el("button", { class: "btn pink", text: "Start Game", onclick: () => {
-    const pools = Object.keys(typhoonSelectedPools).filter((k) => typhoonSelectedPools[k]);
-    let wordPool = pools.flatMap((k) => DATA.vocabPools[k]);
-    if (wordPool.length === 0) wordPool = DATA.allVocabForGames;
+  const noneChosen = typhoonPools.length === 0;
+  card.appendChild(el("button", { class: "btn pink", id: "typhoonStart", disabled: noneChosen, text: "Start Game", onclick: () => {
+    if (!typhoonPools.length) return;
+    const wordPool = flashcardWords(typhoonPools);
     typhoonState = {
       started: true, mode: typhoonMode, direction: typhoonDirection, difficulty: typhoonDifficulty,
       wordPool, houses: buildHouses(28), scores: { P1: 0, P2: 0 },
@@ -1713,6 +1786,7 @@ function renderTyphoonSetup(app) {
     };
     renderApp();
   } }));
+  if (noneChosen) card.appendChild(el("div", { class: "small", style: "margin-top:8px;", text: "Choose at least one word list to start." }));
   app.appendChild(card);
 }
 
@@ -1935,17 +2009,12 @@ const ASTEROID_LEVELS = [
   { speed: 0.16, spawnChance: 0.022, label: "Level 5" },
 ];
 let asteroidState = null;
-let asteroidSelectedPools = null;
+let asteroidPools = []; // word lists chosen for asteroid typing: starts with none selected
 let asteroidStartLevel = 1;
 let asteroidMode = "romaji";
 function renderAsteroid(app) {
   app.appendChild(el("h2", { class: "section-title", text: "Arcade — Asteroid Typing" }));
   app.appendChild(el("p", { class: "section-desc", text: "Type the reading (or meaning) of the highlighted (pink) asteroid before it crosses the danger line!" }));
-
-  if (!asteroidSelectedPools) {
-    asteroidSelectedPools = {};
-    Object.keys(DATA.vocabPools).forEach((k) => (asteroidSelectedPools[k] = true));
-  }
 
   if (!asteroidState || !asteroidState.started) {
     renderAsteroidSetup(app);
@@ -2043,17 +2112,8 @@ function renderAsteroid(app) {
 
 function renderAsteroidSetup(app) {
   const card = el("div", { class: "card", style: "max-width:560px;" });
-  card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Choose your word categories:" }));
-  const checkGrid = el("div", { style: "display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:18px;" });
-  Object.keys(DATA.vocabPools).forEach((k) => {
-    const label = el("label", { class: "small", style: "display:flex;align-items:center;gap:8px;cursor:pointer;" });
-    const cb = el("input", { type: "checkbox" });
-    cb.checked = asteroidSelectedPools[k];
-    cb.onchange = () => { asteroidSelectedPools[k] = cb.checked; };
-    label.appendChild(cb); label.appendChild(document.createTextNode(POOL_LABELS[k]));
-    checkGrid.appendChild(label);
-  });
-  card.appendChild(checkGrid);
+  card.appendChild(listPicker(asteroidPools, (keys) => { asteroidPools = keys; renderApp(); }, "words"));
+  card.appendChild(el("div", { style: "height:18px;" }));
 
   card.appendChild(el("div", { style: "font-weight:800;color:var(--navy);margin-bottom:10px;", text: "Starting level:" }));
   const levelRow = el("div", { style: "display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;" });
@@ -2071,14 +2131,15 @@ function renderAsteroidSetup(app) {
   card.appendChild(modeRow);
   card.appendChild(el("div", { class: "small", style: "margin-bottom:20px;", text: asteroidMode === "translation" ? "You'll see the Japanese word and type its English meaning." : "You'll see the Japanese word and type its romaji reading." }));
 
-  const startBtn = el("button", { class: "btn pink", text: "Start Game", onclick: () => {
-    const pools = Object.keys(asteroidSelectedPools).filter((k) => asteroidSelectedPools[k]);
-    let wordPool = pools.flatMap((k) => DATA.vocabPools[k]);
-    if (wordPool.length === 0) wordPool = DATA.allVocabForGames;
+  const noneChosen = asteroidPools.length === 0;
+  const startBtn = el("button", { class: "btn pink", id: "asteroidStart", disabled: noneChosen, text: "Start Game", onclick: () => {
+    if (!asteroidPools.length) return;
+    const wordPool = flashcardWords(asteroidPools);
     asteroidState = { started: true, running: true, paused: false, level: asteroidStartLevel, mode: asteroidMode, asteroids: [], hits: 0, lives: 3, wordPool };
     renderApp();
   } });
   card.appendChild(startBtn);
+  if (noneChosen) card.appendChild(el("div", { class: "small", style: "margin-top:8px;", text: "Choose at least one word list to start." }));
   app.appendChild(card);
 }
 renderTabs(); renderApp();
